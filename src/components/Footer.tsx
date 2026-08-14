@@ -4,19 +4,19 @@ import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
 
 const quick = [
-  { to: "/about", label: "من نحن" },
-  { to: "/contact", label: "اتصل بنا" },
-  { to: "/terms", label: "الشروط والأحكام" },
-  { to: "/privacy", label: "سياسة الخصوصية" },
-  { to: "/cancellation", label: "سياسة الإلغاء" },
+  { to: "/من-نحن", label: "من نحن" },
+  { to: "/اتصل-بنا", label: "اتصل بنا" },
+  { to: "/الشروط-والأحكام", label: "الشروط والأحكام" },
+  { to: "/سياسة-الخصوصية", label: "سياسة الخصوصية" },
+  { to: "/سياسة-الإلغاء", label: "سياسة الإلغاء" },
 ] as const;
 
 const discover = [
-  { to: "/yacht-rental", label: "يخوت للإيجار في دبي" },
-  { to: "/yacht-parties", label: "حفلات اليخوت" },
-  { to: "/fishing-trips", label: "رحلات صيد السمك" },
-  { to: "/packages", label: "الباقات والعروض" },
-  { to: "/sitemap", label: "خريطة الموقع" },
+  { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار في دبي" },
+  { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
+  { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك" },
+  { to: "/باقات-تأجير-اليخوت-في-دبي", label: "الباقات والعروض" },
+  { to: "/خريطة-الموقع", label: "خريطة الموقع" },
 ] as const;
 
 function ColTitle({ children }: { children: React.ReactNode }) {
@@ -141,13 +141,13 @@ export function Footer() {
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-primary-foreground/55 md:flex-row md:px-8">
           <p>© {new Date().getFullYear()} توت فن لليخوت — جميع الحقوق محفوظة</p>
           <div className="flex items-center gap-5">
-            <Link to="/terms" className="hover:text-gold">
+            <Link to="/الشروط-والأحكام" className="hover:text-gold">
               الشروط والأحكام
             </Link>
-            <Link to="/privacy" className="hover:text-gold">
+            <Link to="/سياسة-الخصوصية" className="hover:text-gold">
               سياسة الخصوصية
             </Link>
-            <Link to="/cancellation" className="hover:text-gold">
+            <Link to="/سياسة-الإلغاء" className="hover:text-gold">
               سياسة الإلغاء
             </Link>
           </div>

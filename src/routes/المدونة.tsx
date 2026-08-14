@@ -5,7 +5,7 @@ import yacht1 from "@/assets/yacht-1.jpg";
 import partyImg from "@/assets/party.jpg";
 import fishingImg from "@/assets/fishing.jpg";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/المدونة")({
   head: () => ({
     meta: [
       { title: "المدونة | نصائح ودليل تأجير اليخوت في دبي | توت فن لليخوت" },

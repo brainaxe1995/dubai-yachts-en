@@ -3,7 +3,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { yachts } from "@/data/site";
 
-export const Route = createFileRoute("/yacht-rental")({
+export const Route = createFileRoute("/تأجير-يخوت-في-دبي")({
   head: () => ({
     meta: [
       { title: "يخوت للإيجار في دبي | توت فن لليخوت" },

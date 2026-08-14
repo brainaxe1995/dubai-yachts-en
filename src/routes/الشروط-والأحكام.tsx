@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 
-export const Route = createFileRoute("/terms")({
+export const Route = createFileRoute("/الشروط-والأحكام")({
   head: () => ({
     meta: [
       { title: "الشروط والأحكام | توت فن لليخوت" },

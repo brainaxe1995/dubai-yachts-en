@@ -36,9 +36,9 @@ const features = [
 ];
 
 const services = [
-  { to: "/yacht-parties", img: partyImg, t: "حفلات اليخوت في دبي", d: "أعياد ميلاد، خطوبة، زفاف وتخرج على متن يخت فاخر." },
-  { to: "/fishing-trips", img: fishingImg, t: "رحلات صيد السمك", d: "رحلات خاصة ومشتركة مع قوارب مجهزة وطاقم محترف." },
-  { to: "/packages", img: packagesImg, t: "باقات وعروض اليخوت", d: "إفطار، عشاء رومانسي، وجيت سكي ضمن باقات مميزة." },
+  { to: "/حفلات-اليخوت-في-دبي", img: partyImg, t: "حفلات اليخوت في دبي", d: "أعياد ميلاد، خطوبة، زفاف وتخرج على متن يخت فاخر." },
+  { to: "/رحلات-صيد-السمك-في-دبي", img: fishingImg, t: "رحلات صيد السمك", d: "رحلات خاصة ومشتركة مع قوارب مجهزة وطاقم محترف." },
+  { to: "/باقات-تأجير-اليخوت-في-دبي", img: packagesImg, t: "باقات وعروض اليخوت", d: "إفطار، عشاء رومانسي، وجيت سكي ضمن باقات مميزة." },
 ] as const;
 
 function Home() {
@@ -62,7 +62,7 @@ function Home() {
         </div>
         <Reveal className="mt-10 text-center">
           <Link
-            to="/yacht-rental"
+            to="/تأجير-يخوت-في-دبي"
             className="inline-flex rounded-full border border-primary/20 px-7 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             تصفح كل اليخوت

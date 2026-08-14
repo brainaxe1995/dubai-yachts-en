@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { packages, extras } from "@/data/site";
 import packagesImg from "@/assets/packages.jpg";
 
-export const Route = createFileRoute("/packages")({
+export const Route = createFileRoute("/باقات-تأجير-اليخوت-في-دبي")({
   head: () => ({
     meta: [
       { title: "أفضل باقات تأجير اليخوت في دبي | توت فن لليخوت" },

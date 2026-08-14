@@ -5,13 +5,13 @@ import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
 
 const nav = [
-  { to: "/yacht-rental", label: "يخوت للإيجار" },
-  { to: "/yacht-parties", label: "حفلات اليخوت" },
-  { to: "/fishing-trips", label: "رحلات الصيد" },
-  { to: "/packages", label: "العروض" },
-  { to: "/about", label: "عن الشركة" },
-  { to: "/blog", label: "المدونة" },
-  { to: "/contact", label: "اتصل بنا" },
+  { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار" },
+  { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
+  { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات الصيد" },
+  { to: "/باقات-تأجير-اليخوت-في-دبي", label: "العروض" },
+  { to: "/من-نحن", label: "عن الشركة" },
+  { to: "/المدونة", label: "المدونة" },
+  { to: "/اتصل-بنا", label: "اتصل بنا" },
 ] as const;
 
 function UaeFlag({ className = "h-4 w-6" }: { className?: string }) {

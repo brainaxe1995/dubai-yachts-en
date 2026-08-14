@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 
-export const Route = createFileRoute("/privacy")({
+export const Route = createFileRoute("/سياسة-الخصوصية")({
   head: () => ({
     meta: [
       { title: "سياسة الخصوصية | توت فن لليخوت" },
