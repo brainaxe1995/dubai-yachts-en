@@ -21,6 +21,8 @@ export const Route = createFileRoute("/تأجير-يخوت-في-دبي")({
     ],
     links: [
       { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي" },
     ],
     scripts: [
       {
