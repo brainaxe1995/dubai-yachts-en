@@ -128,6 +128,15 @@ function SeoAuditPage() {
                   <Field label="og:description" value={r.ogDescription} />
                   <Field label="og:url" value={r.ogUrl ? decodeURI(r.ogUrl) : null} missing />
                   <Field label="canonical" value={r.canonical ? decodeURI(r.canonical) : null} missing />
+                  <Field
+                    label="hreflang"
+                    value={
+                      r.alternates?.length
+                        ? r.alternates.map((a) => `${a.hreflang} → ${decodeURI(a.href)}`).join(" | ")
+                        : null
+                    }
+                    missing
+                  />
                   <Field label="robots" value={r.robots} />
                   <Field
                     label="البيانات المنظمة"
