@@ -34,7 +34,7 @@ export const Route = createFileRoute("/تأجير-يخوت-في-دبي")({
             position: i + 1,
             item: {
               "@type": "Service",
-              name: y.name,
+              name: y.title,
               serviceType: "تأجير يخوت",
               areaServed: "Dubai, United Arab Emirates",
               provider: { "@type": "Organization", name: "توت فن لليخوت" },
