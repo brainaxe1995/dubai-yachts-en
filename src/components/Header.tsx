@@ -169,17 +169,36 @@ export function Header() {
         </ul>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile side drawer */}
       <div
-        className={`overflow-hidden border-t border-gold/40 bg-primary-deep transition-[max-height] duration-300 lg:hidden ${
-          open ? "max-h-[680px]" : "max-h-0"
+        aria-hidden={!open}
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-40 bg-primary-deep/70 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      <aside
+        className={`fixed inset-y-0 end-0 z-50 flex w-[82%] max-w-xs flex-col border-s border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          open ? "translate-x-0" : "rtl:-translate-x-full ltr:translate-x-full"
         }`}
       >
-        <nav className="flex flex-col px-4 pb-5 pt-2">
+        <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
+          <img src={logo} alt="توت فن لليخوت" className="h-12 w-auto object-contain" />
+          <button
+            type="button"
+            aria-label="إغلاق القائمة"
+            onClick={() => setOpen(false)}
+            className="grid h-10 w-10 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <nav className="flex flex-1 flex-col overflow-y-auto px-4 pb-6 pt-2">
           <Link
             to="/"
             onClick={() => setOpen(false)}
-            className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground"
+            className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:text-gold"
           >
             الرئيسية
           </Link>
@@ -189,12 +208,12 @@ export function Header() {
               to={n.to}
               onClick={() => setOpen(false)}
               activeProps={{ className: "text-gold" }}
-              className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground"
+              className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:text-gold"
             >
               {n.label}
             </Link>
           ))}
-          <div className="flex items-center justify-between gap-3 pt-4">
+          <div className="mt-5 flex items-center justify-between gap-3">
             <a
               href={`tel:${CONTACT.phone}`}
               dir="ltr"
@@ -204,8 +223,17 @@ export function Header() {
             </a>
             <LangSwitcher />
           </div>
+          <a
+            href={CONTACT.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-secondary-foreground"
+          >
+            <MessageCircle className="h-4 w-4" /> احجز الآن
+          </a>
         </nav>
-      </div>
+      </aside>
+
     </header>
   );
 }
