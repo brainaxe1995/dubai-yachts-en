@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, MessageCircle, Instagram, MapPin } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
 
@@ -53,7 +54,7 @@ export function Footer() {
               aria-label="واتساب"
               className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
             </a>
             <a
               href="https://instagram.com"
@@ -132,7 +133,7 @@ export function Footer() {
             className="mt-6 inline-flex items-center gap-3 rounded-full border border-gold px-6 py-3 text-sm font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep"
           >
             احجز الآن
-            <MessageCircle className="h-4 w-4" />
+            <WhatsAppIcon className="h-4 w-4" />
           </a>
         </div>
       </div>
