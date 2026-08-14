@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
@@ -45,12 +45,11 @@ function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2 text-primary-foreground"
+        className="flex items-center gap-1.5 text-primary-foreground"
       >
-        <Globe className="h-5 w-5 text-gold" />
+        <UaeFlag className="h-4 w-6 rounded-[2px]" />
         <span className="text-sm font-bold">AR</span>
         <ChevronDown className={`h-4 w-4 text-primary-foreground/70 transition-transform ${open ? "rotate-180" : ""}`} />
-        <UaeFlag className="h-4 w-6 rounded-[2px]" />
       </button>
 
       {open ? (
