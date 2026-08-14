@@ -15,7 +15,7 @@ function seoValidationPlugin() {
   return {
     name: "seo-validation",
     apply: () => true,
-    buildStart() {
+    buildStart(this: { warn: (m: string) => void; error: (m: string) => never }) {
       let report;
       try {
         report = writeReport();
