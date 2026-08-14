@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/إيجار-يخوت-في-دبي'
 import { Route as Char1575Char1578Char1589Char1604Char1576Char1606Char1575RouteImport } from './routes/اتصل-بنا'
 import { Route as Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605RouteImport } from './routes/الشروط-والأحكام'
@@ -28,6 +29,11 @@ import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char16
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
@@ -139,6 +145,7 @@ const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Ch
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
@@ -156,6 +163,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
@@ -174,6 +182,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
     | '/الشروط-والأحكام'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
     | '/الشروط-والأحكام'
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
     | '/الشروط-والأحكام'
@@ -245,6 +257,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route: typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route: typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
@@ -268,6 +281,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/إيجار-يخوت-في-دبي': {
@@ -373,6 +393,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
     Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
   Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route:
