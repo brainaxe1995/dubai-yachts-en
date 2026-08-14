@@ -12,18 +12,21 @@ import packagesImg from "@/assets/packages.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { title: "توت فن لليخوت | يخوت وحفلات ورحلات صيد في دبي" },
       {
         name: "description",
         content:
           "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
       },
-      { property: "og:title", content: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { property: "og:title", content: "توت فن لليخوت | يخوت وحفلات ورحلات صيد في دبي" },
       {
         property: "og:description",
-        content: "يخوت فاخرة للإيجار في دبي بأسعار تبدأ من 400 درهم للساعة.",
+        content:
+          "الصفحة الرئيسية لتوت فن: تأجير يخوت، حفلات بحرية، ورحلات صيد في دبي بأسعار تبدأ من 400 درهم للساعة.",
       },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/" }],
   }),
   component: Home,
 });
