@@ -45,7 +45,15 @@ export default defineConfig({
     server: { entry: "server" },
   },
   // Hostinger runs Node.js — pin preset so build produces .output/server/index.mjs for Node
-  nitro: { preset: "node-server" },
+  nitro: {
+    preset: "node-server",
+    routeRules: {
+      "/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
+      "/favicon.png": { headers: { "cache-control": "public, max-age=604800" } },
+      "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
+      "/sitemap.xml": { headers: { "cache-control": "public, max-age=3600" } },
+    },
+  } as never,
   vite: {
     plugins: [seoValidationPlugin()],
   },
