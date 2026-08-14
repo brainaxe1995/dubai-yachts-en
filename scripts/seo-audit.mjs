@@ -140,7 +140,9 @@ export function audit() {
 
   for (const r of routes) {
     r.issues = [];
+    r.noindex = Boolean(r.robots && /noindex/.test(r.robots));
     const add = (level, rule, message) => r.issues.push({ level, rule, message });
+    if (r.noindex) continue;
     if (!r.title) add("error", "missing-title", "لا يوجد عنوان <title> لهذه الصفحة");
     else if (r.title.length > 60) add("warning", "title-length", `طول العنوان ${r.title.length} حرفًا (يُفضّل أقل من 60)`);
     if (!r.description) add("error", "missing-description", "لا يوجد وصف meta description");
@@ -160,7 +162,7 @@ export function audit() {
   const sitemapSrc = readFileSync(join(ROUTES_DIR, "sitemap[.]xml.ts"), "utf8");
   const sitemapPaths = [...sitemapSrc.matchAll(/path:\s*"([^"]+)"/g)].map((m) => m[1]);
   const routePaths = routes.map((r) => r.path).filter((p) => !p.startsWith("/seo-audit"));
-  for (const p of routePaths) if (!sitemapPaths.includes(p)) globalIssues.push({ level: "error", rule: "sitemap-missing-route", message: `المسار ${p} غير مدرج في sitemap.xml`, routes: [p] });
+  for (const p of routePaths.filter((p) => !routes.find((r) => r.path === p)?.noindex)) if (!sitemapPaths.includes(p)) globalIssues.push({ level: "error", rule: "sitemap-missing-route", message: `المسار ${p} غير مدرج في sitemap.xml`, routes: [p] });
   for (const p of sitemapPaths) if (!routePaths.includes(p)) globalIssues.push({ level: "error", rule: "sitemap-unknown-route", message: `sitemap.xml يحتوي مسارًا غير موجود: ${p}`, routes: [p] });
 
   const robotsPath = join(root, "public/robots.txt");
