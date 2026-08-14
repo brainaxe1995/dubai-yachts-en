@@ -1,5 +1,12 @@
 export interface SeoIssue { level: "error" | "warning"; rule: string; message: string; routes?: string[] }
-export interface SeoStructuredData { type: string; status: "valid" | "invalid" | "dynamic"; message: string | null; json?: string }
+export interface SeoStructuredData {
+  type: string;
+  status: "valid" | "invalid" | "dynamic";
+  message: string | null;
+  missingRequired?: string[];
+  missingRecommended?: string[];
+  json?: string;
+}
 export interface SeoRoute {
   file: string; path: string; title: string | null; description: string | null;
   ogTitle: string | null; ogDescription: string | null; ogUrl: string | null; ogImage: string | null;
