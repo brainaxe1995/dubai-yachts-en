@@ -14,6 +14,41 @@ export const Route = createFileRoute("/اتصل-بنا")({
       },
       { property: "og:title", content: "اتصل بنا | توت فن لليخوت" },
       { property: "og:description", content: "تواصل مع فريق توت فن لليخوت للحجز والاستفسارات في دبي." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/اتصل-بنا" },
+    ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/اتصل-بنا" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "توت فن لليخوت",
+          alternateName: "Toot Fun Yacht Rental",
+          url: "https://doc-whisperer-750.lovable.app/اتصل-بنا",
+          image: "https://doc-whisperer-750.lovable.app/favicon.png",
+          telephone: CONTACT.phone,
+          email: CONTACT.email,
+          priceRange: "AED 400+",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Dubai Marina",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+          },
+          areaServed: "Dubai, United Arab Emirates",
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday",
+              ],
+              opens: "00:00",
+              closes: "23:59",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Contact,
