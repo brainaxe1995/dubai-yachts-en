@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, Globe, ChevronDown, MessageCircle } from "lucide-react";
+import { Menu, X, Phone, Globe, ChevronDown } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
 
@@ -146,7 +147,7 @@ export function Header() {
           className="hidden items-center justify-self-end gap-3 rounded-full border border-gold px-6 py-3 text-base font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep md:inline-flex"
         >
           احجز الآن
-          <MessageCircle className="h-5 w-5" />
+          <WhatsAppIcon className="h-5 w-5" />
         </a>
         <a
           href={CONTACT.whatsapp}
@@ -155,7 +156,7 @@ export function Header() {
           aria-label="احجز الآن"
           className="grid h-11 w-11 place-items-center justify-self-end rounded-full border border-gold text-gold md:hidden"
         >
-          <MessageCircle className="h-5 w-5" />
+          <WhatsAppIcon className="h-5 w-5" />
         </a>
       </div>
 
@@ -236,7 +237,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-secondary-foreground"
           >
-            <MessageCircle className="h-4 w-4" /> احجز الآن
+            <WhatsAppIcon className="h-4 w-4" /> احجز الآن
           </a>
         </nav>
       </aside>
