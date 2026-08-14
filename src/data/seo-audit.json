@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T17:58:38.176Z",
+  "generatedAt": "2026-08-14T18:06:56.406Z",
   "baseUrl": "https://doc-whisperer-750.lovable.app",
   "sitemapPaths": [
     "/",
@@ -83,7 +83,9 @@
         {
           "type": "LocalBusiness",
           "status": "dynamic",
-          "message": "built from runtime data — validated statically for @context/@type"
+          "message": "مبنية من بيانات ديناميكية — تم التحقق من @context/@type",
+          "missingRequired": [],
+          "missingRecommended": []
         }
       ],
       "hasHead": true,
@@ -153,7 +155,9 @@
         {
           "type": "ItemList",
           "status": "dynamic",
-          "message": "built from runtime data — validated statically for @context/@type"
+          "message": "مبنية من بيانات ديناميكية — تم التحقق من @context/@type",
+          "missingRequired": [],
+          "missingRecommended": []
         }
       ],
       "hasHead": true,

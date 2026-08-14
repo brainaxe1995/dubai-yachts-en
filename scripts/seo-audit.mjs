@@ -286,6 +286,9 @@ export function audit() {
     if (r.canonical && norm(r.canonical) !== norm(expected)) add("error", "canonical-mismatch", `canonical لا يشير إلى الصفحة نفسها (${r.canonical})`);
     if (r.ogUrl && norm(r.ogUrl) !== norm(expected)) add("error", "og-url-mismatch", `og:url لا يشير إلى الصفحة نفسها (${r.ogUrl})`);
     for (const sd of r.structuredData) if (sd.status === "invalid") add("error", "invalid-structured-data", `بيانات منظمة غير صالحة (${sd.type}): ${sd.message}`);
+    for (const sd of r.structuredData)
+      if (sd.status !== "invalid" && sd.missingRecommended?.length)
+        add("warning", "structured-data-recommended", `حقول مُوصى بها ناقصة في (${sd.type}): ${sd.missingRecommended.join("، ")}`);
   }
 
   // sitemap cross-check
