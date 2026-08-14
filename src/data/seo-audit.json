@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T18:06:56.406Z",
+  "generatedAt": "2026-08-14T18:11:10.815Z",
   "baseUrl": "https://doc-whisperer-750.lovable.app",
   "sitemapPaths": [
     "/",
@@ -30,6 +30,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -46,6 +56,7 @@
       "ogUrl": null,
       "ogImage": null,
       "canonical": null,
+      "alternates": [],
       "robots": "noindex, nofollow",
       "structuredData": [],
       "hasHead": true,
@@ -62,6 +73,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -78,6 +99,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/اتصل-بنا",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/اتصل-بنا",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/اتصل-بنا"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/اتصل-بنا"
+        }
+      ],
       "robots": null,
       "structuredData": [
         {
@@ -102,6 +133,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/الشروط-والأحكام",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/الشروط-والأحكام",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/الشروط-والأحكام"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/الشروط-والأحكام"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -118,6 +159,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/المدونة",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/المدونة",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/المدونة"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/المدونة"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -134,6 +185,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -150,6 +211,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/تأجير-يخوت-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [
         {
@@ -174,6 +245,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -190,6 +271,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -206,6 +297,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/خريطة-الموقع",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/خريطة-الموقع",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/خريطة-الموقع"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/خريطة-الموقع"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -222,6 +323,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -238,6 +349,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -254,6 +375,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -270,6 +401,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/من-نحن",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/من-نحن",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/من-نحن"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/من-نحن"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
@@ -286,6 +427,16 @@
       "ogUrl": "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي",
       "ogImage": null,
       "canonical": "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي",
+      "alternates": [
+        {
+          "hreflang": "ar",
+          "href": "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي"
+        }
+      ],
       "robots": null,
       "structuredData": [],
       "hasHead": true,
