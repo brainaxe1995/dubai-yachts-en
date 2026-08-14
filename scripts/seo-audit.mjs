@@ -356,7 +356,37 @@ export function audit() {
     const norm = (u) => (u ? decodeURI(u).replace(/\/$/, "") || "/" : u);
     if (r.canonical && norm(r.canonical) !== norm(expected)) add("error", "canonical-mismatch", `canonical لا يشير إلى الصفحة نفسها (${r.canonical})`);
     if (r.ogUrl && norm(r.ogUrl) !== norm(expected)) add("error", "og-url-mismatch", `og:url لا يشير إلى الصفحة نفسها (${r.ogUrl})`);
+
+    // hreflang / alternates
+    const alts = r.alternates ?? [];
+    if (alts.length === 0) {
+      add("error", "missing-hreflang", "لا توجد روابط hreflang لهذه الصفحة");
+    } else {
+      const langs = alts.map((a) => a.hreflang);
+      for (const loc of LOCALES) {
+        if (!langs.includes(loc)) add("error", "hreflang-missing-locale", `hreflang="${loc}" غير موجود`);
+      }
+      if (!langs.includes("x-default")) add("warning", "hreflang-missing-x-default", 'hreflang="x-default" غير موجود');
+      for (const a of alts) {
+        if (!/^([a-z]{2}(-[A-Za-z0-9]{2,8})*|x-default)$/.test(a.hreflang))
+          add("error", "hreflang-invalid-code", `رمز hreflang غير صالح: ${a.hreflang}`);
+        if (!/^https?:\/\//.test(a.href))
+          add("error", "hreflang-relative-href", `رابط hreflang يجب أن يكون مطلقًا (${a.hreflang})`);
+      }
+      const dupes = langs.filter((l, i) => langs.indexOf(l) !== i);
+      if (dupes.length) add("error", "hreflang-duplicate", `رموز hreflang مكررة: ${[...new Set(dupes)].join("، ")}`);
+      const self = alts.find((a) => a.hreflang === X_DEFAULT);
+      if (self && norm(self.href) !== norm(expected))
+        add("error", "hreflang-self-mismatch", `hreflang="${X_DEFAULT}" لا يشير إلى الصفحة نفسها (${self.href})`);
+      const xdef = alts.find((a) => a.hreflang === "x-default");
+      if (xdef && norm(xdef.href) !== norm(expected))
+        add("error", "hreflang-x-default-mismatch", `hreflang="x-default" لا يشير إلى الصفحة نفسها (${xdef.href})`);
+    }
+
     for (const sd of r.structuredData) if (sd.status === "invalid") add("error", "invalid-structured-data", `بيانات منظمة غير صالحة (${sd.type}): ${sd.message}`);
+    for (const sd of r.structuredData)
+      if (sd.status !== "invalid" && sd.warnings?.length)
+        add("warning", "structured-data-value", `قيم مشكوك فيها في (${sd.type}): ${sd.warnings.join("، ")}`);
     for (const sd of r.structuredData)
       if (sd.status !== "invalid" && sd.missingRecommended?.length)
         add("warning", "structured-data-recommended", `حقول مُوصى بها ناقصة في (${sd.type}): ${sd.missingRecommended.join("، ")}`);
