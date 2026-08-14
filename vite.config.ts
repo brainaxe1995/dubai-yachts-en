@@ -44,6 +44,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Hostinger runs Node.js — pin preset so build produces .output/server/index.mjs for Node
+  nitro: { preset: "node-server" },
   vite: {
     plugins: [seoValidationPlugin()],
   },

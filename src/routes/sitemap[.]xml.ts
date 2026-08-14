@@ -10,7 +10,7 @@ interface SitemapEntry {
   priority?: string;
 }
 
-const entries: SitemapEntry[] = [
+const staticEntries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/تأجير-يخوت-في-دبي", changefreq: "weekly", priority: "0.9" },
   { path: "/إيجار-يخوت-في-دبي", changefreq: "weekly", priority: "0.8" },
@@ -26,18 +26,25 @@ const entries: SitemapEntry[] = [
   { path: "/سياسة-الإلغاء", changefreq: "yearly", priority: "0.3" },
   { path: "/الشروط-والأحكام", changefreq: "yearly", priority: "0.3" },
   { path: "/سياسة-الخصوصية", changefreq: "yearly", priority: "0.3" },
-  ...posts.map((p) => ({
-    path: `/المدونة/${p.slug}`,
-    changefreq: "monthly" as const,
-    priority: "0.5",
-  })),
 ];
+
+// Blog entries appended lazily inside the handler to avoid module-init circular imports.
+function getEntries(): SitemapEntry[] {
+  return [
+    ...staticEntries,
+    ...posts.map((p) => ({
+      path: `/المدونة/${p.slug}`,
+      changefreq: "monthly" as const,
+      priority: "0.5",
+    })),
+  ];
+}
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const urls = entries.map((e) =>
+        const urls = getEntries().map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${encodeURI(e.path)}</loc>`,
