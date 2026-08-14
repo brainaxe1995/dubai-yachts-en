@@ -14,7 +14,9 @@ export const Route = createFileRoute("/سياسة-الإلغاء")({
       },
       { property: "og:title", content: "سياسة الإلغاء | توت فن لليخوت" },
       { property: "og:description", content: "شروط الإلغاء، إعادة الجدولة واسترداد المبالغ." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" }],
   }),
   component: Page,
 });

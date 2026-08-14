@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SeoAuditRouteImport } from './routes/seo-audit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/إيجار-يخوت-في-دبي'
 import { Route as Char1575Char1578Char1589Char1604Char1576Char1606Char1575RouteImport } from './routes/اتصل-بنا'
@@ -29,6 +30,11 @@ import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char16
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoAuditRoute = SeoAuditRouteImport.update({
+  id: '/seo-audit',
+  path: '/seo-audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -145,6 +151,7 @@ const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Ch
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
@@ -163,6 +170,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
@@ -182,6 +190,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/seo-audit': typeof SeoAuditRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/seo-audit'
     | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/seo-audit'
     | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/seo-audit'
     | '/sitemap.xml'
     | '/إيجار-يخوت-في-دبي'
     | '/اتصل-بنا'
@@ -257,6 +269,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SeoAuditRoute: typeof SeoAuditRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route: typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
@@ -281,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-audit': {
+      id: '/seo-audit'
+      path: '/seo-audit'
+      fullPath: '/seo-audit'
+      preLoaderRoute: typeof SeoAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -393,6 +413,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SeoAuditRoute: SeoAuditRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
     Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,

@@ -14,7 +14,9 @@ export const Route = createFileRoute("/سياسة-الخصوصية")({
       },
       { property: "og:title", content: "سياسة الخصوصية | توت فن لليخوت" },
       { property: "og:description", content: "كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" }],
   }),
   component: Page,
 });
