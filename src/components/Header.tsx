@@ -136,7 +136,7 @@ export function Header() {
           target="_blank"
           rel="noopener noreferrer"
           dir="rtl"
-          className="hidden items-center gap-3 rounded-full border border-gold px-6 py-3 text-base font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep md:inline-flex"
+          className="hidden items-center justify-self-end gap-3 rounded-full border border-gold px-6 py-3 text-base font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep md:inline-flex"
         >
           احجز الآن
           <MessageCircle className="h-5 w-5" />
