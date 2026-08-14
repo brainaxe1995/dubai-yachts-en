@@ -17,7 +17,9 @@ export const Route = createFileRoute("/إيجار-يخوت-في-دبي")({
         property: "og:description",
         content: "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 400 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
       },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/إيجار-يخوت-في-دبي" }],
   }),
   component: RentYacht,
 });

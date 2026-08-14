@@ -15,7 +15,9 @@ export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
       },
       { property: "og:title", content: "أفضل حفلات اليخوت في دبي | توت فن لليخوت" },
       { property: "og:description", content: "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" }],
   }),
   component: Parties,
 });

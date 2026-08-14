@@ -17,7 +17,9 @@ export const Route = createFileRoute("/حجز-يخوت-في-دبي")({
         property: "og:description",
         content: "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 400 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
       },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/حجز-يخوت-في-دبي" }],
   }),
   component: YachtBooking,
 });

@@ -13,7 +13,9 @@ export const Route = createFileRoute("/خريطة-الموقع")({
       },
       { property: "og:title", content: "خريطة الموقع | توت فن لليخوت" },
       { property: "og:description", content: "روابط جميع صفحات وخدمات توت فن لليخوت في دبي." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/خريطة-الموقع" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/خريطة-الموقع" }],
   }),
   component: Sitemap,
 });

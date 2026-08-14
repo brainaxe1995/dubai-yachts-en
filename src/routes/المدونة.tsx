@@ -16,7 +16,9 @@ export const Route = createFileRoute("/المدونة")({
       },
       { property: "og:title", content: "المدونة | دليل تأجير اليخوت في دبي" },
       { property: "og:description", content: "نصائح وأفكار حول الرحلات البحرية وحفلات اليخوت في دبي." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/المدونة" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/المدونة" }],
   }),
   component: Blog,
 });

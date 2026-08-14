@@ -15,7 +15,9 @@ export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي"
       },
       { property: "og:title", content: "أفضل رحلات صيد السمك في دبي | توت فن لليخوت" },
       { property: "og:description", content: "رحلات صيد خاصة ومشتركة في دبي مع تجهيزات كاملة." },
+      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي" },
     ],
+    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/رحلات-صيد-السمك-في-دبي" }],
   }),
   component: Fishing,
 });
