@@ -253,6 +253,9 @@ function parseRouteFileInner(file) {
   const ogImage = get((x) => x.property === "og:image")?.content ?? null;
   const robots = get((x) => x.name === "robots")?.content ?? null;
   const canonical = links.find((l) => l.rel === "canonical")?.href ?? null;
+  const alternates = links
+    .filter((l) => l.rel === "alternate" && l.hreflang)
+    .map((l) => ({ hreflang: String(l.hreflang), href: String(l.href ?? "") }));
 
   // structured data
   const structuredData = [];
@@ -286,11 +289,14 @@ function parseRouteFileInner(file) {
         status: problems.length ? "invalid" : "valid",
         message: problems.length
           ? problems.join(" — ")
-          : v.recommended.length
-            ? `حقول مُوصى بها ناقصة: ${v.recommended.join("، ")}`
-            : null,
+          : v.warnings?.length
+            ? v.warnings.join(" — ")
+            : v.recommended.length
+              ? `حقول مُوصى بها ناقصة: ${v.recommended.join("، ")}`
+              : null,
         missingRequired: v.missing,
         missingRecommended: v.recommended,
+        warnings: v.warnings ?? [],
         json: JSON.stringify(parsed, null, 2).slice(0, 4000),
       });
     } else {
@@ -315,7 +321,7 @@ function parseRouteFileInner(file) {
     }
   }
 
-  return { file, path, title, description, ogTitle, ogDescription, ogUrl, ogImage, canonical, robots, structuredData, hasHead: head.length > 0 };
+  return { file, path, title, description, ogTitle, ogDescription, ogUrl, ogImage, canonical, alternates, robots, structuredData, hasHead: head.length > 0 };
 }
 
 export function audit() {
