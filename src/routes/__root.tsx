@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { TrackingScripts } from "@/components/TrackingScripts";
+import { DEFAULT_CONFIG } from "@/data/config";
 
 function NotFoundComponent() {
   return (
@@ -90,12 +92,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "توت فن لليخوت | تأجير وحجز اليخوت الفاخرة في دبي" },
       {
         property: "og:description",
-        content: "يخوت فاخرة، حفلات ورحلات صيد في دبي بأسعار تبدأ من 400 درهم للساعة.",
+        content: "يخوت فاخرة، حفلات ورحلات صيد في دبي بأسعار تبدأ من 450 درهم للساعة.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "توت فن لليخوت" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      ...(DEFAULT_CONFIG.tracking.googleSiteVerification
+        ? [{ name: "google-site-verification", content: DEFAULT_CONFIG.tracking.googleSiteVerification }]
+        : []),
+      ...(DEFAULT_CONFIG.tracking.bingSiteVerification
+        ? [{ name: "msvalidate.01", content: DEFAULT_CONFIG.tracking.bingSiteVerification }]
+        : []),
     ],
     scripts: [
       {
@@ -105,19 +112,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "WebSite",
-              "@id": "https://doc-whisperer-750.lovable.app/#website",
+              "@id": "https://dubai-yacht.ae/#website",
               name: "توت فن لليخوت",
               alternateName: "Toot Fun Yacht Rental",
-              url: "https://doc-whisperer-750.lovable.app/",
+              url: "https://dubai-yacht.ae/",
               inLanguage: "ar",
-              publisher: { "@id": "https://doc-whisperer-750.lovable.app/#organization" },
+              publisher: { "@id": "https://dubai-yacht.ae/#organization" },
             },
             {
               "@type": "Organization",
-              "@id": "https://doc-whisperer-750.lovable.app/#organization",
+              "@id": "https://dubai-yacht.ae/#organization",
               name: "توت فن لليخوت",
-              url: "https://doc-whisperer-750.lovable.app/",
-              logo: "https://doc-whisperer-750.lovable.app/favicon.png",
+              url: "https://dubai-yacht.ae/",
+              logo: "https://dubai-yacht.ae/favicon.png",
               areaServed: "Dubai, United Arab Emirates",
               address: {
                 "@type": "PostalAddress",
@@ -177,6 +184,7 @@ function RootComponent() {
         </main>
         <Footer />
         <WhatsAppFab />
+        <TrackingScripts />
       </div>
     </QueryClientProvider>
   );

@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ROUTES_DIR = join(root, "src/routes");
 const OUT = join(root, "src/data/seo-audit.json");
-export const BASE_URL = "https://doc-whisperer-750.lovable.app";
+export const BASE_URL = "https://dubai-yacht.ae";
 
 /** find the substring balanced from an opening bracket index */
 function balanced(src, start, open, close) {

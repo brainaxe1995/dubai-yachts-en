@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
+import { ContactCta } from "@/components/ContactCta";
 
 export const Route = createFileRoute("/سياسة-الخصوصية")({
   head: () => ({
@@ -14,12 +15,12 @@ export const Route = createFileRoute("/سياسة-الخصوصية")({
       },
       { property: "og:title", content: "سياسة الخصوصية | توت فن لليخوت" },
       { property: "og:description", content: "كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها." },
-      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
+      { property: "og:url", content: "https://dubai-yacht.ae/سياسة-الخصوصية" },
     ],
     links: [
-      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
-      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
-      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/سياسة-الخصوصية" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/سياسة-الخصوصية" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/سياسة-الخصوصية" },
     ],
   }),
   component: Page,
@@ -63,6 +64,7 @@ function Page() {
         <CallButton label="تواصل معنا" />
       </PageHero>
       <LegalSection blocks={blocks} />
+      <ContactCta title="أسئلة حول خصوصيتك؟" subtitle="نضمن حماية بياناتك — تواصل معنا لأي استفسار." />
     </>
   );
 }

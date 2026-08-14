@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://doc-whisperer-750.lovable.app/sitemap.xml
+Sitemap: https://dubai-yacht.ae/sitemap.xml

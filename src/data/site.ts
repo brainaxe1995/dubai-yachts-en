@@ -1,17 +1,64 @@
-import yacht1 from "@/assets/yacht-1.jpg";
-import yacht2 from "@/assets/yacht-2.jpg";
-import yacht3 from "@/assets/yacht-3.jpg";
-import partyImg from "@/assets/party.jpg";
-import fishingImg from "@/assets/fishing.jpg";
-import packagesImg from "@/assets/packages.jpg";
+// Yacht images
+import houseboat55 from "@/assets/yachts/houseboat-55.jpeg";
+import floating100 from "@/assets/yachts/floating-100.jpeg";
+import majesty48 from "@/assets/yachts/majesty-48.jpg";
+import italian95 from "@/assets/yachts/italian-95.jpg";
+import ferretti78 from "@/assets/yachts/ferretti-78.jpg";
+import mini40 from "@/assets/yachts/mini-40.webp";
+import azimut80 from "@/assets/yachts/azimut-80.jpg";
+import sunseeker95 from "@/assets/yachts/sunseeker-95.jpg";
+import majesty70 from "@/assets/yachts/majesty-70.jpg";
+import majesty66 from "@/assets/yachts/majesty-66.jpg";
+import majesty55 from "@/assets/yachts/majesty-55.jpg";
+import azimut50 from "@/assets/yachts/azimut-50.jpg";
+import majesty88 from "@/assets/yachts/majesty-88.jpg";
+import corporate105 from "@/assets/yachts/corporate-105.jpg";
+import gulfcraft90 from "@/assets/yachts/gulfcraft-90.jpg";
 
+// Fishing
+import fishingShared from "@/assets/fishing/shared.png";
+import fishingPrivateYacht from "@/assets/fishing/private-yacht.png";
+import fishingPrivateBoat from "@/assets/fishing/private-boat.webp";
+
+// Parties
+import partyProposal from "@/assets/parties/proposal.png";
+import partyWedding from "@/assets/parties/wedding.jpg";
+import partyAnniversary from "@/assets/parties/anniversary.png";
+import partyGraduation from "@/assets/parties/graduation.png";
+import partyEngagement from "@/assets/parties/engagement.png";
+import partyBirthday from "@/assets/parties/birthday.png";
+
+// Packages
+import pkgBreakfast from "@/assets/packages/breakfast.webp";
+import pkgJetski from "@/assets/packages/jetski.png";
+import pkgRomantic from "@/assets/packages/romantic-dinner.png";
+
+// Extras
+import exCake from "@/assets/extras/cake.png";
+import exFlowers from "@/assets/extras/flowers.png";
+import exFruit from "@/assets/extras/fruit-platter.png";
+import exSweets from "@/assets/extras/arabic-sweets.png";
+import exDecorations from "@/assets/extras/decorations.png";
+import exPhotographer from "@/assets/extras/photographer.png";
+import exLuxuryTransfer from "@/assets/extras/luxury-transfer.png";
+import exJetSki from "@/assets/extras/jet-ski.webp";
+import exBanana from "@/assets/extras/banana-boat.webp";
+import exDonut from "@/assets/extras/donut.webp";
+import exFoodBuffet from "@/assets/extras/food-buffet.jpeg";
+
+import { DEFAULT_CONFIG } from "./config";
+
+// CONTACT reads from the central config's defaults at import time.
+// For runtime overrides (admin preview), components should call getConfig().
 export const CONTACT = {
-  phone: "+971544420441",
-  phoneDisplay: "‎+971 54 442 0441",
-  whatsapp: "https://wa.me/971544420441",
-  email: "info@dubai-yacht.ae",
-  brand: "توت فن لليخوت",
+  phone: DEFAULT_CONFIG.phone,
+  phoneDisplay: DEFAULT_CONFIG.phoneDisplay,
+  whatsapp: DEFAULT_CONFIG.whatsapp,
+  email: DEFAULT_CONFIG.email,
+  brand: DEFAULT_CONFIG.brand,
 };
+
+export const SITE_URL = DEFAULT_CONFIG.siteUrl;
 
 export type Product = {
   title: string;
@@ -27,77 +74,105 @@ export const yachts: Product[] = [
     desc: "اكتشف تجربة تأجير هاوس بوت 55 قدم فاخر في دبي بإطلالات مميزة وخدمة راقية.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 15 ضيفًا", "55 قدم", "بدون غرف نوم"],
     price: "600 د.إ / الساعة",
-    image: yacht2,
+    image: houseboat55,
   },
   {
     title: "عوامة 100 قدم للإيجار في دبي",
     desc: "احجز عوامة 100 قدم للإيجار في دبي واستمتع بمساحة فاخرة ومثالية للحفلات والمناسبات الخاصة على الماء.",
-    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 50 ضيف", "100 قدم", "2 غرفة نوم"],
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 50 ضيفًا", "100 قدم", "2 غرفة نوم"],
     price: "2,000 د.إ / الساعة",
-    image: yacht2,
+    image: floating100,
   },
   {
     title: "إيجار يخت ماجستي 48 قدم في دبي",
     desc: "اختر إيجار يخت ماجستي 48 قدم في دبي لرحلة خاصة تجمع بين الراحة والفخامة.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 12 ضيفًا", "48 قدم", "2 غرفة نوم"],
     price: "550 د.إ / الساعة",
-    image: yacht3,
+    image: majesty48,
   },
   {
     title: "حجز يخت إيطالي 95 قدم للحفلات والمناسبات في دبي",
     desc: "احجز يختًا إيطاليًا بطول 95 قدمًا في دبي، مثاليًا للحفلات والمناسبات الخاصة.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 45 ضيفًا", "95 قدم", "2 غرفة نوم"],
     price: "1,700 د.إ / الساعة",
-    image: yacht1,
+    image: italian95,
   },
   {
     title: "إيجار سوبر يخت فيريتي 78 قدم في دبي",
     desc: "يقدّم إيجار سوبر يخت فيريتي 78 قدم في دبي تجربة راقية بمساحات فسيحة وتصميم إيطالي فاخر.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 20 ضيفًا", "78 قدم", "3 غرف نوم"],
     price: "5,000 د.إ / الساعة",
-    image: yacht1,
+    image: ferretti78,
   },
   {
     title: "تأجير ميني يخت 40 قدم في دبي",
     desc: "احجز ميني يخت 40 قدم في دبي لجولة بحرية خاصة تجمع بين الراحة والخصوصية.",
-    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 10 ضيوف", "40 قدم", "1 غرفة نوم"],
+    specs: ["الحد الأدنى للحجز: ساعة", "يتسع حتى 10 ضيوف", "40 قدم", "غرفة نوم واحدة"],
     price: "450 د.إ / الساعة",
-    image: yacht3,
+    image: mini40,
   },
   {
     title: "تأجير يخت أزيموت 80 قدم في دبي مع جاكوزي",
     desc: "تأجير يخت أزيموت 80 قدم في دبي تجربة فاخرة مع جاكوزي ومساحات واسعة للرحلات.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 35 ضيفًا", "80 قدم", "3 غرف نوم"],
     price: "1,500 د.إ / الساعة",
-    image: yacht1,
+    image: azimut80,
   },
   {
     title: "إيجار سوبر يخت صن سيكر 95 قدم في دبي",
     desc: "اختر سوبر يخت صن سيكر 95 قدم في دبي لرحلة خاصة تجمع بين الفخامة والراحة وإطلالات بحرية مميزة.",
     specs: ["الحد الأدنى للحجز: 4 ساعات", "يتسع حتى 20 ضيفًا", "95 قدم", "3 غرف نوم"],
     price: "4,500 د.إ / الساعة",
-    image: yacht1,
+    image: sunseeker95,
+  },
+  {
+    title: "تأجير يخت ماجستي 70 قدم في دبي",
+    desc: "يوفر تأجير يخت ماجستي 70 قدم في دبي مساحة فاخرة وخدمة مميزة للرحلات والحفلات الخاصة.",
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 28 ضيفًا", "70 قدم", "3 غرف نوم"],
+    price: "850 د.إ / الساعة",
+    image: majesty70,
+  },
+  {
+    title: "استئجار يخت ماجستي 66 قدم في دبي مارينا",
+    desc: "استمتع برحلة راقية عند استئجار يخت ماجستي 66 قدم في دبي مارينا.",
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 22 ضيفًا", "66 قدم", "3 غرف نوم"],
+    price: "800 د.إ / الساعة",
+    image: majesty66,
+  },
+  {
+    title: "جولة بحرية بيخت ماجستي 55 قدم في دبي",
+    desc: "انطلق في جولة بحرية بيخت ماجستي 55 قدم في دبي، مع مساحات مريحة.",
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 18 ضيفًا", "55 قدم", "2 غرفة نوم"],
+    price: "650 د.إ / الساعة",
+    image: majesty55,
+  },
+  {
+    title: "تأجير يخت أزيموت 50 قدم في دبي",
+    desc: "يمنحك تأجير يخت أزيموت 50 قدم في دبي رحلة خاصة أنيقة مع مساحات مريحة.",
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 15 ضيفًا", "50 قدم", "2 غرفة نوم"],
+    price: "650 د.إ / الساعة",
+    image: azimut50,
   },
   {
     title: "يخت ماجستي 88 قدم في دبي",
     desc: "حجز يخت ماجستي 88 قدم فاخر في دبي.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 45 ضيفًا", "88 قدم", "4 غرف نوم"],
     price: "1,800 د.إ / الساعة",
-    image: yacht1,
+    image: majesty88,
   },
   {
     title: "تأجير يخت للشركات 105 قدم في دبي",
     desc: "يوفر تأجير يخت للشركات 105 قدم في دبي مساحة فاخرة للاجتماعات، الفعاليات، واستضافة كبار الضيوف.",
-    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 90 ضيفًا", "105 قدم", "2 غرفة نوم"],
+    specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 90 ضيفًا", "105 قدم", "غرفتا نوم"],
     price: "3,000 د.إ / الساعة",
-    image: yacht1,
+    image: corporate105,
   },
   {
     title: "إيجار يخت جلف كرافت 90 قدم في مارينا دبي",
     desc: "استمتع بتجربة إيجار يخت جلف كرافت 90 قدم في دبي مارينا، مع أجواء فاخرة ومساحات مثالية للرحلات الخاصة.",
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 41 ضيفًا", "90 قدم", "3 غرف نوم"],
     price: "1,300 د.إ / الساعة",
-    image: yacht1,
+    image: gulfcraft90,
   },
 ];
 
@@ -107,21 +182,21 @@ export const fishingTrips: Product[] = [
     desc: "أفضل رحلة صيد سمك مشتركة صباحية في دبي.",
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "40 قدم", "الحد الأدنى للحجز: ضيفان", "إفطار مشترك", "الصعود: 7:00 صباحًا"],
     price: "350 د.إ / شخص",
-    image: fishingImg,
+    image: fishingShared,
   },
   {
     title: "رحلة صيد سمك خاصة باليخت في دبي",
     desc: "استمتع برحلة صيد سمك خاصة على يخت في دبي مع معدات مجهزة وطاقم محترف.",
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "48 قدم"],
     price: "2,000 د.إ / 4 ساعات",
-    image: fishingImg,
+    image: fishingPrivateYacht,
   },
   {
     title: "رحلة صيد سمك خاصة بالقارب في دبي",
     desc: "رحلة صيد خاصة بالقارب في دبي مع تجهيزات كاملة للصيد في أعماق البحار.",
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "40 قدم"],
     price: "1,200 د.إ / 4 ساعات",
-    image: fishingImg,
+    image: fishingPrivateBoat,
   },
 ];
 
@@ -131,42 +206,42 @@ export const parties: Product[] = [
     desc: "خطط لطلب زواج رومانسي على يخت في دبي مع أجواء خاصة، ديكورات أنيقة، وإطلالات بحرية لا تُنسى.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "2,600 د.إ / ساعتين",
-    image: partyImg,
+    image: partyProposal,
   },
   {
     title: "حفل زفاف على يخت في دبي",
     desc: "احتفل بحفل زفاف فاخر على يخت في دبي مع ديكورات أنيقة وأجواء رومانسية.",
     specs: ["الحد الأدنى للحجز: 3 ساعات", "يتسع حتى 45 ضيفًا", "95 قدم"],
     price: "1,500 د.إ / الساعة",
-    image: partyImg,
+    image: partyWedding,
   },
   {
     title: "حفلة ذكرى سنوية على يخت في دبي",
     desc: "نظّم حفلة ذكرى سنوية على يخت في دبي واستمتع بتجربة خاصة تجمع بين الفخامة والخصوصية.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "2,100 د.إ / ساعتين",
-    image: partyImg,
+    image: partyAnniversary,
   },
   {
     title: "حفلة تخرج على يخت في دبي",
     desc: "احتفل بتخرجك على يخت في دبي مع أصدقائك بأجواء بحرية مميزة.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "1,800 د.إ / ساعتين",
-    image: partyImg,
+    image: partyGraduation,
   },
   {
     title: "حفلة خطوبة على يخت في دبي",
     desc: "احتفل بخطوبتك على يخت في دبي وسط العائلة والأصدقاء خلال جولة بحرية خاصة ومميزة.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 15 ضيفًا", "55 قدم"],
     price: "1,900 د.إ / ساعتين",
-    image: partyImg,
+    image: partyEngagement,
   },
   {
     title: "حفلة عيد ميلاد على يخت في دبي",
     desc: "اجمع ضيوفك في حفلة عيد ميلاد على يخت في دبي مع كعكة، موسيقى، وتنسيق خاص للمناسبة.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "1,500 د.إ / ساعتين",
-    image: partyImg,
+    image: partyBirthday,
   },
 ];
 
@@ -176,42 +251,44 @@ export const packages: Product[] = [
     desc: "ابدأ صباحك بباقة إفطار على يخت في دبي تجمع بين وجبة شهية وجولة بحرية هادئة.",
     specs: ["رحلة 4 ساعات", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "3,000 د.إ / 4 ساعات",
-    image: packagesImg,
+    image: pkgBreakfast,
   },
   {
     title: "باقة تأجير يخت مع جيت سكي في دبي",
     desc: "اجمع بين رحلة اليخت ومغامرة الجيت سكي في دبي ضمن تجربة بحرية واحدة مليئة بالحماس.",
     specs: ["رحلة 4 ساعات", "يتسع حتى 12 ضيفًا", "48 قدم", "جيت سكي ساعة واحدة"],
     price: "2,300 د.إ / 4 ساعات",
-    image: packagesImg,
+    image: pkgJetski,
   },
   {
     title: "باقة عشاء رومانسي على يخت في دبي",
     desc: "حوّل أمسيتك إلى موعد خاص مع باقة عشاء رومانسي على يخت في دبي وإطلالات ساحرة على المدينة.",
     specs: ["رحلة لمدة ساعتين", "يتسع حتى ضيفين", "48 قدم"],
     price: "1,800 د.إ / ساعتين",
-    image: packagesImg,
+    image: pkgRomantic,
   },
 ];
 
-export const extras = [
-  "خدمات الطعام",
-  "كيك",
-  "زينة وبالونات",
-  "طبق فواكه",
-  "طبق حلويات عربية",
-  "باقة ورد",
-  "مصور",
-  "خدمة التوصيل الفاخر",
-  "جيت سكي",
-  "بانانا بوت رايد",
-  "دونات رايد",
+export type Extra = { label: string; image: string };
+
+export const extras: Extra[] = [
+  { label: "كيك للمناسبات", image: exCake },
+  { label: "زينة وبالونات", image: exDecorations },
+  { label: "باقة ورد", image: exFlowers },
+  { label: "طبق فواكه", image: exFruit },
+  { label: "طبق حلويات عربية", image: exSweets },
+  { label: "بوفيه طعام", image: exFoodBuffet },
+  { label: "مصوّر محترف", image: exPhotographer },
+  { label: "خدمة التوصيل الفاخر", image: exLuxuryTransfer },
+  { label: "جيت سكي", image: exJetSki },
+  { label: "بانانا بوت", image: exBanana },
+  { label: "دونات رايد", image: exDonut },
 ];
 
 export const faqs = [
   {
     q: "كم تبدأ أسعار تأجير اليخوت في دبي؟",
-    a: "تبدأ أسعار تأجير اليخوت لدينا من 400 درهم للساعة، وتختلف حسب حجم اليخت وعدد الضيوف ومدة الرحلة.",
+    a: "تبدأ أسعار تأجير اليخوت لدينا من 450 درهم للساعة، وتختلف حسب حجم اليخت وعدد الضيوف ومدة الرحلة.",
   },
   {
     q: "ما هو الحد الأدنى لمدة الحجز؟",
@@ -229,6 +306,14 @@ export const faqs = [
     q: "كيف يمكنني الحجز؟",
     a: "اختر اليخت أو الباقة المناسبة، ثم تواصل معنا عبر الواتساب أو الهاتف لتأكيد التاريخ ودفع العربون.",
   },
+  {
+    q: "هل الطاقم متعدد اللغات؟",
+    a: "نعم، طاقمنا يتحدث العربية والإنجليزية وعدة لغات أخرى لخدمة الضيوف من مختلف الجنسيات.",
+  },
+  {
+    q: "هل التأمين والوقود مشمولان بالسعر؟",
+    a: "نعم، جميع أسعارنا تشمل التأمين الشامل، الوقود، الكابتن، الطاقم، ومشروبات وضيافة أساسية.",
+  },
 ];
 
 export const steps = [
@@ -240,6 +325,50 @@ export const steps = [
   { t: "ادفع العربون", d: "ندفع عربونًا بسيطًا لتثبيت الحجز." },
   { t: "استلم التفاصيل", d: "نرسل لك موقع المارينا وتعليمات الصعود." },
   { t: "استمتع برحلتك", d: "اصعد على متن اليخت واستمتع بتجربة بحرية لا تُنسى." },
+];
+
+export const stepsYacht = [
+  { t: "اختر اليخت المناسب", d: "تصفّح مجموعة اليخوت المتنوعة واختر الحجم والتصميم المناسبين لرحلتك." },
+  { t: "حدد التاريخ والمدة", d: "اختر تاريخ الرحلة والوقت المناسب لك، وحدد مدة التأجير (ساعتين أو أكثر)." },
+  { t: "تواصل معنا للحجز", d: "تواصل عبر واتساب أو الهاتف أو نموذج الحجز، وسنؤكد التوفر." },
+  { t: "ادفع مقدم الحجز", d: "قم بدفع العربون لتأكيد حجزك وسيتم إرسال تفاصيل رحلتك والمرسى." },
+  { t: "الوصول إلى المرسى", d: "توجه إلى موقع المرسى المحدد قبل الرحلة بـ 15-20 دقيقة لتسهيل الصعود." },
+  { t: "إجراءات الصعود والسلامة", d: "أبرز الهوية الأصلية واستمع لتعليمات السلامة من الطاقم قبل الانطلاق." },
+  { t: "استمتع برحلتك", d: "استمتع بتجربة الإبحار الفاخرة مع خدمات الطاقم والمناظر الساحرة في دبي." },
+  { t: "ذكريات لا تُنسى", d: "التقط أجمل الصور واصنع ذكريات استثنائية على متن يختك الخاص في دبي." },
+];
+
+export const stepsParty = [
+  { t: "اختر نوع الحفلة", d: "عيد ميلاد، خطوبة، تخرج، ذكرى سنوية، طلب زواج أو حفلة خاصة." },
+  { t: "حدد التاريخ والمدة", d: "اختر اليوم وساعة الانطلاق ومدة الحفلة المرغوبة." },
+  { t: "حدد عدد الضيوف", d: "أخبرنا بعدد الضيوف لاختيار اليخت المناسب لضمان الراحة والمساحة." },
+  { t: "اختر الإضافات", d: "ديكورات، كيك، طعام، موسيقى، تصوير، والمزيد لتخصيص حفلتك." },
+  { t: "تواصل معنا للحجز", d: "تواصل عبر واتساب أو الهاتف للاستفسار وتأكيد التوفر." },
+  { t: "ادفع مقدم الحجز", d: "قم بدفع العربون لتأكيد حجزك وضمان تاريخ حفلتك." },
+  { t: "استلم التفاصيل", d: "ستصلك تفاصيل الحجز وموقع المارينا ووقت الصعود." },
+  { t: "استمتع بحفلتك", d: "استمتع بالأجواء والموسيقى والمناظر واحتفل مع ضيوفك على متن اليخت." },
+];
+
+export const stepsFishing = [
+  { t: "اختر نوع الرحلة", d: "رحلة صيد خاصة أو مشتركة حسب عدد الأشخاص والميزانية." },
+  { t: "حدد عدد الضيوف", d: "أخبرنا بعدد المشاركين لنقترح لك القارب أو اليخت المناسب." },
+  { t: "حدد التاريخ والمدة", d: "اختر اليوم المناسب وحدد مدة الرحلة مثل 4 ساعات أو أكثر." },
+  { t: "تواصل معنا للحجز", d: "تواصل عبر واتساب أو الهاتف لمعرفة التوفر وتأكيد التفاصيل." },
+  { t: "ادفع مقدم الحجز", d: "أكد الحجز بدفع العربون واستلم تأكيد رحلتك." },
+  { t: "استلم التفاصيل", d: "سنرسل لك موقع الانطلاق ووقت الصعود وتعليمات الرحلة." },
+  { t: "احضر إلى المرسى", d: "احضر قبل الموعد بوقت كافٍ مع هوية سارية المفعول." },
+  { t: "استمتع برحلة الصيد", d: "انطلق لصيد الأسماك واستمتع بالأجواء البحرية." },
+];
+
+export const stepsPackage = [
+  { t: "اختر الباقة المناسبة", d: "تصفح باقات الإفطار، العشاء، أعياد الميلاد أو الباقات الخاصة." },
+  { t: "حدد التاريخ والمدة", d: "اختر يوم الرحلة ومدة الباقة المناسبة حسب خطتك." },
+  { t: "حدد عدد الضيوف", d: "أخبرنا بعدد الأشخاص لنقترح لك اليخت أو الباقة الأنسب." },
+  { t: "اختر الإضافات", d: "أضف الديكورات، الكيك، الطعام، الموسيقى أو التصوير حسب رغبتك." },
+  { t: "تواصل معنا للحجز", d: "تواصل عبر واتساب أو الهاتف للاستفسار والتأكد من التوفر." },
+  { t: "ادفع مقدم الحجز", d: "أكد الحجز بدفع العربون واستلم تأكيد الباقة." },
+  { t: "استلم التفاصيل", d: "ستصلك تفاصيل المرسى، وقت الصعود، ومعلومات الرحلة." },
+  { t: "استمتع بباقتك", d: "استمتع بتجربة بحرية مميزة وخدمة راقية على متن اليخت." },
 ];
 
 export const destinations = [

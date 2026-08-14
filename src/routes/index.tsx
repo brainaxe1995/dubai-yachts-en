@@ -3,11 +3,13 @@ import { Anchor, ShieldCheck, Users, Headphones } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
+import { Accordion } from "@/components/Accordion";
 import { BookButton, CallButton } from "@/components/CtaButtons";
-import { yachts, faqs, steps, extras } from "@/data/site";
-import partyImg from "@/assets/party.jpg";
-import fishingImg from "@/assets/fishing.jpg";
-import packagesImg from "@/assets/packages.jpg";
+import { yachts, faqs, steps, extras, inclusions, destinations } from "@/data/site";
+import partyImg from "@/assets/parties/wedding.jpg";
+import fishingImg from "@/assets/fishing/shared.png";
+import packagesImg from "@/assets/packages/romantic-dinner.png";
+import whatIncludedImg from "@/assets/branding/what-included.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,14 +24,14 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "الصفحة الرئيسية لتوت فن: تأجير يخوت، حفلات بحرية، ورحلات صيد في دبي بأسعار تبدأ من 400 درهم للساعة.",
+          "الصفحة الرئيسية لتوت فن: تأجير يخوت، حفلات بحرية، ورحلات صيد في دبي بأسعار تبدأ من 450 درهم للساعة.",
       },
-      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/" },
+      { property: "og:url", content: "https://dubai-yacht.ae/" },
     ],
     links: [
-      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/" },
-      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/" },
-      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/" },
     ],
   }),
   component: Home,
@@ -60,7 +62,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <SectionHeading
           title="أفضل اليخوت للإيجار في دبي بأسعار تنافسية"
-          subtitle="اختر من مجموعة متنوعة من أفضل اليخوت للإيجار في دبي بأسعار تنافسية تبدأ من 400 درهم للساعة."
+          subtitle="اختر من مجموعة متنوعة من أفضل اليخوت للإيجار في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {yachts.slice(0, 6).map((p, i) => (
@@ -72,7 +74,7 @@ function Home() {
             to="/تأجير-يخوت-في-دبي"
             className="inline-flex rounded-full border border-primary/20 px-7 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            تصفح كل اليخوت
+            تصفح كل اليخوت ({yachts.length})
           </Link>
         </Reveal>
       </section>
@@ -161,31 +163,74 @@ function Home() {
           title="إضافات حجز اليخوت في دبي"
           subtitle="أضف لمسة خاصة على رحلتك مع خدماتنا الإضافية."
         />
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {extras.map((e, i) => (
-            <Reveal key={e} delay={i * 40}>
-              <span className="rounded-full border border-gold/40 bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground">
-                {e}
-              </span>
+            <Reveal key={e.label} delay={i * 40}>
+              <div className="group h-full overflow-hidden rounded-xl border border-border bg-card shadow-luxe transition-transform hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-muted">
+                  <img
+                    src={e.image}
+                    alt={e.label}
+                    loading="lazy"
+                    width={400}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <p className="text-xs font-bold text-foreground md:text-sm">{e.label}</p>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة حول تأجير اليخوت في دبي" />
-        <div className="space-y-3">
-          {faqs.map((f, i) => (
-            <Reveal key={f.q} delay={i * 60}>
-              <details className="group rounded-2xl border border-border bg-card p-5">
-                <summary className="cursor-pointer list-none text-base font-bold text-foreground marker:hidden">
-                  {f.q}
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-              </details>
-            </Reveal>
-          ))}
+      <section className="surface-navy py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <SectionHeading onDark title="أشهر الوجهات البحرية في دبي" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {destinations.map((d, i) => (
+              <Reveal key={d.t} delay={i * 70}>
+                <div className="h-full rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 p-5">
+                  <h3 className="text-base text-primary-foreground">{d.t}</h3>
+                  <p className="mt-2 text-sm text-primary-foreground/70">{d.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
+      </section>
+
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2">
+          <Reveal>
+            <img
+              src={whatIncludedImg}
+              alt="ماذا تشمل رحلة اليخت — كابتن، طاقم، وقود، تأمين، مشروبات وضيافة"
+              loading="lazy"
+              width={1200}
+              height={800}
+              className="rounded-2xl object-cover shadow-luxe"
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك على متن اليخت</h2>
+            <ul className="mt-5 grid grid-cols-2 gap-3 text-sm text-muted-foreground">
+              {inclusions.map((i) => (
+                <li key={i} className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  {i}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24 pt-16 md:pt-24">
+        <SectionHeading title="أسئلة شائعة حول تأجير اليخوت في دبي" />
+        <Accordion items={faqs} />
       </section>
 
       <section className="surface-navy py-16">

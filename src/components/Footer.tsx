@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, Instagram, MapPin } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo.png";
+import paymentImg from "@/assets/branding/payment-methods.jpg";
 import { CONTACT } from "@/data/site";
+import { DEFAULT_CONFIG, getConfig } from "@/data/config";
 
 const quick = [
   { to: "/من-نحن", label: "من نحن" },
@@ -17,8 +20,18 @@ const discover = [
   { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
   { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك" },
   { to: "/باقات-تأجير-اليخوت-في-دبي", label: "الباقات والعروض" },
+  { to: "/المدونة", label: "المدونة" },
   { to: "/خريطة-الموقع", label: "خريطة الموقع" },
 ] as const;
+
+const socialDefs = [
+  { key: "instagram" as const, icon: Instagram, label: "إنستغرام" },
+  { key: "tiktok" as const, icon: Music2, label: "تيك توك" },
+  { key: "snapchat" as const, icon: Ghost, label: "سناب شات" },
+  { key: "facebook" as const, icon: Facebook, label: "فيسبوك" },
+  { key: "youtube" as const, icon: Youtube, label: "يوتيوب" },
+  { key: "x" as const, icon: Twitter, label: "X" },
+];
 
 function ColTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -30,6 +43,11 @@ function ColTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function Footer() {
+  const [social, setSocial] = useState(DEFAULT_CONFIG.social);
+  useEffect(() => {
+    setSocial(getConfig().social);
+  }, []);
+
   return (
     <footer className="border-t border-gold/40 bg-primary-deep">
       <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-14 md:grid-cols-2 md:px-8 lg:grid-cols-4">
@@ -44,9 +62,9 @@ export function Footer() {
             className="h-24 w-auto object-contain"
           />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            توت فن لليخوت — تأجير يخوت في دبي مع رحلات خاصة، حفلات، ورحلات صيد بأسعار تبدأ من 400 درهم للساعة.
+            توت فن لليخوت — تأجير يخوت في دبي مع رحلات خاصة، حفلات، ورحلات صيد بأسعار تبدأ من 450 درهم للساعة.
           </p>
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
               href={CONTACT.whatsapp}
               target="_blank"
@@ -56,15 +74,24 @@ export function Footer() {
             >
               <WhatsAppIcon className="h-4 w-4" />
             </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="إنستغرام"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
+            {socialDefs.map((s) => {
+              const url = social[s.key];
+              if (!url) return null;
+              const Icon = s.icon;
+              return (
+                <a
+                  key={s.key}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  title={s.label}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -93,14 +120,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a
-                href="/sitemap.xml"
-                className="text-sm text-primary-foreground/70 transition-colors hover:text-gold"
-              >
-                خريطة الموقع XML
-              </a>
-            </li>
           </ul>
         </div>
 
@@ -147,9 +166,18 @@ export function Footer() {
       </div>
 
       <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-primary-foreground/55 md:flex-row md:px-8">
+        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-4 px-4 py-5 text-xs text-primary-foreground/55 md:flex-row md:px-8">
           <p>© {new Date().getFullYear()} توت فن لليخوت — جميع الحقوق محفوظة</p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2" title="وسائل الدفع المتاحة">
+            <span className="text-[11px] text-primary-foreground/50">الدفع:</span>
+            <img
+              src={paymentImg}
+              alt="وسائل الدفع المتاحة"
+              loading="lazy"
+              className="h-6 w-auto rounded bg-white/95 px-1 py-0.5 opacity-90"
+            />
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link to="/الشروط-والأحكام" className="hover:text-gold">
               الشروط والأحكام
             </Link>
@@ -162,9 +190,6 @@ export function Footer() {
             <Link to="/خريطة-الموقع" className="hover:text-gold">
               خريطة الموقع
             </Link>
-            <a href="/sitemap.xml" className="hover:text-gold">
-              Sitemap.xml
-            </a>
           </div>
         </div>
       </div>

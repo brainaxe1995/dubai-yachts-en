@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
+import { ContactCta } from "@/components/ContactCta";
 
 export const Route = createFileRoute("/سياسة-الإلغاء")({
   head: () => ({
@@ -14,12 +15,12 @@ export const Route = createFileRoute("/سياسة-الإلغاء")({
       },
       { property: "og:title", content: "سياسة الإلغاء | توت فن لليخوت" },
       { property: "og:description", content: "شروط الإلغاء، إعادة الجدولة واسترداد المبالغ." },
-      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
+      { property: "og:url", content: "https://dubai-yacht.ae/سياسة-الإلغاء" },
     ],
     links: [
-      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
-      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
-      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/سياسة-الإلغاء" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/سياسة-الإلغاء" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/سياسة-الإلغاء" },
     ],
   }),
   component: Page,
@@ -63,6 +64,7 @@ function Page() {
         <CallButton label="تواصل معنا" />
       </PageHero>
       <LegalSection blocks={blocks} />
+      <ContactCta title="تحتاج إلى إلغاء أو تعديل حجز؟" subtitle="تواصل معنا في أقرب وقت لتسهيل الإجراءات." />
     </>
   );
 }

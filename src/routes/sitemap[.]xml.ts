@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { posts } from "@/data/blog";
 
-const BASE_URL = "https://doc-whisperer-750.lovable.app";
+const BASE_URL = "https://dubai-yacht.ae";
 
 interface SitemapEntry {
   path: string;
@@ -25,6 +26,11 @@ const entries: SitemapEntry[] = [
   { path: "/سياسة-الإلغاء", changefreq: "yearly", priority: "0.3" },
   { path: "/الشروط-والأحكام", changefreq: "yearly", priority: "0.3" },
   { path: "/سياسة-الخصوصية", changefreq: "yearly", priority: "0.3" },
+  ...posts.map((p) => ({
+    path: `/المدونة/${p.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.5",
+  })),
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

@@ -20,6 +20,9 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# UI Pro Max local install (dev-only tooling)
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

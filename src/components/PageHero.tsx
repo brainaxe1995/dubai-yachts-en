@@ -61,11 +61,21 @@ export function PageHero({
   );
 }
 
-export function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
+export function SectionHeading({
+  title,
+  subtitle,
+  onDark = false,
+}: {
+  title: string;
+  subtitle?: string;
+  onDark?: boolean;
+}) {
+  const titleColor = onDark ? "text-primary-foreground" : "text-foreground";
+  const subColor = onDark ? "text-primary-foreground/75" : "text-muted-foreground";
   return (
     <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-      <h2 className="text-2xl text-foreground md:text-3xl">{title}</h2>
-      {subtitle ? <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{subtitle}</p> : null}
+      <h2 className={`text-2xl md:text-3xl ${titleColor}`}>{title}</h2>
+      {subtitle ? <p className={`mt-4 text-sm leading-relaxed md:text-base ${subColor}`}>{subtitle}</p> : null}
       <span className="mx-auto mt-5 block h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
     </Reveal>
   );

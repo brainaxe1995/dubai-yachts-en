@@ -154,8 +154,8 @@ export function Header() {
       </div>
 
       {/* Nav row */}
-      <nav className="hidden pb-4 lg:block">
-        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 overflow-hidden rounded-sm border border-gold/70 md:mx-8">
+      <nav className="hidden px-4 pb-4 md:px-8 lg:block">
+        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 overflow-hidden rounded-sm border border-gold/70">
           {nav.map((n) => (
             <li key={n.to} className="border-s border-gold/70 first:border-s-0">
               <Link

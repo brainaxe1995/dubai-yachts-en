@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
+import { ContactCta } from "@/components/ContactCta";
 
 export const Route = createFileRoute("/الشروط-والأحكام")({
   head: () => ({
@@ -14,12 +15,12 @@ export const Route = createFileRoute("/الشروط-والأحكام")({
       },
       { property: "og:title", content: "الشروط والأحكام | توت فن لليخوت" },
       { property: "og:description", content: "شروط الحجز والدفع والإلغاء ومسؤوليات العملاء." },
-      { property: "og:url", content: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
+      { property: "og:url", content: "https://dubai-yacht.ae/الشروط-والأحكام" },
     ],
     links: [
-      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
-      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
-      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/الشروط-والأحكام" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/الشروط-والأحكام" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/الشروط-والأحكام" },
     ],
   }),
   component: Page,
@@ -67,6 +68,7 @@ function Page() {
         <CallButton label="تواصل معنا" />
       </PageHero>
       <LegalSection blocks={blocks} />
+      <ContactCta title="هل لديك سؤال قانوني؟" subtitle="فريقنا جاهز لتوضيح أي بند من الشروط قبل الحجز." />
     </>
   );
 }
