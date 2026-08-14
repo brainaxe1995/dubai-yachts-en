@@ -18,7 +18,11 @@ export const Route = createFileRoute("/المدونة")({
       { property: "og:description", content: "نصائح وأفكار حول الرحلات البحرية وحفلات اليخوت في دبي." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/المدونة" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/المدونة" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/المدونة" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/المدونة" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/المدونة" },
+    ],
   }),
   component: Blog,
 });

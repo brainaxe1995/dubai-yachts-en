@@ -19,7 +19,11 @@ export const Route = createFileRoute("/يخوت-للإيجار-في-دبي")({
       },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/يخوت-للإيجار-في-دبي" },
+    ],
   }),
   component: YachtsForRent,
 });

@@ -18,7 +18,11 @@ export const Route = createFileRoute("/باقات-تأجير-اليخوت-في-�
       { property: "og:description", content: "باقات إفطار، عشاء رومانسي، وجيت سكي على متن اليخت في دبي." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/باقات-تأجير-اليخوت-في-دبي" },
+    ],
   }),
   component: Packages,
 });

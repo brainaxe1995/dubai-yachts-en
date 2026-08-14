@@ -5,12 +5,14 @@ export interface SeoStructuredData {
   message: string | null;
   missingRequired?: string[];
   missingRecommended?: string[];
+  warnings?: string[];
   json?: string;
 }
+export interface SeoAlternate { hreflang: string; href: string }
 export interface SeoRoute {
   file: string; path: string; title: string | null; description: string | null;
   ogTitle: string | null; ogDescription: string | null; ogUrl: string | null; ogImage: string | null;
-  canonical: string | null; robots: string | null; noindex?: boolean;
+  canonical: string | null; alternates: SeoAlternate[]; robots: string | null; noindex?: boolean;
   structuredData: SeoStructuredData[]; hasHead: boolean; issues: SeoIssue[];
 }
 export interface SeoReport {

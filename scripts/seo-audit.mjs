@@ -130,8 +130,67 @@ function isEmpty(v) {
   return false;
 }
 
+/** Locales the site publishes. Arabic is the only live version today. */
+export const LOCALES = ["ar"];
+export const X_DEFAULT = "ar";
+
+/** Value-format validators applied per property name, anywhere in the graph. */
+const FORMAT_RULES = {
+  url: { test: (v) => /^https?:\/\/[^\s]+$/.test(v), level: "error", msg: "يجب أن يكون رابطًا مطلقًا (http/https)" },
+  logo: { test: (v) => /^https?:\/\/[^\s]+$/.test(v), level: "warning", msg: "يُفضّل رابط مطلق للشعار" },
+  image: { test: (v) => /^https?:\/\/[^\s]+$/.test(v), level: "warning", msg: "يُفضّل رابط مطلق للصورة" },
+  sameAs: { test: (v) => /^https?:\/\/[^\s]+$/.test(v), level: "error", msg: "sameAs يجب أن يكون رابطًا مطلقًا" },
+  email: { test: (v) => /^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(v.replace(/^mailto:/, "")), level: "error", msg: "صيغة بريد إلكتروني غير صالحة" },
+  telephone: { test: (v) => /^\+?[0-9\s\-().]{7,20}$/.test(v), level: "error", msg: "صيغة رقم هاتف غير صالحة (يُفضّل الصيغة الدولية +9715...)" },
+  priceCurrency: { test: (v) => /^[A-Z]{3}$/.test(v), level: "error", msg: "priceCurrency يجب أن يكون رمز عملة من 3 أحرف كبيرة (AED)" },
+  price: { test: (v) => /^\d+(\.\d+)?$/.test(String(v)), level: "error", msg: "price يجب أن يكون رقمًا بدون رموز عملة" },
+  datePublished: { test: (v) => !Number.isNaN(Date.parse(v)), level: "error", msg: "datePublished يجب أن يكون تاريخ ISO 8601" },
+  dateModified: { test: (v) => !Number.isNaN(Date.parse(v)), level: "error", msg: "dateModified يجب أن يكون تاريخ ISO 8601" },
+  inLanguage: { test: (v) => /^[a-z]{2}(-[A-Za-z0-9]{2,8})*$/.test(v), level: "error", msg: "inLanguage يجب أن يكون رمز لغة صالحًا (ar)" },
+  addressCountry: { test: (v) => /^[A-Z]{2}$/.test(v) || v.length > 3, level: "warning", msg: "يُفضّل رمز دولة ISO مثل AE" },
+  priceRange: { test: (v) => v.length <= 20, level: "warning", msg: "priceRange طويل جدًا" },
+};
+
+/** Properties that must carry a nested node of a specific @type. */
+const NESTED_TYPE_RULES = {
+  address: ["PostalAddress"],
+  contactPoint: ["ContactPoint"],
+  offers: ["Offer", "AggregateOffer"],
+  acceptedAnswer: ["Answer"],
+  openingHoursSpecification: ["OpeningHoursSpecification"],
+};
+
+function checkFormats(node, type, path, acc) {
+  for (const [key, rule] of Object.entries(FORMAT_RULES)) {
+    const raw = node[key];
+    if (raw === undefined || raw === null) continue;
+    const values = Array.isArray(raw) ? raw : [raw];
+    for (const v of values) {
+      if (typeof v === "object") continue;
+      if (rule.test(String(v))) continue;
+      const msg = `${type ?? path}.${key}: ${rule.msg} (القيمة: ${String(v).slice(0, 40)})`;
+      if (rule.level === "error") acc.invalid.push(msg);
+      else acc.warnings.push(msg);
+    }
+  }
+  for (const [key, allowed] of Object.entries(NESTED_TYPE_RULES)) {
+    const raw = node[key];
+    if (!raw) continue;
+    const values = Array.isArray(raw) ? raw : [raw];
+    for (const v of values) {
+      if (typeof v !== "object") {
+        acc.invalid.push(`${type ?? path}.${key}: يجب أن يكون كائنًا من نوع ${allowed.join("/")}`);
+        continue;
+      }
+      const t = String(v["@type"] ?? "");
+      if (!allowed.includes(t)) acc.invalid.push(`${type ?? path}.${key}: @type غير صالح (${t || "مفقود"}) — المتوقع ${allowed.join("/")}`);
+    }
+  }
+}
+
 /** Recursively validate a parsed JSON-LD node against SCHEMA_RULES. */
-export function validateJsonLd(node, path = "$", acc = { missing: [], recommended: [], invalid: [] }) {
+export function validateJsonLd(node, path = "$", acc = { missing: [], recommended: [], invalid: [], warnings: [] }) {
+  acc.warnings ??= [];
   if (Array.isArray(node)) {
     node.forEach((n, i) => validateJsonLd(n, `${path}[${i}]`, acc));
     return acc;
@@ -154,7 +213,13 @@ export function validateJsonLd(node, path = "$", acc = { missing: [], recommende
     if ((type === "Article" || type === "BlogPosting") && typeof node.headline === "string" && node.headline.length > 110) {
       acc.invalid.push(`${type}.headline أطول من 110 حرفًا`);
     }
+    if (type === "LocalBusiness" || type === "Organization") {
+      if (node.address && typeof node.address === "object" && isEmpty(node.address.addressLocality)) {
+        acc.invalid.push(`${type}.address.addressLocality مفقود`);
+      }
+    }
   }
+  checkFormats(node, type ? String(type) : null, path, acc);
 
   for (const [k, v] of Object.entries(node)) {
     if (k.startsWith("@")) continue;
@@ -188,6 +253,9 @@ function parseRouteFileInner(file) {
   const ogImage = get((x) => x.property === "og:image")?.content ?? null;
   const robots = get((x) => x.name === "robots")?.content ?? null;
   const canonical = links.find((l) => l.rel === "canonical")?.href ?? null;
+  const alternates = links
+    .filter((l) => l.rel === "alternate" && l.hreflang)
+    .map((l) => ({ hreflang: String(l.hreflang), href: String(l.href ?? "") }));
 
   // structured data
   const structuredData = [];
@@ -221,11 +289,14 @@ function parseRouteFileInner(file) {
         status: problems.length ? "invalid" : "valid",
         message: problems.length
           ? problems.join(" — ")
-          : v.recommended.length
-            ? `حقول مُوصى بها ناقصة: ${v.recommended.join("، ")}`
-            : null,
+          : v.warnings?.length
+            ? v.warnings.join(" — ")
+            : v.recommended.length
+              ? `حقول مُوصى بها ناقصة: ${v.recommended.join("، ")}`
+              : null,
         missingRequired: v.missing,
         missingRecommended: v.recommended,
+        warnings: v.warnings ?? [],
         json: JSON.stringify(parsed, null, 2).slice(0, 4000),
       });
     } else {
@@ -250,7 +321,7 @@ function parseRouteFileInner(file) {
     }
   }
 
-  return { file, path, title, description, ogTitle, ogDescription, ogUrl, ogImage, canonical, robots, structuredData, hasHead: head.length > 0 };
+  return { file, path, title, description, ogTitle, ogDescription, ogUrl, ogImage, canonical, alternates, robots, structuredData, hasHead: head.length > 0 };
 }
 
 export function audit() {
@@ -285,7 +356,37 @@ export function audit() {
     const norm = (u) => (u ? decodeURI(u).replace(/\/$/, "") || "/" : u);
     if (r.canonical && norm(r.canonical) !== norm(expected)) add("error", "canonical-mismatch", `canonical لا يشير إلى الصفحة نفسها (${r.canonical})`);
     if (r.ogUrl && norm(r.ogUrl) !== norm(expected)) add("error", "og-url-mismatch", `og:url لا يشير إلى الصفحة نفسها (${r.ogUrl})`);
+
+    // hreflang / alternates
+    const alts = r.alternates ?? [];
+    if (alts.length === 0) {
+      add("error", "missing-hreflang", "لا توجد روابط hreflang لهذه الصفحة");
+    } else {
+      const langs = alts.map((a) => a.hreflang);
+      for (const loc of LOCALES) {
+        if (!langs.includes(loc)) add("error", "hreflang-missing-locale", `hreflang="${loc}" غير موجود`);
+      }
+      if (!langs.includes("x-default")) add("warning", "hreflang-missing-x-default", 'hreflang="x-default" غير موجود');
+      for (const a of alts) {
+        if (!/^([a-z]{2}(-[A-Za-z0-9]{2,8})*|x-default)$/.test(a.hreflang))
+          add("error", "hreflang-invalid-code", `رمز hreflang غير صالح: ${a.hreflang}`);
+        if (!/^https?:\/\//.test(a.href))
+          add("error", "hreflang-relative-href", `رابط hreflang يجب أن يكون مطلقًا (${a.hreflang})`);
+      }
+      const dupes = langs.filter((l, i) => langs.indexOf(l) !== i);
+      if (dupes.length) add("error", "hreflang-duplicate", `رموز hreflang مكررة: ${[...new Set(dupes)].join("، ")}`);
+      const self = alts.find((a) => a.hreflang === X_DEFAULT);
+      if (self && norm(self.href) !== norm(expected))
+        add("error", "hreflang-self-mismatch", `hreflang="${X_DEFAULT}" لا يشير إلى الصفحة نفسها (${self.href})`);
+      const xdef = alts.find((a) => a.hreflang === "x-default");
+      if (xdef && norm(xdef.href) !== norm(expected))
+        add("error", "hreflang-x-default-mismatch", `hreflang="x-default" لا يشير إلى الصفحة نفسها (${xdef.href})`);
+    }
+
     for (const sd of r.structuredData) if (sd.status === "invalid") add("error", "invalid-structured-data", `بيانات منظمة غير صالحة (${sd.type}): ${sd.message}`);
+    for (const sd of r.structuredData)
+      if (sd.status !== "invalid" && sd.warnings?.length)
+        add("warning", "structured-data-value", `قيم مشكوك فيها في (${sd.type}): ${sd.warnings.join("، ")}`);
     for (const sd of r.structuredData)
       if (sd.status !== "invalid" && sd.missingRecommended?.length)
         add("warning", "structured-data-recommended", `حقول مُوصى بها ناقصة في (${sd.type}): ${sd.missingRecommended.join("، ")}`);

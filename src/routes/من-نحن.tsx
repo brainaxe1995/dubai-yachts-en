@@ -17,7 +17,11 @@ export const Route = createFileRoute("/من-نحن")({
       { property: "og:description", content: "خبرتنا في تأجير اليخوت والرحلات البحرية الفاخرة في دبي." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/من-نحن" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/من-نحن" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/من-نحن" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/من-نحن" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/من-نحن" },
+    ],
   }),
   component: About,
 });

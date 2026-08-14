@@ -16,7 +16,11 @@ export const Route = createFileRoute("/سياسة-الخصوصية")({
       { property: "og:description", content: "كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/سياسة-الخصوصية" },
+    ],
   }),
   component: Page,
 });

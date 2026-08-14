@@ -18,3 +18,17 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Run SEO validation (fails on errors)
         run: bun run seo:check
+
+  sitemap-verify:
+    name: Verify sitemap & robots (live)
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Verify deployed sitemap.xml and robots.txt
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://doc-whisperer-750.lovable.app' }}
+        run: bun run seo:verify
