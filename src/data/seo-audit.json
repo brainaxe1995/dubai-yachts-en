@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T19:39:33.494Z",
+  "generatedAt": "2026-08-14T20:35:09.117Z",
   "baseUrl": "https://dubai-yacht.ae",
   "sitemapPaths": [
     "/",
@@ -44,7 +44,26 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "admin.tsx",
+      "path": "/admin",
+      "title": "Admin Dashboard — Toot Fun Yachts",
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "ogUrl": null,
+      "ogImage": null,
+      "canonical": null,
+      "alternates": [],
+      "robots": "noindex, nofollow",
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": true,
+      "isDynamic": false
     },
     {
       "file": "seo-audit.tsx",
@@ -61,7 +80,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": true
+      "noindex": true,
+      "isDynamic": false
     },
     {
       "file": "إيجار-يخوت-في-دبي.tsx",
@@ -87,7 +107,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "اتصل-بنا.tsx",
@@ -121,7 +142,8 @@
       ],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "الشروط-والأحكام.tsx",
@@ -147,7 +169,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "المدونة.tsx",
@@ -173,13 +196,32 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "المدونة.$slug.tsx",
+      "path": "/المدونة/$slug",
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "ogUrl": null,
+      "ogImage": null,
+      "canonical": null,
+      "alternates": [],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": true
     },
     {
       "file": "باقات-تأجير-اليخوت-في-دبي.tsx",
       "path": "/باقات-تأجير-اليخوت-في-دبي",
-      "title": "أفضل باقات تأجير اليخوت في دبي | توت فن لليخوت",
-      "description": "اكتشف أفضل باقات تأجير اليخوت في دبي بخيارات متنوعة تناسب الرحلات الخاصة، الحفلات والمناسبات بأسعار مرنة.",
+      "title": "باقات تأجير اليخوت في دبي | إفطار وعشاء — توت فن",
+      "description": "اكتشف أفضل باقات تأجير اليخوت في دبي بخيارات متنوعة تناسب الرحلات الخاصة، الحفلات والمناسبات بأسعار مرنة تبدأ من 1,800 د.إ.",
       "ogTitle": "أفضل باقات تأجير اليخوت في دبي | توت فن لليخوت",
       "ogDescription": "باقات إفطار، عشاء رومانسي، وجيت سكي على متن اليخت في دبي.",
       "ogUrl": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي",
@@ -199,7 +241,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "تأجير-يخوت-في-دبي.tsx",
@@ -233,7 +276,8 @@
       ],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "حجز-يخوت-في-دبي.tsx",
@@ -259,13 +303,14 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "حفلات-اليخوت-في-دبي.tsx",
       "path": "/حفلات-اليخوت-في-دبي",
-      "title": "أفضل حفلات اليخوت في دبي | توت فن لليخوت",
-      "description": "احجز حفلات اليخوت في دبي للمناسبات وأعياد الميلاد مع يخوت فاخرة، ديكورات مميزة، طاقم محترف، وباقات خاصة بأسعار تنافسية.",
+      "title": "أفضل حفلات اليخوت في دبي | باقات مميزة — توت فن لليخوت",
+      "description": "احجز حفلات اليخوت في دبي للمناسبات وأعياد الميلاد وحفلات الزفاف مع يخوت فاخرة، ديكورات مميزة، طاقم محترف، وباقات خاصة بأسعار تنافسية تبدأ من 1,500 د.إ.",
       "ogTitle": "أفضل حفلات اليخوت في دبي | توت فن لليخوت",
       "ogDescription": "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي.",
       "ogUrl": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي",
@@ -285,7 +330,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "خريطة-الموقع.tsx",
@@ -311,7 +357,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "رحلات-صيد-السمك-في-دبي.tsx",
@@ -337,7 +384,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "سياسة-الإلغاء.tsx",
@@ -363,7 +411,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "سياسة-الخصوصية.tsx",
@@ -389,7 +438,8 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "من-نحن.tsx",
@@ -415,15 +465,16 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     },
     {
       "file": "يخوت-للإيجار-في-دبي.tsx",
       "path": "/يخوت-للإيجار-في-دبي",
-      "title": "يخوت للإيجار في دبي | توت فن لليخوت",
-      "description": "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
+      "title": "يخوت للإيجار في دبي | 15 يخت فاخر من 450 د.إ — توت فن",
+      "description": "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة. أسطول متنوع من 40 حتى 105 قدم، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
       "ogTitle": "يخوت للإيجار في دبي | توت فن لليخوت",
-      "ogDescription": "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
+      "ogDescription": "أسطول 15 يخت فاخر للإيجار في دبي — من 40 قدم حتى 105 قدم.",
       "ogUrl": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي",
       "ogImage": null,
       "canonical": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي",
@@ -441,12 +492,13 @@
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false
+      "noindex": false,
+      "isDynamic": false
     }
   ],
   "globalIssues": [],
   "summary": {
-    "routes": 16,
+    "routes": 18,
     "errors": 0,
     "warnings": 0
   }

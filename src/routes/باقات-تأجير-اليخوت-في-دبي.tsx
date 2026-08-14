@@ -28,7 +28,7 @@ const pkgHighlights = [
 export const Route = createFileRoute("/باقات-تأجير-اليخوت-في-دبي")({
   head: () => ({
     meta: [
-      { title: "أفضل باقات تأجير اليخوت في دبي | إفطار وعشاء رومانسي — توت فن" },
+      { title: "باقات تأجير اليخوت في دبي | إفطار وعشاء — توت فن" },
       {
         name: "description",
         content:
