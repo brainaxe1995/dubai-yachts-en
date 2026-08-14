@@ -92,7 +92,7 @@ export function Header() {
       {/* Top bar — physical LTR positioning: menu/phone/lang left, logo center, CTA right */}
       <div
         dir="ltr"
-        className="mx-auto grid max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 md:px-8 md:py-4"
+        className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 py-3 md:px-8 md:py-4"
       >
         {/* LEFT cluster */}
         <div className="flex min-w-0 items-center gap-4">
@@ -100,21 +100,21 @@ export function Header() {
             type="button"
             aria-label="القائمة"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep lg:h-12 lg:w-12"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          <a href={`tel:${CONTACT.phone}`} className="hidden items-center gap-2.5 lg:flex">
+          <a href={`tel:${CONTACT.phone}`} className="hidden items-center gap-2.5 md:flex">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
               <Phone className="h-4 w-4" />
             </span>
             <span className="text-base font-bold text-primary-foreground">+971 544 420 441</span>
           </a>
 
-          <span className="hidden h-7 w-px bg-primary-foreground/25 xl:block" />
+          <span className="hidden h-7 w-px bg-primary-foreground/25 lg:block" />
 
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <LangSwitcher />
           </div>
         </div>
