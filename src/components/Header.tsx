@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X, Phone, Globe, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, Phone, Globe, ChevronDown, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { CONTACT } from "@/data/site";
 
@@ -14,27 +14,82 @@ const nav = [
   { to: "/contact", label: "اتصل بنا" },
 ] as const;
 
+function LangSwitcher() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className="flex items-center gap-2 text-primary-foreground"
+      >
+        <Globe className="h-5 w-5 text-gold" />
+        <span className="text-sm font-bold">AR</span>
+        <ChevronDown className={`h-4 w-4 text-primary-foreground/70 transition-transform ${open ? "rotate-180" : ""}`} />
+        <span aria-hidden className="text-lg leading-none">🇦🇪</span>
+      </button>
+
+      {open ? (
+        <ul
+          role="listbox"
+          className="absolute start-0 top-[calc(100%+0.5rem)] z-50 w-36 overflow-hidden rounded-lg border border-gold/50 bg-primary-deep py-1 shadow-luxe"
+        >
+          <li>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-gold"
+            >
+              <span aria-hidden>🇦🇪</span> AR
+            </button>
+          </li>
+          <li>
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+              }}
+              className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-primary-foreground/80 hover:text-gold"
+            >
+              <span aria-hidden>🇬🇧</span> EN
+            </a>
+          </li>
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
   return (
     <header className="sticky top-0 z-50 bg-primary-deep">
-      {/* Top bar */}
-      <div className="mx-auto grid max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 md:px-8 md:py-4">
-        {/* start cluster */}
+      {/* Top bar — physical LTR positioning: menu/phone/lang left, logo center, CTA right */}
+      <div
+        dir="ltr"
+        className="mx-auto grid max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 md:px-8 md:py-4"
+      >
+        {/* LEFT cluster */}
         <div className="flex min-w-0 items-center gap-4">
           <button
             type="button"
             aria-label="القائمة"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep lg:h-12 lg:w-12"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -43,37 +98,33 @@ export function Header() {
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
               <Phone className="h-4 w-4" />
             </span>
-            <span dir="ltr" className="text-base font-bold text-primary-foreground">
-              +971 544 420 441
-            </span>
+            <span className="text-base font-bold text-primary-foreground">+971 544 420 441</span>
           </a>
 
           <span className="hidden h-7 w-px bg-primary-foreground/25 xl:block" />
 
-          <div className="hidden items-center gap-2 xl:flex">
-            <Globe className="h-5 w-5 text-gold" />
-            <span className="text-sm font-bold text-primary-foreground">AR</span>
-            <span className="text-xs text-primary-foreground/60">▾</span>
-            <span aria-hidden className="text-lg leading-none">🇦🇪</span>
+          <div className="hidden xl:block">
+            <LangSwitcher />
           </div>
         </div>
 
-        {/* logo */}
+        {/* CENTER logo */}
         <Link to="/" onClick={() => setOpen(false)} className="justify-self-center">
           <img
             src={logo}
             alt="توت فن لليخوت"
-            width={220}
-            height={130}
+            width={240}
+            height={140}
             className="h-16 w-auto object-contain md:h-24"
           />
         </Link>
 
-        {/* end cluster */}
+        {/* RIGHT CTA */}
         <a
           href={CONTACT.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
+          dir="rtl"
           className="hidden items-center gap-3 rounded-full border border-gold px-6 py-3 text-base font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep md:inline-flex"
         >
           احجز الآن
@@ -84,7 +135,7 @@ export function Header() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="احجز الآن"
-          className="grid h-11 w-11 place-items-center rounded-full border border-gold text-gold md:hidden"
+          className="grid h-11 w-11 place-items-center justify-self-end rounded-full border border-gold text-gold md:hidden"
         >
           <MessageCircle className="h-5 w-5" />
         </a>
@@ -110,7 +161,7 @@ export function Header() {
       {/* Mobile drawer */}
       <div
         className={`overflow-hidden border-t border-gold/40 bg-primary-deep transition-[max-height] duration-300 lg:hidden ${
-          open ? "max-h-[620px]" : "max-h-0"
+          open ? "max-h-[680px]" : "max-h-0"
         }`}
       >
         <nav className="flex flex-col px-4 pb-5 pt-2">
@@ -132,13 +183,16 @@ export function Header() {
               {n.label}
             </Link>
           ))}
-          <a
-            href={`tel:${CONTACT.phone}`}
-            dir="ltr"
-            className="mt-4 rounded-lg border border-gold px-4 py-3 text-center text-sm font-bold text-gold"
-          >
-            +971 544 420 441
-          </a>
+          <div className="flex items-center justify-between gap-3 pt-4">
+            <a
+              href={`tel:${CONTACT.phone}`}
+              dir="ltr"
+              className="flex-1 rounded-lg border border-gold px-4 py-3 text-center text-sm font-bold text-gold"
+            >
+              +971 544 420 441
+            </a>
+            <LangSwitcher />
+          </div>
         </nav>
       </div>
     </header>
