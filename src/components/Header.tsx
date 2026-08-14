@@ -185,8 +185,8 @@ export function Header() {
         }`}
       />
       <aside
-        className={`fixed inset-y-0 start-0 z-50 flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
-          open ? "translate-x-0" : "translate-x-full rtl:translate-x-full ltr:-translate-x-full"
+        className={`fixed inset-y-0 right-0 z-50 flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
