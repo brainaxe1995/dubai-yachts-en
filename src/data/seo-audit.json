@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T17:57:16.580Z",
+  "generatedAt": "2026-08-14T17:58:38.176Z",
   "baseUrl": "https://doc-whisperer-750.lovable.app",
   "sitemapPaths": [
     "/",
@@ -35,6 +35,22 @@
       "hasHead": true,
       "issues": [],
       "noindex": false
+    },
+    {
+      "file": "seo-audit.tsx",
+      "path": "/seo-audit",
+      "title": "تدقيق السيو | توت فن لليخوت",
+      "description": "لوحة داخلية لمراجعة بيانات السيو والوسوم الوصفية لكل صفحة في الموقع.",
+      "ogTitle": null,
+      "ogDescription": null,
+      "ogUrl": null,
+      "ogImage": null,
+      "canonical": null,
+      "robots": "noindex, nofollow",
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": true
     },
     {
       "file": "إيجار-يخوت-في-دبي.tsx",
@@ -275,7 +291,7 @@
   ],
   "globalIssues": [],
   "summary": {
-    "routes": 15,
+    "routes": 16,
     "errors": 0,
     "warnings": 0
   }
