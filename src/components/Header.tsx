@@ -65,7 +65,7 @@ export function Header() {
             alt="توت فن لليخوت"
             width={220}
             height={130}
-            className="h-14 w-auto object-contain md:h-20"
+            className="h-16 w-auto object-contain md:h-24"
           />
         </Link>
 
@@ -92,9 +92,9 @@ export function Header() {
 
       {/* Nav row */}
       <nav className="hidden border-y border-gold/60 lg:block">
-        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 divide-x divide-gold/60 divide-x-reverse px-4 md:px-8">
+        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 px-4 md:px-8">
           {nav.map((n) => (
-            <li key={n.to} className="border-x border-gold/0 first:border-s last:border-e">
+            <li key={n.to} className="border-s border-gold/60 last:border-e">
               <Link
                 to={n.to}
                 activeProps={{ className: "text-gold" }}
