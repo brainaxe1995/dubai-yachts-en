@@ -14,6 +14,17 @@ const nav = [
   { to: "/contact", label: "اتصل بنا" },
 ] as const;
 
+function UaeFlag({ className = "h-4 w-6" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 9 6" className={className} aria-hidden role="img" focusable="false">
+      <rect width="9" height="6" fill="#fff" />
+      <rect width="9" height="2" fill="#00732f" />
+      <rect y="4" width="9" height="2" fill="#000" />
+      <rect width="2.25" height="6" fill="#ff0000" />
+    </svg>
+  );
+}
+
 function LangSwitcher() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -38,7 +49,7 @@ function LangSwitcher() {
         <Globe className="h-5 w-5 text-gold" />
         <span className="text-sm font-bold">AR</span>
         <ChevronDown className={`h-4 w-4 text-primary-foreground/70 transition-transform ${open ? "rotate-180" : ""}`} />
-        <span aria-hidden className="text-lg leading-none">🇦🇪</span>
+        <UaeFlag className="h-4 w-6 rounded-[2px]" />
       </button>
 
       {open ? (
@@ -52,7 +63,7 @@ function LangSwitcher() {
               onClick={() => setOpen(false)}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-gold"
             >
-              <span aria-hidden>🇦🇪</span> AR
+              <UaeFlag className="h-3.5 w-5 rounded-[2px]" /> AR
             </button>
           </li>
           <li>
@@ -64,7 +75,7 @@ function LangSwitcher() {
               }}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-primary-foreground/80 hover:text-gold"
             >
-              <span aria-hidden>🇬🇧</span> EN
+              <svg viewBox="0 0 60 30" className="h-3.5 w-5 rounded-[2px]" aria-hidden><clipPath id="t"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 60,30M60,0 0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/><path d="M30,0v30M0,15h60" stroke="#fff" strokeWidth="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" strokeWidth="6"/></svg> EN
             </a>
           </li>
         </ul>
@@ -115,7 +126,7 @@ export function Header() {
             alt="توت فن لليخوت"
             width={240}
             height={140}
-            className="h-16 w-auto object-contain md:h-24"
+            className="h-16 w-auto object-contain md:h-28"
           />
         </Link>
 
@@ -142,10 +153,10 @@ export function Header() {
       </div>
 
       {/* Nav row */}
-      <nav className="hidden border-y border-gold/60 lg:block">
-        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 px-4 md:px-8">
+      <nav className="hidden pb-4 lg:block">
+        <ul className="mx-auto grid max-w-[1600px] grid-cols-7 overflow-hidden rounded-sm border border-gold/70 md:mx-8">
           {nav.map((n) => (
-            <li key={n.to} className="border-s border-gold/60 last:border-e">
+            <li key={n.to} className="border-s border-gold/70 first:border-s-0">
               <Link
                 to={n.to}
                 activeProps={{ className: "text-gold" }}
