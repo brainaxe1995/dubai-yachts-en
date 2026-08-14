@@ -80,21 +80,55 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { title: "توت فن لليخوت | تأجير وحجز اليخوت الفاخرة في دبي" },
       {
         name: "description",
         content:
           "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات.",
       },
       { name: "author", content: "توت فن لليخوت" },
-      { property: "og:title", content: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { property: "og:title", content: "توت فن لليخوت | تأجير وحجز اليخوت الفاخرة في دبي" },
       {
         property: "og:description",
         content: "يخوت فاخرة، حفلات ورحلات صيد في دبي بأسعار تبدأ من 400 درهم للساعة.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "توت فن لليخوت" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://doc-whisperer-750.lovable.app/#website",
+              name: "توت فن لليخوت",
+              alternateName: "Toot Fun Yacht Rental",
+              url: "https://doc-whisperer-750.lovable.app/",
+              inLanguage: "ar",
+              publisher: { "@id": "https://doc-whisperer-750.lovable.app/#organization" },
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://doc-whisperer-750.lovable.app/#organization",
+              name: "توت فن لليخوت",
+              url: "https://doc-whisperer-750.lovable.app/",
+              logo: "https://doc-whisperer-750.lovable.app/favicon.png",
+              areaServed: "Dubai, United Arab Emirates",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Dubai Marina",
+                addressRegion: "Dubai",
+                addressCountry: "AE",
+              },
+            },
+          ],
+        }),
+      },
     ],
     links: [
       {
