@@ -57,6 +57,113 @@ function evalObjects(arraySrc) {
 }
 
 function parseRouteFile(file) {
+  return parseRouteFileInner(file);
+}
+
+/**
+ * Required properties per JSON-LD @type. Each entry may contain:
+ *  - required: properties that MUST exist
+ *  - recommended: properties that SHOULD exist (warning)
+ *  - shape: per-property validators
+ */
+const SCHEMA_RULES = {
+  Organization: {
+    required: ["name", "url"],
+    recommended: ["logo", "contactPoint"],
+  },
+  WebSite: {
+    required: ["name", "url"],
+    recommended: ["inLanguage"],
+  },
+  LocalBusiness: {
+    required: ["name", "address", "telephone"],
+    recommended: ["url", "image", "openingHoursSpecification", "priceRange"],
+  },
+  ItemList: {
+    required: ["itemListElement"],
+    recommended: ["name"],
+  },
+  ListItem: {
+    required: ["position", "item"],
+  },
+  Service: {
+    required: ["name"],
+    recommended: ["provider", "areaServed", "serviceType"],
+  },
+  Product: {
+    required: ["name", "offers"],
+    recommended: ["image", "description"],
+  },
+  Offer: {
+    required: ["price", "priceCurrency"],
+    recommended: ["availability"],
+  },
+  FAQPage: {
+    required: ["mainEntity"],
+  },
+  Question: {
+    required: ["name", "acceptedAnswer"],
+  },
+  Answer: {
+    required: ["text"],
+  },
+  BreadcrumbList: {
+    required: ["itemListElement"],
+  },
+  PostalAddress: {
+    required: ["addressLocality", "addressCountry"],
+  },
+  Article: {
+    required: ["headline", "author", "datePublished"],
+    recommended: ["image", "dateModified"],
+  },
+  BlogPosting: {
+    required: ["headline", "author", "datePublished"],
+    recommended: ["image", "dateModified"],
+  },
+};
+
+function isEmpty(v) {
+  if (v === undefined || v === null) return true;
+  if (typeof v === "string") return v.trim() === "";
+  if (Array.isArray(v)) return v.length === 0;
+  return false;
+}
+
+/** Recursively validate a parsed JSON-LD node against SCHEMA_RULES. */
+export function validateJsonLd(node, path = "$", acc = { missing: [], recommended: [], invalid: [] }) {
+  if (Array.isArray(node)) {
+    node.forEach((n, i) => validateJsonLd(n, `${path}[${i}]`, acc));
+    return acc;
+  }
+  if (!node || typeof node !== "object") return acc;
+
+  const type = node["@type"];
+  if (path === "$" && !node["@context"]) acc.invalid.push(`${path}: @context مفقود`);
+  if (!type) {
+    acc.invalid.push(`${path}: @type مفقود`);
+  } else {
+    const rules = SCHEMA_RULES[String(type)];
+    if (rules) {
+      for (const key of rules.required ?? []) if (isEmpty(node[key])) acc.missing.push(`${type}.${key}`);
+      for (const key of rules.recommended ?? []) if (isEmpty(node[key])) acc.recommended.push(`${type}.${key}`);
+    }
+    if (type === "ListItem" && node.position !== undefined && typeof node.position !== "number") {
+      acc.invalid.push(`ListItem.position يجب أن يكون رقمًا`);
+    }
+    if ((type === "Article" || type === "BlogPosting") && typeof node.headline === "string" && node.headline.length > 110) {
+      acc.invalid.push(`${type}.headline أطول من 110 حرفًا`);
+    }
+  }
+
+  for (const [k, v] of Object.entries(node)) {
+    if (k.startsWith("@")) continue;
+    if (v && typeof v === "object") validateJsonLd(v, `${path}.${k}`, acc);
+  }
+  return acc;
+}
+
+function parseRouteFileInner(file) {
   const src = readFileSync(join(ROUTES_DIR, file), "utf8");
   const m = src.match(/createFileRoute\(\s*["'`]([^"'`]+)["'`]\s*\)/);
   if (!m) return null;
@@ -103,19 +210,42 @@ function parseRouteFile(file) {
     }
     if (parsed && typeof parsed === "object") {
       const ok = Boolean(parsed["@context"]) && Boolean(parsed["@type"]);
+      const v = validateJsonLd(parsed);
+      const problems = [
+        ...(ok ? [] : ["missing @context or @type"]),
+        ...v.invalid,
+        ...(v.missing.length ? [`حقول مطلوبة ناقصة: ${v.missing.join("، ")}`] : []),
+      ];
       structuredData.push({
         type: String(parsed["@type"] ?? "unknown"),
-        status: ok ? "valid" : "invalid",
-        message: ok ? null : "missing @context or @type",
+        status: problems.length ? "invalid" : "valid",
+        message: problems.length
+          ? problems.join(" — ")
+          : v.recommended.length
+            ? `حقول مُوصى بها ناقصة: ${v.recommended.join("، ")}`
+            : null,
+        missingRequired: v.missing,
+        missingRecommended: v.recommended,
         json: JSON.stringify(parsed, null, 2).slice(0, 4000),
       });
     } else {
       const typeMatch = body.match(/"@type":\s*"([^"]+)"/);
       const hasCtx = /"@context":\s*"https:\/\/schema\.org"/.test(body);
+      // dynamic payload: check required keys textually for the outer @type
+      const dynType = typeMatch?.[1];
+      const rules = dynType ? SCHEMA_RULES[dynType] : null;
+      const missing = (rules?.required ?? []).filter((k) => !new RegExp(`(^|[{,\\s])${k}\\s*:|"${k}"\\s*:`).test(body));
+      const missingRec = (rules?.recommended ?? []).filter((k) => !new RegExp(`(^|[{,\\s])${k}\\s*:|"${k}"\\s*:`).test(body));
       structuredData.push({
         type: typeMatch?.[1] ?? "dynamic",
-        status: hasCtx && typeMatch ? "dynamic" : "invalid",
-        message: hasCtx && typeMatch ? "built from runtime data — validated statically for @context/@type" : "could not detect @context/@type",
+        status: hasCtx && typeMatch && missing.length === 0 ? "dynamic" : "invalid",
+        message: !hasCtx || !typeMatch
+          ? "could not detect @context/@type"
+          : missing.length
+            ? `حقول مطلوبة ناقصة: ${missing.join("، ")}`
+            : `مبنية من بيانات ديناميكية — تم التحقق من @context/@type${missingRec.length ? ` (موصى به ناقص: ${missingRec.join("، ")})` : ""}`,
+        missingRequired: missing,
+        missingRecommended: missingRec,
       });
     }
   }
