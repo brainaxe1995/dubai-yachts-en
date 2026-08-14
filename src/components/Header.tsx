@@ -87,6 +87,13 @@ function LangSwitcher() {
 export function Header() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 bg-primary-deep">
       {/* Top bar — physical LTR positioning: menu/phone/lang left, logo center, CTA right */}
@@ -178,8 +185,8 @@ export function Header() {
         }`}
       />
       <aside
-        className={`fixed inset-y-0 end-0 z-50 flex w-[82%] max-w-xs flex-col border-s border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
-          open ? "translate-x-0" : "rtl:-translate-x-full ltr:translate-x-full"
+        className={`fixed inset-y-0 start-0 z-50 flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          open ? "translate-x-0" : "translate-x-full rtl:translate-x-full ltr:-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
