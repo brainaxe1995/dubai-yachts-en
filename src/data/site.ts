@@ -1,50 +1,50 @@
 // Yacht images
-import houseboat55 from "@/assets/yachts/houseboat-55.jpeg";
-import floating100 from "@/assets/yachts/floating-100.jpeg";
-import majesty48 from "@/assets/yachts/majesty-48.jpg";
-import italian95 from "@/assets/yachts/italian-95.jpg";
-import ferretti78 from "@/assets/yachts/ferretti-78.jpg";
+import houseboat55 from "@/assets/yachts/houseboat-55.webp";
+import floating100 from "@/assets/yachts/floating-100.webp";
+import majesty48 from "@/assets/yachts/majesty-48.webp";
+import italian95 from "@/assets/yachts/italian-95.webp";
+import ferretti78 from "@/assets/yachts/ferretti-78.webp";
 import mini40 from "@/assets/yachts/mini-40.webp";
-import azimut80 from "@/assets/yachts/azimut-80.jpg";
-import sunseeker95 from "@/assets/yachts/sunseeker-95.jpg";
-import majesty70 from "@/assets/yachts/majesty-70.jpg";
-import majesty66 from "@/assets/yachts/majesty-66.jpg";
-import majesty55 from "@/assets/yachts/majesty-55.jpg";
-import azimut50 from "@/assets/yachts/azimut-50.jpg";
-import majesty88 from "@/assets/yachts/majesty-88.jpg";
-import corporate105 from "@/assets/yachts/corporate-105.jpg";
-import gulfcraft90 from "@/assets/yachts/gulfcraft-90.jpg";
+import azimut80 from "@/assets/yachts/azimut-80.webp";
+import sunseeker95 from "@/assets/yachts/sunseeker-95.webp";
+import majesty70 from "@/assets/yachts/majesty-70.webp";
+import majesty66 from "@/assets/yachts/majesty-66.webp";
+import majesty55 from "@/assets/yachts/majesty-55.webp";
+import azimut50 from "@/assets/yachts/azimut-50.webp";
+import majesty88 from "@/assets/yachts/majesty-88.webp";
+import corporate105 from "@/assets/yachts/corporate-105.webp";
+import gulfcraft90 from "@/assets/yachts/gulfcraft-90.webp";
 
 // Fishing
-import fishingShared from "@/assets/fishing/shared.png";
-import fishingPrivateYacht from "@/assets/fishing/private-yacht.png";
+import fishingShared from "@/assets/fishing/shared.webp";
+import fishingPrivateYacht from "@/assets/fishing/private-yacht.webp";
 import fishingPrivateBoat from "@/assets/fishing/private-boat.webp";
 
 // Parties
-import partyProposal from "@/assets/parties/proposal.png";
-import partyWedding from "@/assets/parties/wedding.jpg";
-import partyAnniversary from "@/assets/parties/anniversary.png";
-import partyGraduation from "@/assets/parties/graduation.png";
-import partyEngagement from "@/assets/parties/engagement.png";
-import partyBirthday from "@/assets/parties/birthday.png";
+import partyProposal from "@/assets/parties/proposal.webp";
+import partyWedding from "@/assets/parties/wedding.webp";
+import partyAnniversary from "@/assets/parties/anniversary.webp";
+import partyGraduation from "@/assets/parties/graduation.webp";
+import partyEngagement from "@/assets/parties/engagement.webp";
+import partyBirthday from "@/assets/parties/birthday.webp";
 
 // Packages
 import pkgBreakfast from "@/assets/packages/breakfast.webp";
-import pkgJetski from "@/assets/packages/jetski.png";
-import pkgRomantic from "@/assets/packages/romantic-dinner.png";
+import pkgJetski from "@/assets/packages/jetski.webp";
+import pkgRomantic from "@/assets/packages/romantic-dinner.webp";
 
 // Extras
-import exCake from "@/assets/extras/cake.png";
-import exFlowers from "@/assets/extras/flowers.png";
-import exFruit from "@/assets/extras/fruit-platter.png";
-import exSweets from "@/assets/extras/arabic-sweets.png";
-import exDecorations from "@/assets/extras/decorations.png";
-import exPhotographer from "@/assets/extras/photographer.png";
-import exLuxuryTransfer from "@/assets/extras/luxury-transfer.png";
+import exCake from "@/assets/extras/cake.webp";
+import exFlowers from "@/assets/extras/flowers.webp";
+import exFruit from "@/assets/extras/fruit-platter.webp";
+import exSweets from "@/assets/extras/arabic-sweets.webp";
+import exDecorations from "@/assets/extras/decorations.webp";
+import exPhotographer from "@/assets/extras/photographer.webp";
+import exLuxuryTransfer from "@/assets/extras/luxury-transfer.webp";
 import exJetSki from "@/assets/extras/jet-ski.webp";
 import exBanana from "@/assets/extras/banana-boat.webp";
 import exDonut from "@/assets/extras/donut.webp";
-import exFoodBuffet from "@/assets/extras/food-buffet.jpeg";
+import exFoodBuffet from "@/assets/extras/food-buffet.webp";
 
 import { DEFAULT_CONFIG } from "./config";
 

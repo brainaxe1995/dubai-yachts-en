@@ -6,10 +6,10 @@ import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { BookButton, CallButton } from "@/components/CtaButtons";
 import { yachts, faqs, steps, extras, inclusions, destinations } from "@/data/site";
-import partyImg from "@/assets/parties/wedding.jpg";
-import fishingImg from "@/assets/fishing/shared.png";
-import packagesImg from "@/assets/packages/romantic-dinner.png";
-import whatIncludedImg from "@/assets/branding/what-included.png";
+import partyImg from "@/assets/parties/wedding.webp";
+import fishingImg from "@/assets/fishing/shared.webp";
+import packagesImg from "@/assets/packages/romantic-dinner.webp";
+import whatIncludedImg from "@/assets/branding/what-included.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({

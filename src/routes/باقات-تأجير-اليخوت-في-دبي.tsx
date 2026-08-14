@@ -8,7 +8,7 @@ import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage } from "@/data/site";
-import packagesImg from "@/assets/packages/romantic-dinner.png";
+import packagesImg from "@/assets/packages/romantic-dinner.webp";
 
 const pkgFaqs = [
   { q: "ما الفرق بين الباقة والحجز العادي؟", a: "الباقة تشمل الرحلة + وجبة/تجربة معينة (إفطار، عشاء، جيت سكي) بسعر ثابت. الحجز العادي هو تأجير اليخت فقط بالساعة، وأنت تختار الإضافات." },

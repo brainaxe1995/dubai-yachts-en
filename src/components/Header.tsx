@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { CONTACT } from "@/data/site";
 
 const nav = [
@@ -184,7 +184,13 @@ export function Header() {
         }`}
       >
         <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
-          <img src={logo} alt="توت فن لليخوت" className="h-12 w-auto object-contain" />
+          <img
+            src={logo}
+            alt="توت فن لليخوت"
+            width={200}
+            height={100}
+            className="h-12 w-auto object-contain"
+          />
           <button
             type="button"
             aria-label="إغلاق القائمة"

@@ -8,7 +8,7 @@ import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty } from "@/data/site";
-import partyImg from "@/assets/parties/wedding.jpg";
+import partyImg from "@/assets/parties/wedding.webp";
 
 const partyFaqs = [
   { q: "كم عدد الضيوف الذي يستوعبه اليخت للحفلات؟", a: "لدينا يخوت تستوعب من 12 ضيفًا (يخت 48 قدم) حتى 45 ضيفًا (يخت 95 قدم) و90 ضيفًا (105 قدم). نختار لك اليخت الأنسب حسب حجم حفلتك." },

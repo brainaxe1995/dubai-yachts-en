@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import heroImg from "@/assets/hero-yacht.jpg";
+import heroImg from "@/assets/hero-yacht.webp";
 import { BookButton, CallButton } from "./CtaButtons";
 import { Reveal } from "./Reveal";
 
@@ -25,6 +25,8 @@ export function PageHero({
         alt={title}
         width={1920}
         height={1088}
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary-deep via-primary/70 to-primary/40" />

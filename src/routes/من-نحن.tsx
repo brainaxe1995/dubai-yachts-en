@@ -4,9 +4,9 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { CallButton, BookButton } from "@/components/CtaButtons";
 import { occasions, inclusions } from "@/data/site";
-import fleetImg from "@/assets/yachts/majesty-88.jpg";
-import marinaImg from "@/assets/yachts/gulfcraft-90.jpg";
-import whatIncludedImg from "@/assets/branding/what-included.png";
+import fleetImg from "@/assets/yachts/majesty-88.webp";
+import marinaImg from "@/assets/yachts/gulfcraft-90.webp";
+import whatIncludedImg from "@/assets/branding/what-included.webp";
 
 export const Route = createFileRoute("/من-نحن")({
   head: () => ({

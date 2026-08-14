@@ -1,0 +1,23 @@
+# Long cache for immutable hashed assets (Vite adds hash to filenames)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static images + fonts + favicon
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — short cache, revalidate
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600

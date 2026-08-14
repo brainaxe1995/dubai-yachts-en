@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import logo from "@/assets/logo.png";
-import paymentImg from "@/assets/branding/payment-methods.jpg";
+import logo from "@/assets/logo.webp";
+import paymentImg from "@/assets/branding/payment-methods.webp";
 import { CONTACT } from "@/data/site";
 import { DEFAULT_CONFIG, getConfig } from "@/data/config";
 
@@ -174,6 +174,8 @@ export function Footer() {
               src={paymentImg}
               alt="وسائل الدفع المتاحة"
               loading="lazy"
+              width={200}
+              height={24}
               className="h-6 w-auto rounded bg-white/95 px-1 py-0.5 opacity-90"
             />
           </div>

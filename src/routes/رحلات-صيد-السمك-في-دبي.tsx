@@ -7,7 +7,7 @@ import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { fishingTrips, stepsFishing } from "@/data/site";
-import fishingImg from "@/assets/fishing/shared.png";
+import fishingImg from "@/assets/fishing/shared.webp";
 
 export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي")({
   head: () => ({

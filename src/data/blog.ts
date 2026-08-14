@@ -1,15 +1,15 @@
-import yachtHero from "@/assets/yachts/majesty-88.jpg";
-import fleetImg from "@/assets/yachts/sunseeker-95.jpg";
-import houseboatImg from "@/assets/yachts/houseboat-55.jpeg";
-import azimutImg from "@/assets/yachts/azimut-80.jpg";
-import partyBirthday from "@/assets/parties/birthday.png";
-import partyWedding from "@/assets/parties/wedding.jpg";
-import partyProposal from "@/assets/parties/proposal.png";
-import fishingShared from "@/assets/fishing/shared.png";
-import fishingPrivate from "@/assets/fishing/private-yacht.png";
+import yachtHero from "@/assets/yachts/majesty-88.webp";
+import fleetImg from "@/assets/yachts/sunseeker-95.webp";
+import houseboatImg from "@/assets/yachts/houseboat-55.webp";
+import azimutImg from "@/assets/yachts/azimut-80.webp";
+import partyBirthday from "@/assets/parties/birthday.webp";
+import partyWedding from "@/assets/parties/wedding.webp";
+import partyProposal from "@/assets/parties/proposal.webp";
+import fishingShared from "@/assets/fishing/shared.webp";
+import fishingPrivate from "@/assets/fishing/private-yacht.webp";
 import breakfastImg from "@/assets/packages/breakfast.webp";
-import romanticImg from "@/assets/packages/romantic-dinner.png";
-import cakeImg from "@/assets/extras/cake.png";
+import romanticImg from "@/assets/packages/romantic-dinner.webp";
+import cakeImg from "@/assets/extras/cake.webp";
 
 export type BlogPost = {
   slug: string;
