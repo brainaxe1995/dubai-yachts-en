@@ -93,6 +93,14 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                href="/sitemap.xml"
+                className="text-sm text-primary-foreground/70 transition-colors hover:text-gold"
+              >
+                خريطة الموقع XML
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -151,6 +159,12 @@ export function Footer() {
             <Link to="/سياسة-الإلغاء" className="hover:text-gold">
               سياسة الإلغاء
             </Link>
+            <Link to="/خريطة-الموقع" className="hover:text-gold">
+              خريطة الموقع
+            </Link>
+            <a href="/sitemap.xml" className="hover:text-gold">
+              Sitemap.xml
+            </a>
           </div>
         </div>
       </div>
