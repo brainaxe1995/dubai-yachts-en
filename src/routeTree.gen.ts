@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CancellationRouteImport } from './routes/cancellation'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FishingTripsRouteImport } from './routes/fishing-trips'
+import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as YachtPartiesRouteImport } from './routes/yacht-parties'
+import { Route as YachtRentalRouteImport } from './routes/yacht-rental'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CancellationRoute = CancellationRouteImport.update({
+  id: '/cancellation',
+  path: '/cancellation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FishingTripsRoute = FishingTripsRouteImport.update({
+  id: '/fishing-trips',
+  path: '/fishing-trips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackagesRoute = PackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtPartiesRoute = YachtPartiesRouteImport.update({
+  id: '/yacht-parties',
+  path: '/yacht-parties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtRentalRoute = YachtRentalRouteImport.update({
+  id: '/yacht-rental',
+  path: '/yacht-rental',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/cancellation': typeof CancellationRoute
+  '/contact': typeof ContactRoute
+  '/fishing-trips': typeof FishingTripsRoute
+  '/packages': typeof PackagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms': typeof TermsRoute
+  '/yacht-parties': typeof YachtPartiesRoute
+  '/yacht-rental': typeof YachtRentalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/cancellation': typeof CancellationRoute
+  '/contact': typeof ContactRoute
+  '/fishing-trips': typeof FishingTripsRoute
+  '/packages': typeof PackagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms': typeof TermsRoute
+  '/yacht-parties': typeof YachtPartiesRoute
+  '/yacht-rental': typeof YachtRentalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/cancellation': typeof CancellationRoute
+  '/contact': typeof ContactRoute
+  '/fishing-trips': typeof FishingTripsRoute
+  '/packages': typeof PackagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms': typeof TermsRoute
+  '/yacht-parties': typeof YachtPartiesRoute
+  '/yacht-rental': typeof YachtRentalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/cancellation'
+    | '/contact'
+    | '/fishing-trips'
+    | '/packages'
+    | '/privacy'
+    | '/sitemap'
+    | '/terms'
+    | '/yacht-parties'
+    | '/yacht-rental'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/cancellation'
+    | '/contact'
+    | '/fishing-trips'
+    | '/packages'
+    | '/privacy'
+    | '/sitemap'
+    | '/terms'
+    | '/yacht-parties'
+    | '/yacht-rental'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/cancellation'
+    | '/contact'
+    | '/fishing-trips'
+    | '/packages'
+    | '/privacy'
+    | '/sitemap'
+    | '/terms'
+    | '/yacht-parties'
+    | '/yacht-rental'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  CancellationRoute: typeof CancellationRoute
+  ContactRoute: typeof ContactRoute
+  FishingTripsRoute: typeof FishingTripsRoute
+  PackagesRoute: typeof PackagesRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SitemapRoute: typeof SitemapRoute
+  TermsRoute: typeof TermsRoute
+  YachtPartiesRoute: typeof YachtPartiesRoute
+  YachtRentalRoute: typeof YachtRentalRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cancellation': {
+      id: '/cancellation'
+      path: '/cancellation'
+      fullPath: '/cancellation'
+      preLoaderRoute: typeof CancellationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fishing-trips': {
+      id: '/fishing-trips'
+      path: '/fishing-trips'
+      fullPath: '/fishing-trips'
+      preLoaderRoute: typeof FishingTripsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/packages': {
+      id: '/packages'
+      path: '/packages'
+      fullPath: '/packages'
+      preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yacht-parties': {
+      id: '/yacht-parties'
+      path: '/yacht-parties'
+      fullPath: '/yacht-parties'
+      preLoaderRoute: typeof YachtPartiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yacht-rental': {
+      id: '/yacht-rental'
+      path: '/yacht-rental'
+      fullPath: '/yacht-rental'
+      preLoaderRoute: typeof YachtRentalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  CancellationRoute: CancellationRoute,
+  ContactRoute: ContactRoute,
+  FishingTripsRoute: FishingTripsRoute,
+  PackagesRoute: PackagesRoute,
+  PrivacyRoute: PrivacyRoute,
+  SitemapRoute: SitemapRoute,
+  TermsRoute: TermsRoute,
+  YachtPartiesRoute: YachtPartiesRoute,
+  YachtRentalRoute: YachtRentalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
