@@ -3,7 +3,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { yachts } from "@/data/site";
 
-export const Route = createFileRoute("/yacht-rental")({
+export const Route = createFileRoute("/يخوت-للإيجار-في-دبي")({
   head: () => ({
     meta: [
       { title: "يخوت للإيجار في دبي | توت فن لليخوت" },
@@ -15,26 +15,26 @@ export const Route = createFileRoute("/yacht-rental")({
       { property: "og:title", content: "يخوت للإيجار في دبي | توت فن لليخوت" },
       {
         property: "og:description",
-        content: "أسطول متنوع من اليخوت الفاخرة للإيجار في دبي بأسعار تنافسية.",
+        content: "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 400 درهم للساعة، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
       },
     ],
   }),
-  component: YachtRental,
+  component: YachtsForRent,
 });
 
-function YachtRental() {
+function YachtsForRent() {
   return (
     <>
       <PageHero
         compact
-        eyebrow="يخوت للإيجار"
-        title="تأجير يخوت في دبي"
-        subtitle="نوفر خدمات تأجير يخوت في دبي مع رحلات خاصة، يخوت متنوعة، وأسعار تبدأ من 400 درهم للساعة لجميع المناسبات."
+        eyebrow="الأسطول"
+        title="يخوت للإيجار في دبي"
+        subtitle="اختر من مجموعة متنوعة من اليخوت للإيجار في دبي بأسعار تبدأ من 400 درهم للساعة."
       />
       <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسطولنا من اليخوت الفاخرة"
-          subtitle="اختر من بين أفضل اليخوت الخاصة في دبي بأسعار تبدأ من 400 درهم للساعة، واستمتع برحلة فاخرة تناسب جميع المناسبات."
+          title="جميع اليخوت المتاحة للإيجار في دبي"
+          subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {yachts.map((p, i) => (

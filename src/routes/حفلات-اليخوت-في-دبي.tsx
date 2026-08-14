@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { parties } from "@/data/site";
 import partyImg from "@/assets/party.jpg";
 
-export const Route = createFileRoute("/yacht-parties")({
+export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
   head: () => ({
     meta: [
       { title: "أفضل حفلات اليخوت في دبي | توت فن لليخوت" },

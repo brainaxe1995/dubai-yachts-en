@@ -4,7 +4,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { CONTACT } from "@/data/site";
 
-export const Route = createFileRoute("/contact")({
+export const Route = createFileRoute("/اتصل-بنا")({
   head: () => ({
     meta: [
       { title: "اتصل بنا | توت فن لليخوت" },

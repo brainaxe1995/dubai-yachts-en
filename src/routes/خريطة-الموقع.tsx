@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 
-export const Route = createFileRoute("/sitemap")({
+export const Route = createFileRoute("/خريطة-الموقع")({
   head: () => ({
     meta: [
       { title: "خريطة الموقع | توت فن لتأجير اليخوت في دبي" },
@@ -20,16 +20,16 @@ export const Route = createFileRoute("/sitemap")({
 
 const links = [
   { to: "/", label: "الرئيسية" },
-  { to: "/yacht-rental", label: "يخوت للإيجار في دبي" },
-  { to: "/yacht-parties", label: "حفلات اليخوت في دبي" },
-  { to: "/fishing-trips", label: "رحلات صيد السمك في دبي" },
-  { to: "/packages", label: "باقات وعروض اليخوت" },
-  { to: "/about", label: "من نحن" },
-  { to: "/blog", label: "المدونة" },
-  { to: "/contact", label: "اتصل بنا" },
-  { to: "/terms", label: "الشروط والأحكام" },
-  { to: "/privacy", label: "سياسة الخصوصية" },
-  { to: "/cancellation", label: "سياسة الإلغاء" },
+  { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار في دبي" },
+  { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت في دبي" },
+  { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك في دبي" },
+  { to: "/باقات-تأجير-اليخوت-في-دبي", label: "باقات وعروض اليخوت" },
+  { to: "/من-نحن", label: "من نحن" },
+  { to: "/المدونة", label: "المدونة" },
+  { to: "/اتصل-بنا", label: "اتصل بنا" },
+  { to: "/الشروط-والأحكام", label: "الشروط والأحكام" },
+  { to: "/سياسة-الخصوصية", label: "سياسة الخصوصية" },
+  { to: "/سياسة-الإلغاء", label: "سياسة الإلغاء" },
 ] as const;
 
 function Sitemap() {

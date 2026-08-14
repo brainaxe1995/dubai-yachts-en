@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { fishingTrips } from "@/data/site";
 import fishingImg from "@/assets/fishing.jpg";
 
-export const Route = createFileRoute("/fishing-trips")({
+export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي")({
   head: () => ({
     meta: [
       { title: "أفضل رحلات صيد السمك في دبي | توت فن لليخوت" },

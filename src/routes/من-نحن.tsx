@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { CallButton, BookButton } from "@/components/CtaButtons";
 import yacht1 from "@/assets/yacht-1.jpg";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/من-نحن")({
   head: () => ({
     meta: [
       { title: "من نحن | توت فن لليخوت" },

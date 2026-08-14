@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { LegalSection } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 
-export const Route = createFileRoute("/cancellation")({
+export const Route = createFileRoute("/سياسة-الإلغاء")({
   head: () => ({
     meta: [
       { title: "سياسة الإلغاء سهلة | توت فن لليخوت" },
