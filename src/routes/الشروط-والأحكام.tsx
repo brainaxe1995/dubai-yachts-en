@@ -16,7 +16,11 @@ export const Route = createFileRoute("/الشروط-والأحكام")({
       { property: "og:description", content: "شروط الحجز والدفع والإلغاء ومسؤوليات العملاء." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/الشروط-والأحكام" },
+    ],
   }),
   component: Page,
 });

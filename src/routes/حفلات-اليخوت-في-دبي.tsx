@@ -17,7 +17,11 @@ export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
       { property: "og:description", content: "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/حفلات-اليخوت-في-دبي" },
+    ],
   }),
   component: Parties,
 });

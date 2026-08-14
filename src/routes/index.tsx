@@ -26,7 +26,11 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/" },
+    ],
   }),
   component: Home,
 });

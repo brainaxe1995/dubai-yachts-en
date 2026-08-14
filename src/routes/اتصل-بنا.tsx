@@ -16,7 +16,11 @@ export const Route = createFileRoute("/اتصل-بنا")({
       { property: "og:description", content: "تواصل مع فريق توت فن لليخوت للحجز والاستفسارات في دبي." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/اتصل-بنا" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/اتصل-بنا" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/اتصل-بنا" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/اتصل-بنا" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/اتصل-بنا" },
+    ],
     scripts: [
       {
         type: "application/ld+json",

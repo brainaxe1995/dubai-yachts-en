@@ -16,7 +16,11 @@ export const Route = createFileRoute("/سياسة-الإلغاء")({
       { property: "og:description", content: "شروط الإلغاء، إعادة الجدولة واسترداد المبالغ." },
       { property: "og:url", content: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
     ],
-    links: [{ rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" }],
+    links: [
+      { rel: "canonical", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
+      { rel: "alternate", hreflang: "ar", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
+      { rel: "alternate", hreflang: "x-default", href: "https://doc-whisperer-750.lovable.app/سياسة-الإلغاء" },
+    ],
   }),
   component: Page,
 });
