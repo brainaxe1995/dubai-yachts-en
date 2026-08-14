@@ -26,7 +26,7 @@ function UaeFlag({ className = "h-4 w-6" }: { className?: string }) {
   );
 }
 
-function LangSwitcher() {
+function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,7 +56,7 @@ function LangSwitcher() {
       {open ? (
         <ul
           role="listbox"
-          className="absolute start-0 top-[calc(100%+0.5rem)] z-50 w-36 overflow-hidden rounded-lg border border-gold/50 bg-primary-deep py-1 shadow-luxe"
+          className={`absolute ${align === "end" ? "end-0" : "start-0"} top-[calc(100%+0.5rem)] z-50 w-36 overflow-hidden rounded-lg border border-gold/50 bg-primary-deep py-1 shadow-luxe`}
         >
           <li>
             <button
@@ -149,15 +149,9 @@ export function Header() {
           احجز الآن
           <WhatsAppIcon className="h-5 w-5" />
         </a>
-        <a
-          href={CONTACT.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="احجز الآن"
-          className="grid h-11 w-11 place-items-center justify-self-end rounded-full border border-gold text-gold md:hidden"
-        >
-          <WhatsAppIcon className="h-5 w-5" />
-        </a>
+        <div className="justify-self-end rounded-full border border-gold/70 px-3 py-2 md:hidden">
+          <LangSwitcher align="end" />
+        </div>
       </div>
 
       {/* Nav row */}
