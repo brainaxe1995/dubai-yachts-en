@@ -6,7 +6,7 @@ import { ContactCta } from "@/components/ContactCta";
 import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { findPost, posts } from "@/data/blog";
 
-export const Route = createFileRoute("/المدونة/$slug")({
+export const Route = createFileRoute("/المدونة_/$slug")({
   loader: ({ params }) => {
     const post = findPost(params.slug);
     if (!post) throw notFound();
