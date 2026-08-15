@@ -9,7 +9,15 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import "@fontsource/cairo/arabic-400.css";
+import "@fontsource/cairo/arabic-600.css";
+import "@fontsource/cairo/arabic-700.css";
+import "@fontsource/tajawal/arabic-500.css";
+import "@fontsource/tajawal/arabic-700.css";
+import "@fontsource/tajawal/arabic-800.css";
+import "@fontsource/tajawal/arabic-900.css";
 import appCss from "../styles.css?url";
+import heroImg from "@/assets/hero-yacht.webp";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -138,17 +146,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@500;700;800;900&display=swap",
-      },
+      // Preload LCP hero image so browser discovers it during head parse
+      { rel: "preload", as: "image", href: heroImg, fetchPriority: "high" },
     ],
   }),
   shellComponent: RootShell,
