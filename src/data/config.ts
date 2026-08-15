@@ -17,6 +17,7 @@ export type SiteConfig = {
     facebook: string;
     youtube: string;
     x: string;
+    linkedin: string;
   };
   tracking: {
     ga4Id: string;
@@ -42,16 +43,17 @@ export const DEFAULT_CONFIG: SiteConfig = {
   phone: "+971544420441",
   phoneDisplay: "‎+971 54 442 0441",
   whatsapp: "https://wa.me/971544420441",
-  email: "info@dubai-yacht.ae",
+  email: "info@tootfunyachts.com",
   address: "دبي مارينا، الإمارات العربية المتحدة",
   siteUrl: "https://dubai-yacht.ae",
   social: {
-    instagram: "https://instagram.com/",
-    tiktok: "",
+    instagram: "https://www.instagram.com/tootfun.yachts/",
+    tiktok: "https://www.tiktok.com/@tootfunyachts",
     snapchat: "",
-    facebook: "",
-    youtube: "",
-    x: "",
+    facebook: "https://www.facebook.com/tootyachts",
+    youtube: "https://www.youtube.com/@tootfunyachts",
+    x: "https://x.com/tootyachts",
+    linkedin: "https://www.linkedin.com/in/toot-fun-yachts-169a77271/",
   },
   tracking: {
     ga4Id: "",
@@ -65,9 +67,9 @@ export const DEFAULT_CONFIG: SiteConfig = {
     bingSiteVerification: "",
   },
   seo: {
-    defaultTitle: "توت فن لليخوت | يخوت وحفلات ورحلات صيد في دبي",
+    defaultTitle: "تأجير يخوت في دبي | توت فن لليخوت",
     defaultDescription:
-      "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات.",
+      "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
     ogImage: "https://dubai-yacht.ae/og-cover.jpg",
     priceStartAed: 450,
   },

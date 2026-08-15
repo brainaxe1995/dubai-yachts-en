@@ -27,7 +27,7 @@ import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char15
 import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport } from './routes/سياسة-الخصوصية'
 import { Route as Char1605Char1606Char1606Char1581Char1606RouteImport } from './routes/من-نحن'
 import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/يخوت-للإيجار-في-دبي'
-import { Route as Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport } from './routes/المدونة.$slug'
+import { Route as Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport } from './routes/المدونة_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -158,10 +158,9 @@ const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Ch
 const Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute =
   Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport.update(
     {
-      id: '/$slug',
-      path: '/$slug',
-      getParentRoute: () =>
-        Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route,
+      id: '/المدونة_/$slug',
+      path: '/المدونة/$slug',
+      getParentRoute: () => rootRouteImport,
     } as any,
   )
 
@@ -173,7 +172,7 @@ export interface FileRoutesByFullPath {
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren
+  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
   '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
@@ -194,7 +193,7 @@ export interface FileRoutesByTo {
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren
+  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
   '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
@@ -216,7 +215,7 @@ export interface FileRoutesById {
   '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren
+  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
   '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
@@ -227,7 +226,7 @@ export interface FileRoutesById {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
-  '/المدونة/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
+  '/المدونة_/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -292,7 +291,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
-    | '/المدونة/$slug'
+    | '/المدونة_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -303,7 +302,7 @@ export interface RootRouteChildren {
   Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route: typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
   Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route: typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren
+  Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
   Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
   Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
@@ -314,6 +313,7 @@ export interface RootRouteChildren {
   Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   Char1605Char1606Char1606Char1581Char1606Route: typeof Char1605Char1606Char1606Char1581Char1606Route
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -444,30 +444,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/المدونة/$slug': {
-      id: '/المدونة/$slug'
-      path: '/$slug'
+    '/المدونة_/$slug': {
+      id: '/المدونة_/$slug'
+      path: '/المدونة/$slug'
       fullPath: '/المدونة/$slug'
       preLoaderRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport
-      parentRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteChildren {
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
-}
-
-const Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteChildren: Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteChildren =
-  {
-    Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute:
-      Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute,
-  }
-
-const Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren =
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route._addFileChildren(
-    Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteChildren,
-  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -481,7 +466,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route:
     Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route,
   Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route:
-    Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteWithChildren,
+    Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route,
   Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
     Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
   Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
@@ -502,6 +487,8 @@ const rootRouteChildren: RootRouteChildren = {
     Char1605Char1606Char1606Char1581Char1606Route,
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route:
     Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route,
+  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute:
+    Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

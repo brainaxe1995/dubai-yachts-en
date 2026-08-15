@@ -6,7 +6,8 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { fishingTrips, stepsFishing } from "@/data/site";
+import { KeywordCloud } from "@/components/KeywordCloud";
+import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
 import fishingImg from "@/assets/fishing/shared.webp";
 
 export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي")({
@@ -20,12 +21,12 @@ export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي"
       },
       { property: "og:title", content: "أفضل رحلات صيد السمك في دبي | توت فن لليخوت" },
       { property: "og:description", content: "رحلات صيد خاصة ومشتركة في دبي مع تجهيزات كاملة." },
-      { property: "og:url", content: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي" },
+      { property: "og:url", content: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/" },
     ],
   }),
   component: Fishing,
@@ -65,38 +66,14 @@ const locations = [
 ];
 
 const fishingFaqs = [
-  {
-    q: "هل تحتاج رخصة صيد للانطلاق في دبي؟",
-    a: "لا تحتاج للحصول على رخصة شخصية — جميع رحلاتنا تنطلق بموجب تراخيص القارب واليخت وتخضع لأنظمة هيئة الموانئ الإماراتية.",
-  },
-  {
-    q: "ما الفرق بين رحلة الصيد المشتركة والخاصة؟",
-    a: "المشتركة تجمعك مع ركاب آخرين بسعر أقل للفرد (350 د.إ)، والخاصة تخصص القارب أو اليخت لك ولمجموعتك فقط بخصوصية كاملة.",
-  },
-  {
-    q: "هل يمكنني الاحتفاظ بالسمك الذي أصطاده؟",
-    a: "نعم، السمك الذي تصطاده ملكك. نوفر ثلج ومبردات لحفظه، وبعض المطاعم القريبة تطبخ لك صيدك مقابل رسوم رمزية.",
-  },
-  {
-    q: "ما الملابس المناسبة لرحلة الصيد؟",
-    a: "ملابس مريحة، حذاء مغلق مقاوم للانزلاق، قبعة، نظارة شمسية، وواقي شمس. في الشتاء نوصي بجاكيت خفيف.",
-  },
-  {
-    q: "هل الرحلة مناسبة للأطفال؟",
-    a: "نعم — الرحلات المشتركة الصباحية القصيرة مناسبة للأطفال فوق 5 سنوات مع سترات نجاة مخصّصة.",
-  },
-  {
-    q: "ما موعد الانطلاق وكم تستمر الرحلة؟",
-    a: "الرحلات الصباحية المشتركة تنطلق 7:00 صباحًا لمدة 4 ساعات. الرحلات الخاصة مرنة — ابدأ متى أردت من ساعتين وحتى يوم كامل.",
-  },
-  {
-    q: "ماذا لو لم أصطد أي سمكة؟",
-    a: "طاقمنا خبير في مواقع الصيد ونضمن تجربة ممتعة، لكن الطبيعة لا تُتحكّم بها. نضمن على الأقل استمتاعك بالأجواء والإبحار.",
-  },
-  {
-    q: "هل يمكنني إحضار طعامي الخاص؟",
-    a: "نعم، يمكنك إحضار وجبات خفيفة. الرحلة المشتركة تشمل إفطاراً مشتركاً. للرحلات الخاصة نوفر خدمات ضيافة حسب الطلب.",
-  },
+  { q: "هل تحتاج رخصة صيد للانطلاق في دبي؟", a: "لا تحتاج للحصول على رخصة شخصية — جميع رحلاتنا تنطلق بموجب تراخيص القارب واليخت وتخضع لأنظمة هيئة الموانئ الإماراتية." },
+  { q: "ما الفرق بين رحلة الصيد المشتركة والخاصة؟", a: "المشتركة تجمعك مع ركاب آخرين بسعر أقل للفرد (350 د.إ)، والخاصة تخصص القارب أو اليخت لك ولمجموعتك فقط بخصوصية كاملة." },
+  { q: "هل يمكنني الاحتفاظ بالسمك الذي أصطاده؟", a: "نعم، السمك الذي تصطاده ملكك. نوفر ثلج ومبردات لحفظه، وبعض المطاعم القريبة تطبخ لك صيدك مقابل رسوم رمزية." },
+  { q: "ما الملابس المناسبة لرحلة الصيد؟", a: "ملابس مريحة، حذاء مغلق مقاوم للانزلاق، قبعة، نظارة شمسية، وواقي شمس. في الشتاء نوصي بجاكيت خفيف." },
+  { q: "هل الرحلة مناسبة للأطفال؟", a: "نعم — الرحلات المشتركة الصباحية القصيرة مناسبة للأطفال فوق 5 سنوات مع سترات نجاة مخصّصة." },
+  { q: "ما موعد الانطلاق وكم تستمر الرحلة؟", a: "الرحلات الصباحية المشتركة تنطلق 7:00 صباحًا لمدة 4 ساعات. الرحلات الخاصة مرنة — ابدأ متى أردت من ساعتين وحتى يوم كامل." },
+  { q: "ماذا لو لم أصطد أي سمكة؟", a: "طاقمنا خبير في مواقع الصيد ونضمن تجربة ممتعة، لكن الطبيعة لا تُتحكّم بها. نضمن على الأقل استمتاعك بالأجواء والإبحار." },
+  { q: "هل يمكنني إحضار طعامي الخاص؟", a: "نعم، يمكنك إحضار وجبات خفيفة. الرحلة المشتركة تشمل إفطاراً مشتركاً. للرحلات الخاصة نوفر خدمات ضيافة حسب الطلب." },
 ];
 
 function Fishing() {
@@ -110,28 +87,8 @@ function Fishing() {
         subtitle="اكتشف أفضل رحلات صيد السمك في دبي مع قوارب مجهزة، طاقم محترف، وتجربة بحرية ممتعة."
       />
 
-      {/* Intro long-form */}
-      <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-        <Reveal className="prose prose-lg max-w-none text-center">
-          <h2 className="text-2xl text-foreground md:text-3xl">
-            دليلك الكامل لرحلات صيد السمك في دبي
-          </h2>
-          <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
-          <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            تُعد <strong>رحلات صيد السمك في دبي</strong> من أفضل التجارب البحرية في الخليج العربي، حيث تجمع بين متعة
-            الإبحار في مياه المارينا الفاخرة وتجربة صيد أصيلة في أعماق الخليج. سواء كنت من هواة الصيد المبتدئين أو
-            المحترفين، توفّر توت فن لليخوت رحلات صيد خاصة ومشتركة تناسب جميع المستويات والميزانيات.
-          </p>
-          <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            تنطلق رحلاتنا من مارينا دبي بأحدث القوارب واليخوت المجهّزة بمعدات صيد احترافية، مع طاقم مرخّص يعرف أفضل
-            مواقع الصيد في المياه الإماراتية. تتراوح مدة الرحلات من 4 ساعات (نصف يوم) وحتى يوم كامل، وتشمل جميع
-            التجهيزات والطعم والمشروبات.
-          </p>
-        </Reveal>
-      </section>
-
-      {/* Products */}
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:pb-24">
+      {/* Products FIRST */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <SectionHeading
           title="أفضل خيارات رحلات صيد السمك في دبي"
           subtitle="اختر من بين رحلات الصيد الخاصة والمشتركة مع قوارب مجهزة وطاقم محترف."
@@ -143,24 +100,62 @@ function Fishing() {
         </div>
       </section>
 
-      {/* Fish species */}
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-4xl px-4">
+          <Reveal className="text-center">
+            <h2 className="text-2xl text-foreground md:text-3xl">دليلك الكامل لرحلات صيد السمك في دبي</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              كل ما تحتاج معرفته قبل حجز رحلة صيد في مياه دبي — من الأنواع الشائعة حتى المواسم والمعدات.
+            </p>
+            <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              تُعد <strong>رحلات صيد السمك في دبي</strong> من أفضل التجارب البحرية في الخليج العربي، حيث تجمع بين متعة
+              الإبحار في مياه المارينا الفاخرة وتجربة صيد أصيلة في أعماق الخليج. سواء كنت من هواة الصيد المبتدئين أو
+              المحترفين، توفّر توت فن لليخوت رحلات صيد خاصة ومشتركة تناسب جميع المستويات والميزانيات.
+            </p>
+            <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              تنطلق رحلاتنا من مارينا دبي بأحدث القوارب واليخوت المجهّزة بمعدات صيد احترافية، مع طاقم مرخّص يعرف أفضل
+              مواقع الصيد في المياه الإماراتية.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر أنواع الأسماك في مياه دبي"
+          subtitle="تعرّف على أنواع الأسماك التي يمكنك اصطيادها خلال رحلتك."
+        />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {species.map((s, i) => (
+            <Reveal key={s.n} delay={i * 60}>
+              <div className="h-full rounded-2xl border border-border bg-card p-5 shadow-luxe">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-primary-deep text-gold">
+                    <Fish className="h-5 w-5" />
+                  </span>
+                  <h3 className="text-lg font-bold text-primary">{s.n}</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            title="أشهر أنواع الأسماك في مياه دبي"
-            subtitle="تعرّف على أنواع الأسماك التي يمكنك اصطيادها خلال رحلتك."
+            title="أفضل مواسم الصيد في دبي"
+            subtitle="متى تنطلق للحصول على أفضل تجربة صيد."
           />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {species.map((s, i) => (
-              <Reveal key={s.n} delay={i * 60}>
-                <div className="h-full rounded-2xl border border-border bg-card p-5 shadow-luxe">
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-primary-deep text-gold">
-                      <Fish className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-lg font-bold text-primary">{s.n}</h3>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {seasons.map((s, i) => (
+              <Reveal key={s.t} delay={i * 70}>
+                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-luxe">
+                  <Sun className="mb-3 h-7 w-7 text-gold-deep" />
+                  <h3 className="text-base font-bold text-foreground">{s.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -168,26 +163,6 @@ function Fishing() {
         </div>
       </section>
 
-      {/* Seasons */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-        <SectionHeading
-          title="أفضل مواسم الصيد في دبي"
-          subtitle="متى تنطلق للحصول على أفضل تجربة صيد."
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {seasons.map((s, i) => (
-            <Reveal key={s.t} delay={i * 70}>
-              <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-luxe">
-                <Sun className="mb-3 h-7 w-7 text-gold-deep" />
-                <h3 className="text-base font-bold text-foreground">{s.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* What's included */}
       <section className="surface-navy py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeading
@@ -208,7 +183,6 @@ function Fishing() {
         </div>
       </section>
 
-      {/* Locations */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <SectionHeading
           title="مواقع الصيد الرئيسية"
@@ -231,7 +205,6 @@ function Fishing() {
         </div>
       </section>
 
-      {/* Booking steps */}
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
@@ -242,67 +215,93 @@ function Fishing() {
         </div>
       </section>
 
-      {/* Tips */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div className="grid gap-8 md:grid-cols-2">
-          <Reveal>
-            <div className="flex items-center gap-3">
-              <Waves className="h-8 w-8 text-gold-deep" />
-              <h2 className="text-2xl text-foreground md:text-3xl">نصائح لرحلة صيد ناجحة</h2>
-            </div>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> احجز مبكرًا خصوصًا في نهاية الأسبوع والعطلات.
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> احضر إلى المرسى قبل الموعد بـ 15 دقيقة على الأقل.
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> تحقق من حالة الطقس قبل يوم الرحلة.
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> أحضر هوية سارية المفعول (جواز سفر أو هوية إماراتية).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> ارتد ملابس مريحة وحذاء مقاوم للانزلاق.
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">•</span> استمع لتعليمات السلامة من الطاقم قبل الانطلاق.
-              </li>
-            </ul>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="flex items-center gap-3">
-              <Users className="h-8 w-8 text-gold-deep" />
-              <h2 className="text-2xl text-foreground md:text-3xl">لمن تناسب رحلات الصيد</h2>
-            </div>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> العائلات مع الأطفال (الرحلات المشتركة الصباحية).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> مجموعات الأصدقاء (الرحلات الخاصة على القارب).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> هواة الصيد المحترفون (رحلات الأعماق).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> السياح والزوار (تجربة أصيلة من مارينا دبي).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> فعاليات الشركات (رحلات جماعية على اليخت).
-              </li>
-              <li className="flex gap-2">
-                <span className="text-gold">✓</span> المبتدئون (طاقمنا يعلّمك من الصفر).
-              </li>
-            </ul>
-          </Reveal>
+      <section className="bg-gradient-to-b from-muted via-background to-muted py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            title="كل ما تحتاج معرفته قبل رحلة الصيد"
+            subtitle="نصائح ذهبية من الطاقم لتجربة صيد ناجحة، وقائمة بمن تناسبهم رحلاتنا."
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Tips card — dark navy */}
+            <Reveal>
+              <div className="group relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-primary-deep via-primary to-primary-deep p-8 shadow-luxe ring-1 ring-gold/20 md:p-10">
+                {/* Decorative wave */}
+                <Waves aria-hidden className="absolute -end-8 -top-8 h-40 w-40 text-gold/10 transition-transform duration-700 group-hover:rotate-12" />
+                <div className="relative">
+                  <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-bold text-gold">
+                    <Waves className="h-4 w-4" />
+                    نصائح الطاقم
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-primary-foreground md:text-3xl">نصائح لرحلة صيد ناجحة</h3>
+                  <p className="mt-2 text-sm text-primary-foreground/70">إرشادات مباشرة من الطاقم لتحقيق أفضل تجربة صيد.</p>
+                  <ul className="mt-6 space-y-3">
+                    {[
+                      "احجز مبكرًا خصوصًا في نهاية الأسبوع والعطلات.",
+                      "احضر إلى المرسى قبل الموعد بـ 15 دقيقة على الأقل.",
+                      "تحقق من حالة الطقس قبل يوم الرحلة.",
+                      "أحضر هوية سارية المفعول (جواز سفر أو هوية إماراتية).",
+                      "ارتد ملابس مريحة وحذاء مقاوم للانزلاق.",
+                      "استمع لتعليمات السلامة من الطاقم قبل الانطلاق.",
+                    ].map((t, i) => (
+                      <li
+                        key={t}
+                        className="flex items-start gap-3 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-3 text-sm text-primary-foreground/90 backdrop-blur-sm"
+                      >
+                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gold text-xs font-black text-primary-deep">
+                          {i + 1}
+                        </span>
+                        <span className="leading-relaxed">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Who card — light gold accent */}
+            <Reveal delay={120}>
+              <div className="group relative h-full overflow-hidden rounded-3xl bg-card p-8 shadow-luxe ring-1 ring-gold/25 md:p-10">
+                <Users aria-hidden className="absolute -start-8 -bottom-8 h-40 w-40 text-gold/10 transition-transform duration-700 group-hover:-rotate-12" />
+                <div className="relative">
+                  <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-bold text-gold-deep">
+                    <Users className="h-4 w-4" />
+                    الفئات المستهدفة
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-foreground md:text-3xl">لمن تناسب رحلات الصيد</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">من العائلات إلى الشركات — رحلاتنا تناسب الجميع.</p>
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {[
+                      { t: "العائلات", d: "رحلات مشتركة صباحية" },
+                      { t: "الأصدقاء", d: "رحلات خاصة على القارب" },
+                      { t: "المحترفون", d: "رحلات الأعماق" },
+                      { t: "السياح", d: "تجربة من مارينا دبي" },
+                      { t: "الشركات", d: "رحلات جماعية على اليخت" },
+                      { t: "المبتدئون", d: "الطاقم يعلّمك من الصفر" },
+                    ].map((it) => (
+                      <li
+                        key={it.t}
+                        className="group/it rounded-xl border border-border bg-muted/40 p-3 transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-gold/5"
+                      >
+                        <div className="flex items-center gap-2 text-sm font-bold text-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                          {it.t}
+                        </div>
+                        <p className="mt-1 text-xs text-muted-foreground">{it.d}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة عن رحلات صيد السمك في دبي" />
+        <SectionHeading
+          title="أسئلة شائعة عن رحلات صيد السمك في دبي"
+          subtitle="إجابات لأكثر الأسئلة شيوعًا قبل رحلة الصيد."
+        />
         <Accordion items={fishingFaqs} />
       </section>
 
@@ -310,6 +309,14 @@ function Fishing() {
         title="احجز رحلة صيد اليوم"
         subtitle="تواصل معنا لاختيار الرحلة الأنسب لك ومعرفة توفر التواريخ."
       />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
+          subtitle="اكتشف أكثر عمليات البحث شيوعًا حول رحلات صيد السمك والتجارب البحرية في دبي للوصول بسرعة إلى ما يناسبك."
+        />
+        <KeywordCloud items={keywordCloud["/رحلات-صيد-السمك-في-دبي/"].map((k) => ({ keyword: k, to: "/رحلات-صيد-السمك-في-دبي/" }))} />
+      </section>
     </>
   );
 }

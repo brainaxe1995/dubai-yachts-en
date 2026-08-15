@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T20:35:09.117Z",
+  "generatedAt": "2026-08-15T18:51:47.115Z",
   "baseUrl": "https://dubai-yacht.ae",
   "sitemapPaths": [
     "/",
@@ -23,10 +23,10 @@
     {
       "file": "index.tsx",
       "path": "/",
-      "title": "توت فن لليخوت | يخوت وحفلات ورحلات صيد في دبي",
+      "title": "تأجير يخوت في دبي | توت فن لليخوت",
       "description": "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
-      "ogTitle": "توت فن لليخوت | يخوت وحفلات ورحلات صيد في دبي",
-      "ogDescription": "الصفحة الرئيسية لتوت فن: تأجير يخوت، حفلات بحرية، ورحلات صيد في دبي بأسعار تبدأ من 450 درهم للساعة.",
+      "ogTitle": "تأجير يخوت في دبي | توت فن لليخوت",
+      "ogDescription": "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
       "ogUrl": "https://dubai-yacht.ae/",
       "ogImage": null,
       "canonical": "https://dubai-yacht.ae/",
@@ -90,17 +90,17 @@
       "description": "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
       "ogTitle": "إيجار يخوت في دبي | توت فن لليخوت",
       "ogDescription": "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
-      "ogUrl": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي",
+      "canonical": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/"
         }
       ],
       "robots": null,
@@ -117,17 +117,17 @@
       "description": "اتصل بنا لحجز يختك، معرفة الأسعار والباقات، واختيار الرحلة المناسبة لك مع توت فن لليخوت.",
       "ogTitle": "اتصل بنا | توت فن لليخوت",
       "ogDescription": "تواصل مع فريق توت فن لليخوت للحجز والاستفسارات في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/اتصل-بنا",
+      "ogUrl": "https://dubai-yacht.ae/اتصل-بنا/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/اتصل-بنا",
+      "canonical": "https://dubai-yacht.ae/اتصل-بنا/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/اتصل-بنا"
+          "href": "https://dubai-yacht.ae/اتصل-بنا/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/اتصل-بنا"
+          "href": "https://dubai-yacht.ae/اتصل-بنا/"
         }
       ],
       "robots": null,
@@ -152,17 +152,17 @@
       "description": "اطلع على الشروط والأحكام الخاصة بتوت فن لليخوت، بما يشمل الحجز، الدفع، الإلغاء، مسؤوليات العملاء، واستخدام خدمات تأجير اليخوت في دبي.",
       "ogTitle": "الشروط والأحكام | توت فن لليخوت",
       "ogDescription": "شروط الحجز والدفع والإلغاء ومسؤوليات العملاء.",
-      "ogUrl": "https://dubai-yacht.ae/الشروط-والأحكام",
+      "ogUrl": "https://dubai-yacht.ae/الشروط-والأحكام/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/الشروط-والأحكام",
+      "canonical": "https://dubai-yacht.ae/الشروط-والأحكام/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/الشروط-والأحكام"
+          "href": "https://dubai-yacht.ae/الشروط-والأحكام/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/الشروط-والأحكام"
+          "href": "https://dubai-yacht.ae/الشروط-والأحكام/"
         }
       ],
       "robots": null,
@@ -179,17 +179,17 @@
       "description": "اكتشف المدونة وتعرّف على أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي.",
       "ogTitle": "المدونة | دليل تأجير اليخوت في دبي",
       "ogDescription": "نصائح وأفكار حول الرحلات البحرية وحفلات اليخوت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/المدونة",
+      "ogUrl": "https://dubai-yacht.ae/المدونة/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/المدونة",
+      "canonical": "https://dubai-yacht.ae/المدونة/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/المدونة"
+          "href": "https://dubai-yacht.ae/المدونة/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/المدونة"
+          "href": "https://dubai-yacht.ae/المدونة/"
         }
       ],
       "robots": null,
@@ -200,8 +200,8 @@
       "isDynamic": false
     },
     {
-      "file": "المدونة.$slug.tsx",
-      "path": "/المدونة/$slug",
+      "file": "المدونة_.$slug.tsx",
+      "path": "/المدونة_/$slug",
       "title": null,
       "description": null,
       "ogTitle": null,
@@ -224,17 +224,17 @@
       "description": "اكتشف أفضل باقات تأجير اليخوت في دبي بخيارات متنوعة تناسب الرحلات الخاصة، الحفلات والمناسبات بأسعار مرنة تبدأ من 1,800 د.إ.",
       "ogTitle": "أفضل باقات تأجير اليخوت في دبي | توت فن لليخوت",
       "ogDescription": "باقات إفطار، عشاء رومانسي، وجيت سكي على متن اليخت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي",
+      "canonical": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/"
         }
       ],
       "robots": null,
@@ -251,17 +251,17 @@
       "description": "نوفر خدمات تأجير يخوت في دبي مع رحلات خاصة، يخوت متنوعة، وأسعار تبدأ من 450 درهم للساعة لجميع المناسبات.",
       "ogTitle": "تأجير يخوت في دبي | أسطول اليخوت والأسعار – توت فن",
       "ogDescription": "أسطول متنوع من اليخوت الفاخرة للإيجار في دبي بأسعار تنافسية.",
-      "ogUrl": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي",
+      "canonical": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/"
         }
       ],
       "robots": null,
@@ -286,17 +286,17 @@
       "description": "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 450 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
       "ogTitle": "حجز يخوت في دبي | توت فن لليخوت",
       "ogDescription": "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 450 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
-      "ogUrl": "https://dubai-yacht.ae/حجز-يخوت-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/حجز-يخوت-في-دبي",
+      "canonical": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/"
         }
       ],
       "robots": null,
@@ -313,17 +313,17 @@
       "description": "احجز حفلات اليخوت في دبي للمناسبات وأعياد الميلاد وحفلات الزفاف مع يخوت فاخرة، ديكورات مميزة، طاقم محترف، وباقات خاصة بأسعار تنافسية تبدأ من 1,500 د.إ.",
       "ogTitle": "أفضل حفلات اليخوت في دبي | توت فن لليخوت",
       "ogDescription": "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي",
+      "canonical": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي"
+          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/"
         }
       ],
       "robots": null,
@@ -340,17 +340,17 @@
       "description": "تصفح خريطة الموقع لتوت فن لليخوت للوصول بسهولة إلى صفحات تأجير اليخوت، الحفلات، الرحلات البحرية، والباقات المتوفرة في دبي.",
       "ogTitle": "خريطة الموقع | توت فن لليخوت",
       "ogDescription": "روابط جميع صفحات وخدمات توت فن لليخوت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/خريطة-الموقع",
+      "ogUrl": "https://dubai-yacht.ae/خريطة-الموقع/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/خريطة-الموقع",
+      "canonical": "https://dubai-yacht.ae/خريطة-الموقع/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/خريطة-الموقع"
+          "href": "https://dubai-yacht.ae/خريطة-الموقع/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/خريطة-الموقع"
+          "href": "https://dubai-yacht.ae/خريطة-الموقع/"
         }
       ],
       "robots": null,
@@ -367,17 +367,17 @@
       "description": "احجز أفضل رحلات صيد السمك في دبي مع قوارب مجهزة، معدات صيد، طاقم محترف، وخيارات خاصة أو مشتركة بأسعار مميزة.",
       "ogTitle": "أفضل رحلات صيد السمك في دبي | توت فن لليخوت",
       "ogDescription": "رحلات صيد خاصة ومشتركة في دبي مع تجهيزات كاملة.",
-      "ogUrl": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي",
+      "canonical": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي"
+          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي"
+          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/"
         }
       ],
       "robots": null,
@@ -394,17 +394,17 @@
       "description": "تعرّف على سياسة الإلغاء والاسترداد لدى توت فن لليخوت، بما يشمل شروط الإلغاء، إعادة الجدولة، المبالغ المستردة، وحالات عدم الحضور.",
       "ogTitle": "سياسة الإلغاء | توت فن لليخوت",
       "ogDescription": "شروط الإلغاء، إعادة الجدولة واسترداد المبالغ.",
-      "ogUrl": "https://dubai-yacht.ae/سياسة-الإلغاء",
+      "ogUrl": "https://dubai-yacht.ae/سياسة-الإلغاء/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/سياسة-الإلغاء",
+      "canonical": "https://dubai-yacht.ae/سياسة-الإلغاء/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/سياسة-الإلغاء"
+          "href": "https://dubai-yacht.ae/سياسة-الإلغاء/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/سياسة-الإلغاء"
+          "href": "https://dubai-yacht.ae/سياسة-الإلغاء/"
         }
       ],
       "robots": null,
@@ -421,17 +421,17 @@
       "description": "توضح سياسة الخصوصية التزامنا بحماية معلوماتك الشخصية والحفاظ على سريتها عند استخدام موقع وخدمات توت فن لليخوت.",
       "ogTitle": "سياسة الخصوصية | توت فن لليخوت",
       "ogDescription": "كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها.",
-      "ogUrl": "https://dubai-yacht.ae/سياسة-الخصوصية",
+      "ogUrl": "https://dubai-yacht.ae/سياسة-الخصوصية/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/سياسة-الخصوصية",
+      "canonical": "https://dubai-yacht.ae/سياسة-الخصوصية/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/سياسة-الخصوصية"
+          "href": "https://dubai-yacht.ae/سياسة-الخصوصية/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/سياسة-الخصوصية"
+          "href": "https://dubai-yacht.ae/سياسة-الخصوصية/"
         }
       ],
       "robots": null,
@@ -448,17 +448,17 @@
       "description": "تعرّف على من نحن في توت فن لليخوت، وخبرتنا في تقديم خدمات تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
       "ogTitle": "من نحن | توت فن لليخوت",
       "ogDescription": "خبرتنا في تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/من-نحن",
+      "ogUrl": "https://dubai-yacht.ae/من-نحن/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/من-نحن",
+      "canonical": "https://dubai-yacht.ae/من-نحن/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/من-نحن"
+          "href": "https://dubai-yacht.ae/من-نحن/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/من-نحن"
+          "href": "https://dubai-yacht.ae/من-نحن/"
         }
       ],
       "robots": null,
@@ -475,17 +475,17 @@
       "description": "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة. أسطول متنوع من 40 حتى 105 قدم، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
       "ogTitle": "يخوت للإيجار في دبي | توت فن لليخوت",
       "ogDescription": "أسطول 15 يخت فاخر للإيجار في دبي — من 40 قدم حتى 105 قدم.",
-      "ogUrl": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي",
+      "ogUrl": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي",
+      "canonical": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/",
       "alternates": [
         {
           "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي"
+          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي"
+          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/"
         }
       ],
       "robots": null,

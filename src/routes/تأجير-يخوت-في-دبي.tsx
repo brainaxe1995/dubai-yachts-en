@@ -5,7 +5,8 @@ import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { yachts, faqs, occasions } from "@/data/site";
+import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
+import { KeywordCloud } from "@/components/KeywordCloud";
 
 export const Route = createFileRoute("/تأجير-يخوت-في-دبي")({
   head: () => ({
@@ -21,12 +22,12 @@ export const Route = createFileRoute("/تأجير-يخوت-في-دبي")({
         property: "og:description",
         content: "أسطول متنوع من اليخوت الفاخرة للإيجار في دبي بأسعار تنافسية.",
       },
-      { property: "og:url", content: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي" },
+      { property: "og:url", content: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/" },
     ],
     scripts: [
       {
@@ -121,11 +122,22 @@ function YachtRental() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة عن تأجير اليخوت" />
+        <SectionHeading
+          title="أسئلة شائعة عن تأجير اليخوت"
+          subtitle="إجابات لأكثر الأسئلة شيوعًا قبل تأجير يختك في دبي."
+        />
         <Accordion items={faqs} />
       </section>
 
       <ContactCta />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
+          subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."
+        />
+        <KeywordCloud items={keywordCloud["/تأجير-يخوت-في-دبي/"].map((k) => ({ keyword: k, to: "/تأجير-يخوت-في-دبي/" }))} />
+      </section>
     </>
   );
 }

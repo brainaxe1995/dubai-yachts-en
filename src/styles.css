@@ -218,6 +218,28 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide default scrollbar on the testimonial track */
+.testimonials-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.testimonials-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee for extras strip */
+@keyframes marquee-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+.marquee-track {
+  animation: marquee-rtl 40s linear infinite;
+  will-change: transform;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 /* Blog post intro lead — magazine-style drop cap on first letter */
 .intro-lead::first-letter {
   float: right;

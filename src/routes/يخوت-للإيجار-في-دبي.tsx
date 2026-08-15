@@ -6,8 +6,9 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
-import { yachts, stepsYacht } from "@/data/site";
+import { yachts, stepsYacht, keywordCloud } from "@/data/site";
 
 const yachtFaqs = [
   { q: "ما أرخص يخت للإيجار في دبي؟", a: "يبدأ ميني يخت 40 قدم من 450 درهم للساعة، ويتسع لـ 10 ضيوف مع غرفة نوم واحدة." },
@@ -27,21 +28,21 @@ export const Route = createFileRoute("/يخوت-للإيجار-في-دبي")({
         content:
           "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة. أسطول متنوع من 40 حتى 105 قدم، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
       },
-      { name: "keywords", content: "يخوت للإيجار في دبي, تأجير يخت دبي, يخت خاص دبي, يخوت فاخرة, يخت مارينا دبي, تأجير يخت رخيص, majesty azimut sunseeker ferretti" },
+      { name: "keywords", content: "يخوت للإيجار في دبي, تأجير يخت دبي, يخت خاص دبي, يخوت فاخرة, يخت مارينا دبي" },
       { property: "og:title", content: "يخوت للإيجار في دبي | توت فن لليخوت" },
       { property: "og:description", content: "أسطول 15 يخت فاخر للإيجار في دبي — من 40 قدم حتى 105 قدم." },
-      { property: "og:url", content: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي" },
+      { property: "og:url", content: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/" },
     ],
     scripts: [
       faqSchema(yachtFaqs),
       breadcrumbSchema([
         { name: "الرئيسية", url: "https://dubai-yacht.ae/" },
-        { name: "يخوت للإيجار", url: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي" },
+        { name: "يخوت للإيجار", url: "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/" },
       ]),
     ],
   }),
@@ -65,23 +66,41 @@ function YachtsForRent() {
         subtitle="اختر من مجموعة متنوعة من اليخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة."
       />
 
-      <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-        <Reveal className="text-center">
-          <h2 className="text-2xl text-foreground md:text-3xl">أكبر أسطول يخوت للإيجار في دبي</h2>
-          <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
-          <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            تفخر توت فن لليخوت بامتلاك أحد أكبر وأشهر أساطيل <strong>اليخوت للإيجار في دبي</strong> — 15 يختًا فاخرًا
-            من أشهر ماركات العالم: Majesty، Azimut، Sunseeker، Ferretti، وGulf Craft. تتراوح مقاسات يخوتنا من 40 قدم
-            وحتى 105 قدم، وتناسب من رحلة عائلية بسيطة حتى فعالية شركات كبرى تستوعب 90 ضيفًا.
-          </p>
-          <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            جميع يخوتنا مرخّصة ومؤمّنة بالكامل، تنطلق من دبي مارينا مع طاقم محترف يتحدث عدة لغات، وأسعار تنافسية شفافة
-            تبدأ من 450 درهم للساعة.
-          </p>
-        </Reveal>
+      {/* Products FIRST */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="جميع اليخوت المتاحة للإيجار في دبي"
+          subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {yachts.map((p, i) => (
+            <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
+          ))}
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:pb-24">
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4">
+          <Reveal className="text-center">
+            <h2 className="text-2xl text-foreground md:text-3xl">أكبر أسطول يخوت للإيجار في دبي</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              نظرة كاملة على الأسطول والماركات العالمية المتوفرة في توت فن.
+            </p>
+            <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              تفخر توت فن لليخوت بامتلاك أحد أكبر وأشهر أساطيل <strong>اليخوت للإيجار في دبي</strong> — 15 يختًا فاخرًا
+              من أشهر ماركات العالم: Majesty، Azimut، Sunseeker، Ferretti، وGulf Craft. تتراوح مقاسات يخوتنا من 40 قدم
+              وحتى 105 قدم، وتناسب من رحلة عائلية بسيطة حتى فعالية شركات كبرى تستوعب 90 ضيفًا.
+            </p>
+            <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              جميع يخوتنا مرخّصة ومؤمّنة بالكامل، تنطلق من دبي مارينا مع طاقم محترف يتحدث عدة لغات، وأسعار تنافسية شفافة
+              تبدأ من 450 درهم للساعة.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <SectionHeading
           title="لماذا نحن الخيار الأفضل لإيجار يخت"
           subtitle="ما يميّز توت فن عن غيرها في سوق اليخوت الإماراتي."
@@ -102,28 +121,30 @@ function YachtsForRent() {
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            title="جميع اليخوت المتاحة للإيجار في دبي"
-            subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
+            title="كيف تستأجر يخت في دبي"
+            subtitle="خطوات سهلة لحجز يختك والاستمتاع بتجربة فاخرة لا تُنسى."
           />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {yachts.map((p, i) => (
-              <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
-            ))}
-          </div>
+          <BookingSteps steps={stepsYacht} />
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-        <SectionHeading title="كيف تستأجر يخت في دبي" subtitle="خطوات سهلة لحجز يختك والاستمتاع بتجربة فاخرة لا تُنسى." />
-        <BookingSteps steps={stepsYacht} />
-      </section>
-
-      <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة عن إيجار اليخوت في دبي" />
+      <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أسئلة شائعة عن إيجار اليخوت في دبي"
+          subtitle="إجابات على أهم الأسئلة قبل حجز يختك."
+        />
         <Accordion items={yachtFaqs} />
       </section>
 
       <ContactCta />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
+          subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."
+        />
+        <KeywordCloud items={keywordCloud["/يخوت-للإيجار-في-دبي/"].map((k) => ({ keyword: k, to: "/يخوت-للإيجار-في-دبي/" }))} />
+      </section>
     </>
   );
 }

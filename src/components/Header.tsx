@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import { CONTACT } from "@/data/site";
 
 const nav = [

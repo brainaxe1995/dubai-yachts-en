@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Users, Bed, Ruler, Clock, Phone, CheckCircle2, X, Sparkles, Info } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Users, Bed, Ruler, Clock, Phone, CheckCircle2, X, Sparkles, Info, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -28,6 +28,95 @@ function buildWhatsAppLink(title: string, price: string) {
   return `${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
+function ImageSlider({ images, alt, length, guests }: { images: string[]; alt: string; length: string; guests: string }) {
+  const [idx, setIdx] = useState(0);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const count = images.length;
+
+  function go(delta: number) {
+    setIdx((i) => (i + delta + count) % count);
+  }
+
+  return (
+    <div className="group/slider relative aspect-[16/10] overflow-hidden bg-primary-deep">
+      {/* Track */}
+      <div
+        ref={trackRef}
+        className="flex h-full w-full transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{ transform: `translateX(${idx * (100 / count)}%)`, width: `${count * 100}%` }}
+      >
+        {images.map((src, i) => (
+          <div key={i} className="flex h-full items-center justify-center" style={{ width: `${100 / count}%` }}>
+            <img
+              src={src}
+              alt={i === 0 ? alt : `${alt} — ${i + 1}`}
+              loading={i === 0 ? "eager" : "lazy"}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Overlay + specs */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
+        {length ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
+            <Ruler className="h-3 w-3 text-gold" />
+            {length}
+          </span>
+        ) : null}
+        {guests ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
+            <Users className="h-3 w-3 text-gold" />
+            {guests}
+          </span>
+        ) : null}
+      </div>
+
+      {/* Arrows — only visible on card or slider hover */}
+      {count > 1 ? (
+        <>
+          <button
+            type="button"
+            aria-label="السابق"
+            onClick={() => go(-1)}
+            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label="التالي"
+            onClick={() => go(1)}
+            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+
+          {/* Dots */}
+          <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`صورة ${i + 1}`}
+                onClick={() => setIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === idx ? "w-6 bg-gold" : "w-1.5 bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
   const { guests, bedrooms, length, duration, extras } = parseSpecs(product.specs);
   const priceNumber = product.price.match(/[\d,]+/)?.[0] ?? product.price;
@@ -35,37 +124,13 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
   const waLink = buildWhatsAppLink(product.title, product.price);
   const [modalOpen, setModalOpen] = useState(false);
   const hasIncluded = Boolean(product.included && product.included.length);
+  const images = product.images && product.images.length > 0 ? product.images : [product.image];
 
   return (
     <>
       <Reveal as="article" delay={delay} className="h-full">
         <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-luxe ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2">
-          {/* Image */}
-          <div className="relative aspect-[4/3] overflow-hidden bg-primary-deep">
-            <img
-              src={product.image}
-              alt={product.title}
-              loading="lazy"
-              width={1200}
-              height={900}
-              className="h-full w-full scale-105 object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
-            <div className="absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
-              {length ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-black/45 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
-                  <Ruler className="h-3 w-3 text-gold" />
-                  {length}
-                </span>
-              ) : null}
-              {guests ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-black/45 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
-                  <Users className="h-3 w-3 text-gold" />
-                  {guests}
-                </span>
-              ) : null}
-            </div>
-          </div>
+          <ImageSlider images={images} alt={product.title} length={length} guests={guests} />
 
           {/* Content */}
           <div className="flex flex-1 flex-col gap-3 p-5">
@@ -75,13 +140,14 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
               </span>
             </h3>
 
+            <p className="text-sm leading-relaxed text-muted-foreground">{product.desc}</p>
+
+            {/* Price after description */}
             <div className="flex items-baseline gap-2 border-y border-gold/20 py-2.5">
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">تبدأ من</span>
               <span className="text-2xl font-extrabold text-gold-deep">{priceNumber}</span>
               <span className="text-xs font-bold text-muted-foreground">{priceUnit}</span>
             </div>
-
-            <p className="text-sm leading-relaxed text-muted-foreground">{product.desc}</p>
 
             <div className="mt-1 grid grid-cols-3 gap-2 rounded-xl border border-border bg-muted/60 p-3 text-center text-xs">
               <div className="flex flex-col items-center gap-1">
@@ -214,7 +280,7 @@ function IncludedModal({
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-10 scale-95 opacity-0"
         }`}
       >
-        <div className="relative aspect-[16/7] overflow-hidden bg-primary-deep">
+        <div className="relative aspect-[16/10] overflow-hidden bg-primary-deep">
           <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
           <button

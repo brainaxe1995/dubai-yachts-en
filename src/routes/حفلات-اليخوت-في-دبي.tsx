@@ -6,8 +6,9 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
-import { parties, stepsParty } from "@/data/site";
+import { parties, stepsParty, keywordCloud } from "@/data/site";
 import partyImg from "@/assets/parties/wedding.webp";
 
 const partyFaqs = [
@@ -42,18 +43,18 @@ export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
       { name: "keywords", content: "حفلات يخوت دبي, حفلة عيد ميلاد يخت, حفل زفاف يخت, طلب زواج على يخت, حفلة تخرج, ذكرى سنوية, يخت مارينا دبي" },
       { property: "og:title", content: "أفضل حفلات اليخوت في دبي | توت فن لليخوت" },
       { property: "og:description", content: "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي." },
-      { property: "og:url", content: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي" },
+      { property: "og:url", content: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي" },
+      { rel: "canonical", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/" },
     ],
     scripts: [
       faqSchema(partyFaqs),
       breadcrumbSchema([
         { name: "الرئيسية", url: "https://dubai-yacht.ae/" },
-        { name: "حفلات اليخوت", url: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي" },
+        { name: "حفلات اليخوت", url: "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/" },
       ]),
     ],
   }),
@@ -71,24 +72,47 @@ function Parties() {
         subtitle="استمتع بأفضل حفلات اليخوت في دبي مع يخوت فاخرة، رحلات خاصة، وخيارات مثالية لأعياد الميلاد والمناسبات."
       />
 
-      <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-        <Reveal className="text-center">
-          <h2 className="text-2xl text-foreground md:text-3xl">دليلك لتنظيم حفلة يخت لا تُنسى في دبي</h2>
-          <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
-          <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            تحوّلت <strong>حفلات اليخوت في دبي</strong> إلى الخيار الأول لعشاق الاحتفالات المميزة — من أعياد الميلاد
-            وحفلات الخطوبة والزفاف، إلى طلبات الزواج الرومانسية وفعاليات الشركات. توفّر توت فن لليخوت أسطولاً متنوعًا
-            من اليخوت الفاخرة يبدأ من 48 قدم ويصل إلى 105 قدم، مع باقات مخصّصة لكل مناسبة.
-          </p>
-          <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
-            نغطّي لك كل تفاصيل الحفلة: الديكور، الكيك، الموسيقى، التصوير، والضيافة. تنطلق الحفلات من دبي مارينا مع
-            إطلالات ساحرة على عين دبي، JBR، نخلة جميرا، وبرج العرب.
-          </p>
-        </Reveal>
+      {/* Products FIRST (right after hero) */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="باقات لجميع حفلات اليخوت في دبي"
+          subtitle="اختر نوع الحفلة التي تناسب ميزانيتك واحتفل على متن يخت في دبي."
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {parties.map((p, i) => (
+            <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
+          ))}
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أنواع الحفلات التي ننظّمها" subtitle="اختر نوع مناسبتك ونحن نتكفّل بالباقي." />
+      {/* Long intro */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4">
+          <Reveal className="text-center">
+            <h2 className="text-2xl text-foreground md:text-3xl">دليلك لتنظيم حفلة يخت لا تُنسى في دبي</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              كل ما تحتاج معرفته لتنظيم حفلة استثنائية على متن يخت فاخر في دبي — من اختيار اليخت وحتى تفاصيل الديكور.
+            </p>
+            <div className="mx-auto mt-3 h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-6 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              تحوّلت <strong>حفلات اليخوت في دبي</strong> إلى الخيار الأول لعشاق الاحتفالات المميزة — من أعياد الميلاد
+              وحفلات الخطوبة والزفاف، إلى طلبات الزواج الرومانسية وفعاليات الشركات. توفّر توت فن لليخوت أسطولاً متنوعًا
+              من اليخوت الفاخرة يبدأ من 48 قدم ويصل إلى 105 قدم، مع باقات مخصّصة لكل مناسبة.
+            </p>
+            <p className="mt-4 text-start text-sm leading-loose text-muted-foreground md:text-base">
+              نغطّي لك كل تفاصيل الحفلة: الديكور، الكيك، الموسيقى، التصوير، والضيافة. تنطلق الحفلات من دبي مارينا مع
+              إطلالات ساحرة على عين دبي، JBR، نخلة جميرا، وبرج العرب.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Occasion types */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أنواع الحفلات التي ننظّمها"
+          subtitle="اختر نوع مناسبتك ونحن نتكفّل بالباقي."
+        />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {occasionTypes.map((o, i) => (
             <Reveal key={o.t} delay={i * 60}>
@@ -105,25 +129,20 @@ function Parties() {
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            title="باقات لجميع حفلات اليخوت في دبي"
-            subtitle="اختر نوع الحفلة التي تناسب ميزانيتك واحتفل على متن يخت في دبي."
+            title="كيف تحجز حفلة يخت في دبي"
+            subtitle="خطوات بسيطة لتنظيم حفلة يخت مميزة في دبي."
           />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {parties.map((p, i) => (
-              <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
-            ))}
-          </div>
+          <BookingSteps steps={stepsParty} />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-        <SectionHeading title="كيف تحجز حفلة يخت في دبي" subtitle="خطوات بسيطة لتنظيم حفلة يخت مميزة في دبي." />
-        <BookingSteps steps={stepsParty} />
       </section>
 
       <section className="surface-navy py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <SectionHeading onDark title="لماذا حفلة اليخت مختلفة" />
+          <SectionHeading
+            onDark
+            title="لماذا حفلة اليخت مختلفة"
+            subtitle="أربعة أسباب تجعل حفلة يخت في دبي تجربة استثنائية لا تنافسها أي قاعة."
+          />
           <div className="grid gap-4 text-start sm:grid-cols-2">
             <div className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 p-5">
               <h3 className="text-base font-bold text-primary-foreground">خصوصية تامة</h3>
@@ -146,7 +165,10 @@ function Parties() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-        <SectionHeading title="أسئلة شائعة عن حفلات اليخوت في دبي" />
+        <SectionHeading
+          title="أسئلة شائعة عن حفلات اليخوت في دبي"
+          subtitle="إجابات سريعة على أهم الأسئلة قبل حجز حفلتك."
+        />
         <Accordion items={partyFaqs} />
       </section>
 
@@ -154,6 +176,14 @@ function Parties() {
         title="جاهز لحفلتك على اليخت؟"
         subtitle="تواصل معنا لتخصيص الباقة المناسبة والحصول على أفضل الأسعار."
       />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
+          subtitle="اكتشف أكثر عمليات البحث شيوعًا حول حفلات اليخوت والاحتفالات البحرية في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."
+        />
+        <KeywordCloud items={keywordCloud["/حفلات-اليخوت-في-دبي/"].map((k) => ({ keyword: k, to: "/حفلات-اليخوت-في-دبي/" }))} />
+      </section>
     </>
   );
 }

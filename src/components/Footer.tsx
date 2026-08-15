@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, Linkedin } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import paymentImg from "@/assets/branding/payment-methods.webp";
 import { CONTACT } from "@/data/site";
 import { DEFAULT_CONFIG, getConfig } from "@/data/config";
@@ -26,19 +26,20 @@ const discover = [
 
 const socialDefs = [
   { key: "instagram" as const, icon: Instagram, label: "إنستغرام" },
-  { key: "tiktok" as const, icon: Music2, label: "تيك توك" },
-  { key: "snapchat" as const, icon: Ghost, label: "سناب شات" },
   { key: "facebook" as const, icon: Facebook, label: "فيسبوك" },
   { key: "youtube" as const, icon: Youtube, label: "يوتيوب" },
+  { key: "tiktok" as const, icon: Music2, label: "تيك توك" },
   { key: "x" as const, icon: Twitter, label: "X" },
+  { key: "linkedin" as const, icon: Linkedin, label: "لينكدإن" },
+  { key: "snapchat" as const, icon: Ghost, label: "سناب شات" },
 ];
 
 function ColTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="relative mb-6 pb-3 text-base font-bold text-gold">
+    <h4 className="relative mb-6 pb-3 text-base font-bold text-gold">
       {children}
       <span className="absolute bottom-0 start-0 h-px w-12 bg-gold/70" />
-    </h3>
+    </h4>
   );
 }
 

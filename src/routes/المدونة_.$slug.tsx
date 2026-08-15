@@ -57,7 +57,7 @@ export const Route = createFileRoute("/المدونة_/$slug")({
         },
         breadcrumbSchema([
           { name: "الرئيسية", url: "https://dubai-yacht.ae/" },
-          { name: "المدونة", url: "https://dubai-yacht.ae/المدونة" },
+          { name: "المدونة", url: "https://dubai-yacht.ae/المدونة/" },
           { name: p.title, url },
         ]),
       ],
