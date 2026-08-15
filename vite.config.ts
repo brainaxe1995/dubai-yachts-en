@@ -53,6 +53,8 @@ export default defineConfig({
       "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
       "/sitemap.xml": { headers: { "cache-control": "public, max-age=3600" } },
     },
+    // Compress public assets (brotli + gzip) at build time — Nitro serves .br/.gz automatically
+    compressPublicAssets: { brotli: true, gzip: true },
   } as never,
   vite: {
     plugins: [seoValidationPlugin()],

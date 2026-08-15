@@ -276,11 +276,12 @@ function IncludedModal({
         onClick={onClose}
       />
       <div
-        className={`relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-gold/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl bg-card shadow-luxe ring-1 ring-gold/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-10 scale-95 opacity-0"
         }`}
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-primary-deep">
+        {/* Header image — shrinks on small screens */}
+        <div className="relative aspect-[16/10] max-h-[32vh] shrink-0 overflow-hidden bg-primary-deep sm:max-h-[38vh]">
           <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
           <button
@@ -291,14 +292,14 @@ function IncludedModal({
           >
             <X className="h-5 w-5" />
           </button>
-          <div className="absolute inset-x-0 bottom-0 p-5">
+          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
             <div className="inline-flex items-center gap-2 rounded-full bg-gold/95 px-3 py-1 text-xs font-bold text-primary-deep">
               <Sparkles className="h-3 w-3" />
               ماذا تشمل هذه الباقة
             </div>
             <h3
               id={`incl-title-${product.title}`}
-              className="mt-2 text-xl font-extrabold text-primary-foreground md:text-2xl"
+              className="mt-2 text-lg font-extrabold leading-tight text-primary-foreground sm:text-xl md:text-2xl"
             >
               {product.title}
             </h3>
@@ -310,7 +311,8 @@ function IncludedModal({
           </div>
         </div>
 
-        <div className="max-h-[55vh] overflow-y-auto p-6">
+        {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto p-5 sm:p-6">
           <h4 className="mb-4 text-base font-bold text-gold-deep">
             <CheckCircle2 className="me-2 inline h-5 w-5" />
             يشمل السعر
@@ -348,7 +350,8 @@ function IncludedModal({
           ) : null}
         </div>
 
-        <div className="flex flex-wrap gap-3 border-t border-border bg-muted/40 p-5">
+        {/* Sticky footer */}
+        <div className="flex shrink-0 flex-wrap gap-3 border-t border-border bg-muted/40 p-4 sm:p-5">
           <a
             href={waLink}
             target="_blank"

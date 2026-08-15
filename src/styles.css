@@ -259,6 +259,18 @@ button {
   transition-duration: 300ms;
 }
 
+/* Default all buttons + anchors with href to pointer cursor (Tailwind preflight removes it) */
+button:not(:disabled),
+a[href],
+[role="button"],
+summary {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
