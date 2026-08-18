@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
@@ -164,6 +165,8 @@ function YachtsForRent() {
           <FeatureBlocks blocks={rentalIncludedFeatures} />
         </div>
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading

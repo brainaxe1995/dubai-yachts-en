@@ -4,6 +4,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { BookingSteps } from "@/components/BookingSteps";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { Accordion } from "@/components/Accordion";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
@@ -113,6 +114,8 @@ function YachtBooking() {
         />
         <BookingSteps steps={stepsYacht} />
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading

@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, keywordCloud } from "@/data/site";
@@ -153,6 +154,8 @@ function RentYacht() {
           </div>
         </div>
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading title="أسئلة شائعة عن إيجار اليخوت" subtitle="أهم ما يطرحه ضيوفنا حول الرحلات والأسعار." />
