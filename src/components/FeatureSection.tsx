@@ -1,11 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { renderInline } from "@/lib/rich-text";
 
-/**
- * Renders a single-column "topic" panel — headline + subtitle + paragraph body + optional side image.
- * Keywords wrapped as `__bold__` render as gold-highlighted <strong>.
- * Layout auto-alternates image side by index for editorial feel.
- */
 export type FeatureBlock = {
   h: string;
   icon?: LucideIcon;
@@ -13,20 +9,6 @@ export type FeatureBlock = {
   imageAlt?: string;
   p: string[];
 };
-
-function renderInline(text: string) {
-  const parts = text.split(/(__[^_]+__)/g);
-  return parts.map((part, idx) => {
-    if (part.startsWith("__") && part.endsWith("__")) {
-      return (
-        <strong key={idx} className="font-bold text-gold-deep">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return <span key={idx}>{part}</span>;
-  });
-}
 
 export function FeatureBlocks({ blocks }: { blocks: FeatureBlock[] }) {
   return (

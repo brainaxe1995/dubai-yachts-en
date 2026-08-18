@@ -1,31 +1,13 @@
 import type { LucideIcon } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { renderInline } from "@/lib/rich-text";
 
 export type LegalBlock = {
   h: string;
   icon?: LucideIcon;
-  /**
-   * Paragraph text. Substrings wrapped as `__bold text__` render as gold-highlighted <strong>.
-   * Lines starting with `- ` render as bulleted list items.
-   */
   p: string[];
 };
-
-function renderInline(text: string) {
-  // Split by __...__ markers and wrap in <strong>
-  const parts = text.split(/(__[^_]+__)/g);
-  return parts.map((part, idx) => {
-    if (part.startsWith("__") && part.endsWith("__")) {
-      return (
-        <strong key={idx} className="font-bold text-gold-deep">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return <span key={idx}>{part}</span>;
-  });
-}
 
 function renderParagraph(text: string, index: number) {
   const trimmed = text.trim();

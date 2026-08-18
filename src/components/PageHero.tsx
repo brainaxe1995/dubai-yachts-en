@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import heroImg from "@/assets/hero-yacht.webp";
 import { BookButton, CallButton } from "./CtaButtons";
 import { Reveal } from "./Reveal";
+import { renderInline } from "@/lib/rich-text";
 
 export function PageHero({
   title,
@@ -46,7 +47,7 @@ export function PageHero({
         {subtitle ? (
           <Reveal delay={140}>
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 md:text-base">
-              {subtitle}
+              {renderInline(subtitle)}
             </p>
           </Reveal>
         ) : null}
@@ -77,7 +78,7 @@ export function SectionHeading({
   return (
     <Reveal className="mx-auto mb-10 max-w-3xl text-center">
       <h2 className={`text-2xl md:text-3xl ${titleColor}`}>{title}</h2>
-      {subtitle ? <p className={`mt-4 text-sm leading-relaxed md:text-base ${subColor}`}>{subtitle}</p> : null}
+      {subtitle ? <p className={`mt-4 text-sm leading-relaxed md:text-base ${subColor}`}>{renderInline(subtitle)}</p> : null}
       <span className="mx-auto mt-5 block h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
     </Reveal>
   );

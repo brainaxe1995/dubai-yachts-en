@@ -12,12 +12,12 @@ import {
   ChevronLeft,
   ChevronRight,
   Share2,
-  Expand,
 } from "lucide-react";
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Reveal } from "./Reveal";
+import { renderInline } from "@/lib/rich-text";
 
 function parseSpecs(specs: string[]) {
   let guests = "";
@@ -37,7 +37,7 @@ function parseSpecs(specs: string[]) {
   // Track which original strings were consumed by primary slots
   const consumed = new Set<string>();
   for (const s of uniq) {
-    if (!guests && /ضيف|شخص/.test(s)) {
+    if (!guests && /ضيف|ضيوف|شخص|أشخاص/.test(s)) {
       guests = s;
       consumed.add(s);
     } else if (!bedrooms && (/غرف|نوم|غرفة/.test(s) || /بدون غرف/.test(s))) {
@@ -125,8 +125,8 @@ function ImageSlider({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      {/* Length/guests pills — top-start (RTL right corner) */}
-      <div className="pointer-events-none absolute inset-x-4 top-3 flex flex-wrap items-center gap-2">
+      {/* Length/guests pills — bottom-start */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
         {length ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
             <Ruler className="h-3 w-3 text-gold" />
@@ -140,11 +140,6 @@ function ImageSlider({
           </span>
         ) : null}
       </div>
-
-      {/* Expand hint — bottom-start corner (RTL right), always visible small badge on hover */}
-      <span className="pointer-events-none absolute start-3 bottom-3 z-10 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white opacity-0 backdrop-blur-md ring-1 ring-white/15 transition-opacity duration-500 group-hover/slider:opacity-100">
-        <Expand className="h-4 w-4" />
-      </span>
 
       {count > 1 ? (
         <>
@@ -171,8 +166,8 @@ function ImageSlider({
             <ChevronLeft className="h-4 w-4" />
           </button>
 
-          {/* Progress dots — bottom center */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center gap-1.5">
+          {/* Progress dots — top center */}
+          <div className="pointer-events-none absolute inset-x-0 top-3 z-10 flex justify-center gap-1.5">
             {images.map((_, i) => (
               <button
                 key={i}
@@ -221,7 +216,7 @@ function ShareButton({ title, url }: { title: string; url: string }) {
         e.stopPropagation();
         trigger();
       }}
-      className="absolute end-3 bottom-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-gold/95 text-primary-deep shadow-md ring-2 ring-white/30 transition-transform duration-300 hover:scale-110"
+      className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-gold/60 text-gold transition-all hover:bg-gold hover:text-primary-deep hover:scale-105 active:scale-95"
     >
       <Share2 className="h-4 w-4" />
       {ripple ? (
@@ -365,9 +360,6 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
     <>
       <Reveal as="article" delay={delay} className="h-full">
         <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-luxe ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2">
-          {/* Share button — top-right absolute over image */}
-          <ShareButton title={product.title} url={shareUrl} />
-
           <ImageSlider
             images={images}
             alt={product.title}
@@ -386,7 +378,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
               </span>
             </h3>
 
-            <p className="text-sm leading-relaxed text-muted-foreground">{product.desc}</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">{renderInline(product.desc)}</p>
 
             <div className="flex items-baseline gap-2 border-y border-gold/20 py-2.5">
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">تبدأ من</span>
@@ -453,6 +445,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                   <Phone className="h-4 w-4" />
                 </a>
               )}
+              <ShareButton title={product.title} url={shareUrl} />
             </div>
           </div>
         </div>
