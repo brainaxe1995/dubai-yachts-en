@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Coffee, Sparkles, Waves, Gift } from "lucide-react";
+import { Coffee, Sparkles, Waves, Gift, Wine, Sunrise } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -7,10 +7,46 @@ import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { CharterEssentials } from "@/components/CharterEssentials";
+import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
-import packagesImg from "@/assets/packages/romantic-dinner.webp";
+import pkgBreakfastImg from "@/assets/packages/breakfast/breakfast-1.webp";
+import pkgRomanticImg from "@/assets/packages/romantic-dinner/romantic-dinner-1.webp";
+import pkgJetskiImg from "@/assets/packages/jetski/jetski-1.webp";
+
+const pkgFeatures = [
+  {
+    h: "باقة الإفطار — بداية يوم بحرية هادئة",
+    icon: Sunrise,
+    image: pkgBreakfastImg,
+    imageAlt: "باقة إفطار على يخت في دبي",
+    p: [
+      "ابدأ صباحك على متن يخت في __دبي مارينا__ مع باقة إفطار عربي كاملة — فول، حمص، جبن، بيض، لبنة، عسل، بلح، قهوة عربية، وعصائر طازجة. رحلة 4 ساعات هادئة قبل ازدحام النهار.",
+      "الباقة تشمل __جولة جيت سكي لمدة ساعة__ كبونس مجاني — تجربة صباحية متكاملة بأفضل سعر ومنظر شروق شمس ساحر على أفق دبي.",
+    ],
+  },
+  {
+    h: "باقة العشاء الرومانسي — لحظة لن تُنسى",
+    icon: Wine,
+    image: pkgRomanticImg,
+    imageAlt: "باقة عشاء رومانسي على يخت",
+    p: [
+      "أمسية خاصة لشخصين على يخت 48 قدم مع __وجبة مشاوي فاخرة__، __كيكة رومانسية__، و__زجاجة شمبانيا__. ديكور رومانسي، إضاءة شموع، وموسيقى هادئة.",
+      "تنطلق الرحلة قبل الغروب لتلتقط أفضل لحظات الضوء الذهبي على __نخلة جميرا__ و__برج العرب__ — خلفية سينمائية لطلب زواج أو ذكرى سنوية.",
+    ],
+  },
+  {
+    h: "باقة اليخت + الجيت سكي — للمغامرين",
+    icon: Waves,
+    image: pkgJetskiImg,
+    imageAlt: "باقة جيت سكي على يخت",
+    p: [
+      "اجمع بين هدوء __الإبحار على يخت__ وإثارة __الجيت سكي الاحترافي__ لمدة ساعة كاملة. مدرب معتمد يرافقك مع سترات نجاة لجميع الركاب. رحلة 4 ساعات مليئة بالحماس.",
+      "إضافات اختيارية: __بانانا بوت__، __دونات رايد__، وبوفيه ميكس قرل بـ100 د.إ للشخص — تجربة كاملة للأصدقاء والعائلات.",
+    ],
+  },
+];
 
 const pkgFaqs = [
   { q: "ما الفرق بين الباقة والحجز العادي؟", a: "الباقة تشمل الرحلة + وجبة/تجربة معينة (إفطار، عشاء، جيت سكي) بسعر ثابت. الحجز العادي هو تأجير اليخت فقط بالساعة، وأنت تختار الإضافات." },
@@ -96,6 +132,10 @@ function Packages() {
             </p>
           </Reveal>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+        <FeatureBlocks blocks={pkgFeatures} />
       </section>
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">

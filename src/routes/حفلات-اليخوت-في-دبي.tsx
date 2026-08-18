@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Sparkles, Music, Cake, Camera, HeartHandshake, GraduationCap } from "lucide-react";
+import { Sparkles, Music, Cake, Camera, HeartHandshake, GraduationCap, Palette, Wand2, PartyPopper } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -7,10 +7,13 @@ import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { CharterEssentials } from "@/components/CharterEssentials";
+import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
-import partyImg from "@/assets/parties/wedding.webp";
+import partyWeddingImg from "@/assets/parties/wedding/wedding-1.webp";
+import partyBirthdayImg from "@/assets/parties/birthday/birthday-1.webp";
+import partyProposalImg from "@/assets/parties/proposal/proposal-1.webp";
 
 const partyFaqs = [
   {
@@ -25,6 +28,39 @@ const partyFaqs = [
   { q: "هل تنظمون حفلات مفاجأة؟", a: "نعم! نتعاون معك لتنظيم كل التفاصيل سرًا: الديكور، الكيك، الموسيقى، والمصور." },
   { q: "هل يمكن إقامة عقد قران على اليخت؟", a: "نعم، نوفر يخوت تناسب مراسم عقد القران مع مأذون خاص وتنظيم كامل — تواصل معنا للتفاصيل." },
   { q: "كم مقدم الحجز المطلوب؟", a: "عادة 30% من إجمالي المبلغ لتثبيت الحجز، والباقي يوم الرحلة." },
+];
+
+const partyFeatures = [
+  {
+    h: "لماذا حفلة اليخت مختلفة عن أي مكان آخر",
+    icon: Wand2,
+    image: partyWeddingImg,
+    imageAlt: "حفلة يخت فاخرة في دبي",
+    p: [
+      "لا شيء يقارَن بـ__حفلة على يخت في دبي__ — خصوصية تامة، إطلالة سينمائية على أفق المدينة، وأجواء لا يمكن استنساخها في أي فندق أو قاعة. اليخت مساحتك أنت وضيوفك فقط.",
+      "من __برج العرب__ إلى __نخلة جميرا__، تمر حفلتك بأشهر معالم دبي البحرية — خلفية فاخرة لكل صورة تلتقطها ولكل ذكرى تصنعها.",
+    ],
+  },
+  {
+    h: "أفكار مبتكرة لحفلة لا تُنسى",
+    icon: Palette,
+    image: partyBirthdayImg,
+    imageAlt: "أفكار ديكور حفلة يخت",
+    p: [
+      "نصمّم كل حفلة حسب طلبك: __ديكور فاخر__، __كيك مخصّص__، __دي جي محترف__، __مصوّر فوتوغرافي وفيديو__، بالونات، أعمدة ضوء، وممر ورد للحظات الوصول المميزة.",
+      "أفكار شائعة: __حفلة على ضوء الغروب__، __عشاء رومانسي على السطح العلوي__، __ديسكو ليلية بأضواء نيون__، أو __أمسية جاز حية__ — كل شيء ممكن.",
+    ],
+  },
+  {
+    h: "كيف نساعدك في التخطيط للحفلة",
+    icon: PartyPopper,
+    image: partyProposalImg,
+    imageAlt: "تخطيط حفلة يخت في دبي",
+    p: [
+      "خدمة تخطيط كاملة من فريق __توت فن__: ندرس أفكارك، نقترح اليخت المناسب لعدد ضيوفك، ثم نتولى الديكور والضيافة والتنسيق مع الموردين — كل ما عليك هو الحضور والاستمتاع.",
+      "للحفلات المفاجئة، نحافظ على __السرية التامة__ ونتعاون معك على كل تفصيل بعيدًا عن نظر الضيف الرئيسي — من الديكور إلى توقيت الوصول.",
+    ],
+  },
 ];
 
 const occasionTypes = [
@@ -110,6 +146,10 @@ function Parties() {
             </p>
           </Reveal>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+        <FeatureBlocks blocks={partyFeatures} />
       </section>
 
       {/* Occasion types */}

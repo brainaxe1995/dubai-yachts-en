@@ -90,15 +90,6 @@ export function Footer() {
             توت فن لليخوت — تأجير يخوت في دبي مع رحلات خاصة، حفلات، ورحلات صيد بأسعار تبدأ من 450 درهم للساعة.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <a
-              href={CONTACT.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="واتساب"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-            </a>
             {socialDefs.map((s) => {
               const url = social[s.key];
               if (!url) return null;

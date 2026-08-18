@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish, Sun, Users, Anchor, Waves, CheckCircle2, Target, Sparkles } from "lucide-react";
+import { Fish, Sun, Users, Anchor, Waves, CheckCircle2, Target, Sparkles, Compass, Award, LifeBuoy } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -7,9 +7,12 @@ import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { CharterEssentials } from "@/components/CharterEssentials";
+import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
-import fishingImg from "@/assets/fishing/shared.webp";
+import fishingSharedImg from "@/assets/fishing/shared/shared-1.webp";
+import fishingBoatImg from "@/assets/fishing/private-boat/private-boat-1.webp";
+import fishingYachtImg from "@/assets/fishing/private-yacht/private-yacht-1.webp";
 
 export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي")({
   head: () => ({
@@ -32,6 +35,39 @@ export const Route = createFileRoute("/رحلات-صيد-السمك-في-دبي"
   }),
   component: Fishing,
 });
+
+const fishingFeatures = [
+  {
+    h: "لماذا الصيد في دبي تجربة فريدة",
+    icon: Compass,
+    image: fishingSharedImg,
+    imageAlt: "رحلة صيد سمك في دبي",
+    p: [
+      "تعتبر __رحلات صيد السمك في دبي__ من أكثر التجارب البحرية طلبًا في الخليج، فمياه دبي غنية بأنواع نادرة من الأسماك مثل __الهامور والشعري والكنعد__، مع طقس مثالي لممارسة الصيد على مدار العام تقريبًا.",
+      "أسطولنا ينطلق من __مارينا دبي__ ويصل خلال دقائق إلى أفضل مواقع الصيد قرب الشعاب المرجانية والجزر الاصطناعية — تجربة قصيرة السفر لكنها عميقة الإثارة.",
+    ],
+  },
+  {
+    h: "كيف تختار قارب الصيد المناسب",
+    icon: Award,
+    image: fishingYachtImg,
+    imageAlt: "قوارب صيد خاصة في دبي",
+    p: [
+      "نوفّر ثلاثة أنواع من الرحلات: __الصيد الخاص باليخت__ (فخامة كاملة وخصوصية تامة)، __الصيد الخاص بالقارب__ (اقتصادي وسريع)، و__الرحلة المشتركة__ (مثالي للأفراد الذين يريدون تجربة الصيد بأسعار مناسبة).",
+      "كل قارب مجهّز بمعدات صيد احترافية، __أدوات ملاحة GPS__، وسترات نجاة معتمدة — مع __قبطان مرخّص__ يعرف بدقة أفضل مواقع الصيد حسب الموسم.",
+    ],
+  },
+  {
+    h: "نصائح لتجربة صيد ناجحة",
+    icon: LifeBuoy,
+    image: fishingBoatImg,
+    imageAlt: "نصائح صيد السمك في دبي",
+    p: [
+      "ابدأ الرحلة مبكرًا — __الصباح الباكر__ أو __قبل الغروب__ هي أفضل أوقات التغذية عند الأسماك. تجنّب ساعات الظهيرة الحارة لضمان راحتك وحماس الصيد.",
+      "أحضر __واقي شمس قوي__، قبعة، ونظارة شمسية مستقطبة لرؤية أوضح للماء. لا تحتاج معدات — طاقمنا يوفّر كل شيء من __السنارات إلى الطُعم الحي__.",
+    ],
+  },
+];
 
 const species = [
   { n: "الهامور", d: "من أشهر أسماك الخليج، يوجد قرب الشعاب المرجانية وأعماق 20–60م." },
@@ -157,6 +193,10 @@ function Fishing() {
             </p>
           </Reveal>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+        <FeatureBlocks blocks={fishingFeatures} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
