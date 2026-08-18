@@ -282,3 +282,41 @@ button:disabled {
     transition: none !important;
   }
 }
+
+/* react-phone-number-input overrides — inherit our color scheme */
+.smart-phone .PhoneInput {
+  direction: ltr;
+  gap: 0.5rem;
+}
+.smart-phone .PhoneInputCountry {
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.smart-phone .PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1.125rem;
+  box-shadow: none;
+}
+.smart-phone .PhoneInputCountryIcon--border {
+  box-shadow: none;
+  background: transparent;
+}
+.smart-phone .PhoneInputCountrySelectArrow {
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  border-width: 0 0 1px 1px;
+  width: 0.35rem;
+  height: 0.35rem;
+}
+.smart-phone .PhoneInputInput {
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  min-width: 0;
+  flex: 1;
+  color: var(--foreground);
+}

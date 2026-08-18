@@ -9,7 +9,7 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
+import { PageHero, SectionHeading } from "@/components/PageHero";
 import { LegalSection, type LegalBlock } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 import { ContactCta } from "@/components/ContactCta";
@@ -117,6 +117,13 @@ function Page() {
       >
         <CallButton label="تواصل معنا" />
       </PageHero>
+
+      <section className="mx-auto max-w-4xl px-4 pt-14">
+        <SectionHeading
+          title="مرونة كاملة في الإلغاء وإعادة الجدولة"
+          subtitle="نتفهّم أن الظروف تتغير — إليك كيف نتعامل مع الإلغاء، إعادة الجدولة، والاسترداد بشكل شفاف."
+        />
+      </section>
 
       <LegalSection
         intro="يرجى مراجعة __سياسة الإلغاء وإعادة جدولة حجوزات اليخوت__ قبل تأكيد الحجز. جميع التغييرات تخضع للتوفر، وقد يتم تطبيق رسوم إضافية حسب نوع الحجز أو الخدمة."

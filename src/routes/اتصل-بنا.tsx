@@ -115,9 +115,9 @@ function Contact() {
             title="نموذج استفسار سريع وأسئلة شائعة"
             subtitle="أرسل استفسارك عبر النموذج أو تصفّح الأسئلة الشائعة للحصول على إجابات فورية قبل التواصل معنا."
           />
-          <div className="space-y-10">
+          <div className="grid gap-8 lg:grid-cols-[3fr_2fr]">
             <Reveal>
-              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-10">
+              <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">أرسل استفسارك</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
                   املأ النموذج التالي وسنعاود التواصل معك خلال أقل من ساعة. للحجز الفوري استخدم زر واتساب.
@@ -129,7 +129,7 @@ function Contact() {
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-10">
+              <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">أسئلة شائعة قبل التواصل</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
                   إجابات سريعة على أكثر الأسئلة التي يطرحها ضيوفنا قبل الحجز.

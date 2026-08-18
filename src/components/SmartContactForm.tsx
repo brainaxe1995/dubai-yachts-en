@@ -1,64 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { CheckCircle2, XCircle, ChevronDown } from "lucide-react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { CONTACT } from "@/data/site";
 
-type Country = { code: string; flag: string; iso: string; min: number; max: number; name: string };
-
-const COUNTRIES: Country[] = [
-  { code: "+971", flag: "🇦🇪", iso: "AE", min: 9, max: 9, name: "الإمارات" },
-  { code: "+966", flag: "🇸🇦", iso: "SA", min: 9, max: 9, name: "السعودية" },
-  { code: "+965", flag: "🇰🇼", iso: "KW", min: 8, max: 8, name: "الكويت" },
-  { code: "+973", flag: "🇧🇭", iso: "BH", min: 8, max: 8, name: "البحرين" },
-  { code: "+974", flag: "🇶🇦", iso: "QA", min: 8, max: 8, name: "قطر" },
-  { code: "+968", flag: "🇴🇲", iso: "OM", min: 8, max: 8, name: "عُمان" },
-  { code: "+20", flag: "🇪🇬", iso: "EG", min: 10, max: 10, name: "مصر" },
-  { code: "+962", flag: "🇯🇴", iso: "JO", min: 9, max: 9, name: "الأردن" },
-  { code: "+961", flag: "🇱🇧", iso: "LB", min: 7, max: 8, name: "لبنان" },
-  { code: "+90", flag: "🇹🇷", iso: "TR", min: 10, max: 10, name: "تركيا" },
-  { code: "+92", flag: "🇵🇰", iso: "PK", min: 10, max: 10, name: "باكستان" },
-  { code: "+91", flag: "🇮🇳", iso: "IN", min: 10, max: 10, name: "الهند" },
-  { code: "+44", flag: "🇬🇧", iso: "GB", min: 10, max: 10, name: "المملكة المتحدة" },
-  { code: "+1", flag: "🇺🇸", iso: "US", min: 10, max: 10, name: "الولايات المتحدة" },
-  { code: "+33", flag: "🇫🇷", iso: "FR", min: 9, max: 9, name: "فرنسا" },
-  { code: "+49", flag: "🇩🇪", iso: "DE", min: 10, max: 11, name: "ألمانيا" },
-  { code: "+7", flag: "🇷🇺", iso: "RU", min: 10, max: 10, name: "روسيا" },
-  { code: "+86", flag: "🇨🇳", iso: "CN", min: 11, max: 11, name: "الصين" },
-];
-
-const BY_ISO = new Map(COUNTRIES.map((c) => [c.iso, c]));
-
-function detectDefault(): Country {
-  if (typeof navigator === "undefined") return BY_ISO.get("AE")!;
-  const langs = navigator.languages ?? [navigator.language];
-  for (const l of langs) {
-    const iso = l.split("-")[1]?.toUpperCase();
-    if (iso && BY_ISO.has(iso)) return BY_ISO.get(iso)!;
-  }
-  return BY_ISO.get("AE")!;
-}
-
 export function SmartContactForm() {
-  const [country, setCountry] = useState<Country>(() => BY_ISO.get("AE")!);
-  const [phone, setPhone] = useState("");
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const pickerRef = useRef<HTMLDivElement>(null);
+  const [phone, setPhone] = useState<string | undefined>(undefined);
 
-  useEffect(() => {
-    setCountry(detectDefault());
-  }, []);
-
-  useEffect(() => {
-    if (!pickerOpen) return;
-    const onDown = (e: MouseEvent) => {
-      if (!pickerRef.current?.contains(e.target as Node)) setPickerOpen(false);
-    };
-    window.addEventListener("mousedown", onDown);
-    return () => window.removeEventListener("mousedown", onDown);
-  }, [pickerOpen]);
-
-  const digits = useMemo(() => phone.replace(/\D/g, ""), [phone]);
-  const valid = digits.length >= country.min && digits.length <= country.max;
-  const showStatus = phone.length > 0;
+  const valid = useMemo(() => (phone ? isValidPhoneNumber(phone) : false), [phone]);
+  const showStatus = Boolean(phone && phone.length > 3);
 
   return (
     <form
@@ -68,109 +18,60 @@ export function SmartContactForm() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <input type="hidden" name="country_code" value={country.code} />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">الاسم الكامل</span>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="مثال: أحمد الشامسي"
+            className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+          />
+        </label>
 
-      <label className="grid gap-1.5">
-        <span className="text-xs font-bold text-muted-foreground">الاسم الكامل</span>
-        <input
-          type="text"
-          name="name"
-          required
-          placeholder="مثال: أحمد الشامسي"
-          className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-        />
-      </label>
-
-      <div className="grid gap-1.5">
-        <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
-        <div ref={pickerRef} className="relative">
+        <div className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
           <div
-            dir="ltr"
-            className={`flex overflow-hidden rounded-xl border bg-background transition-colors ${
+            className={`smart-phone flex items-center gap-2 overflow-hidden rounded-xl border bg-background px-3 transition-colors ${
               showStatus ? (valid ? "border-emerald-500/60" : "border-red-500/60") : "border-border focus-within:border-gold"
             }`}
           >
-            <button
-              type="button"
-              aria-label="اختيار الدولة"
-              onClick={() => setPickerOpen((v) => !v)}
-              className="flex shrink-0 items-center gap-2 border-e border-border bg-muted/40 px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted/60"
-            >
-              <span className="text-lg leading-none">{country.flag}</span>
-              <span className="tabular-nums">{country.code}</span>
-              <ChevronDown className={`h-3.5 w-3.5 opacity-60 transition-transform ${pickerOpen ? "rotate-180" : ""}`} />
-            </button>
-
-            <input
-              type="tel"
-              name="phone"
-              required
+            <PhoneInput
+              international
+              defaultCountry="AE"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              inputMode="numeric"
-              placeholder="5X XXX XXXX"
-              className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none"
+              onChange={setPhone}
+              name="phone"
+              placeholder="أدخل رقم الهاتف"
+              className="flex-1"
             />
-
             {showStatus ? (
-              <span className="grid w-11 shrink-0 place-items-center border-s border-border/60">
-                {valid ? (
-                  <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                ) : (
-                  <XCircle className="h-5 w-5 text-red-500" />
-                )}
-              </span>
+              valid ? (
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" />
+              ) : (
+                <XCircle className="h-5 w-5 shrink-0 text-red-500" />
+              )
             ) : null}
           </div>
-
-          {pickerOpen ? (
-            <ul
-              dir="rtl"
-              role="listbox"
-              className="absolute start-0 top-full z-30 mt-1 max-h-64 w-full max-w-xs overflow-y-auto rounded-xl border border-border bg-card p-1 shadow-luxe"
-            >
-              {COUNTRIES.map((c) => (
-                <li key={c.iso}>
-                  <button
-                    type="button"
-                    role="option"
-                    aria-selected={c.iso === country.iso}
-                    onClick={() => {
-                      setCountry(c);
-                      setPickerOpen(false);
-                    }}
-                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-muted ${
-                      c.iso === country.iso ? "bg-gold/10 font-bold" : ""
-                    }`}
-                  >
-                    <span className="text-lg leading-none">{c.flag}</span>
-                    <span className="flex-1 text-start">{c.name}</span>
-                    <span dir="ltr" className="text-xs tabular-nums text-muted-foreground">{c.code}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+          {showStatus && !valid ? (
+            <span className="text-xs text-red-500">رقم غير صحيح — تحقق من عدد الأرقام</span>
           ) : null}
         </div>
-        {showStatus && !valid ? (
-          <span className="text-xs text-red-500">
-            رقم {country.name} يتكون من {country.min === country.max ? country.min : `${country.min}-${country.max}`} أرقام
-          </span>
-        ) : null}
       </div>
 
-      <label className="grid gap-1.5">
-        <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
-        <input
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          dir="ltr"
-          className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-        />
-      </label>
-
       <div className="grid gap-4 sm:grid-cols-2">
+        <label className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            dir="ltr"
+            className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+          />
+        </label>
+
         <label className="grid gap-1.5">
           <span className="text-xs font-bold text-muted-foreground">نوع الخدمة</span>
           <div className="relative">
@@ -188,15 +89,16 @@ export function SmartContactForm() {
             <ChevronDown className="pointer-events-none absolute end-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           </div>
         </label>
-        <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
-          <input
-            type="date"
-            name="date"
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-          />
-        </label>
       </div>
+
+      <label className="grid gap-1.5 sm:max-w-[calc(50%-0.5rem)]">
+        <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
+        <input
+          type="date"
+          name="date"
+          className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+        />
+      </label>
 
       <label className="grid gap-1.5">
         <span className="text-xs font-bold text-muted-foreground">تفاصيل الحجز أو الاستفسار</span>

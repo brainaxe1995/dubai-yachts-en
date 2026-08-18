@@ -15,7 +15,7 @@ import {
   RotateCcw,
   CheckCircle2,
 } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
+import { PageHero, SectionHeading } from "@/components/PageHero";
 import { LegalSection, type LegalBlock } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 import { ContactCta } from "@/components/ContactCta";
@@ -153,6 +153,13 @@ function Page() {
       >
         <CallButton label="تواصل معنا" />
       </PageHero>
+
+      <section className="mx-auto max-w-4xl px-4 pt-14">
+        <SectionHeading
+          title="اقرأ الشروط قبل تأكيد الحجز"
+          subtitle="بنود بسيطة وواضحة تنظم الحجز، الدفع، الإلغاء، والسلوك على متن اليخت — تضمن رحلة آمنة وممتعة لك ولطاقمنا."
+        />
+      </section>
 
       <LegalSection
         intro="يرجى قراءة __شروط وأحكام حجز وتأجير اليخوت مع توت فن لليخوت__ قبل تأكيد الحجز. تهدف هذه الشروط إلى توضيح إجراءات الحجز والدفع، متطلبات السلامة، ومسؤوليات الضيوف لضمان رحلة آمنة وممتعة."

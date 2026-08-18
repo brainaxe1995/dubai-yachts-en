@@ -18,7 +18,7 @@ import {
   Heart,
   Mail,
 } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
+import { PageHero, SectionHeading } from "@/components/PageHero";
 import { LegalSection, type LegalBlock } from "@/components/LegalSection";
 import { CallButton } from "@/components/CtaButtons";
 import { ContactCta } from "@/components/ContactCta";
@@ -214,6 +214,13 @@ function Page() {
       >
         <CallButton label="تواصل معنا" />
       </PageHero>
+
+      <section className="mx-auto max-w-4xl px-4 pt-14">
+        <SectionHeading
+          title="خصوصيتك أمانة نحملها بجدية"
+          subtitle="نلتزم بأعلى معايير حماية البيانات في دولة الإمارات — نجمع فقط ما نحتاجه لخدمتك، ونحميه بأدوات أمان معتمدة."
+        />
+      </section>
 
       <LegalSection
         intro="تحترم __توت فن لليخوت__ خصوصيتك وتلتزم بحماية المعلومات الشخصية التي تقدمها عند استخدام موقعنا الإلكتروني أو التواصل معنا أو إجراء حجز. توضح هذه السياسة أنواع المعلومات التي قد نجمعها، وكيفية استخدامها وحمايتها ومشاركتها."
