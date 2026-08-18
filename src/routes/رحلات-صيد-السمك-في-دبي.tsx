@@ -10,6 +10,7 @@ import { CharterEssentials } from "@/components/CharterEssentials";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
+import fishingImg from "@/assets/fishing/shared.webp";
 import fishingSharedImg from "@/assets/fishing/shared/shared-1.webp";
 import fishingBoatImg from "@/assets/fishing/private-boat/private-boat-1.webp";
 import fishingYachtImg from "@/assets/fishing/private-yacht/private-yacht-1.webp";

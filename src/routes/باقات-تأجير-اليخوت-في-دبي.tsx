@@ -11,6 +11,7 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
+import packagesImg from "@/assets/packages/romantic-dinner.webp";
 import pkgBreakfastImg from "@/assets/packages/breakfast/breakfast-1.webp";
 import pkgRomanticImg from "@/assets/packages/romantic-dinner/romantic-dinner-1.webp";
 import pkgJetskiImg from "@/assets/packages/jetski/jetski-1.webp";
