@@ -115,7 +115,10 @@ function About() {
 
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
-          <SectionHeading title="مناسبات نصنع لها ذكريات لا تُنسى" />
+          <SectionHeading
+            title="مناسبات نصنع لها ذكريات لا تُنسى"
+            subtitle="من عيد الميلاد إلى الزفاف، من حفلات الشركات إلى رحلات العائلة — يخوتنا مسرح مثالي لكل مناسبة تستحق البقاء في الذاكرة."
+          />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {occasions.map((o, i) => (
               <Reveal key={o.t} delay={i * 70}>
