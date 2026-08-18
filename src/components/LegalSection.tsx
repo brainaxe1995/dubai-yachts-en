@@ -50,7 +50,7 @@ export function LegalSection({ blocks, intro }: { blocks: LegalBlock[]; intro?: 
             const paras = b.p.filter((t) => !t.trim().startsWith("- "));
             return (
               <Reveal key={b.h} delay={i * 50}>
-                <article className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-luxe transition-all duration-500 hover:-translate-y-0.5 hover:border-gold/40 md:p-8">
+                <article className="group relative rounded-2xl border border-border bg-card p-6 shadow-luxe transition-all duration-500 hover:-translate-y-0.5 hover:border-gold/40 md:p-8">
                   {/* Number badge start-corner */}
                   <span
                     aria-hidden

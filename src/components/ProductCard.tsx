@@ -12,6 +12,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Share2,
+  Anchor,
 } from "lucide-react";
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
@@ -69,6 +70,9 @@ function ImageSlider({
   alt,
   length,
   guests,
+  meta,
+  shareTitle,
+  shareUrl,
   autoplayMs = 6500,
   onOpenLightbox,
 }: {
@@ -76,6 +80,9 @@ function ImageSlider({
   alt: string;
   length: string;
   guests: string;
+  meta: string[];
+  shareTitle: string;
+  shareUrl: string;
   autoplayMs?: number;
   onOpenLightbox?: (index: number) => void;
 }) {
@@ -125,7 +132,7 @@ function ImageSlider({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      {/* Length/guests pills — bottom-start */}
+      {/* Info pills — length + guests + meta, all on image bottom */}
       <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
         {length ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
@@ -139,7 +146,37 @@ function ImageSlider({
             {guests}
           </span>
         ) : null}
+        {meta.map((s) => (
+          <span
+            key={s}
+            className="inline-flex items-center gap-1 rounded-full bg-gold/95 px-2.5 py-1 text-[11px] font-bold text-primary-deep shadow-md ring-1 ring-white/25"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-deep" />
+            {s}
+          </span>
+        ))}
       </div>
+
+      {/* Share badge — top-end corner on image */}
+      <button
+        type="button"
+        aria-label="مشاركة"
+        onClick={(e) => {
+          e.stopPropagation();
+          if (typeof navigator !== "undefined" && "share" in navigator) {
+            navigator.share({ title: shareTitle, url: shareUrl }).catch(() => openWa());
+          } else {
+            openWa();
+          }
+          function openWa() {
+            const wa = `https://wa.me/?text=${encodeURIComponent(`${shareTitle}\n${shareUrl}`)}`;
+            window.open(wa, "_blank", "noopener,noreferrer");
+          }
+        }}
+        className="absolute end-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep"
+      >
+        <Share2 className="h-4 w-4" />
+      </button>
 
       {count > 1 ? (
         <>
@@ -186,43 +223,6 @@ function ImageSlider({
         </>
       ) : null}
     </div>
-  );
-}
-
-// -------- Share button (Web Share API + WhatsApp fallback) --------
-
-function ShareButton({ title, url }: { title: string; url: string }) {
-  const [ripple, setRipple] = useState(false);
-
-  function trigger() {
-    setRipple(true);
-    setTimeout(() => setRipple(false), 700);
-    if (typeof navigator !== "undefined" && "share" in navigator) {
-      navigator.share({ title, url }).catch(() => openWa());
-    } else {
-      openWa();
-    }
-    function openWa() {
-      const wa = `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`;
-      window.open(wa, "_blank", "noopener,noreferrer");
-    }
-  }
-
-  return (
-    <button
-      type="button"
-      aria-label="مشاركة"
-      onClick={(e) => {
-        e.stopPropagation();
-        trigger();
-      }}
-      className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-gold/60 text-gold transition-all hover:bg-gold hover:text-primary-deep hover:scale-105 active:scale-95"
-    >
-      <Share2 className="h-4 w-4" />
-      {ripple ? (
-        <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-gold/60" aria-hidden />
-      ) : null}
-    </button>
   );
 }
 
@@ -365,6 +365,9 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
             alt={product.title}
             length={length}
             guests={guests}
+            meta={meta}
+            shareTitle={product.title}
+            shareUrl={shareUrl}
             onOpenLightbox={(i) => {
               setLightboxStart(i);
               setLightboxOpen(true);
@@ -388,8 +391,17 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
 
             <div className="mt-1 grid grid-cols-3 gap-2 rounded-xl border border-border bg-muted/60 p-3 text-center text-xs">
               <div className="flex flex-col items-center gap-1">
-                <Bed className="h-4 w-4 text-gold-deep" />
-                <span className="font-bold text-foreground">{bedrooms || "—"}</span>
+                {bedrooms ? (
+                  <>
+                    <Bed className="h-4 w-4 text-gold-deep" />
+                    <span className="font-bold text-foreground">{bedrooms}</span>
+                  </>
+                ) : (
+                  <>
+                    <Anchor className="h-4 w-4 text-gold-deep" />
+                    <span className="font-bold text-foreground">قبطان محترف</span>
+                  </>
+                )}
               </div>
               <div className="flex flex-col items-center gap-1">
                 <Clock className="h-4 w-4 text-gold-deep" />
@@ -400,21 +412,6 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                 <span className="font-bold text-foreground">مرخّص</span>
               </div>
             </div>
-
-            {/* Meta info row — nice pill with gold dot; used for boarding time, min booking, meal notes, etc. */}
-            {meta.length > 0 ? (
-              <ul className="flex flex-wrap gap-1.5 pt-1">
-                {meta.map((s) => (
-                  <li
-                    key={s}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/5 px-2.5 py-1 text-[11px] font-semibold text-foreground"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
 
             <div className="mt-auto flex gap-2 pt-3">
               <a
@@ -445,7 +442,6 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                   <Phone className="h-4 w-4" />
                 </a>
               )}
-              <ShareButton title={product.title} url={shareUrl} />
             </div>
           </div>
         </div>
