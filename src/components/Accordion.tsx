@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { renderInline } from "@/lib/rich-text";
 
 export type FaqItem = { q: string; a: string };
 
@@ -43,7 +44,7 @@ export function Accordion({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-sm leading-loose text-muted-foreground md:text-[15px]">{it.a}</p>
+                <p className="px-5 pb-5 text-sm leading-loose text-muted-foreground md:text-[15px]">{renderInline(it.a)}</p>
               </div>
             </div>
           </div>

@@ -81,74 +81,75 @@ export function SmartContactForm() {
         />
       </label>
 
-      <label className="grid gap-1.5">
+      <div className="grid gap-1.5">
         <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
-        <div
-          dir="ltr"
-          className={`flex overflow-visible rounded-xl border bg-background transition-colors ${
-            showStatus ? (valid ? "border-emerald-500/60" : "border-red-500/60") : "border-border focus-within:border-gold"
-          }`}
-        >
-          <div ref={pickerRef} className="relative shrink-0">
+        <div ref={pickerRef} className="relative">
+          <div
+            dir="ltr"
+            className={`flex overflow-hidden rounded-xl border bg-background transition-colors ${
+              showStatus ? (valid ? "border-emerald-500/60" : "border-red-500/60") : "border-border focus-within:border-gold"
+            }`}
+          >
             <button
               type="button"
               aria-label="اختيار الدولة"
               onClick={() => setPickerOpen((v) => !v)}
-              className="flex h-full items-center gap-2 border-e border-border bg-muted/40 px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted/60"
+              className="flex shrink-0 items-center gap-2 border-e border-border bg-muted/40 px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted/60"
             >
               <span className="text-lg leading-none">{country.flag}</span>
               <span className="tabular-nums">{country.code}</span>
-              <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+              <ChevronDown className={`h-3.5 w-3.5 opacity-60 transition-transform ${pickerOpen ? "rotate-180" : ""}`} />
             </button>
-            {pickerOpen ? (
-              <ul
-                dir="rtl"
-                role="listbox"
-                className="absolute start-0 top-full z-30 mt-1 max-h-64 w-64 overflow-y-auto rounded-xl border border-border bg-card p-1 shadow-luxe"
-              >
-                {COUNTRIES.map((c) => (
-                  <li key={c.iso}>
-                    <button
-                      type="button"
-                      role="option"
-                      aria-selected={c.iso === country.iso}
-                      onClick={() => {
-                        setCountry(c);
-                        setPickerOpen(false);
-                      }}
-                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-muted ${
-                        c.iso === country.iso ? "bg-gold/10 font-bold" : ""
-                      }`}
-                    >
-                      <span className="text-lg leading-none">{c.flag}</span>
-                      <span className="flex-1 text-start">{c.name}</span>
-                      <span dir="ltr" className="text-xs tabular-nums text-muted-foreground">{c.code}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+
+            <input
+              type="tel"
+              name="phone"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              inputMode="numeric"
+              placeholder="5X XXX XXXX"
+              className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none"
+            />
+
+            {showStatus ? (
+              <span className="grid w-11 shrink-0 place-items-center border-s border-border/60">
+                {valid ? (
+                  <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                ) : (
+                  <XCircle className="h-5 w-5 text-red-500" />
+                )}
+              </span>
             ) : null}
           </div>
 
-          <input
-            type="tel"
-            name="phone"
-            required
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            inputMode="numeric"
-            placeholder="5X XXX XXXX"
-            className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none"
-          />
-
-          {showStatus ? (
-            <span className="grid w-11 shrink-0 place-items-center border-s border-border/60">
-              {valid ? (
-                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-              ) : (
-                <XCircle className="h-5 w-5 text-red-500" />
-              )}
-            </span>
+          {pickerOpen ? (
+            <ul
+              dir="rtl"
+              role="listbox"
+              className="absolute start-0 top-full z-30 mt-1 max-h-64 w-full max-w-xs overflow-y-auto rounded-xl border border-border bg-card p-1 shadow-luxe"
+            >
+              {COUNTRIES.map((c) => (
+                <li key={c.iso}>
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={c.iso === country.iso}
+                    onClick={() => {
+                      setCountry(c);
+                      setPickerOpen(false);
+                    }}
+                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-muted ${
+                      c.iso === country.iso ? "bg-gold/10 font-bold" : ""
+                    }`}
+                  >
+                    <span className="text-lg leading-none">{c.flag}</span>
+                    <span className="flex-1 text-start">{c.name}</span>
+                    <span dir="ltr" className="text-xs tabular-nums text-muted-foreground">{c.code}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
           ) : null}
         </div>
         {showStatus && !valid ? (
@@ -156,7 +157,7 @@ export function SmartContactForm() {
             رقم {country.name} يتكون من {country.min === country.max ? country.min : `${country.min}-${country.max}`} أرقام
           </span>
         ) : null}
-      </label>
+      </div>
 
       <label className="grid gap-1.5">
         <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
