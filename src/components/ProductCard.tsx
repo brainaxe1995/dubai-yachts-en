@@ -277,17 +277,21 @@ function Lightbox({
 
   return (
     <div
-      className={`fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[150] flex items-center justify-center bg-primary-deep/60 backdrop-blur-2xl backdrop-saturate-150 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
       role="dialog"
       aria-modal="true"
+      onClick={onClose}
     >
       <button
         type="button"
         aria-label="إغلاق"
-        onClick={onClose}
-        className="absolute end-4 top-4 grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        className="absolute start-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-white/25"
       >
         <X className="h-6 w-6" />
       </button>
@@ -297,16 +301,22 @@ function Lightbox({
           <button
             type="button"
             aria-label="السابق"
-            onClick={() => setIdx((i) => (i - 1 + images.length) % images.length)}
-            className="absolute end-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-gold hover:text-primary-deep md:end-8"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIdx((i) => (i - 1 + images.length) % images.length);
+            }}
+            className="absolute start-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-gold hover:text-primary-deep md:start-8"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
           <button
             type="button"
             aria-label="التالي"
-            onClick={() => setIdx((i) => (i + 1) % images.length)}
-            className="absolute start-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-gold hover:text-primary-deep md:start-8"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIdx((i) => (i + 1) % images.length);
+            }}
+            className="absolute end-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-gold hover:text-primary-deep md:end-8"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
