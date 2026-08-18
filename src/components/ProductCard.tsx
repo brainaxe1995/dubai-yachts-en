@@ -123,25 +123,26 @@ function ImageSlider({
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
+      {/* Length/guests pills — top-start (RTL right corner) */}
+      <div className="pointer-events-none absolute inset-x-4 top-3 flex flex-wrap items-center gap-2">
         {length ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
+          <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
             <Ruler className="h-3 w-3 text-gold" />
             {length}
           </span>
         ) : null}
         {guests ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
+          <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
             <Users className="h-3 w-3 text-gold" />
             {guests}
           </span>
         ) : null}
       </div>
 
-      {/* Expand hint — always visible small badge */}
-      <span className="pointer-events-none absolute start-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur-md ring-1 ring-white/15 transition-opacity duration-500 group-hover/slider:opacity-100">
+      {/* Expand hint — bottom-start corner (RTL right), always visible small badge on hover */}
+      <span className="pointer-events-none absolute start-3 bottom-3 z-10 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white opacity-0 backdrop-blur-md ring-1 ring-white/15 transition-opacity duration-500 group-hover/slider:opacity-100">
         <Expand className="h-4 w-4" />
       </span>
 
@@ -170,8 +171,8 @@ function ImageSlider({
             <ChevronLeft className="h-4 w-4" />
           </button>
 
-          {/* Progress dots */}
-          <div className="absolute inset-x-0 top-3 z-10 flex justify-center gap-1.5">
+          {/* Progress dots — bottom center */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center gap-1.5">
             {images.map((_, i) => (
               <button
                 key={i}
@@ -181,8 +182,8 @@ function ImageSlider({
                   e.stopPropagation();
                   setIdx(i);
                 }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/60"
+                className={`pointer-events-auto h-1.5 rounded-full transition-all duration-300 ${
+                  i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/70"
                 }`}
               />
             ))}
@@ -220,7 +221,7 @@ function ShareButton({ title, url }: { title: string; url: string }) {
         e.stopPropagation();
         trigger();
       }}
-      className="absolute end-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-gold/95 text-primary-deep shadow-md ring-2 ring-white/30 transition-transform duration-300 hover:scale-110"
+      className="absolute end-3 bottom-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-gold/95 text-primary-deep shadow-md ring-2 ring-white/30 transition-transform duration-300 hover:scale-110"
     >
       <Share2 className="h-4 w-4" />
       {ripple ? (
