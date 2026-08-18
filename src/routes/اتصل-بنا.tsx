@@ -160,7 +160,7 @@ function Contact() {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            className="block h-[420px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
+            className="block h-[420px] w-full"
           />
           <a
             href="https://maps.app.goo.gl/YdWJEY77WLmcdDBT9?g_st=awb"
