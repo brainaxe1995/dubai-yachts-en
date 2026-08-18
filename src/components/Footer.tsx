@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, Linkedin, ShieldCheck, Anchor, Sparkles, Clock } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, ShieldCheck, Anchor, Sparkles, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import paymentImg from "@/assets/branding/payment-methods.webp";
@@ -30,7 +30,6 @@ const socialDefs = [
   { key: "youtube" as const, icon: Youtube, label: "يوتيوب" },
   { key: "tiktok" as const, icon: Music2, label: "تيك توك" },
   { key: "x" as const, icon: Twitter, label: "X" },
-  { key: "linkedin" as const, icon: Linkedin, label: "لينكدإن" },
   { key: "snapchat" as const, icon: Ghost, label: "سناب شات" },
 ];
 
