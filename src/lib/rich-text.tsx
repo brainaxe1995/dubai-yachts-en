@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-const STRONG_CLASS = "rounded bg-gold/15 px-1 py-0.5 font-extrabold text-gold-deep";
+const STRONG_CLASS = "font-extrabold text-gold-deep dark:text-gold";
 
 // Sorted longest-first so multi-word phrases match before their sub-words
 const AUTO_KEYWORDS = [
