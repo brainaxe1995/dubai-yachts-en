@@ -45,6 +45,7 @@ import exJetSki from "@/assets/extras/jet-ski.webp";
 import exBanana from "@/assets/extras/banana-boat.webp";
 import exDonut from "@/assets/extras/donut.webp";
 import exFoodBuffet from "@/assets/extras/food-buffet.webp";
+import exMixedGrill from "@/assets/extras/mixed-grill.webp";
 
 import { DEFAULT_CONFIG } from "./config";
 import { imagesFor } from "./product-images";
@@ -439,6 +440,7 @@ export const extras: Extra[] = [
   { label: "طبق فواكه", image: exFruit },
   { label: "طبق حلويات عربية", image: exSweets },
   { label: "بوفيه طعام", image: exFoodBuffet },
+  { label: "وجبة مشاوي لشخصين", image: exMixedGrill },
   { label: "مصوّر محترف", image: exPhotographer },
   { label: "خدمة التوصيل الفاخر", image: exLuxuryTransfer },
   { label: "جيت سكي", image: exJetSki },
