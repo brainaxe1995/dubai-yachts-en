@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Anchor, ShieldCheck, DollarSign, Sparkles } from "lucide-react";
+import { Anchor, ShieldCheck, DollarSign, Sparkles, Package, Users } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -7,8 +7,34 @@ import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
 import { KeywordCloud } from "@/components/KeywordCloud";
+import { FeatureBlocks } from "@/components/FeatureSection";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { yachts, stepsYacht, keywordCloud } from "@/data/site";
+import italianImg from "@/assets/yachts/italian-95.webp";
+import corpImg from "@/assets/yachts/corporate-105.webp";
+
+const rentalIncludedFeatures = [
+  {
+    h: "ماذا يشمل إيجار اليخت؟",
+    icon: Package,
+    image: italianImg,
+    imageAlt: "ما يشمل إيجار اليخت في دبي",
+    p: [
+      "كل رحلة يخت لدينا تشمل __كابتن وطاقم محترف__، __الوقود__، __التأمين الشامل__، معدات السلامة، مياه معدنية ومشروبات غازية، أطباق وأدوات مائدة، ونظام صوت احترافي.",
+      "يمكنك إضافة __الطعام__، __الديكور__، __الكيك__، __المصور__، أو __الرياضات المائية__ حسب مناسبتك.",
+    ],
+  },
+  {
+    h: "لمن يناسب إيجار اليخوت في دبي؟",
+    icon: Users,
+    image: corpImg,
+    imageAlt: "من يناسب تأجير اليخوت",
+    p: [
+      "أسطولنا يناسب __العائلات__ والمجموعات الصغيرة (10–20 شخص)، __فعاليات الشركات__ الكبرى (حتى 90 ضيفًا)، __حفلات الزفاف والخطوبة__ الفاخرة، __طلبات الزواج__ الرومانسية، ورحلات __طلاب الجامعات__ للتخرج.",
+      "لكل مقاس يخت وميزانية — يوجد الخيار المناسب لك.",
+    ],
+  },
+];
 
 const yachtFaqs = [
   { q: "ما أرخص يخت للإيجار في دبي؟", a: "يبدأ ميني يخت 40 قدم من 450 درهم للساعة، ويتسع لـ 10 ضيوف مع غرفة نوم واحدة." },
@@ -128,10 +154,21 @@ function YachtsForRent() {
         </div>
       </section>
 
+      {/* New visual feature section after products */}
+      <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            title="كل ما تحتاج معرفته عن إيجار اليخوت في دبي"
+            subtitle="من الإضافات المشمولة إلى الفئات التي تناسبها رحلاتنا — دليل شامل قبل الحجز."
+          />
+          <FeatureBlocks blocks={rentalIncludedFeatures} />
+        </div>
+      </section>
+
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسئلة شائعة عن إيجار اليخوت في دبي"
-          subtitle="إجابات على أهم الأسئلة قبل حجز يختك."
+          title="أسئلة شائعة قبل إيجار يخت في دبي"
+          subtitle="أهم ما يطرحه ضيوفنا قبل حجز اليخت — من الأسعار إلى الطاقم والضيافة."
         />
         <Accordion items={yachtFaqs} />
       </section>

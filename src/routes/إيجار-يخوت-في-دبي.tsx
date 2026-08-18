@@ -1,11 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Anchor, BadgeCheck, Clock, ShieldCheck } from "lucide-react";
+import { Anchor, BadgeCheck, Clock, ShieldCheck, Ship, Users } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { yachts, faqs } from "@/data/site";
+import { FeatureBlocks } from "@/components/FeatureSection";
+import { KeywordCloud } from "@/components/KeywordCloud";
+import { yachts, faqs, keywordCloud } from "@/data/site";
+import azimutImg from "@/assets/yachts/azimut-80.webp";
+import sunseekerImg from "@/assets/yachts/sunseeker-95.webp";
+
+const rentFaqs = [
+  {
+    q: "ما الفرق بين إيجار يخت خاص ومشترك؟",
+    a: "الإيجار الخاص يخصّص لك اليخت والطاقم بالكامل مع خصوصية تامة ومسار مرن. المشترك يجمعك مع ركاب آخرين بسعر أقل لكل شخص، ويكون في الغالب رحلات صيد أو تذاكر مناسبات.",
+  },
+  ...faqs,
+];
+
+const rentalRichBlocks = [
+  {
+    h: "لماذا إيجار يخت خاص في دبي مع توت فن؟",
+    icon: Ship,
+    image: azimutImg,
+    imageAlt: "إيجار يخت خاص في دبي",
+    p: [
+      "نمتلك أحد أكبر أساطيل __إيجار اليخوت في دبي__ — 15 يختًا فاخرًا من __Majesty__، __Azimut__، __Sunseeker__، __Ferretti__، و__Gulf Craft__.",
+      "أسطولنا يبدأ من __ميني يخت 40 قدم__ (450 د.إ / الساعة) وحتى __يخت شركات 105 قدم__ (3,000 د.إ / الساعة)، مع سعر شامل — بدون رسوم مخفية.",
+    ],
+  },
+  {
+    h: "لمن تناسب رحلات إيجار اليخوت؟",
+    icon: Users,
+    image: sunseekerImg,
+    imageAlt: "من يناسب إيجار اليخوت في دبي",
+    p: [
+      "خدماتنا مصممة للـ__عائلات__، __الأصدقاء__، __فعاليات الشركات__ ، __حفلات الأعياد والزفاف__، __طلبات الزواج الرومانسية__، و__السياح__ الذين يرغبون بتجربة بحرية أصيلة في دبي.",
+      "نقترح عليك اليخت الأنسب لعدد الضيوف ونوع المناسبة عند التواصل معنا.",
+    ],
+  },
+];
 
 export const Route = createFileRoute("/إيجار-يخوت-في-دبي")({
   head: () => ({
@@ -19,7 +54,8 @@ export const Route = createFileRoute("/إيجار-يخوت-في-دبي")({
       { property: "og:title", content: "إيجار يخوت في دبي | توت فن لليخوت" },
       {
         property: "og:description",
-        content: "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
+        content:
+          "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
       },
       { property: "og:url", content: "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/" },
     ],
@@ -55,11 +91,32 @@ function RentYacht() {
         subtitle="نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات."
       />
 
+      {/* Products first */}
       <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="لماذا إيجار يخت مع توت فن"
-          subtitle="نقدّم تجربة إيجار سهلة وشفافة مع أفضل الأسعار في دبي."
+          title="أسطولنا من اليخوت الفاخرة"
+          subtitle="اختر من أسطولنا المتنوع من اليخوت الفاخرة المتاحة للإيجار في دبي لجميع الرحلات والمناسبات."
         />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {yachts.map((p, i) => (
+            <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
+          ))}
+        </div>
+      </section>
+
+      {/* New rich visual after products */}
+      <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            title="دليل إيجار اليخوت في دبي"
+            subtitle="كل ما تحتاج معرفته قبل استئجار يخت في دبي — من الأسطول إلى الفئات التي تناسبها رحلاتنا."
+          />
+          <FeatureBlocks blocks={rentalRichBlocks} />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+        <SectionHeading title="لماذا إيجار يخت مع توت فن" subtitle="نقدّم تجربة إيجار سهلة وشفافة مع أفضل الأسعار في دبي." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r, i) => (
             <Reveal key={r.t} delay={i * 70}>
@@ -75,10 +132,7 @@ function RentYacht() {
 
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4">
-          <SectionHeading
-            title="مقاسات اليخوت المتاحة للإيجار"
-            subtitle="اختر الحجم المناسب لعدد ضيوفك ونوع مناسبتك."
-          />
+          <SectionHeading title="مقاسات اليخوت المتاحة للإيجار" subtitle="اختر الحجم المناسب لعدد ضيوفك ونوع مناسبتك." />
           <div className="grid gap-5 md:grid-cols-3">
             {fleetGroups.map((g, i) => (
               <Reveal key={g.size} delay={i * 80}>
@@ -100,24 +154,20 @@ function RentYacht() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-        <SectionHeading
-          title="أسطولنا من اليخوت الفاخرة"
-          subtitle="اختر من أسطولنا المتنوع من اليخوت الفاخرة المتاحة للإيجار في دبي لجميع الرحلات والمناسبات."
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
-            <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
-          ))}
-        </div>
-      </section>
-
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة عن إيجار اليخوت" />
-        <Accordion items={faqs} />
+        <SectionHeading title="أسئلة شائعة عن إيجار اليخوت" subtitle="أهم ما يطرحه ضيوفنا حول الرحلات والأسعار." />
+        <Accordion items={rentFaqs} />
       </section>
 
       <ContactCta />
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
+          subtitle="اكتشف الكلمات الأكثر بحثًا حول إيجار اليخوت في دبي."
+        />
+        <KeywordCloud items={keywordCloud["/يخوت-للإيجار-في-دبي/"].map((k) => ({ keyword: k, to: "/إيجار-يخوت-في-دبي/" }))} />
+      </section>
     </>
   );
 }

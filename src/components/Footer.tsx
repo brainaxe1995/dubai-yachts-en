@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, Linkedin } from "lucide-react";
+import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, Linkedin, ShieldCheck, Anchor, Sparkles, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import paymentImg from "@/assets/branding/payment-methods.webp";
@@ -51,6 +51,30 @@ export function Footer() {
 
   return (
     <footer className="border-t border-gold/40 bg-primary-deep">
+      {/* Trust badges row */}
+      <div className="border-b border-primary-foreground/10 bg-gradient-to-b from-primary-deep to-primary">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-4 px-4 py-8 sm:grid-cols-4 md:px-8">
+          {[
+            { icon: ShieldCheck, t: "أسطول مرخّص", d: "تأمين شامل + سلامة معتمدة" },
+            { icon: Anchor, t: "من دبي مارينا", d: "أفضل نقطة انطلاق في دبي" },
+            { icon: Sparkles, t: "طاقم محترف", d: "مدرّب على أعلى مستوى" },
+            { icon: Clock, t: "دعم 24/7", d: "استفسر أو احجز في أي وقت" },
+          ].map((b) => (
+            <div
+              key={b.t}
+              className="flex items-center gap-3 rounded-2xl border border-gold/25 bg-primary-foreground/5 p-3 text-primary-foreground"
+            >
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold/15 text-gold">
+                <b.icon className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-xs font-bold sm:text-sm">{b.t}</p>
+                <p className="text-[11px] text-primary-foreground/60 sm:text-xs">{b.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-14 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         {/* Brand */}
         <div>

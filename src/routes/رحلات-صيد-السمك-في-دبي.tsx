@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish, Sun, Users, Anchor, Waves, CheckCircle2 } from "lucide-react";
+import { Fish, Sun, Users, Anchor, Waves, CheckCircle2, Target, Sparkles } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -65,7 +65,44 @@ const locations = [
   { n: "شعاب رأس الخيمة", d: "رحلات نصف يوم — تنوّع كبير في الأنواع." },
 ];
 
+const fishingTechniques = [
+  { n: "Trolling (السحب)", d: "الأكثر شعبية في الصيد العميق — طعم متحرك خلف القارب لجذب الأسماك الكبيرة." },
+  { n: "الطعم الحي", d: "استخدام أسماك حية لجذب الأنواع الأكبر مثل التونا والكنعد." },
+  { n: "صيد القاع", d: "إنزال الطعم لأعماق كبيرة — مناسب لأسماك الشعاب مثل الهامور." },
+  { n: "Jigging", d: "طعم صناعي يتحرك عموديًا — للأسماك المتوسطة." },
+];
+
+const fishSpecies = [
+  "الهامور",
+  "الشعري",
+  "الكنعد",
+  "الباراكودا",
+  "الفرش",
+  "التونا",
+  "الطرابيدي",
+  "الماكريل",
+  "سمك الملك",
+  "الترفلي",
+  "سمك الشراع (Sailfish)",
+];
+
 const fishingFaqs = [
+  {
+    q: "كم تكلفة رحلة صيد السمك في دبي؟",
+    a: "تبدأ رحلات الصيد المشتركة من 350 د.إ للشخص لمدة 4 ساعات، والرحلات الخاصة على القارب من 1,200 د.إ (4 ساعات، حتى 10 ضيوف)، والرحلات على اليخت من 2,000 د.إ / 4 ساعات.",
+  },
+  {
+    q: "ما الأسماك التي يمكن اصطيادها في دبي؟",
+    a: "تشمل الأنواع الشائعة: الهامور، الشعري، الكنعد، الباراكودا، الفرش، التونا، الطرابيدي، وسمك الملك. الأنواع تختلف حسب الموسم والموقع.",
+  },
+  {
+    q: "ما أفضل وقت لصيد السمك في دبي؟",
+    a: "الفجر الباكر (6:00 صباحًا) والعصر (3:00–6:00 مساءً). أفضل موسم = الشتاء (نوفمبر – فبراير) للهامور والشعري، والصيف للتونا.",
+  },
+  {
+    q: "هل معدات الصيد مشمولة؟",
+    a: "نعم — كل الرحلات تشمل سنارات، خيوط، طعم حي، معدات السلامة، وتوجيه من الطاقم المحترف.",
+  },
   { q: "هل تحتاج رخصة صيد للانطلاق في دبي؟", a: "لا تحتاج للحصول على رخصة شخصية — جميع رحلاتنا تنطلق بموجب تراخيص القارب واليخت وتخضع لأنظمة هيئة الموانئ الإماراتية." },
   { q: "ما الفرق بين رحلة الصيد المشتركة والخاصة؟", a: "المشتركة تجمعك مع ركاب آخرين بسعر أقل للفرد (350 د.إ)، والخاصة تخصص القارب أو اليخت لك ولمجموعتك فقط بخصوصية كاملة." },
   { q: "هل يمكنني الاحتفاظ بالسمك الذي أصطاده؟", a: "نعم، السمك الذي تصطاده ملكك. نوفر ثلج ومبردات لحفظه، وبعض المطاعم القريبة تطبخ لك صيدك مقابل رسوم رمزية." },
@@ -200,6 +237,45 @@ function Fishing() {
                 </div>
                 <p className="text-sm leading-relaxed text-muted-foreground">{l.d}</p>
               </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Fishing techniques */}
+      <section className="bg-gradient-to-b from-muted via-background to-muted py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            title="أفضل تقنيات الصيد في دبي"
+            subtitle="أربع تقنيات يستخدمها طاقمنا لتحقيق أفضل صيد ممكن."
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {fishingTechniques.map((t, i) => (
+              <Reveal key={t.n} delay={i * 60}>
+                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-luxe transition-transform hover:-translate-y-1">
+                  <Target className="mb-3 h-7 w-7 text-gold-deep" />
+                  <h3 className="text-base font-bold text-primary">{t.n}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fish species you can catch */}
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أنواع الأسماك التي يمكنك اصطيادها في دبي"
+          subtitle="أشهر الأنواع المتوفرة في مياه الخليج العربي طوال السنة."
+        />
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+          {fishSpecies.map((s, i) => (
+            <Reveal key={s} delay={i * 30}>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10">
+                <Sparkles className="h-3 w-3 text-gold-deep" />
+                {s}
+              </span>
             </Reveal>
           ))}
         </div>

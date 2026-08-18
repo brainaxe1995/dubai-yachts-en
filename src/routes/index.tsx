@@ -26,13 +26,13 @@ import whatIncludedImg from "@/assets/branding/what-included.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { title: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت" },
       {
         name: "description",
         content:
           "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
       },
-      { property: "og:title", content: "تأجير يخوت في دبي | توت فن لليخوت" },
+      { property: "og:title", content: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت" },
       {
         property: "og:description",
         content:

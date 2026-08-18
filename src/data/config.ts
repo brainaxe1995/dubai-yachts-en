@@ -52,7 +52,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
     snapchat: "",
     facebook: "https://www.facebook.com/tootyachts",
     youtube: "https://www.youtube.com/@tootfunyachts",
-    x: "https://x.com/tootyachts",
+    x: "",
     linkedin: "https://www.linkedin.com/in/toot-fun-yachts-169a77271/",
   },
   tracking: {
@@ -67,7 +67,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
     bingSiteVerification: "",
   },
   seo: {
-    defaultTitle: "تأجير يخوت في دبي | توت فن لليخوت",
+    defaultTitle: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت",
     defaultDescription:
       "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
     ogImage: "https://dubai-yacht.ae/og-cover.jpg",

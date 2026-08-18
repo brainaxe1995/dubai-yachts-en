@@ -1,5 +1,19 @@
-import { useState, useEffect, useRef } from "react";
-import { Users, Bed, Ruler, Clock, Phone, CheckCircle2, X, Sparkles, Info, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  Users,
+  Bed,
+  Ruler,
+  Clock,
+  Phone,
+  CheckCircle2,
+  X,
+  Sparkles,
+  Info,
+  ChevronLeft,
+  ChevronRight,
+  Share2,
+  Expand,
+} from "lucide-react";
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -11,7 +25,16 @@ function parseSpecs(specs: string[]) {
   let length = "";
   let duration = "";
 
-  for (const s of specs) {
+  // Preserve insertion order but dedupe by lowercased trimmed value
+  const seen = new Set<string>();
+  const uniq = specs.filter((s) => {
+    const k = s.trim();
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+
+  for (const s of uniq) {
     if (/ضيف|شخص/.test(s)) guests = s;
     else if (/غرف|نوم|غرفة/.test(s) && !/بدون/.test(s)) bedrooms = s;
     else if (/بدون غرف/.test(s)) bedrooms = "بدون غرف";
@@ -19,7 +42,7 @@ function parseSpecs(specs: string[]) {
     else if (/ساع|رحلة/.test(s)) duration = s;
   }
 
-  const extras = specs.filter((s) => s !== guests && s !== bedrooms && s !== length && s !== duration);
+  const extras = uniq.filter((s) => s !== guests && s !== bedrooms && s !== length && s !== duration);
   return { guests, bedrooms, length, duration, extras };
 }
 
@@ -28,40 +51,69 @@ function buildWhatsAppLink(title: string, price: string) {
   return `${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
-function ImageSlider({ images, alt, length, guests }: { images: string[]; alt: string; length: string; guests: string }) {
+// -------- ImageSlider (auto-advance slow, hover pause, click opens lightbox) --------
+
+function ImageSlider({
+  images,
+  alt,
+  length,
+  guests,
+  autoplayMs = 6500,
+  onOpenLightbox,
+}: {
+  images: string[];
+  alt: string;
+  length: string;
+  guests: string;
+  autoplayMs?: number;
+  onOpenLightbox?: (index: number) => void;
+}) {
   const [idx, setIdx] = useState(0);
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [paused, setPaused] = useState(false);
   const count = images.length;
 
-  function go(delta: number) {
-    setIdx((i) => (i + delta + count) % count);
-  }
+  const next = useCallback(() => setIdx((i) => (i + 1) % count), [count]);
+
+  useEffect(() => {
+    if (count <= 1 || paused) return;
+    const t = setInterval(next, autoplayMs);
+    return () => clearInterval(t);
+  }, [count, paused, next, autoplayMs]);
 
   return (
-    <div className="group/slider relative aspect-[16/10] overflow-hidden bg-primary-deep">
-      {/* Track */}
+    <div
+      className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-primary-deep"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div
-        ref={trackRef}
-        className="flex h-full w-full transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="flex h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{ transform: `translateX(${idx * (100 / count)}%)`, width: `${count * 100}%` }}
       >
         {images.map((src, i) => (
-          <div key={i} className="flex h-full items-center justify-center" style={{ width: `${100 / count}%` }}>
+          <button
+            key={i}
+            type="button"
+            aria-label={`عرض الصورة ${i + 1}`}
+            className="flex h-full items-center justify-center"
+            style={{ width: `${100 / count}%` }}
+            onClick={() => onOpenLightbox?.(idx)}
+          >
             <img
               src={src}
               alt={i === 0 ? alt : `${alt} — ${i + 1}`}
               loading={i === 0 ? "eager" : "lazy"}
               width={1600}
               height={1000}
-              className="h-full w-full object-cover"
+              className="pointer-events-none h-full w-full object-cover"
               draggable={false}
             />
-          </div>
+          </button>
         ))}
       </div>
 
-      {/* Overlay + specs */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
+
       <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
         {length ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
@@ -77,13 +129,20 @@ function ImageSlider({ images, alt, length, guests }: { images: string[]; alt: s
         ) : null}
       </div>
 
-      {/* Arrows — only visible on card or slider hover */}
+      {/* Expand hint — always visible small badge */}
+      <span className="pointer-events-none absolute start-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur-md ring-1 ring-white/15 transition-opacity duration-500 group-hover/slider:opacity-100">
+        <Expand className="h-4 w-4" />
+      </span>
+
       {count > 1 ? (
         <>
           <button
             type="button"
             aria-label="السابق"
-            onClick={() => go(-1)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIdx((i) => (i - 1 + count) % count);
+            }}
             className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronRight className="h-4 w-4" />
@@ -91,22 +150,28 @@ function ImageSlider({ images, alt, length, guests }: { images: string[]; alt: s
           <button
             type="button"
             aria-label="التالي"
-            onClick={() => go(1)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIdx((i) => (i + 1) % count);
+            }}
             className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
 
-          {/* Dots */}
-          <div className="absolute inset-x-0 top-3 flex justify-center gap-1.5">
+          {/* Progress dots */}
+          <div className="absolute inset-x-0 top-3 z-10 flex justify-center gap-1.5">
             {images.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 aria-label={`صورة ${i + 1}`}
-                onClick={() => setIdx(i)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIdx(i);
+                }}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "w-6 bg-gold" : "w-1.5 bg-white/60"
+                  i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/60"
                 }`}
               />
             ))}
@@ -117,22 +182,191 @@ function ImageSlider({ images, alt, length, guests }: { images: string[]; alt: s
   );
 }
 
+// -------- Share button (Web Share API + WhatsApp fallback) --------
+
+function ShareButton({ title, url }: { title: string; url: string }) {
+  const [ripple, setRipple] = useState(false);
+
+  function trigger() {
+    setRipple(true);
+    setTimeout(() => setRipple(false), 700);
+    if (typeof navigator !== "undefined" && "share" in navigator) {
+      navigator.share({ title, url }).catch(() => openWa());
+    } else {
+      openWa();
+    }
+    function openWa() {
+      const wa = `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`;
+      window.open(wa, "_blank", "noopener,noreferrer");
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      aria-label="مشاركة"
+      onClick={(e) => {
+        e.stopPropagation();
+        trigger();
+      }}
+      className="absolute end-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-gold/95 text-primary-deep shadow-md ring-2 ring-white/30 transition-transform duration-300 hover:scale-110"
+    >
+      <Share2 className="h-4 w-4" />
+      {ripple ? (
+        <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-gold/60" aria-hidden />
+      ) : null}
+    </button>
+  );
+}
+
+// -------- Lightbox (fullscreen image gallery) --------
+
+function Lightbox({
+  open,
+  images,
+  startIndex,
+  alt,
+  onClose,
+}: {
+  open: boolean;
+  images: string[];
+  startIndex: number;
+  alt: string;
+  onClose: () => void;
+}) {
+  const [idx, setIdx] = useState(startIndex);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setIdx(startIndex);
+      setMounted(true);
+      const t = setTimeout(() => setVisible(true), 10);
+      document.body.style.overflow = "hidden";
+      return () => {
+        clearTimeout(t);
+        document.body.style.overflow = "";
+      };
+    } else if (mounted) {
+      setVisible(false);
+      const t = setTimeout(() => setMounted(false), 300);
+      return () => clearTimeout(t);
+    }
+  }, [open, mounted, startIndex]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setIdx((i) => (i - 1 + images.length) % images.length);
+      if (e.key === "ArrowLeft") setIdx((i) => (i + 1) % images.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, images.length, onClose]);
+
+  if (!mounted) return null;
+
+  return (
+    <div
+      className={`fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        type="button"
+        aria-label="إغلاق"
+        onClick={onClose}
+        className="absolute end-4 top-4 grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20"
+      >
+        <X className="h-6 w-6" />
+      </button>
+
+      {images.length > 1 ? (
+        <>
+          <button
+            type="button"
+            aria-label="السابق"
+            onClick={() => setIdx((i) => (i - 1 + images.length) % images.length)}
+            className="absolute end-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-gold hover:text-primary-deep md:end-8"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            aria-label="التالي"
+            onClick={() => setIdx((i) => (i + 1) % images.length)}
+            className="absolute start-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 hover:bg-gold hover:text-primary-deep md:start-8"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+        </>
+      ) : null}
+
+      <div className="flex max-h-[85vh] max-w-[92vw] items-center justify-center">
+        <img
+          key={idx}
+          src={images[idx]}
+          alt={`${alt} — ${idx + 1}`}
+          className="max-h-[85vh] max-w-[92vw] rounded-2xl object-contain animate-in fade-in duration-300"
+        />
+      </div>
+
+      {images.length > 1 ? (
+        <div className="absolute inset-x-0 bottom-6 flex justify-center gap-1.5">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`صورة ${i + 1}`}
+              onClick={() => setIdx(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === idx ? "w-10 bg-gold" : "w-2 bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+// -------- ProductCard --------
+
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
   const { guests, bedrooms, length, duration, extras } = parseSpecs(product.specs);
   const priceNumber = product.price.match(/[\d,]+/)?.[0] ?? product.price;
   const priceUnit = product.price.replace(priceNumber, "").trim();
   const waLink = buildWhatsAppLink(product.title, product.price);
   const [modalOpen, setModalOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxStart, setLightboxStart] = useState(0);
   const hasIncluded = Boolean(product.included && product.included.length);
   const images = product.images && product.images.length > 0 ? product.images : [product.image];
+
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "https://dubai-yacht.ae/";
 
   return (
     <>
       <Reveal as="article" delay={delay} className="h-full">
         <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-luxe ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2">
-          <ImageSlider images={images} alt={product.title} length={length} guests={guests} />
+          {/* Share button — top-right absolute over image */}
+          <ShareButton title={product.title} url={shareUrl} />
 
-          {/* Content */}
+          <ImageSlider
+            images={images}
+            alt={product.title}
+            length={length}
+            guests={guests}
+            onOpenLightbox={(i) => {
+              setLightboxStart(i);
+              setLightboxOpen(true);
+            }}
+          />
+
           <div className="flex flex-1 flex-col gap-3 p-5">
             <h3 className="relative inline-block text-[17px] font-extrabold leading-snug text-primary md:text-lg">
               <span className="bg-gradient-to-l from-gold to-gold-deep bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
@@ -142,7 +376,6 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
 
             <p className="text-sm leading-relaxed text-muted-foreground">{product.desc}</p>
 
-            {/* Price after description */}
             <div className="flex items-baseline gap-2 border-y border-gold/20 py-2.5">
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">تبدأ من</span>
               <span className="text-2xl font-extrabold text-gold-deep">{priceNumber}</span>
@@ -177,7 +410,6 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
               </ul>
             ) : null}
 
-            {/* CTAs */}
             <div className="mt-auto flex gap-2 pt-3">
               <a
                 href={waLink}
@@ -222,9 +454,19 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
           priceUnit={priceUnit}
         />
       ) : null}
+
+      <Lightbox
+        open={lightboxOpen}
+        images={images}
+        startIndex={lightboxStart}
+        alt={product.title}
+        onClose={() => setLightboxOpen(false)}
+      />
     </>
   );
 }
+
+// -------- IncludedModal (existing) --------
 
 function IncludedModal({
   open,
@@ -280,7 +522,6 @@ function IncludedModal({
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-10 scale-95 opacity-0"
         }`}
       >
-        {/* Header image — shrinks on small screens */}
         <div className="relative aspect-[16/10] max-h-[32vh] shrink-0 overflow-hidden bg-primary-deep sm:max-h-[38vh]">
           <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
@@ -311,7 +552,6 @@ function IncludedModal({
           </div>
         </div>
 
-        {/* Scrollable body */}
         <div className="flex-1 overflow-y-auto p-5 sm:p-6">
           <h4 className="mb-4 text-base font-bold text-gold-deep">
             <CheckCircle2 className="me-2 inline h-5 w-5" />
@@ -350,7 +590,6 @@ function IncludedModal({
           ) : null}
         </div>
 
-        {/* Sticky footer */}
         <div className="flex shrink-0 flex-wrap gap-3 border-t border-border bg-muted/40 p-4 sm:p-5">
           <a
             href={waLink}

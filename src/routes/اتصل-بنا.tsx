@@ -135,13 +135,44 @@ function Contact() {
                     placeholder="الاسم الكامل"
                     className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
                   />
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    placeholder="رقم الهاتف"
-                    className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                  />
+                  {/* Phone with country code select (UAE default) */}
+                  <div className="flex overflow-hidden rounded-lg border border-border bg-card focus-within:border-gold">
+                    <select
+                      name="country_code"
+                      aria-label="رمز الدولة"
+                      defaultValue="+971"
+                      dir="ltr"
+                      className="w-[110px] shrink-0 border-e border-border bg-muted/50 px-2 py-3 text-sm outline-none"
+                    >
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+966">🇸🇦 +966</option>
+                      <option value="+965">🇰🇼 +965</option>
+                      <option value="+973">🇧🇭 +973</option>
+                      <option value="+974">🇶🇦 +974</option>
+                      <option value="+968">🇴🇲 +968</option>
+                      <option value="+20">🇪🇬 +20</option>
+                      <option value="+962">🇯🇴 +962</option>
+                      <option value="+961">🇱🇧 +961</option>
+                      <option value="+90">🇹🇷 +90</option>
+                      <option value="+92">🇵🇰 +92</option>
+                      <option value="+91">🇮🇳 +91</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+7">🇷🇺 +7</option>
+                      <option value="+86">🇨🇳 +86</option>
+                    </select>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      pattern="[0-9]{7,15}"
+                      placeholder="رقم الهاتف"
+                      dir="ltr"
+                      className="flex-1 bg-card px-4 py-3 text-sm outline-none"
+                    />
+                  </div>
                 </div>
                 <input
                   type="email"
@@ -200,16 +231,29 @@ function Contact() {
           title="زُرنا في دبي مارينا"
           subtitle="مكاتبنا ومرسى انطلاق اليخوت في قلب دبي مارينا — قريب من عين دبي و JBR."
         />
-        <div className="overflow-hidden rounded-2xl border border-border shadow-luxe">
+        <div className="group relative overflow-hidden rounded-3xl border border-gold/30 shadow-luxe">
+          {/* Gold gradient decorative border */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl ring-4 ring-gold/10 ring-inset" />
           <iframe
-            title="موقعنا في دبي مارينا"
-            src="https://www.google.com/maps?q=Dubai+Marina&output=embed"
+            title="موقعنا في دبي مارينا — توت فن لليخوت"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d115631.10877!2d55.14!3d25.09!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6d5a11111111%3A0x0!2sDubai%20Marina!5e0!3m2!1sen!2sae!4v1723800000000"
             width="100%"
-            height="380"
+            height="420"
             style={{ border: 0 }}
             loading="lazy"
+            allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
+            className="block h-[420px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
           />
+          <a
+            href="https://maps.app.goo.gl/YdWJEY77WLmcdDBT9?g_st=awb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute end-4 top-4 inline-flex items-center gap-2 rounded-full bg-primary-deep px-4 py-2 text-xs font-bold text-primary-foreground shadow-lg ring-1 ring-gold/40 transition-transform hover:scale-105"
+          >
+            <MapPin className="h-4 w-4 text-gold" />
+            افتح في خرائط Google
+          </a>
         </div>
       </section>
 
