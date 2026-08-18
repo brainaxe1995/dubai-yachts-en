@@ -4,6 +4,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { KeywordCloud } from "@/components/KeywordCloud";
+import { SmartContactForm } from "@/components/SmartContactForm";
 import { CONTACT, faqs, keywordCloudFlat } from "@/data/site";
 
 export const Route = createFileRoute("/اتصل-بنا")({
@@ -114,130 +115,21 @@ function Contact() {
             title="نموذج استفسار سريع وأسئلة شائعة"
             subtitle="أرسل استفسارك عبر النموذج أو تصفّح الأسئلة الشائعة للحصول على إجابات فورية قبل التواصل معنا."
           />
-          <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
+          <div className="space-y-10">
             <Reveal>
-              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-10">
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">أرسل استفسارك</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
                   املأ النموذج التالي وسنعاود التواصل معك خلال أقل من ساعة. للحجز الفوري استخدم زر واتساب.
                 </p>
-                <form
-                  className="mt-6 grid gap-4"
-                  action={CONTACT.whatsapp}
-                  method="get"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <label className="grid gap-1.5">
-                    <span className="text-xs font-bold text-muted-foreground">الاسم الكامل</span>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="مثال: أحمد الشامسي"
-                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-                    />
-                  </label>
-
-                  <label className="grid gap-1.5">
-                    <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
-                    <div className="flex overflow-hidden rounded-xl border border-border bg-background transition-colors focus-within:border-gold">
-                      <select
-                        name="country_code"
-                        aria-label="رمز الدولة"
-                        defaultValue="+971"
-                        dir="ltr"
-                        className="w-[92px] shrink-0 border-e border-border bg-muted/50 px-2 py-3 text-sm outline-none"
-                      >
-                        <option value="+971">🇦🇪 +971</option>
-                        <option value="+966">🇸🇦 +966</option>
-                        <option value="+965">🇰🇼 +965</option>
-                        <option value="+973">🇧🇭 +973</option>
-                        <option value="+974">🇶🇦 +974</option>
-                        <option value="+968">🇴🇲 +968</option>
-                        <option value="+20">🇪🇬 +20</option>
-                        <option value="+962">🇯🇴 +962</option>
-                        <option value="+961">🇱🇧 +961</option>
-                        <option value="+90">🇹🇷 +90</option>
-                        <option value="+92">🇵🇰 +92</option>
-                        <option value="+91">🇮🇳 +91</option>
-                        <option value="+44">🇬🇧 +44</option>
-                        <option value="+1">🇺🇸 +1</option>
-                        <option value="+33">🇫🇷 +33</option>
-                        <option value="+49">🇩🇪 +49</option>
-                        <option value="+7">🇷🇺 +7</option>
-                        <option value="+86">🇨🇳 +86</option>
-                      </select>
-                      <input
-                        type="tel"
-                        name="phone"
-                        required
-                        pattern="[0-9]{7,15}"
-                        inputMode="numeric"
-                        placeholder="5X XXX XXXX"
-                        dir="ltr"
-                        className="flex-1 bg-background px-4 py-3 text-sm outline-none"
-                      />
-                    </div>
-                  </label>
-                  <label className="grid gap-1.5">
-                    <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="you@example.com"
-                      dir="ltr"
-                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-                    />
-                  </label>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="grid gap-1.5">
-                      <span className="text-xs font-bold text-muted-foreground">نوع الخدمة</span>
-                      <select
-                        name="service"
-                        className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-                      >
-                        <option value="">اختر الخدمة</option>
-                        <option>تأجير يخت</option>
-                        <option>حفلة على يخت</option>
-                        <option>رحلة صيد</option>
-                        <option>باقة عشاء / إفطار</option>
-                        <option>حفل زفاف / طلب زواج</option>
-                      </select>
-                    </label>
-                    <label className="grid gap-1.5">
-                      <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
-                      <input
-                        type="date"
-                        name="date"
-                        className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-                      />
-                    </label>
-                  </div>
-
-                  <label className="grid gap-1.5">
-                    <span className="text-xs font-bold text-muted-foreground">تفاصيل الحجز أو الاستفسار</span>
-                    <textarea
-                      name="text"
-                      rows={5}
-                      placeholder="اكتب هنا عدد الضيوف، المناسبة، والوقت المفضل..."
-                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-                    />
-                  </label>
-
-                  <button
-                    type="submit"
-                    className="mt-2 rounded-xl bg-primary-deep px-6 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary hover:scale-[1.01]"
-                  >
-                    إرسال الاستفسار عبر واتساب
-                  </button>
-                </form>
+                <div className="mt-6">
+                  <SmartContactForm />
+                </div>
               </div>
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-10">
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">أسئلة شائعة قبل التواصل</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
                   إجابات سريعة على أكثر الأسئلة التي يطرحها ضيوفنا قبل الحجز.
@@ -261,7 +153,7 @@ function Contact() {
           <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl ring-4 ring-gold/10 ring-inset" />
           <iframe
             title="موقعنا في دبي مارينا — توت فن لليخوت"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d115631.10877!2d55.14!3d25.09!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6d5a11111111%3A0x0!2sDubai%20Marina!5e0!3m2!1sen!2sae!4v1723800000000"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.501044656973!2d55.1489261!3d25.084895199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b1214477091%3A0xee255d5c8937fdd6!2sToot%20Fun%20Yachts%20-%20Yacht%20Rental%20Dubai%20Marina!5e0!3m2!1sen!2sbd!4v1787041551994!5m2!1sen!2sbd"
             width="100%"
             height="420"
             style={{ border: 0 }}
