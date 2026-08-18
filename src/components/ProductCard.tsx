@@ -132,8 +132,8 @@ function ImageSlider({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      {/* Info pills — length + guests + meta, all on image bottom */}
-      <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
+      {/* Info pills — length + guests + meta, raised above dots */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-10 flex flex-wrap items-center gap-2">
         {length ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
             <Ruler className="h-3 w-3 text-gold" />
@@ -157,7 +157,7 @@ function ImageSlider({
         ))}
       </div>
 
-      {/* Share badge — top-end corner on image */}
+      {/* Share badge — top-start corner (RTL right) */}
       <button
         type="button"
         aria-label="مشاركة"
@@ -173,7 +173,7 @@ function ImageSlider({
             window.open(wa, "_blank", "noopener,noreferrer");
           }
         }}
-        className="absolute end-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep"
+        className="absolute start-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep"
       >
         <Share2 className="h-4 w-4" />
       </button>
@@ -187,7 +187,7 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i - 1 + count) % count);
             }}
-            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -198,13 +198,13 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i + 1) % count);
             }}
-            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
 
-          {/* Progress dots — top center */}
-          <div className="pointer-events-none absolute inset-x-0 top-3 z-10 flex justify-center gap-1.5">
+          {/* Progress dots — bottom center, below pills */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center gap-1.5">
             {images.map((_, i) => (
               <button
                 key={i}
