@@ -41,7 +41,7 @@ function Blog() {
         subtitle="اكتشف أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي."
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+      <section className="mx-auto max-w-[1440px] px-4 py-12 md:py-16">
         <div className="flex flex-wrap justify-center gap-2">
           {tags.map((t) => {
             const active = activeTag === t;
@@ -63,7 +63,7 @@ function Blog() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:pb-24">
+      <section className="mx-auto max-w-[1440px] px-4 pb-16 md:pb-24">
         <SectionHeading
           title="أحدث مقالات ونصائح اليخوت في دبي"
           subtitle="مقالات متخصّصة من فريق توت فن الخبير في تأجير اليخوت، الحفلات، والرحلات البحرية."

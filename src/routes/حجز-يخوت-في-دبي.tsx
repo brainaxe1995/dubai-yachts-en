@@ -83,7 +83,7 @@ function YachtBooking() {
       />
 
       {/* Products first */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أفضل خيارات حجز يخوت في دبي بأسعار تنافسية"
           subtitle="احجز يختك في دبي بسهولة بأسعار تبدأ من 450 درهم للساعة."
@@ -106,7 +106,7 @@ function YachtBooking() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="كيف تحجز يختك في دبي"
           subtitle="ثماني خطوات بسيطة من اختيار اليخت حتى الانطلاق في رحلتك."

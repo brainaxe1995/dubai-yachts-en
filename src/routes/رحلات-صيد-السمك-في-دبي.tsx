@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
 import fishingImg from "@/assets/fishing/shared.webp";
@@ -125,7 +126,7 @@ function Fishing() {
       />
 
       {/* Products FIRST */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أفضل خيارات رحلات صيد السمك في دبي"
           subtitle="اختر من بين رحلات الصيد الخاصة والمشتركة مع قوارب مجهزة وطاقم محترف."
@@ -181,7 +182,7 @@ function Fishing() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="أفضل مواسم الصيد في دبي"
             subtitle="متى تنطلق للحصول على أفضل تجربة صيد."
@@ -282,7 +283,7 @@ function Fishing() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كيف تحجز رحلة صيد في دبي"
             subtitle="خطوات بسيطة لحجز رحلة صيد ممتعة في دبي."
@@ -372,6 +373,8 @@ function Fishing() {
           </div>
         </div>
       </section>
+
+      <CharterEssentials showDestinations={false} />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading

@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
@@ -106,7 +107,7 @@ function YachtRental() {
         subtitle="نوفر خدمات تأجير يخوت في دبي مع رحلات خاصة، يخوت متنوعة، وأسعار تبدأ من 450 درهم للساعة لجميع المناسبات."
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="خدمات تأجير اليخوت الخاصة في دبي"
           subtitle="اختر من بين أفضل اليخوت الخاصة في دبي بأسعار تبدأ من 450 درهم للساعة، واستمتع برحلة فاخرة تناسب جميع المناسبات."
@@ -147,7 +148,7 @@ function YachtRental() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading title="لأي مناسبة تناسب اليخوت" subtitle="نصمّم لك تجربة تأجير تناسب مناسبتك ومزاجك." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {occasions.map((o, i) => (
@@ -160,6 +161,8 @@ function YachtRental() {
           ))}
         </div>
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading

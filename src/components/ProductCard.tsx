@@ -25,7 +25,7 @@ function parseSpecs(specs: string[]) {
   let length = "";
   let duration = "";
 
-  // Preserve insertion order but dedupe by lowercased trimmed value
+  // Preserve insertion order but dedupe
   const seen = new Set<string>();
   const uniq = specs.filter((s) => {
     const k = s.trim();
@@ -34,16 +34,27 @@ function parseSpecs(specs: string[]) {
     return true;
   });
 
+  // Track which original strings were consumed by primary slots
+  const consumed = new Set<string>();
   for (const s of uniq) {
-    if (/ضيف|شخص/.test(s)) guests = s;
-    else if (/غرف|نوم|غرفة/.test(s) && !/بدون/.test(s)) bedrooms = s;
-    else if (/بدون غرف/.test(s)) bedrooms = "بدون غرف";
-    else if (/قدم/.test(s)) length = s;
-    else if (/ساع|رحلة/.test(s)) duration = s;
+    if (!guests && /ضيف|شخص/.test(s)) {
+      guests = s;
+      consumed.add(s);
+    } else if (!bedrooms && (/غرف|نوم|غرفة/.test(s) || /بدون غرف/.test(s))) {
+      bedrooms = /بدون/.test(s) ? "بدون غرف نوم" : s;
+      consumed.add(s);
+    } else if (!length && /قدم/.test(s)) {
+      length = s;
+      consumed.add(s);
+    } else if (!duration && (/رحلة/.test(s) || /ساع/.test(s))) {
+      duration = s;
+      consumed.add(s);
+    }
   }
 
-  const extras = uniq.filter((s) => s !== guests && s !== bedrooms && s !== length && s !== duration);
-  return { guests, bedrooms, length, duration, extras };
+  // Everything else = extra metadata (e.g. boarding time, min booking, breakfast)
+  const meta = uniq.filter((s) => !consumed.has(s));
+  return { guests, bedrooms, length, duration, meta };
 }
 
 function buildWhatsAppLink(title: string, price: string) {
@@ -337,7 +348,7 @@ function Lightbox({
 // -------- ProductCard --------
 
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
-  const { guests, bedrooms, length, duration, extras } = parseSpecs(product.specs);
+  const { guests, bedrooms, length, duration, meta } = parseSpecs(product.specs);
   const priceNumber = product.price.match(/[\d,]+/)?.[0] ?? product.price;
   const priceUnit = product.price.replace(priceNumber, "").trim();
   const waLink = buildWhatsAppLink(product.title, product.price);
@@ -397,13 +408,15 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
               </div>
             </div>
 
-            {extras.length > 0 ? (
-              <ul className="flex flex-wrap gap-1.5">
-                {extras.map((s) => (
+            {/* Meta info row — nice pill with gold dot; used for boarding time, min booking, meal notes, etc. */}
+            {meta.length > 0 ? (
+              <ul className="flex flex-wrap gap-1.5 pt-1">
+                {meta.map((s) => (
                   <li
                     key={s}
-                    className="rounded-md border border-border bg-background px-2 py-0.5 text-[11px] text-muted-foreground"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/5 px-2.5 py-1 text-[11px] font-semibold text-foreground"
                   >
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                     {s}
                   </li>
                 ))}

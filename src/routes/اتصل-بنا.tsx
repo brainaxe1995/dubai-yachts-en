@@ -114,112 +114,137 @@ function Contact() {
             title="نموذج استفسار سريع وأسئلة شائعة"
             subtitle="أرسل استفسارك عبر النموذج أو تصفّح الأسئلة الشائعة للحصول على إجابات فورية قبل التواصل معنا."
           />
-          <div className="grid gap-10 lg:grid-cols-2">
+          <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
             <Reveal>
-              <h3 className="text-xl font-bold text-foreground md:text-2xl">أرسل استفسارك</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                املأ النموذج التالي وسنعاود التواصل معك خلال أقل من ساعة. للحجز الفوري استخدم زر واتساب.
-              </p>
-              <form
-                className="mt-6 grid gap-4"
-                action={CONTACT.whatsapp}
-                method="get"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="الاسم الكامل"
-                    className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                  />
-                  {/* Phone with country code select (UAE default) */}
-                  <div className="flex overflow-hidden rounded-lg border border-border bg-card focus-within:border-gold">
-                    <select
-                      name="country_code"
-                      aria-label="رمز الدولة"
-                      defaultValue="+971"
-                      dir="ltr"
-                      className="w-[110px] shrink-0 border-e border-border bg-muted/50 px-2 py-3 text-sm outline-none"
-                    >
-                      <option value="+971">🇦🇪 +971</option>
-                      <option value="+966">🇸🇦 +966</option>
-                      <option value="+965">🇰🇼 +965</option>
-                      <option value="+973">🇧🇭 +973</option>
-                      <option value="+974">🇶🇦 +974</option>
-                      <option value="+968">🇴🇲 +968</option>
-                      <option value="+20">🇪🇬 +20</option>
-                      <option value="+962">🇯🇴 +962</option>
-                      <option value="+961">🇱🇧 +961</option>
-                      <option value="+90">🇹🇷 +90</option>
-                      <option value="+92">🇵🇰 +92</option>
-                      <option value="+91">🇮🇳 +91</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+33">🇫🇷 +33</option>
-                      <option value="+49">🇩🇪 +49</option>
-                      <option value="+7">🇷🇺 +7</option>
-                      <option value="+86">🇨🇳 +86</option>
-                    </select>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      pattern="[0-9]{7,15}"
-                      placeholder="رقم الهاتف"
-                      dir="ltr"
-                      className="flex-1 bg-card px-4 py-3 text-sm outline-none"
-                    />
-                  </div>
-                </div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="البريد الإلكتروني (اختياري)"
-                  className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                />
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <select
-                    name="service"
-                    className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                  >
-                    <option value="">نوع الخدمة</option>
-                    <option>تأجير يخت</option>
-                    <option>حفلة على يخت</option>
-                    <option>رحلة صيد</option>
-                    <option>باقة عشاء / إفطار</option>
-                    <option>حفل زفاف / طلب زواج</option>
-                  </select>
-                  <input
-                    type="date"
-                    name="date"
-                    className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                  />
-                </div>
-                <textarea
-                  name="text"
-                  rows={5}
-                  placeholder="تفاصيل الحجز أو الاستفسار"
-                  className="rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-gold"
-                />
-                <button
-                  type="submit"
-                  className="rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-deep"
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
+                <h3 className="text-xl font-bold text-foreground md:text-2xl">أرسل استفسارك</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  املأ النموذج التالي وسنعاود التواصل معك خلال أقل من ساعة. للحجز الفوري استخدم زر واتساب.
+                </p>
+                <form
+                  className="mt-6 grid gap-4"
+                  action={CONTACT.whatsapp}
+                  method="get"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  إرسال الاستفسار عبر واتساب
-                </button>
-              </form>
+                  <label className="grid gap-1.5">
+                    <span className="text-xs font-bold text-muted-foreground">الاسم الكامل</span>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="مثال: أحمد الشامسي"
+                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+                    />
+                  </label>
+
+                  <label className="grid gap-1.5">
+                    <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
+                    <div className="flex overflow-hidden rounded-xl border border-border bg-background transition-colors focus-within:border-gold">
+                      <select
+                        name="country_code"
+                        aria-label="رمز الدولة"
+                        defaultValue="+971"
+                        dir="ltr"
+                        className="w-[92px] shrink-0 border-e border-border bg-muted/50 px-2 py-3 text-sm outline-none"
+                      >
+                        <option value="+971">🇦🇪 +971</option>
+                        <option value="+966">🇸🇦 +966</option>
+                        <option value="+965">🇰🇼 +965</option>
+                        <option value="+973">🇧🇭 +973</option>
+                        <option value="+974">🇶🇦 +974</option>
+                        <option value="+968">🇴🇲 +968</option>
+                        <option value="+20">🇪🇬 +20</option>
+                        <option value="+962">🇯🇴 +962</option>
+                        <option value="+961">🇱🇧 +961</option>
+                        <option value="+90">🇹🇷 +90</option>
+                        <option value="+92">🇵🇰 +92</option>
+                        <option value="+91">🇮🇳 +91</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+33">🇫🇷 +33</option>
+                        <option value="+49">🇩🇪 +49</option>
+                        <option value="+7">🇷🇺 +7</option>
+                        <option value="+86">🇨🇳 +86</option>
+                      </select>
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        pattern="[0-9]{7,15}"
+                        inputMode="numeric"
+                        placeholder="5X XXX XXXX"
+                        dir="ltr"
+                        className="flex-1 bg-background px-4 py-3 text-sm outline-none"
+                      />
+                    </div>
+                  </label>
+                  <label className="grid gap-1.5">
+                    <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      dir="ltr"
+                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+                    />
+                  </label>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="grid gap-1.5">
+                      <span className="text-xs font-bold text-muted-foreground">نوع الخدمة</span>
+                      <select
+                        name="service"
+                        className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+                      >
+                        <option value="">اختر الخدمة</option>
+                        <option>تأجير يخت</option>
+                        <option>حفلة على يخت</option>
+                        <option>رحلة صيد</option>
+                        <option>باقة عشاء / إفطار</option>
+                        <option>حفل زفاف / طلب زواج</option>
+                      </select>
+                    </label>
+                    <label className="grid gap-1.5">
+                      <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
+                      <input
+                        type="date"
+                        name="date"
+                        className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+                      />
+                    </label>
+                  </div>
+
+                  <label className="grid gap-1.5">
+                    <span className="text-xs font-bold text-muted-foreground">تفاصيل الحجز أو الاستفسار</span>
+                    <textarea
+                      name="text"
+                      rows={5}
+                      placeholder="اكتب هنا عدد الضيوف، المناسبة، والوقت المفضل..."
+                      className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+                    />
+                  </label>
+
+                  <button
+                    type="submit"
+                    className="mt-2 rounded-xl bg-primary-deep px-6 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary hover:scale-[1.01]"
+                  >
+                    إرسال الاستفسار عبر واتساب
+                  </button>
+                </form>
+              </div>
             </Reveal>
 
             <Reveal delay={120}>
-              <h3 className="text-xl font-bold text-foreground md:text-2xl">أسئلة شائعة قبل التواصل</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                إجابات سريعة على أكثر الأسئلة التي يطرحها ضيوفنا قبل الحجز.
-              </p>
-              <div className="mt-6">
-                <Accordion items={faqs.slice(0, 5)} />
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe md:p-8">
+                <h3 className="text-xl font-bold text-foreground md:text-2xl">أسئلة شائعة قبل التواصل</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  إجابات سريعة على أكثر الأسئلة التي يطرحها ضيوفنا قبل الحجز.
+                </p>
+                <div className="mt-6">
+                  <Accordion items={faqs.slice(0, 5)} />
+                </div>
               </div>
             </Reveal>
           </div>

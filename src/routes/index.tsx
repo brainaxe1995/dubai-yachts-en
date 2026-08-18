@@ -71,7 +71,7 @@ function Home() {
         subtitle="استمتع بأفضل خدمات تأجير اليخوت في دبي مع رحلات خاصة، أسعار مميزة، ويخوت فاخرة لجميع المناسبات."
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أفضل اليخوت للإيجار في دبي بأسعار تنافسية"
           subtitle="اختر من مجموعة متنوعة من أفضل اليخوت للإيجار في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة."
@@ -92,7 +92,7 @@ function Home() {
       </section>
 
       <section className="surface-navy py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <h2 className="text-2xl text-primary-foreground md:text-3xl">
               لماذا تختار <span className="text-gold-gradient">توت فن</span> لتأجير اليخوت في دبي؟
@@ -115,7 +115,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="خدمات توت فن لتأجير اليخوت في دبي"
           subtitle="اكتشف خدمات توت فن المتنوعة لتأجير اليخوت في دبي."
@@ -149,7 +149,7 @@ function Home() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كيف تحجز يختك في دبي؟"
             subtitle="ثماني خطوات بسيطة تفصلك عن رحلة بحرية فاخرة."
@@ -170,7 +170,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="إضافات حجز اليخوت في دبي"
           subtitle="خصّص تجربتك بإضافات مميزة — من الكيك والحلويات إلى الرياضات المائية والتصوير الاحترافي. مرّر بمؤشر الفأرة لإيقاف الحركة."
@@ -179,7 +179,7 @@ function Home() {
       </section>
 
       <section className="surface-navy py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             onDark
             title="أشهر الوجهات البحرية في دبي"
@@ -242,7 +242,7 @@ function Home() {
 
       {/* Customer reviews */}
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="ماذا يقول ضيوفنا؟"
             subtitle="اكتشف آراء ضيوفنا حول تجارب تأجير اليخوت في دبي، من الرحلات الخاصة والاحتفالات إلى أجمل اللحظات على متن اليخت."

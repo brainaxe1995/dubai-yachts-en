@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
@@ -68,7 +69,7 @@ function Packages() {
       />
 
       {/* Products FIRST */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="باقات مختارة لتجربة بحرية مميزة"
           subtitle="ثلاث باقات جاهزة تشمل الرحلة والوجبة والإضافات بسعر واحد شفاف."
@@ -97,7 +98,7 @@ function Packages() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading title="أشهر باقاتنا" subtitle="ثلاث باقات مختارة بعناية." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {pkgHighlights.map((h, i) => (
@@ -142,7 +143,7 @@ function Packages() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="كيف تحجز باقة يخت في دبي"
           subtitle="خطوات بسيطة لاختيار وحجز باقة اليخت المناسبة لك."
@@ -181,6 +182,8 @@ function Packages() {
           </Reveal>
         </div>
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading

@@ -93,7 +93,7 @@ function YachtsForRent() {
       />
 
       {/* Products FIRST */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="جميع اليخوت المتاحة للإيجار في دبي"
           subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
@@ -126,7 +126,7 @@ function YachtsForRent() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="لماذا نحن الخيار الأفضل لإيجار يخت"
           subtitle="ما يميّز توت فن عن غيرها في سوق اليخوت الإماراتي."
@@ -145,7 +145,7 @@ function YachtsForRent() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كيف تستأجر يخت في دبي"
             subtitle="خطوات سهلة لحجز يختك والاستمتاع بتجربة فاخرة لا تُنسى."

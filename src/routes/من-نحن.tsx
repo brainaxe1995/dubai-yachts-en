@@ -98,7 +98,7 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading title="قيمنا في كل رحلة" subtitle="خدمة احترافية، أسعار واضحة، وتجربة بحرية لا تُنسى." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => (
@@ -114,7 +114,7 @@ function About() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading title="مناسبات نصنع لها ذكريات لا تُنسى" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {occasions.map((o, i) => (

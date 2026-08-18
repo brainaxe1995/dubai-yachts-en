@@ -47,6 +47,7 @@ import exDonut from "@/assets/extras/donut.webp";
 import exFoodBuffet from "@/assets/extras/food-buffet.webp";
 
 import { DEFAULT_CONFIG } from "./config";
+import { imagesFor } from "./product-images";
 
 // CONTACT reads from the central config's defaults at import time.
 // For runtime overrides (admin preview), components should call getConfig().
@@ -78,6 +79,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 15 ضيفًا", "55 قدم", "بدون غرف نوم"],
     price: "600 د.إ / الساعة",
     image: houseboat55,
+    images: imagesFor("houseboat-55", "yachts"),
   },
   {
     title: "عوامة 100 قدم للإيجار في دبي",
@@ -85,6 +87,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 50 ضيفًا", "100 قدم", "2 غرفة نوم"],
     price: "2,000 د.إ / الساعة",
     image: floating100,
+    images: imagesFor("floating-100", "yachts"),
   },
   {
     title: "إيجار يخت ماجستي 48 قدم في دبي",
@@ -92,6 +95,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 12 ضيفًا", "48 قدم", "2 غرفة نوم"],
     price: "550 د.إ / الساعة",
     image: majesty48,
+    images: imagesFor("majesty-48", "yachts"),
   },
   {
     title: "حجز يخت إيطالي 95 قدم للحفلات والمناسبات في دبي",
@@ -99,6 +103,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 45 ضيفًا", "95 قدم", "2 غرفة نوم"],
     price: "1,700 د.إ / الساعة",
     image: italian95,
+    images: imagesFor("italian-95", "yachts"),
   },
   {
     title: "إيجار سوبر يخت فيريتي 78 قدم في دبي",
@@ -106,6 +111,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 20 ضيفًا", "78 قدم", "3 غرف نوم"],
     price: "5,000 د.إ / الساعة",
     image: ferretti78,
+    images: imagesFor("ferretti-78", "yachts"),
   },
   {
     title: "تأجير ميني يخت 40 قدم في دبي",
@@ -113,6 +119,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعة", "يتسع حتى 10 ضيوف", "40 قدم", "غرفة نوم واحدة"],
     price: "450 د.إ / الساعة",
     image: mini40,
+    images: imagesFor("mini-40", "yachts"),
   },
   {
     title: "تأجير يخت أزيموت 80 قدم في دبي مع جاكوزي",
@@ -120,6 +127,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 35 ضيفًا", "80 قدم", "3 غرف نوم"],
     price: "1,500 د.إ / الساعة",
     image: azimut80,
+    images: imagesFor("azimut-80", "yachts"),
   },
   {
     title: "إيجار سوبر يخت صن سيكر 95 قدم في دبي",
@@ -127,6 +135,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: 4 ساعات", "يتسع حتى 20 ضيفًا", "95 قدم", "3 غرف نوم"],
     price: "4,500 د.إ / الساعة",
     image: sunseeker95,
+    images: imagesFor("sunseeker-95", "yachts"),
   },
   {
     title: "تأجير يخت ماجستي 70 قدم في دبي",
@@ -134,6 +143,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 28 ضيفًا", "70 قدم", "3 غرف نوم"],
     price: "850 د.إ / الساعة",
     image: majesty70,
+    images: imagesFor("majesty-70", "yachts"),
   },
   {
     title: "استئجار يخت ماجستي 66 قدم في دبي مارينا",
@@ -141,6 +151,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 22 ضيفًا", "66 قدم", "3 غرف نوم"],
     price: "800 د.إ / الساعة",
     image: majesty66,
+    images: imagesFor("majesty-66", "yachts"),
   },
   {
     title: "جولة بحرية بيخت ماجستي 55 قدم في دبي",
@@ -148,6 +159,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 18 ضيفًا", "55 قدم", "2 غرفة نوم"],
     price: "650 د.إ / الساعة",
     image: majesty55,
+    images: imagesFor("majesty-55", "yachts"),
   },
   {
     title: "تأجير يخت أزيموت 50 قدم في دبي",
@@ -155,6 +167,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 15 ضيفًا", "50 قدم", "2 غرفة نوم"],
     price: "650 د.إ / الساعة",
     image: azimut50,
+    images: imagesFor("azimut-50", "yachts"),
   },
   {
     title: "يخت ماجستي 88 قدم في دبي",
@@ -162,6 +175,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 45 ضيفًا", "88 قدم", "4 غرف نوم"],
     price: "1,800 د.إ / الساعة",
     image: majesty88,
+    images: imagesFor("majesty-88", "yachts"),
   },
   {
     title: "تأجير يخت للشركات 105 قدم في دبي",
@@ -169,6 +183,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 90 ضيفًا", "105 قدم", "غرفتا نوم"],
     price: "3,000 د.إ / الساعة",
     image: corporate105,
+    images: imagesFor("corporate-105", "yachts"),
   },
   {
     title: "إيجار يخت جلف كرافت 90 قدم في مارينا دبي",
@@ -176,6 +191,7 @@ export const yachts: Product[] = [
     specs: ["الحد الأدنى للحجز: ساعتان", "يتسع حتى 41 ضيفًا", "90 قدم", "3 غرف نوم"],
     price: "1,300 د.إ / الساعة",
     image: gulfcraft90,
+    images: imagesFor("gulfcraft-90", "yachts"),
   },
 ];
 
@@ -186,6 +202,7 @@ export const fishingTrips: Product[] = [
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "40 قدم", "الحد الأدنى للحجز: ضيفان", "إفطار مشترك", "الصعود: 7:00 صباحًا"],
     price: "350 د.إ / شخص",
     image: fishingShared,
+    images: imagesFor("shared", "fishing"),
   },
   {
     title: "رحلة صيد سمك خاصة باليخت في دبي",
@@ -193,6 +210,7 @@ export const fishingTrips: Product[] = [
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "48 قدم"],
     price: "2,000 د.إ / 4 ساعات",
     image: fishingPrivateYacht,
+    images: imagesFor("private-yacht", "fishing"),
   },
   {
     title: "رحلة صيد سمك خاصة بالقارب في دبي",
@@ -200,6 +218,7 @@ export const fishingTrips: Product[] = [
     specs: ["رحلة 4 ساعات", "يتسع حتى 10 ضيوف", "40 قدم"],
     price: "1,200 د.إ / 4 ساعات",
     image: fishingPrivateBoat,
+    images: imagesFor("private-boat", "fishing"),
   },
 ];
 
@@ -226,6 +245,7 @@ export const parties: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "2,600 د.إ / ساعتين",
     image: partyProposal,
+    images: imagesFor("proposal", "parties"),
     included: [
       "رحلة يخت خاص لمدة ساعتين",
       "كيك طلب زواج مخصّص",
@@ -245,6 +265,7 @@ export const parties: Product[] = [
     specs: ["الحد الأدنى للحجز: 3 ساعات", "يتسع حتى 45 ضيفًا", "95 قدم"],
     price: "1,500 د.إ / الساعة",
     image: partyWedding,
+    images: imagesFor("wedding", "parties"),
     included: [
       "يخت خاص 95 قدم (حتى 45 ضيفًا)",
       "ديكور زفاف كامل",
@@ -267,6 +288,7 @@ export const parties: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "2,100 د.إ / ساعتين",
     image: partyAnniversary,
+    images: imagesFor("anniversary", "parties"),
     included: [
       "رحلة يخت خاص 48 قدم لمدة ساعتين",
       "كيك ذكرى سنوية مخصّص",
@@ -284,6 +306,7 @@ export const parties: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "1,800 د.إ / ساعتين",
     image: partyGraduation,
+    images: imagesFor("graduation", "parties"),
     included: [
       "رحلة يخت خاص 48 قدم لمدة ساعتين",
       "كيك تخرج مخصّص",
@@ -300,6 +323,7 @@ export const parties: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 15 ضيفًا", "55 قدم"],
     price: "1,900 د.إ / ساعتين",
     image: partyEngagement,
+    images: imagesFor("engagement", "parties"),
     included: [
       "يخت خاص 55 قدم لمدة ساعتين",
       "كيك خطوبة مخصّص",
@@ -317,6 +341,7 @@ export const parties: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "1,500 د.إ / ساعتين",
     image: partyBirthday,
+    images: imagesFor("birthday", "parties"),
     included: [
       "رحلة يخت خاص 48 قدم لمدة ساعتين",
       "كيك عيد ميلاد وشموع",
@@ -344,6 +369,7 @@ export const packages: Product[] = [
     specs: ["رحلة 4 ساعات", "يتسع حتى 12 ضيفًا", "48 قدم"],
     price: "3,000 د.إ / 4 ساعات",
     image: pkgBreakfast,
+    images: imagesFor("breakfast", "packages"),
     included: [
       "رحلة يخت خاص 48 قدم لمدة 4 ساعات",
       "إفطار عربي فاخر على متن اليخت",
@@ -363,6 +389,7 @@ export const packages: Product[] = [
     specs: ["رحلة 4 ساعات", "يتسع حتى 12 ضيفًا", "48 قدم", "جيت سكي ساعة واحدة"],
     price: "2,300 د.إ / 4 ساعات",
     image: pkgJetski,
+    images: imagesFor("jetski", "packages"),
     included: [
       "رحلة يخت خاص 48 قدم لمدة 4 ساعات",
       "جولة جيت سكي احترافي لمدة ساعة كاملة",
@@ -382,12 +409,14 @@ export const packages: Product[] = [
     specs: ["رحلة لمدة ساعتين", "يتسع حتى ضيفين", "48 قدم"],
     price: "1,800 د.إ / ساعتين",
     image: pkgRomantic,
+    images: imagesFor("romantic-dinner", "packages"),
     included: [
       "رحلة يخت خاص 48 قدم لشخصين",
+      "وجبة مشاوي لشخصين",
+      "كيكة رومانسية",
+      "زجاجة شمبانيا",
       "عشاء رومانسي من 5 أطباق",
-      "ميكس قرل لشخصين أو خيار سي فود",
-      "زجاجة شمبانيا بدون كحول",
-      "كيك رومانسي مخصّص",
+      "خيار سي فود بديل عن المشاوي",
       "ديكور، شموع، بتلات ورد",
       "نظام إضاءة رومانسي",
       "خدمة ضيافة متواراة",

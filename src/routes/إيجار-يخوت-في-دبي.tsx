@@ -92,7 +92,7 @@ function RentYacht() {
       />
 
       {/* Products first */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أسطولنا من اليخوت الفاخرة"
           subtitle="اختر من أسطولنا المتنوع من اليخوت الفاخرة المتاحة للإيجار في دبي لجميع الرحلات والمناسبات."
@@ -115,7 +115,7 @@ function RentYacht() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading title="لماذا إيجار يخت مع توت فن" subtitle="نقدّم تجربة إيجار سهلة وشفافة مع أفضل الأسعار في دبي." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r, i) => (

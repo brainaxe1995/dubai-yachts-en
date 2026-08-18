@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
+import { CharterEssentials } from "@/components/CharterEssentials";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
@@ -77,7 +78,7 @@ function Parties() {
       />
 
       {/* Products FIRST (right after hero) */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="باقات لجميع حفلات اليخوت في دبي"
           subtitle="اختر نوع الحفلة التي تناسب ميزانيتك واحتفل على متن يخت في دبي."
@@ -112,7 +113,7 @@ function Parties() {
       </section>
 
       {/* Occasion types */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أنواع الحفلات التي ننظّمها"
           subtitle="اختر نوع مناسبتك ونحن نتكفّل بالباقي."
@@ -131,7 +132,7 @@ function Parties() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كيف تحجز حفلة يخت في دبي"
             subtitle="خطوات بسيطة لتنظيم حفلة يخت مميزة في دبي."
@@ -167,6 +168,8 @@ function Parties() {
           </div>
         </div>
       </section>
+
+      <CharterEssentials />
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
