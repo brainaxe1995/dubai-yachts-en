@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { getProductOverrides, applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides";
+import { getProductOverrides } from "@/lib/overrides";
+import { applyOverrides, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
 
-const EMPTY: ProductOverrides = {
-  hidden: { yachts: [], parties: [], fishing: [], packages: [] },
-  order: { yachts: [], parties: [], fishing: [], packages: [] },
-};
+const EMPTY = EMPTY_OVERRIDES;
 
 // Client-side cache shared across route renders.
 let cache: ProductOverrides | null = null;

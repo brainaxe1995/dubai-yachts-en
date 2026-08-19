@@ -12,7 +12,8 @@ import { SortableContext, arrayMove, sortableKeyboardCoordinates, useSortable, v
 import { CSS } from "@dnd-kit/utilities";
 import { Eye, EyeOff, GripVertical, Save, Check } from "lucide-react";
 import { yachts, parties, fishingTrips, packages } from "@/data/site";
-import { getProductOverrides, saveProductOverrides, applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides";
+import { getProductOverrides, saveProductOverrides } from "@/lib/overrides";
+import { applyOverrides, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
 import { invalidateOverridesCache } from "@/hooks/useProductOverrides";
 
 const ADMIN_PASSWORD = "Tootfun321+";
@@ -31,10 +32,7 @@ const CAT_LABELS: Record<Category, string> = {
   packages: "الباقات",
 };
 
-const EMPTY: ProductOverrides = {
-  hidden: { yachts: [], parties: [], fishing: [], packages: [] },
-  order: { yachts: [], parties: [], fishing: [], packages: [] },
-};
+const EMPTY = EMPTY_OVERRIDES;
 
 export function ProductManager() {
   const [overrides, setOverrides] = useState<ProductOverrides>(EMPTY);
