@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
+import type { LucideIcon } from "lucide-react";
 import {
   Users,
   Bed,
@@ -13,7 +14,26 @@ import {
   ChevronRight,
   Share2,
   Anchor,
+  Utensils,
+  Wine,
+  Cake,
+  Coffee,
+  Waves,
+  Sunrise,
+  Timer,
+  Tag,
 } from "lucide-react";
+
+function iconForMeta(s: string): LucideIcon {
+  if (/شمبانيا|خمر|كأس|زجاجة/.test(s)) return Wine;
+  if (/كيك|كيكة|كعك/.test(s)) return Cake;
+  if (/إفطار|فطور|قهوة/.test(s)) return Coffee;
+  if (/مشاوي|طعام|وجبة|بوفيه|سي فود|ميكس/.test(s)) return Utensils;
+  if (/جيت سكي|بانانا|دونات|رياض/.test(s)) return Waves;
+  if (/صباح|الصعود|الساعة|شروق/.test(s)) return Sunrise;
+  if (/دقيق|ساع|مدة|رحلة\b/.test(s)) return Timer;
+  return Tag;
+}
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -73,7 +93,6 @@ function ImageSlider({
   meta,
   shareTitle,
   shareUrl,
-  autoplayMs = 6500,
   onOpenLightbox,
 }: {
   images: string[];
@@ -83,38 +102,24 @@ function ImageSlider({
   meta: string[];
   shareTitle: string;
   shareUrl: string;
-  autoplayMs?: number;
   onOpenLightbox?: (index: number) => void;
 }) {
   const [idx, setIdx] = useState(0);
-  const [paused, setPaused] = useState(false);
   const count = images.length;
 
-  const next = useCallback(() => setIdx((i) => (i + 1) % count), [count]);
-
-  useEffect(() => {
-    if (count <= 1 || paused) return;
-    const t = setInterval(next, autoplayMs);
-    return () => clearInterval(t);
-  }, [count, paused, next, autoplayMs]);
-
   return (
-    <div
-      className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-primary-deep"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-primary-deep">
       <div
-        className="flex h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-        style={{ transform: `translateX(${idx * (100 / count)}%)`, width: `${count * 100}%` }}
+        dir="ltr"
+        className="absolute inset-0 flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{ transform: `translate3d(${-idx * 100}%, 0, 0)` }}
       >
         {images.map((src, i) => (
           <button
             key={i}
             type="button"
             aria-label={`عرض الصورة ${i + 1}`}
-            className="flex h-full items-center justify-center"
-            style={{ width: `${100 / count}%` }}
+            className="relative h-full w-full shrink-0"
             onClick={() => onOpenLightbox?.(idx)}
           >
             <img
@@ -146,15 +151,18 @@ function ImageSlider({
             {guests}
           </span>
         ) : null}
-        {meta.map((s) => (
-          <span
-            key={s}
-            className="inline-flex items-center gap-1 rounded-full bg-gold/95 px-2.5 py-1 text-[11px] font-bold text-primary-deep shadow-md ring-1 ring-white/25"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-deep" />
-            {s}
-          </span>
-        ))}
+        {meta.map((s) => {
+          const MetaIcon = iconForMeta(s);
+          return (
+            <span
+              key={s}
+              className="inline-flex items-center gap-1.5 rounded-full bg-gold/95 px-2.5 py-1 text-[11px] font-bold text-primary-deep shadow-md ring-1 ring-white/25"
+            >
+              <MetaIcon className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />
+              {s}
+            </span>
+          );
+        })}
       </div>
 
       {/* Share badge — top-start corner (RTL right) */}

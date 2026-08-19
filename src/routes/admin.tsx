@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Copy, Save, RotateCcw, Lock, LogOut } from "lucide-react";
 import { DEFAULT_CONFIG, getConfig, saveConfig, resetConfig, type SiteConfig } from "@/data/config";
+import { ProductManager } from "@/components/admin/ProductManager";
 
 const ADMIN_PASSWORD = "Tootfun321+"; // change this constant to update the admin password
 const AUTH_KEY = "toot-fun-admin-auth";
@@ -192,6 +193,10 @@ function Admin() {
             onChange={(v) => update("tracking.snapchatPixelId", v)}
           />
         </Section>
+
+        <div className="mt-10">
+          <ProductManager />
+        </div>
 
         <Section title="Default SEO">
           <Field label="Default Title" v={cfg.seo.defaultTitle} onChange={(v) => update("seo.defaultTitle", v)} />

@@ -19,8 +19,15 @@ export function PageHero({
   compact?: boolean;
   children?: ReactNode;
 }) {
+  // Fixed aspect ratio so mobile + desktop show identical horizontal banner shape.
+  // Min height floors keep tiny screens usable.
+  // Mobile: 16:9 banner shape (with min-h floor for text comfort).
+  // Desktop: fixed standard hero height (no aspect ratio bloat on wide screens).
+  const shape = compact
+    ? "aspect-[16/9] min-h-[380px] md:aspect-auto md:h-[420px] lg:h-[460px]"
+    : "aspect-[16/9] min-h-[440px] md:aspect-auto md:h-[500px] lg:h-[560px]";
   return (
-    <section className="relative isolate overflow-hidden surface-navy">
+    <section className={`relative isolate flex w-full overflow-hidden surface-navy ${shape}`}>
       <img
         src={image}
         alt={title}
@@ -28,25 +35,36 @@ export function PageHero({
         height={1088}
         fetchPriority="high"
         decoding="async"
-        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary-deep via-primary/70 to-primary/40" />
       <div
-        className={`mx-auto flex max-w-6xl flex-col items-center px-4 text-center ${
-          compact ? "py-20 md:py-28" : "py-28 md:py-40"
-        }`}
+        className={`mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-14 text-center md:py-20`}
       >
         {eyebrow ? (
-          <Reveal className="mb-4 rounded-full border border-gold/40 px-4 py-1.5 text-xs font-bold tracking-wide text-gold">
+          <Reveal className="mb-4 rounded-full border border-gold/60 bg-primary-deep/70 px-4 py-1.5 text-xs font-bold tracking-wide text-gold shadow-lg">
             {eyebrow}
           </Reveal>
         ) : null}
         <Reveal delay={60}>
-          <h1 className="text-3xl leading-tight text-primary-foreground md:text-5xl">{title}</h1>
+          <h1
+            className="text-3xl font-extrabold leading-tight text-primary-foreground md:text-5xl"
+            style={{
+              textShadow:
+                "-1px -1px 0 rgba(7,20,38,0.9), 1px -1px 0 rgba(7,20,38,0.9), -1px 1px 0 rgba(7,20,38,0.9), 1px 1px 0 rgba(7,20,38,0.9), 0 4px 24px rgba(0,0,0,0.55)",
+            }}
+          >
+            {title}
+          </h1>
         </Reveal>
         {subtitle ? (
           <Reveal delay={140}>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 md:text-base">
+            <p
+              className="mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-primary-foreground md:text-base"
+              style={{
+                textShadow:
+                  "-0.5px -0.5px 0 rgba(7,20,38,0.9), 0.5px -0.5px 0 rgba(7,20,38,0.9), -0.5px 0.5px 0 rgba(7,20,38,0.9), 0.5px 0.5px 0 rgba(7,20,38,0.9), 0 2px 16px rgba(0,0,0,0.6)",
+              }}
+            >
               {renderInline(subtitle)}
             </p>
           </Reveal>

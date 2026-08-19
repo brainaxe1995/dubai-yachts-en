@@ -1,16 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Sparkles, Music, Cake, Camera, HeartHandshake, GraduationCap, Palette, Wand2, PartyPopper } from "lucide-react";
+import { Sparkles, Music, Cake, Camera, HeartHandshake, GraduationCap, Palette, Wand2, PartyPopper, Lock, Landmark, Ship } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { CharterEssentials } from "@/components/CharterEssentials";
+import { PartyEssentialsTabs } from "@/components/PartyEssentialsTabs";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import partyImg from "@/assets/parties/wedding.webp";
 import partyWeddingImg from "@/assets/parties/wedding/wedding-1.webp";
 import partyBirthdayImg from "@/assets/parties/birthday/birthday-1.webp";
@@ -19,11 +20,11 @@ import partyProposalImg from "@/assets/parties/proposal/proposal-1.webp";
 const partyFaqs = [
   {
     q: "كم تكلفة حفلة على يخت في دبي؟",
-    a: "تبدأ تكلفة حفلات اليخوت في دبي من 1,500 د.إ لساعتين (يخت 48 قدم يستوعب 12 ضيفًا)، وتصل إلى 4,500+ د.إ للساعة لليخوت الأكبر مثل يخت 95 قدم للأعراس. السعر يشمل اليخت والطاقم والوقود — الإضافات (كيك، ديكور، مصور، دي جي) اختيارية.",
+    a: "تبدأ تكلفة __حفلة يخت في دبي من 1,500 درهم إماراتي لمدة ساعتين__، ويختلف السعر حسب حجم اليخت، وعدد الضيوف، ومدة الحفلة، والخدمات الإضافية المختارة.",
   },
   {
-    q: "لماذا تختار حفلة على يخت في دبي؟",
-    a: "تمنحك حفلة على يخت في دبي أجواء خاصة ومميزة للاحتفال بعيد ميلاد، خطوبة، ذكرى سنوية أو مناسبة خاصة وسط أجمل الإطلالات البحرية في دبي. خصوصية كاملة لك ولضيوفك على متن اليخت. إطلالات رائعة على دبي مارينا، نخلة جميرا وبرج العرب. إمكانية تخصيص الحفلة بالديكور، الكيك، الطعام والموسيقى. خيارات متنوعة من اليخوت تناسب عدد الضيوف والميزانية.",
+    q: "هل يمكنني تخصيص حفلة اليخت في دبي؟",
+    a: "نعم، يمكنك تخصيص __حفلة اليخت في دبي__ لتناسب مناسبتك، مع إمكانية إضافة الديكورات، الضيافة، الطعام، الموسيقى والترفيه، بالإضافة إلى خدمات أخرى حسب اختيارك.",
   },
   { q: "كم عدد الضيوف الذي يستوعبه اليخت للحفلات؟", a: "لدينا يخوت تستوعب من 12 ضيفًا (يخت 48 قدم) حتى 45 ضيفًا (يخت 95 قدم) و90 ضيفًا (105 قدم). نختار لك اليخت الأنسب حسب حجم حفلتك." },
   { q: "هل تشمل الباقة الديكور والكيك؟", a: "الباقة الأساسية تشمل الرحلة والضيافة. الديكور والكيك والمصور من الإضافات الاختيارية بأسعار خاصة." },
@@ -108,6 +109,7 @@ export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
 });
 
 function Parties() {
+  const visibleParties = useOverriddenProducts(parties, "parties");
   return (
     <>
       <PageHero
@@ -125,8 +127,59 @@ function Parties() {
           subtitle="اختر نوع الحفلة التي تناسب ميزانيتك واحتفل على متن يخت في دبي."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {parties.map((p, i) => (
+          {visibleParties.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
+          ))}
+        </div>
+      </section>
+
+      {/* Why choose yacht party Dubai — right after products */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">لماذا تختار حفلة على يخت في دبي؟</h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              تمنحك <strong className="font-extrabold text-gold-deep">حفلة على يخت في دبي</strong> أجواء خاصة ومميزة
+              للاحتفال بعيد ميلاد، خطوبة، ذكرى سنوية أو مناسبة خاصة وسط أجمل الإطلالات البحرية في دبي.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Lock, t: "خصوصية كاملة", d: "لك ولضيوفك على متن اليخت." },
+              { icon: Landmark, t: "إطلالات رائعة", d: "على دبي مارينا، نخلة جميرا وبرج العرب." },
+              { icon: Palette, t: "إمكانية تخصيص الحفلة", d: "بالديكور، الكيك، الطعام والموسيقى." },
+              { icon: Ship, t: "خيارات متنوعة من اليخوت", d: "تناسب عدد الضيوف والميزانية." },
+            ].map((it, i) => (
+              <Reveal key={it.t} delay={i * 60}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+                  <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <it.icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="text-base font-bold text-foreground">{it.t}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Occasion types — RIGHT AFTER products per doc */}
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+        <SectionHeading
+          title="أنواع الحفلات التي ننظّمها"
+          subtitle="اختر نوع مناسبتك ونحن نتكفّل بالباقي."
+        />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {occasionTypes.map((o, i) => (
+            <Reveal key={o.t} delay={i * 60}>
+              <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-luxe transition-transform hover:-translate-y-1">
+                <o.icon className="mb-3 h-8 w-8 text-gold-deep" />
+                <h3 className="text-lg font-bold text-primary">{o.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.d}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -155,25 +208,6 @@ function Parties() {
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <FeatureBlocks blocks={partyFeatures} />
-      </section>
-
-      {/* Occasion types */}
-      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
-        <SectionHeading
-          title="أنواع الحفلات التي ننظّمها"
-          subtitle="اختر نوع مناسبتك ونحن نتكفّل بالباقي."
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {occasionTypes.map((o, i) => (
-            <Reveal key={o.t} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-luxe transition-transform hover:-translate-y-1">
-                <o.icon className="mb-3 h-8 w-8 text-gold-deep" />
-                <h3 className="text-lg font-bold text-primary">{o.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       <section className="bg-muted py-16 md:py-24">
@@ -214,12 +248,12 @@ function Parties() {
         </div>
       </section>
 
-      <CharterEssentials />
+      <PartyEssentialsTabs />
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسئلة شائعة عن حفلات اليخوت في دبي"
-          subtitle="إجابات سريعة على أهم الأسئلة قبل حجز حفلتك."
+          title="أسئلة شائعة حول تأجير اليخوت في دبي"
+          subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
         />
         <Accordion items={partyFaqs} />
       </section>

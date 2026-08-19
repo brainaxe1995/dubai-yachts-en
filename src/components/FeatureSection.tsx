@@ -61,22 +61,22 @@ function VariantSplit({ b, i }: { b: FeatureBlock; i: number }) {
 function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
   return (
-    <div className="relative overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+    <div className="relative overflow-hidden rounded-3xl bg-primary-deep shadow-luxe ring-1 ring-gold/20 md:min-h-[420px]">
       {b.image ? (
-        <div className="relative">
+        <div className="relative md:absolute md:inset-0">
           <img
             src={b.image}
             alt={b.imageAlt ?? b.h}
             loading="lazy"
             width={1600}
             height={900}
-            className="aspect-[21/9] w-full object-cover md:aspect-[24/10]"
+            className="aspect-[16/10] w-full object-cover md:aspect-auto md:h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-primary-deep/95 via-primary-deep/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/70 to-primary-deep/20 md:bg-gradient-to-l md:from-primary-deep/95 md:via-primary-deep/60 md:to-transparent" />
         </div>
       ) : null}
-      <div className="absolute inset-0 flex items-center">
-        <div className="w-full max-w-xl p-6 text-primary-foreground md:p-12 lg:p-16">
+      <div className="relative md:absolute md:inset-0 md:flex md:items-center">
+        <div className="w-full max-w-xl p-6 text-primary-foreground md:p-10 lg:p-14">
           <BlockChapter i={i} />
           <div className="mt-3 flex items-center gap-3">
             {Icon ? (

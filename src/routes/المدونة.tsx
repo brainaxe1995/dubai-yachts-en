@@ -72,7 +72,7 @@ function Blog() {
           {filtered.map((p, i) => (
             <Reveal as="article" key={p.slug} delay={i * 60}>
               <Link
-                to="/المدونة/$slug"
+                to="/المدونة/$slug/"
                 params={{ slug: p.slug }}
                 className="group block h-full overflow-hidden rounded-2xl border border-border bg-card shadow-luxe transition-transform hover:-translate-y-1"
               >

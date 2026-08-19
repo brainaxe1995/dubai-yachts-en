@@ -76,7 +76,10 @@ function SeoAuditPage() {
         </p>
 
         <div className="mt-12">
-          <SectionHeading title="فحص خريطة الموقع و robots.txt" />
+          <SectionHeading
+            title="فحص خريطة الموقع و robots.txt"
+            subtitle="تحقق من صحة sitemap.xml وrobots.txt وتوفرهما بشكل عام قبل النشر."
+          />
           <div className="rounded-2xl border border-border bg-card p-6">
             <Field label="Sitemap في robots.txt" value={robotsSitemap} missing />
             <Field label="عدد روابط sitemap.xml" value={String(sitemapPaths.length)} />
@@ -102,7 +105,10 @@ function SeoAuditPage() {
         </div>
 
         <div className="mt-14">
-          <SectionHeading title="بيانات السيو لكل صفحة" />
+          <SectionHeading
+            title="بيانات السيو لكل صفحة"
+            subtitle="عناوين وأوصاف وروابط canonical وog:url لجميع صفحات الموقع، مع رصد المكرر والمفقود."
+          />
           <div className="grid gap-6">
             {routes.map((r) => (
               <Reveal key={r.path} className="rounded-2xl border border-border bg-card p-6 shadow-luxe">

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Anchor, ShieldCheck, DollarSign, Sparkles, Package, Users } from "lucide-react";
+import { Anchor, ShieldCheck, DollarSign, Sparkles, Package, Users, Lock, CalendarClock, Landmark, PlusCircle } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -11,6 +11,7 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { yachts, stepsYacht, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import italianImg from "@/assets/yachts/italian-95.webp";
 import corpImg from "@/assets/yachts/corporate-105.webp";
 
@@ -40,7 +41,7 @@ const rentalIncludedFeatures = [
 const yachtFaqs = [
   {
     q: "كم تكلفة استئجار يخت في دبي؟",
-    a: "تختلف تكلفة استئجار اليخوت في دبي بحسب حجم اليخت، وعدد الضيوف، ومدة الرحلة والخدمات المختارة. تبدأ الأسعار من 450 درهمًا إماراتيًا في الساعة، وتزداد حسب نوع اليخت والخدمات الإضافية.",
+    a: "تختلف تكلفة __استئجار اليخوت في دبي__ حسب حجم اليخت، وعدد الضيوف، ومدة الرحلة والخدمات المختارة. تبدأ الأسعار من __450 درهمًا إماراتيًا في الساعة__، وتزداد حسب نوع اليخت والخدمات الإضافية.",
   },
   { q: "ما أرخص يخت للإيجار في دبي؟", a: "يبدأ ميني يخت 40 قدم من 450 درهم للساعة، ويتسع لـ 10 ضيوف مع غرفة نوم واحدة." },
   { q: "ما أكبر يخت متاح للإيجار؟", a: "يخت الشركات 105 قدم يتسع لـ 90 ضيفًا، مثالي للفعاليات الكبيرة، من 3,000 د.إ للساعة." },
@@ -88,6 +89,7 @@ const advantages = [
 ];
 
 function YachtsForRent() {
+  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -104,9 +106,41 @@ function YachtsForRent() {
           subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
+          {visibleYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
+        </div>
+      </section>
+
+      {/* Why choose yacht rental Dubai — right after products */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">لماذا تختار استئجار يخت في دبي؟</h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              يمنحك <strong className="font-extrabold text-gold-deep">استئجار يخت في دبي</strong> حرية الاستمتاع بالبحر
+              بعيدًا عن الرحلات المزدحمة، مع إمكانية تحديد مدة الرحلة والمسار والخدمات بما يناسب خطتك.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Lock, t: "رحلة خاصة بالكامل", d: "لك ولضيوفك." },
+              { icon: CalendarClock, t: "حرية اختيار مدة الرحلة", d: "والوقت المناسب لك." },
+              { icon: Landmark, t: "زيارة أشهر معالم دبي البحرية", d: "من منظور مختلف." },
+              { icon: PlusCircle, t: "إمكانية إضافة خدمات وتجارب", d: "تناسب نوع رحلتك." },
+            ].map((it, i) => (
+              <Reveal key={it.t} delay={i * 60}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+                  <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <it.icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="text-base font-bold text-foreground">{it.t}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -174,8 +208,8 @@ function YachtsForRent() {
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسئلة شائعة قبل إيجار يخت في دبي"
-          subtitle="أهم ما يطرحه ضيوفنا قبل حجز اليخت — من الأسعار إلى الطاقم والضيافة."
+          title="الأسئلة الشائعة عن يخوت للإيجار في دبي"
+          subtitle="أهم الأسئلة حول __يخوت للإيجار في دبي__ للتعرف على الأسعار، طريقة الحجز والخدمات المتوفرة قبل رحلتك."
         />
         <Accordion items={yachtFaqs} />
       </section>

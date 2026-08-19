@@ -22,7 +22,7 @@ export function CallButton({ className, label = "اتصل بنا" }: { className
     <a
       href={`tel:${CONTACT.phone}`}
       className={cn(
-        "inline-flex items-center justify-center rounded-full border border-gold/60 px-6 py-3 text-sm font-bold text-gold transition-all hover:bg-gold hover:text-secondary-foreground",
+        "inline-flex items-center justify-center rounded-full border-2 border-gold bg-primary-deep/80 px-6 py-3 text-sm font-bold text-gold shadow-lg backdrop-blur-md transition-all hover:bg-gold hover:text-secondary-foreground hover:-translate-y-0.5",
         className,
       )}
     >

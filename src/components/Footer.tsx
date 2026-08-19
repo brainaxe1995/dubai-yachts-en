@@ -35,9 +35,9 @@ const socialDefs = [
 
 function ColTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="relative mb-6 pb-3 text-base font-bold text-gold">
+    <h4 className="relative mb-4 pb-2 text-sm font-bold text-gold md:mb-6 md:pb-3 md:text-base">
       {children}
-      <span className="absolute bottom-0 start-0 h-px w-12 bg-gold/70" />
+      <span className="absolute bottom-0 start-0 h-px w-10 bg-gold/70 md:w-12" />
     </h4>
   );
 }
@@ -74,9 +74,9 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-14 md:grid-cols-2 md:px-8 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-6 px-4 py-12 sm:gap-8 md:gap-10 md:px-8 md:py-14 lg:grid-cols-4">
         {/* Brand */}
-        <div>
+        <div className="col-span-2 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-start">
           <img
             src={logo}
             alt="توت فن لليخوت"
@@ -88,7 +88,7 @@ export function Footer() {
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
             توت فن لليخوت — تأجير يخوت في دبي مع رحلات خاصة، حفلات، ورحلات صيد بأسعار تبدأ من 450 درهم للساعة.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             {socialDefs.map((s) => {
               const url = social[s.key];
               if (!url) return null;
@@ -113,7 +113,7 @@ export function Footer() {
         {/* Quick links */}
         <div>
           <ColTitle>روابط سريعة</ColTitle>
-          <ul className="space-y-3">
+          <ul className="space-y-2 md:space-y-3">
             {quick.map((l) => (
               <li key={l.label}>
                 <Link to={l.to} className="text-sm text-primary-foreground/70 transition-colors hover:text-gold">
@@ -127,7 +127,7 @@ export function Footer() {
         {/* Discover */}
         <div>
           <ColTitle>اكتشف</ColTitle>
-          <ul className="space-y-3">
+          <ul className="space-y-2 md:space-y-3">
             {discover.map((l) => (
               <li key={l.label}>
                 <Link to={l.to} className="text-sm text-primary-foreground/70 transition-colors hover:text-gold">
@@ -139,15 +139,15 @@ export function Footer() {
         </div>
 
         {/* Contact */}
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <ColTitle>تواصل معنا</ColTitle>
-          <ul className="space-y-4">
+          <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
             <li>
               <a href={`tel:${CONTACT.phone}`} className="group flex items-center gap-3">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/60 text-gold">
                   <Phone className="h-4 w-4" />
                 </span>
-                <span dir="ltr" className="text-sm text-primary-foreground/80 group-hover:text-gold">
+                <span dir="ltr" className="text-xs text-primary-foreground/80 group-hover:text-gold sm:text-sm">
                   +971 544 420 441
                 </span>
               </a>
@@ -157,14 +157,14 @@ export function Footer() {
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/60 text-gold">
                   <Mail className="h-4 w-4" />
                 </span>
-                <span className="text-sm text-primary-foreground/80 group-hover:text-gold">{CONTACT.email}</span>
+                <span className="text-xs text-primary-foreground/80 group-hover:text-gold sm:text-sm">{CONTACT.email}</span>
               </a>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/60 text-gold">
                 <MapPin className="h-4 w-4" />
               </span>
-              <span className="text-sm text-primary-foreground/80">دبي مارينا، الإمارات العربية المتحدة</span>
+              <span className="text-xs text-primary-foreground/80 sm:text-sm">دبي مارينا، الإمارات العربية المتحدة</span>
             </li>
           </ul>
 
@@ -172,7 +172,7 @@ export function Footer() {
             href={CONTACT.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-3 rounded-full border border-gold px-6 py-3 text-sm font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep"
+            className="mt-6 mb-16 inline-flex items-center gap-3 rounded-full border border-gold bg-primary-deep/60 px-6 py-3 text-sm font-bold text-gold shadow-lg transition-colors hover:bg-gold hover:text-primary-deep sm:mb-0"
           >
             احجز الآن
             <WhatsAppIcon className="h-4 w-4" />
@@ -195,16 +195,16 @@ export function Footer() {
             />
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link to="/الشروط-والأحكام" className="hover:text-gold">
+            <Link to="/الشروط-والأحكام/" className="hover:text-gold">
               الشروط والأحكام
             </Link>
-            <Link to="/سياسة-الخصوصية" className="hover:text-gold">
+            <Link to="/سياسة-الخصوصية/" className="hover:text-gold">
               سياسة الخصوصية
             </Link>
-            <Link to="/سياسة-الإلغاء" className="hover:text-gold">
+            <Link to="/سياسة-الإلغاء/" className="hover:text-gold">
               سياسة الإلغاء
             </Link>
-            <Link to="/خريطة-الموقع" className="hover:text-gold">
+            <Link to="/خريطة-الموقع/" className="hover:text-gold">
               خريطة الموقع
             </Link>
           </div>

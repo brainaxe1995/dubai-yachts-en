@@ -5,17 +5,18 @@ import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { CharterEssentials } from "@/components/CharterEssentials";
+import { YachtEssentialsTabs } from "@/components/YachtEssentialsTabs";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import azimutImg from "@/assets/yachts/azimut-80.webp";
 import sunseekerImg from "@/assets/yachts/sunseeker-95.webp";
 
 const rentFaqs = [
   {
-    q: "لماذا تختار استئجار يخت في دبي؟",
-    a: "يمنحك استئجار يخت في دبي حرية الاستمتاع بالبحر بعيدًا عن الرحلات المزدحمة، مع إمكانية تحديد مدة الرحلة والمسار والخدمات بما يناسب خططك. رحلة خاصة بالكامل لك ولضيوفك. حرية اختيار مدة الرحلة والوقت المناسب لك. زيارة أشهر معالم دبي البحرية من منظور مختلف. إمكانية إضافة خدمات وتجارب تناسب نوع رحلتك.",
+    q: "كم تبدأ أسعار تأجير اليخوت في دبي؟",
+    a: "تختلف __أسعار تأجير اليخوت في دبي__ حسب حجم اليخت، وعدد الضيوف، ومدة الرحلة والخدمات المختارة. تبدأ الأسعار من __450 درهمًا إماراتيًا__ في الساعة، وتزداد حسب نوع اليخت والخدمات الإضافية.",
   },
   {
     q: "ما الفرق بين إيجار يخت خاص ومشترك؟",
@@ -87,6 +88,7 @@ const fleetGroups = [
 ];
 
 function RentYacht() {
+  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -103,7 +105,7 @@ function RentYacht() {
           subtitle="اختر من أسطولنا المتنوع من اليخوت الفاخرة المتاحة للإيجار في دبي لجميع الرحلات والمناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
+          {visibleYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
         </div>
@@ -121,7 +123,10 @@ function RentYacht() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
-        <SectionHeading title="لماذا إيجار يخت مع توت فن" subtitle="نقدّم تجربة إيجار سهلة وشفافة مع أفضل الأسعار في دبي." />
+        <SectionHeading
+          title="لماذا تختار إيجار يخت في دبي مع توت فن؟"
+          subtitle="يوفر لك __إيجار يخت في دبي__ مع توت فن تجربة بحرية خاصة مع خيارات متنوعة من اليخوت وخدمة احترافية تساعدك على اختيار الرحلة المناسبة لعدد الضيوف والمناسبة والميزانية."
+        />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r, i) => (
             <Reveal key={r.t} delay={i * 70}>
@@ -159,10 +164,13 @@ function RentYacht() {
         </div>
       </section>
 
-      <CharterEssentials />
+      <YachtEssentialsTabs />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
-        <SectionHeading title="أسئلة شائعة عن إيجار اليخوت" subtitle="أهم ما يطرحه ضيوفنا حول الرحلات والأسعار." />
+        <SectionHeading
+          title="الأسئلة الشائعة عن إيجار اليخوت في دبي"
+          subtitle="تعرّف على أهم الأسئلة الشائعة عن __إيجار اليخوت في دبي__ حول الأسعار، الحجز، الخدمات وما تحتاج معرفته قبل الرحلة."
+        />
         <Accordion items={rentFaqs} />
       </section>
 

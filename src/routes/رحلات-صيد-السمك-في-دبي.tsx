@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fish, Sun, Users, Anchor, Waves, CheckCircle2, Target, Sparkles, Compass, Award, LifeBuoy } from "lucide-react";
+import { Fish, Sun, Users, Anchor, Waves, CheckCircle2, Target, Sparkles, Compass, Award, LifeBuoy, MapPin, UserCheck } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { BookingSteps } from "@/components/BookingSteps";
 import { Accordion } from "@/components/Accordion";
 import { ContactCta } from "@/components/ContactCta";
-import { CharterEssentials } from "@/components/CharterEssentials";
+import { FishingEssentialsTabs } from "@/components/FishingEssentialsTabs";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import fishingImg from "@/assets/fishing/shared.webp";
 import fishingSharedImg from "@/assets/fishing/shared/shared-1.webp";
 import fishingBoatImg from "@/assets/fishing/private-boat/private-boat-1.webp";
@@ -98,9 +99,9 @@ const included = [
 ];
 
 const locations = [
-  { n: "شعاب دبي", d: "15–30 دقيقة من المارينا — هامور وشعري." },
-  { n: "مياه دبي العميقة", d: "45–60 دقيقة إبحار — تونا وكنعد وباراكودا." },
-  { n: "شعاب رأس الخيمة", d: "رحلات نصف يوم — تنوّع كبير في الأنواع." },
+  { n: "دبي مارينا والمياه المفتوحة", d: "رحلات صيد ممتعة — تنوع جيد في الأسماك وإطلالات بحرية رائعة." },
+  { n: "جبل علي", d: "من أفضل مناطق الصيد — مناسب للرحلات الأطول وفرص صيد أكبر." },
+  { n: "جميرا", d: "موقع قريب ومميز — مناسب للرحلات القصيرة وصيد أنواع متنوعة." },
 ];
 
 const fishingTechniques = [
@@ -126,12 +127,12 @@ const fishSpecies = [
 
 const fishingFaqs = [
   {
-    q: "لماذا تختار رحلة صيد السمك في دبي؟",
-    a: "توفر رحلة صيد السمك في دبي تجربة بحرية ممتعة تجمع بين الصيد، الاسترخاء، والاستمتاع بأجواء الخليج العربي، مع خيارات مناسبة للمبتدئين ومحترفي الصيد. مواقع صيد متنوعة في جميرا، جبل علي والمياه المفتوحة. معدات صيد متوفرة حسب الباقة المختارة. طاقم محترف يساعدك أثناء الرحلة. رحلات خاصة ومشتركة تناسب الأفراد، العائلات والمجموعات.",
+    q: "كم تكلفة رحلة صيد السمك في دبي؟",
+    a: "تبدأ أسعار __رحلات صيد السمك في دبي__ حسب نوع القارب أو اليخت، مدة الرحلة، وعدد الضيوف، مع توفر رحلات صيد خاصة ومشتركة بأسعار مختلفة.",
   },
   {
-    q: "كم تكلفة رحلة صيد السمك في دبي؟",
-    a: "تبدأ رحلات الصيد المشتركة من 350 د.إ للشخص لمدة 4 ساعات، والرحلات الخاصة على القارب من 1,200 د.إ (4 ساعات، حتى 10 ضيوف)، والرحلات على اليخت من 2,000 د.إ / 4 ساعات. تختلف الأسعار حسب نوع القارب أو اليخت، مدة الرحلة، وعدد الضيوف.",
+    q: "هل يمكنني إحضار معدات الصيد الخاصة بي؟",
+    a: "نعم، يمكنك إحضار معدات الصيد الخاصة بك، كما تتوفر معدات الصيد الأساسية ضمن العديد من رحلات الصيد حسب الباقة المختارة.",
   },
   {
     q: "ما الأسماك التي يمكن اصطيادها في دبي؟",
@@ -156,6 +157,7 @@ const fishingFaqs = [
 ];
 
 function Fishing() {
+  const visibleFishing = useOverriddenProducts(fishingTrips, "fishing");
   return (
     <>
       <PageHero
@@ -173,9 +175,41 @@ function Fishing() {
           subtitle="اختر من بين رحلات الصيد الخاصة والمشتركة مع قوارب مجهزة وطاقم محترف."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {fishingTrips.map((p, i) => (
+          {visibleFishing.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={i * 80} />
           ))}
+        </div>
+      </section>
+
+      {/* Why choose fishing Dubai — right after products */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">لماذا تختار رحلة صيد السمك في دبي؟</h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              توفر رحلة <strong className="font-extrabold text-gold-deep">صيد السمك في دبي</strong> تجربة بحرية ممتعة
+              تجمع بين الصيد، الاسترخاء، والاستمتاع بأجواء الخليج العربي، مع خيارات مناسبة للمبتدئين ومحبي الصيد.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: MapPin, t: "مواقع صيد متنوعة", d: "في جميرا، جبل علي والمياه المفتوحة." },
+              { icon: Anchor, t: "معدات صيد متوفرة", d: "حسب الباقة المختارة." },
+              { icon: UserCheck, t: "طاقم محترف", d: "يساعدك أثناء الرحلة." },
+              { icon: Users, t: "رحلات خاصة ومشتركة", d: "تناسب الأفراد، العائلات والمجموعات." },
+            ].map((it, i) => (
+              <Reveal key={it.t} delay={i * 60}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+                  <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <it.icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="text-base font-bold text-foreground">{it.t}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -268,8 +302,8 @@ function Fishing() {
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="مواقع الصيد الرئيسية"
-          subtitle="نصطاد في أفضل مناطق الخليج العربي."
+          title="مواقع الصيد الرئيسية في دبي"
+          subtitle="استمتع برحلة __صيد السمك في دبي__ في مجموعة من أفضل المواقع البحرية، ويتم اختيار منطقة الصيد المناسبة حسب حالة البحر والطقس ونوع الأسماك المستهدفة."
         />
         <div className="grid gap-5 md:grid-cols-3">
           {locations.map((l, i) => (
@@ -419,12 +453,12 @@ function Fishing() {
         </div>
       </section>
 
-      <CharterEssentials showDestinations={false} />
+      <FishingEssentialsTabs />
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading
-          title="أسئلة شائعة عن رحلات صيد السمك في دبي"
-          subtitle="إجابات لأكثر الأسئلة شيوعًا قبل رحلة الصيد."
+          title="أسئلة شائعة حول تأجير اليخوت في دبي"
+          subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
         />
         <Accordion items={fishingFaqs} />
       </section>

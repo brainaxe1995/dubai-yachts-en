@@ -129,7 +129,7 @@ function BlogPost() {
         <div className="relative mx-auto flex min-h-[70vh] max-w-4xl flex-col items-start justify-end px-4 pb-16 pt-32 md:pb-24 md:pt-40">
           <div className="mb-6 flex flex-wrap items-center gap-2">
             <Link
-              to="/المدونة"
+              to="/المدونة/"
               className="inline-flex items-center gap-1 rounded-full border border-gold/40 bg-black/30 px-3 py-1 text-xs font-bold text-gold backdrop-blur-md hover:bg-gold hover:text-primary-deep"
             >
               <ArrowRight className="h-3 w-3 rotate-180" />
@@ -333,7 +333,7 @@ function BlogPost() {
         {/* Back link */}
         <div className="mt-8">
           <Link
-            to="/المدونة"
+            to="/المدونة/"
             className="inline-flex items-center gap-2 text-sm font-bold text-gold-deep hover:text-gold"
           >
             <ArrowRight className="h-4 w-4 rotate-180" />
@@ -367,7 +367,7 @@ function BlogPost() {
               {related.map((r) => (
                 <Reveal key={r.slug}>
                   <Link
-                    to="/المدونة/$slug"
+                    to="/المدونة/$slug/"
                     params={{ slug: r.slug }}
                     className="group block h-full overflow-hidden rounded-2xl border border-border bg-card shadow-luxe transition-transform hover:-translate-y-1"
                   >

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Ship, Compass, Package, MapPin } from "lucide-react";
+import { Ship, Compass, Package, MapPin, Lock, Landmark, Sparkles, Wine } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
@@ -9,6 +9,7 @@ import { CharterEssentials } from "@/components/CharterEssentials";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import gulfcraftImg from "@/assets/yachts/gulfcraft-90.webp";
 import azimutImg from "@/assets/yachts/azimut-80.webp";
 import marinaHero from "@/assets/yachts/majesty-88.webp";
@@ -66,8 +67,12 @@ const brands = [
 
 const rentalTopFaqs = [
   {
-    q: "لماذا تختار تأجير يخت في دبي؟",
-    a: "يمنحك تأجير يخت في دبي تجربة خاصة تجمع بين الخصوصية والراحة والإطلالات البحرية المميزة، سواء للرحلات العائلية، الحفلات، المناسبات الخاصة أو قضاء وقت ممتع مع الأصدقاء. خصوصية كاملة للاستمتاع بالرحلة مع الأصدقاء. إطلالات مميزة على دبي مارينا ونخلة جميرا وبرج العرب. مناسب لجميع المناسبات مثل أعياد الميلاد والحفلات والرحلات العائلية. تجربة مريحة وفاخرة مع طاقم محترف وخدمات متنوعة.",
+    q: "هل يمكن إحضار الطعام على اليخت؟",
+    a: "نعم، يمكن إحضار الطعام والمشروبات غير الكحولية على اليخت، كما يمكن طلب خدمات تقديم الطعام مسبقًا حسب الباقة المختارة.",
+  },
+  {
+    q: "هل يمكن حجز يخت لحفلة خاصة؟",
+    a: "نعم، يمكن __حجز يخت لحفلة خاصة في دبي__ مثل أعياد الميلاد، الخطوبة، الذكرى السنوية أو التجمعات الخاصة، مع إمكانية إضافة الديكور، الكيك، الطعام والموسيقى حسب اختيارك.",
   },
 ];
 
@@ -78,8 +83,7 @@ const rentalFeatures = [
     image: azimutImg,
     imageAlt: "كيفية تأجير يخت في دبي",
     p: [
-      "يمكنك __تأجير يخت في دبي__ بسهولة من خلال اختيار اليخت المناسب لعدد ضيوفك ومناسبتك، وتحديد التاريخ والوقت ومدة الرحلة، ثم تأكيد الحجز بدفع __العربون__.",
-      "بعد ذلك ستحصل على __تفاصيل موقع الصعود__ والرحلة عبر واتساب أو البريد الإلكتروني، مع تعليمات السلامة اللازمة قبل الإبحار من دبي مارينا.",
+      "يمكنك __تأجير يخت في دبي__ بسهولة من خلال اختيار اليخت المناسب، وتحديد التاريخ والوقت ومدة الرحلة، ثم تأكيد الحجز بدفع العربون. بعد ذلك ستحصل على تفاصيل موقع الصعود والرحلة.",
     ],
   },
   {
@@ -88,8 +92,7 @@ const rentalFeatures = [
     image: gulfcraftImg,
     imageAlt: "ماذا يشمل تأجير اليخت في دبي",
     p: [
-      "يشمل __تأجير اليخوت في دبي__ عادةً __قبطانًا وطاقمًا محترفًا__، الوقود، معدات السلامة، المياه والمشروبات المنعشة، مع إمكانية إضافة الطعام والديكور والأنشطة البحرية حسب الباقة المختارة.",
-      "جميع يخوتنا __مرخّصة ومؤمّنة__ بالكامل، ما يضمن رحلة آمنة وممتعة لك ولضيوفك دون أي رسوم مخفية.",
+      "يشمل __تأجير اليخوت في دبي__ عادةً قبطانًا وطاقمًا محترفًا، الوقود، معدات السلامة، المياه والمشروبات المنعشة، مع إمكانية إضافة الطعام والديكور والأنشطة البحرية حسب الباقة المختارة.",
     ],
   },
   {
@@ -98,13 +101,13 @@ const rentalFeatures = [
     image: marinaHero,
     imageAlt: "معالم دبي البحرية",
     p: [
-      "استمتع برحلة __يخت في دبي__ تمر بأشهر المعالم البحرية مثل __دبي مارينا__، جميرا بيتش، بلوواترز، __نخلة جميرا__ و__برج العرب__، مع فرصة للاستمتاع بالإطلالات والتقاط الصور.",
-      "أسطولنا ينطلق يوميًا من مارينا دبي مع إمكانية تخصيص المسار حسب رغبة الضيوف.",
+      "استمتع برحلة __يخت في دبي__ تمر بأشهر المعالم البحرية مثل دبي مارينا، جميرا بيتش، بلوواترز، نخلة جميرا وبرج العرب، مع فرصة للاستمتاع بالإطلالات والتقاط الصور.",
     ],
   },
 ];
 
 function YachtRental() {
+  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -120,9 +123,42 @@ function YachtRental() {
           subtitle="اختر من بين أفضل اليخوت الخاصة في دبي بأسعار تبدأ من 450 درهم للساعة، واستمتع برحلة فاخرة تناسب جميع المناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
+          {visibleYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
+        </div>
+      </section>
+
+      {/* Why choose yacht rental Dubai — right after products */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">لماذا تختار تأجير يخت في دبي؟</h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              يمنحك <strong className="font-extrabold text-gold-deep">تأجير يخت في دبي</strong> تجربة خاصة تجمع بين
+              الخصوصية والراحة والإطلالات البحرية المميزة، سواء للرحلات العائلية، الحفلات، المناسبات الخاصة أو قضاء وقت
+              ممتع مع الأصدقاء.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Lock, t: "خصوصية كاملة", d: "للاستمتاع بالرحلة مع العائلة أو الأصدقاء." },
+              { icon: Landmark, t: "إطلالات مميزة", d: "على دبي مارينا ونخلة جميرا وبرج العرب." },
+              { icon: Sparkles, t: "مناسب لجميع المناسبات", d: "مثل أعياد الميلاد والحفلات والرحلات العائلية." },
+              { icon: Wine, t: "تجربة مريحة وفاخرة", d: "مع طاقم محترف وخدمات متنوعة." },
+            ].map((it, i) => (
+              <Reveal key={it.t} delay={i * 60}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+                  <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <it.icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="text-base font-bold text-foreground">{it.t}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -173,8 +209,8 @@ function YachtRental() {
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading
-          title="أسئلة شائعة عن تأجير اليخوت"
-          subtitle="إجابات لأكثر الأسئلة شيوعًا قبل تأجير يختك في دبي."
+          title="أسئلة شائعة حول تأجير اليخوت في دبي"
+          subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
         />
         <Accordion items={[...rentalTopFaqs, ...faqs]} />
       </section>

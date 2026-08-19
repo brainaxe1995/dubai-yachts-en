@@ -181,7 +181,7 @@ function Page() {
             </div>
           </div>
           <Link
-            to="/سياسة-الإلغاء"
+            to="/سياسة-الإلغاء/"
             className="inline-flex items-center gap-2 rounded-full border border-gold px-5 py-2.5 text-sm font-bold text-gold hover:bg-gold hover:text-primary-deep"
           >
             اطّلع على سياسة الإلغاء

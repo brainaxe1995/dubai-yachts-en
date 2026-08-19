@@ -1,22 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Zap, MessageSquare } from "lucide-react";
+import { Zap, MessageSquare, Ship, CalendarClock, Landmark, Sparkles, MapPin } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { BookingSteps } from "@/components/BookingSteps";
 import { ContactCta } from "@/components/ContactCta";
-import { CharterEssentials } from "@/components/CharterEssentials";
 import { Accordion } from "@/components/Accordion";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, stepsYacht, faqs, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import yachtBookImg from "@/assets/yachts/majesty-66.webp";
 import marinaBookImg from "@/assets/yachts/sunseeker-95.webp";
 
 const bookingFaqs = [
-  {
-    q: "لماذا تختار حجز يخت في دبي؟",
-    a: "يمنحك حجز يخت في دبي تجربة بحرية خاصة وممتعة، مع إمكانية اختيار اليخت والوقت والمسار ومدة الرحلة والخدمات التي تناسب رحلتك أو مناسبتك. خيارات متنوعة من اليخوت تناسب عدد الضيوف والميزانية. مرونة في الحجز واختيار الوقت ومدة الرحلة. مسارات بحرية مميزة حول أشهر معالم دبي. خدمات إضافية حسب الطلب مثل الطعام والديكور والأنشطة البحرية.",
-  },
   {
     q: "ما هي أسهل طريقة لحجز يخت في دبي؟",
     a: "أسرع طريقة هي عبر واتساب — اختر اليخت من الموقع ثم اضغط زر «احجز الآن» وسنؤكد التوفر خلال دقائق مع تفاصيل الدفع.",
@@ -24,6 +21,14 @@ const bookingFaqs = [
   {
     q: "هل يمكنني حجز يخت في نفس اليوم؟",
     a: "نعم — الحجز في نفس اليوم متاح حسب توفر اليخت. ننصح بالتواصل عبر واتساب مباشرة للحصول على أسرع تأكيد وأفضل خيار متاح.",
+  },
+  {
+    q: "هل يمكنني حجز يخت لحفلة خاصة؟",
+    a: "نعم، يمكنك حجز يخت لأعياد الميلاد، الخطوبة، الذكرى السنوية والتجمعات الخاصة مع إضافة الديكور والطعام حسب الطلب.",
+  },
+  {
+    q: "هل يجب الحجز مسبقًا؟",
+    a: "نعم، يُفضل حجز اليخت مسبقًا لضمان توفر اليخت والوقت المناسب، خاصة خلال عطلات نهاية الأسبوع والمواسم.",
   },
   ...faqs,
 ];
@@ -78,6 +83,7 @@ export const Route = createFileRoute("/حجز-يخوت-في-دبي")({
 });
 
 function YachtBooking() {
+  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -94,9 +100,41 @@ function YachtBooking() {
           subtitle="احجز يختك في دبي بسهولة بأسعار تبدأ من 450 درهم للساعة."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
+          {visibleYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
+        </div>
+      </section>
+
+      {/* Why choose yacht booking Dubai — right after products */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">لماذا تختار حجز يخت في دبي؟</h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              يمنحك <strong className="font-extrabold text-gold-deep">حجز يخت في دبي</strong> تجربة بحرية خاصة ومرنة،
+              مع إمكانية اختيار اليخت والوقت والمسار والخدمات التي تناسب رحلتك أو مناسبتك.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Ship, t: "خيارات متنوعة من اليخوت", d: "تناسب عدد الضيوف والميزانية." },
+              { icon: CalendarClock, t: "مرونة في الحجز", d: "واختيار الوقت ومدة الرحلة." },
+              { icon: Landmark, t: "مسارات بحرية مميزة", d: "حول أشهر معالم دبي." },
+              { icon: Sparkles, t: "خدمات إضافية حسب الطلب", d: "مثل الطعام، الديكور والأنشطة البحرية." },
+            ].map((it, i) => (
+              <Reveal key={it.t} delay={i * 60}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+                  <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <it.icon className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <h3 className="text-base font-bold text-foreground">{it.t}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -119,12 +157,45 @@ function YachtBooking() {
         <BookingSteps steps={stepsYacht} />
       </section>
 
-      <CharterEssentials />
+      {/* Key sites — landmarks visited during booked yacht trip */}
+      <section className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-[1440px] px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-extrabold text-primary md:text-3xl">
+              أهم المواقع التي يمكنك الوصول إليها عند حجز يخت في دبي
+            </h2>
+            <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              استمتع برحلة بحرية تمر بأشهر المعالم البحرية في دبي عند حجز اليخت، مع إطلالات خلابة على أفق المدينة وأماكن
+              مثالية لالتقاط الصور.
+            </p>
+          </Reveal>
+          <ul className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
+            {[
+              "دبي مارينا",
+              "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
+              "عين دبي (جزيرة بلوواترز)",
+              "نخلة جميرا",
+              "فندق أتلانتس بالم",
+              "برج العرب",
+            ].map((s, i) => (
+              <Reveal key={s} delay={i * 50}>
+                <li className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-luxe transition-all duration-500 hover:-translate-y-0.5 hover:border-gold/50">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md">
+                    <MapPin className="h-5 w-5" strokeWidth={2.25} />
+                  </span>
+                  <span className="text-sm font-semibold text-foreground">{s}</span>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسئلة شائعة عن حجز اليخوت"
-          subtitle="إجابات على أهم الأسئلة قبل حجز يختك في دبي."
+          title="أسئلة شائعة عن حجز يخوت في دبي"
+          subtitle="إليك أهم الأسئلة حول __حجز اليخوت في دبي__ لمساعدتك في معرفة الأسعار، طريقة الحجز والخدمات المتوفرة قبل رحلتك."
         />
         <Accordion items={bookingFaqs} />
       </section>

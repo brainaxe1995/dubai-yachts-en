@@ -11,6 +11,7 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import packagesImg from "@/assets/packages/romantic-dinner.webp";
 import pkgBreakfastImg from "@/assets/packages/breakfast/breakfast-1.webp";
 import pkgRomanticImg from "@/assets/packages/romantic-dinner/romantic-dinner-1.webp";
@@ -52,7 +53,7 @@ const pkgFeatures = [
 const pkgFaqs = [
   {
     q: "كم تكلفة باقات تأجير اليخوت في دبي؟",
-    a: "تبدأ أسعار باقات تأجير اليخوت في دبي من 1,800 درهم إماراتي، وتختلف حسب حجم اليخت، مدة الرحلة، عدد الضيوف، والخدمات الإضافية المختارة.",
+    a: "تبدأ أسعار __باقات تأجير اليخوت في دبي من 1,800 درهم إماراتي__، ويختلف السعر حسب حجم اليخت، مدة الرحلة، عدد الضيوف، والخدمات الإضافية المختارة.",
   },
   { q: "ما الفرق بين الباقة والحجز العادي؟", a: "الباقة تشمل الرحلة + وجبة/تجربة معينة (إفطار، عشاء، جيت سكي) بسعر ثابت. الحجز العادي هو تأجير اليخت فقط بالساعة، وأنت تختار الإضافات." },
   { q: "هل يمكن تخصيص الباقة حسب طلبي؟", a: "نعم — نصمّم باقات مخصّصة لأي مناسبة. تواصل معنا بتفاصيل احتياجاتك ونرسل عرضًا سعرًا خلال ساعات." },
@@ -99,6 +100,7 @@ export const Route = createFileRoute("/باقات-تأجير-اليخوت-في-�
 });
 
 function Packages() {
+  const visiblePackages = useOverriddenProducts(packages, "packages");
   return (
     <>
       <PageHero
@@ -116,7 +118,7 @@ function Packages() {
           subtitle="ثلاث باقات جاهزة تشمل الرحلة والوجبة والإضافات بسعر واحد شفاف."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {packages.map((p, i) => (
+          {visiblePackages.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={i * 80} />
           ))}
         </div>
@@ -232,8 +234,8 @@ function Packages() {
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading
-          title="أسئلة شائعة عن باقات اليخوت"
-          subtitle="أجوبة سريعة عن أهم الاستفسارات قبل الحجز."
+          title="أسئلة شائعة حول تأجير اليخوت في دبي"
+          subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
         />
         <Accordion items={pkgFaqs} />
       </section>

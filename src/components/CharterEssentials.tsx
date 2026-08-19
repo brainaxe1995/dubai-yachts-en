@@ -12,9 +12,9 @@ import {
   Shirt,
   Sparkles,
   Camera,
+  ArrowLeft,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { SectionHeading } from "./PageHero";
 import marinaImg from "@/assets/yachts/majesty-88.webp";
 import palmImg from "@/assets/yachts/floating-100.webp";
 import burjImg from "@/assets/yachts/gulfcraft-90.webp";
@@ -52,64 +52,70 @@ const destinations: Destination[] = [
   { img: jbrImg, t: "شاطئ JBR", en: "JBR Beach", d: "الكورنيش الحديث ومارينا الجديدة — إبحار هادئ." },
 ];
 
-// -------- Panel 1: Included — Bento with hero card + smaller cards --------
+// -------- Panel 1: Included — uniform grid, first card featured navy --------
 
-function IncludedBento({ items }: { items: Item[] }) {
-  const hero = items[0];
-  const rest = items.slice(1);
-  const HeroIcon = hero.icon;
+function IncludedPanel({ items }: { items: Item[] }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
-      {/* Featured card spans 2×2 */}
-      <Reveal className="lg:col-span-2 lg:row-span-2">
-        <div className="relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-3xl bg-gradient-to-br from-primary-deep via-primary to-primary-deep p-8 text-primary-foreground shadow-luxe">
-          <div className="absolute -end-8 -top-8 h-40 w-40 rounded-full bg-gold/15 blur-3xl" />
-          <div className="absolute -bottom-10 -start-10 h-48 w-48 rounded-full bg-gold/10 blur-3xl" />
-          <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gold text-primary-deep shadow-md">
-            <HeroIcon className="h-7 w-7" />
-          </span>
-          <h4 className="text-2xl font-extrabold md:text-3xl">{hero.t}</h4>
-          <p className="mt-3 text-sm leading-loose text-primary-foreground/85 md:text-base">{hero.d}</p>
-          <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-bold text-gold">
-            <Sparkles className="h-3 w-3" />
-            الأساس في كل رحلة
-          </span>
-        </div>
-      </Reveal>
-      {rest.map((it, i) => (
-        <Reveal key={it.t} delay={40 + i * 40}>
-          <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
-            <span className="mb-3 grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-              <it.icon className="h-5 w-5" />
-            </span>
-            <h4 className="text-sm font-bold text-foreground">{it.t}</h4>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
-          </div>
-        </Reveal>
-      ))}
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map((it, i) => {
+        const featured = i === 0;
+        const Icon = it.icon;
+        if (featured) {
+          return (
+            <Reveal key={it.t}>
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-primary-deep via-primary to-primary-deep p-5 text-primary-foreground shadow-luxe">
+                <div aria-hidden className="absolute -end-10 -top-10 h-32 w-32 rounded-full bg-gold/20 blur-3xl" />
+                <span className="relative mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gold text-primary-deep shadow-md">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="relative text-sm font-extrabold">{it.t}</h3>
+                <p className="relative mt-1.5 text-xs leading-relaxed text-primary-foreground/80">{it.d}</p>
+                <span className="relative mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] font-bold text-gold">
+                  <Sparkles className="h-2.5 w-2.5" />
+                  الأساس في كل رحلة
+                </span>
+              </div>
+            </Reveal>
+          );
+        }
+        return (
+          <Reveal key={it.t} delay={60 + i * 40}>
+            <div className="group h-full rounded-2xl border border-border bg-card p-5 shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+              <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <Icon className="h-5 w-5" />
+              </span>
+              <h3 className="text-sm font-bold text-foreground">{it.t}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
+            </div>
+          </Reveal>
+        );
+      })}
     </div>
   );
 }
 
-// -------- Panel 2: What to bring — timeline strip --------
+// -------- Panel 2: What to bring — numbered steps horizontal --------
 
-function BringTimeline({ items }: { items: Item[] }) {
+function BringSteps({ items }: { items: Item[] }) {
   return (
     <div className="relative">
-      {/* Connector line */}
-      <div aria-hidden className="absolute inset-x-0 top-8 hidden h-px bg-gradient-to-l from-transparent via-gold/40 to-transparent md:block" />
-      <div className="grid gap-6 md:grid-cols-4 md:gap-8">
+      {/* Connector line — centered through icon (top-8 = 32px = icon center of h-16) */}
+      <div
+        aria-hidden
+        className="absolute inset-x-8 top-8 hidden h-px bg-gradient-to-l from-gold/0 via-gold/50 to-gold/0 md:block"
+      />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:gap-6">
         {items.map((it, i) => (
-          <Reveal key={it.t} delay={i * 60}>
-            <div className="relative flex flex-col items-center rounded-2xl border border-border bg-card p-5 text-center shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
-              <span className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md ring-4 ring-muted">
+          <Reveal key={it.t} delay={i * 80}>
+            <div className="group flex h-full flex-col items-center rounded-2xl border border-border bg-card p-5 text-center shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
+              <span className="relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md ring-[6px] ring-muted transition-transform duration-500 group-hover:scale-110">
                 <it.icon className="h-7 w-7" />
+                <span className="absolute -end-1 -top-1 grid h-6 w-6 place-items-center rounded-full bg-primary-deep text-[10px] font-black text-gold ring-2 ring-muted">
+                  {i + 1}
+                </span>
               </span>
-              <span className="mt-2 text-[11px] font-bold uppercase tracking-widest text-gold-deep">
-                خطوة {String(i + 1).padStart(2, "0")}
-              </span>
-              <h4 className="mt-1 text-base font-bold text-foreground">{it.t}</h4>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
+              <h3 className="mt-4 text-base font-bold text-foreground">{it.t}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
             </div>
           </Reveal>
         ))}
@@ -118,16 +124,16 @@ function BringTimeline({ items }: { items: Item[] }) {
   );
 }
 
-// -------- Panel 3: Destinations — image tiles --------
+// -------- Panel 3: Destinations — masonry-style image tiles --------
 
-function DestinationsTiles({ items }: { items: Destination[] }) {
+function DestinationsMasonry({ items }: { items: Destination[] }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((d, i) => (
-        <Reveal key={d.en} delay={i * 50}>
+        <Reveal key={d.en} delay={i * 60}>
           <a
             href="#book"
-            className="group relative block h-64 overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20"
+            className="group relative block h-full min-h-[240px] overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20"
           >
             <img
               src={d.img}
@@ -135,20 +141,18 @@ function DestinationsTiles({ items }: { items: Destination[] }) {
               loading="lazy"
               width={800}
               height={600}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/50 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-gold">
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-4 text-primary-foreground sm:p-5">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/95 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-deep">
                 {d.en}
               </span>
-              <h4 className="mt-1 text-lg font-extrabold md:text-xl">{d.t}</h4>
-              <p className="mt-1 text-xs leading-relaxed text-primary-foreground/80 line-clamp-2">
-                {d.d}
-              </p>
-              <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-gold opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <h3 className="mt-2 text-lg font-extrabold leading-tight sm:text-xl">{d.t}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/85 line-clamp-2">{d.d}</p>
+              <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-gold transition-transform duration-500 group-hover:translate-x-1">
                 استكشف الوجهة
-                <span aria-hidden>←</span>
+                <ArrowLeft className="h-3.5 w-3.5" />
               </span>
             </div>
           </a>
@@ -158,36 +162,38 @@ function DestinationsTiles({ items }: { items: Destination[] }) {
   );
 }
 
-// -------- Wrapper --------
+// -------- Panel heading --------
 
-function PanelHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {
+function PanelHeading({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
-    <div className="mb-8 flex flex-col items-start gap-3 md:mb-10">
+    <div className="mx-auto mb-8 flex max-w-2xl flex-col items-center gap-3 text-center md:mb-10">
       <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[11px] font-bold text-gold-deep">
         <span className="h-1.5 w-1.5 rounded-full bg-gold" />
         {eyebrow}
       </span>
-      <div>
-        <h3 className="text-2xl font-extrabold text-primary md:text-3xl">{title}</h3>
-        <span className="mt-2 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">{subtitle}</p>
-      </div>
+      <h2 className="text-xl font-extrabold text-primary md:text-2xl">{title}</h2>
+      <span className="block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+      <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px]">{subtitle}</p>
     </div>
   );
 }
 
 /**
  * Three-panel essentials block for category pages.
- * Each panel uses a distinct visual treatment so the section never feels repetitive.
+ * Each panel uses a distinct, responsive visual treatment.
  */
 export function CharterEssentials({ showDestinations = true }: { showDestinations?: boolean }) {
   return (
     <section className="bg-muted py-16 md:py-24">
       <div className="mx-auto max-w-[1440px] px-4">
-        <SectionHeading
-          title="كل ما تحتاج معرفته قبل الإبحار"
-          subtitle="ما هو مشمول في السعر، ماذا تحضر معك، وأشهر الوجهات التي نبحر إليها."
-        />
         <div className="space-y-16 md:space-y-24">
           <div>
             <PanelHeading
@@ -195,7 +201,7 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
               title="ما هو مشمول في السعر"
               subtitle="كل رحلة تشمل الأساسيات — بدون رسوم مخفية أو إضافات مفاجئة."
             />
-            <IncludedBento items={included} />
+            <IncludedPanel items={included} />
           </div>
 
           <div>
@@ -204,7 +210,7 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
               title="ماذا تحضر معك"
               subtitle="أربع خطوات بسيطة تحضّرك لتجربة كاملة على متن اليخت."
             />
-            <BringTimeline items={bring} />
+            <BringSteps items={bring} />
           </div>
 
           {showDestinations ? (
@@ -214,7 +220,7 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
                 title="أشهر الوجهات التي نبحر إليها"
                 subtitle="أيقونات دبي البحرية — يمكن تخصيص المسار بالكامل مع القبطان."
               />
-              <DestinationsTiles items={destinations} />
+              <DestinationsMasonry items={destinations} />
             </div>
           ) : null}
         </div>
