@@ -1,47 +1,28 @@
-"use server";
+// Client-side localStorage persistence for admin product overrides.
+// Server-side persistence via TanStack Start server functions is blocked
+// by a createCsrfMiddleware bug in @tanstack/react-start 1.168.32.
+// Once that upgrade lands, we can swap this back to server storage.
 
-// Server-only. "use server" directive tells TanStack Start to strip this
-// module from the client bundle. Persistence via Node fs to .data/ dir,
-// which lives at project root and survives Hostinger Cloud Host redeploys.
-
-import { createServerFn } from "@tanstack/react-start";
 import { EMPTY_OVERRIDES, normalizeOverrides, type ProductOverrides } from "./overrides-types";
 
-const ADMIN_PASSWORD = process.env["ADMIN_PASSWORD"] ?? "Tootfun321+";
+const STORAGE_KEY = "toot-fun-product-overrides-v1";
 
-async function readOverrides(): Promise<ProductOverrides> {
+export async function getProductOverrides(): Promise<ProductOverrides> {
+  if (typeof window === "undefined") return EMPTY_OVERRIDES;
   try {
-    const fs = await import("node:fs/promises");
-    const path = await import("node:path");
-    const file = path.join(process.cwd(), ".data", "product-overrides.json");
-    const buf = await fs.readFile(file, "utf-8");
-    return normalizeOverrides(JSON.parse(buf));
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return EMPTY_OVERRIDES;
+    return normalizeOverrides(JSON.parse(raw));
   } catch {
     return EMPTY_OVERRIDES;
   }
 }
 
-async function writeOverrides(data: ProductOverrides): Promise<void> {
-  const fs = await import("node:fs/promises");
-  const path = await import("node:path");
-  const file = path.join(process.cwd(), ".data", "product-overrides.json");
-  await fs.mkdir(path.dirname(file), { recursive: true });
-  await fs.writeFile(file, JSON.stringify(data, null, 2), "utf-8");
+export async function saveProductOverrides(input: {
+  data: { password: string; overrides: ProductOverrides };
+}): Promise<{ ok: true }> {
+  if (typeof window === "undefined") throw new Error("Client only");
+  const normalized = normalizeOverrides(input.data.overrides);
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+  return { ok: true };
 }
-
-export const getProductOverrides = createServerFn({ method: "GET" }).handler(async () => {
-  return readOverrides();
-});
-
-export const saveProductOverrides = createServerFn({ method: "POST" })
-  .validator((input: unknown) => {
-    if (!input || typeof input !== "object") throw new Error("Invalid payload");
-    const { password, overrides } = input as { password?: unknown; overrides?: unknown };
-    if (typeof password !== "string") throw new Error("Missing password");
-    return { password, overrides: normalizeOverrides(overrides) };
-  })
-  .handler(async ({ data }) => {
-    if (data.password !== ADMIN_PASSWORD) throw new Error("Unauthorized");
-    await writeOverrides(data.overrides);
-    return { ok: true };
-  });

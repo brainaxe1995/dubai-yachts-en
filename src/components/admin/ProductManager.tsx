@@ -86,6 +86,13 @@ export function ProductManager() {
       invalidateOverridesCache();
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);
+      // localStorage save is per-browser; show a hint on first save.
+      if (typeof window !== "undefined" && !window.localStorage.getItem("toot-fun-overrides-hint-shown")) {
+        window.localStorage.setItem("toot-fun-overrides-hint-shown", "1");
+        alert(
+          "Saved locally. This currently only affects THIS browser. Central server sync is temporarily disabled while we upgrade TanStack Start.",
+        );
+      }
     } catch (err) {
       alert("Save failed: " + (err instanceof Error ? err.message : String(err)));
     } finally {
