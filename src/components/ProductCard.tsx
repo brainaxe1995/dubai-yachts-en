@@ -105,10 +105,26 @@ function ImageSlider({
   onOpenLightbox?: (index: number) => void;
 }) {
   const [idx, setIdx] = useState(0);
+  const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]));
   const count = images.length;
 
+  // Prefetch neighbors when active slide changes → next click is instant, no black flash.
+  useEffect(() => {
+    if (typeof window === "undefined" || count <= 1) return;
+    const preload = (i: number) => {
+      const src = images[i];
+      if (!src) return;
+      const img = new Image();
+      img.decoding = "async";
+      img.onload = () => setLoaded((prev) => (prev.has(i) ? prev : new Set([...prev, i])));
+      img.src = src;
+    };
+    preload((idx + 1) % count);
+    if (count > 2) preload((idx - 1 + count) % count);
+  }, [idx, count, images]);
+
   return (
-    <div className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-primary-deep">
+    <div className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-muted">
       <div
         dir="ltr"
         className="absolute inset-0 flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -119,16 +135,20 @@ function ImageSlider({
             key={i}
             type="button"
             aria-label={`عرض الصورة ${i + 1}`}
-            className="relative h-full w-full shrink-0"
+            className="relative h-full w-full shrink-0 bg-muted"
             onClick={() => onOpenLightbox?.(idx)}
           >
             <img
               src={src}
               alt={i === 0 ? alt : `${alt} — ${i + 1}`}
               loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
               width={1600}
               height={1000}
-              className="pointer-events-none h-full w-full object-cover"
+              onLoad={() => setLoaded((prev) => (prev.has(i) ? prev : new Set([...prev, i])))}
+              className={`pointer-events-none h-full w-full object-cover transition-opacity duration-300 ${
+                loaded.has(i) ? "opacity-100" : "opacity-0"
+              }`}
               draggable={false}
             />
           </button>

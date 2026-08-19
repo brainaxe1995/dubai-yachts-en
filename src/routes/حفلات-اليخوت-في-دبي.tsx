@@ -11,6 +11,7 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import partyImg from "@/assets/parties/wedding.webp";
 import partyWeddingImg from "@/assets/parties/wedding/wedding-1.webp";
 import partyBirthdayImg from "@/assets/parties/birthday/birthday-1.webp";
@@ -108,6 +109,7 @@ export const Route = createFileRoute("/حفلات-اليخوت-في-دبي")({
 });
 
 function Parties() {
+  const visibleParties = useOverriddenProducts(parties, "parties");
   return (
     <>
       <PageHero
@@ -125,7 +127,7 @@ function Parties() {
           subtitle="اختر نوع الحفلة التي تناسب ميزانيتك واحتفل على متن يخت في دبي."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {parties.map((p, i) => (
+          {visibleParties.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
         </div>

@@ -9,6 +9,7 @@ import { Accordion } from "@/components/Accordion";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, stepsYacht, faqs, keywordCloud } from "@/data/site";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import yachtBookImg from "@/assets/yachts/majesty-66.webp";
 import marinaBookImg from "@/assets/yachts/sunseeker-95.webp";
 
@@ -82,6 +83,7 @@ export const Route = createFileRoute("/حجز-يخوت-في-دبي")({
 });
 
 function YachtBooking() {
+  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -98,7 +100,7 @@ function YachtBooking() {
           subtitle="احجز يختك في دبي بسهولة بأسعار تبدأ من 450 درهم للساعة."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.map((p, i) => (
+          {visibleYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
         </div>
