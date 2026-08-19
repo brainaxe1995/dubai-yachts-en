@@ -9,7 +9,6 @@ import { CharterEssentials } from "@/components/CharterEssentials";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
-import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import gulfcraftImg from "@/assets/yachts/gulfcraft-90.webp";
 import azimutImg from "@/assets/yachts/azimut-80.webp";
 import marinaHero from "@/assets/yachts/majesty-88.webp";
@@ -107,7 +106,6 @@ const rentalFeatures = [
 ];
 
 function YachtRental() {
-  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -123,7 +121,7 @@ function YachtRental() {
           subtitle="اختر من بين أفضل اليخوت الخاصة في دبي بأسعار تبدأ من 450 درهم للساعة، واستمتع برحلة فاخرة تناسب جميع المناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleYachts.map((p, i) => (
+          {yachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
         </div>

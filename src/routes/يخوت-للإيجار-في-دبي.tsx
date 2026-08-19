@@ -11,7 +11,6 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { yachts, stepsYacht, keywordCloud } from "@/data/site";
-import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import italianImg from "@/assets/yachts/italian-95.webp";
 import corpImg from "@/assets/yachts/corporate-105.webp";
 
@@ -89,7 +88,6 @@ const advantages = [
 ];
 
 function YachtsForRent() {
-  const visibleYachts = useOverriddenProducts(yachts, "yachts");
   return (
     <>
       <PageHero
@@ -106,7 +104,7 @@ function YachtsForRent() {
           subtitle="اختر من مجموعة متنوعة من اليخوت الفاخرة المتاحة للإيجار في دبي، بمقاسات وأسعار تناسب الرحلات الخاصة وجميع المناسبات."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleYachts.map((p, i) => (
+          {yachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={(i % 3) * 80} />
           ))}
         </div>

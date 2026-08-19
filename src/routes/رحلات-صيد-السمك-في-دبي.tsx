@@ -10,7 +10,6 @@ import { FishingEssentialsTabs } from "@/components/FishingEssentialsTabs";
 import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
-import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import fishingImg from "@/assets/fishing/shared.webp";
 import fishingSharedImg from "@/assets/fishing/shared/shared-1.webp";
 import fishingBoatImg from "@/assets/fishing/private-boat/private-boat-1.webp";
@@ -157,7 +156,6 @@ const fishingFaqs = [
 ];
 
 function Fishing() {
-  const visibleFishing = useOverriddenProducts(fishingTrips, "fishing");
   return (
     <>
       <PageHero
@@ -175,7 +173,7 @@ function Fishing() {
           subtitle="اختر من بين رحلات الصيد الخاصة والمشتركة مع قوارب مجهزة وطاقم محترف."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleFishing.map((p, i) => (
+          {fishingTrips.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={i * 80} />
           ))}
         </div>
