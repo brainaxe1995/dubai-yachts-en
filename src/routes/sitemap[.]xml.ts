@@ -2,7 +2,22 @@
 import type {} from "@tanstack/react-start";
 import { posts } from "@/data/blog";
 
-const BASE_URL = "https://dubai-yacht.ae";
+// Fallback used only when the incoming request has no Host header (dev CLI, curl -H trickery).
+const FALLBACK_BASE_URL = "https://dubai-yacht.ae";
+
+function resolveBaseUrl(req: Request): string {
+  try {
+    const url = new URL(req.url);
+    const forwardedProto = req.headers.get("x-forwarded-proto");
+    const forwardedHost = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
+    const proto = forwardedProto ?? url.protocol.replace(":", "");
+    const host = forwardedHost ?? url.host;
+    if (!host) return FALLBACK_BASE_URL;
+    return `${proto}://${host}`;
+  } catch {
+    return FALLBACK_BASE_URL;
+  }
+}
 
 interface SitemapEntry {
   path: string;
@@ -43,11 +58,12 @@ function getEntries(): SitemapEntry[] {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
+        const baseUrl = resolveBaseUrl(request);
         const urls = getEntries().map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${encodeURI(e.path)}</loc>`,
+            `    <loc>${baseUrl}${encodeURI(e.path)}</loc>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,

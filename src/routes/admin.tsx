@@ -503,9 +503,17 @@ function PageMetaTab({
 
 function SitemapTab({ cfg }: { cfg: SiteConfig }) {
   const [copied, setCopied] = useState<"url" | "list" | null>(null);
-  const base = cfg.siteUrl.replace(/\/+$/, "");
+  const [liveOrigin, setLiveOrigin] = useState<string | null>(null);
+  useEffect(() => {
+    if (typeof window !== "undefined") setLiveOrigin(window.location.origin);
+  }, []);
+  const configured = cfg.siteUrl.replace(/\/+$/, "");
+  // Prefer the actual browsing domain so admin visiting on hostingersite.com sees that URL,
+  // but if they visit on their production domain it stays production.
+  const base = (liveOrigin ?? configured).replace(/\/+$/, "");
   const sitemapUrl = `${base}/sitemap.xml`;
   const listedPages = useMemo(() => EDITABLE_PAGES.map((p) => `${base}${p.path}/`).join("\n"), [base]);
+  const domainMismatch = liveOrigin && configured && !liveOrigin.startsWith(configured);
 
   function copy(text: string, kind: "url" | "list") {
     navigator.clipboard.writeText(text);
@@ -520,6 +528,15 @@ function SitemapTab({ cfg }: { cfg: SiteConfig }) {
         subtitle="Copy this and paste into Google Search Console → Sitemaps → Add a new sitemap. Also works for Bing Webmaster."
         fullWidth
       >
+        {domainMismatch ? (
+          <div className="md:col-span-2 rounded-lg border border-amber-400/60 bg-amber-50 p-3 text-xs text-amber-900">
+            <strong>Heads up:</strong> You're viewing the admin on{" "}
+            <code className="rounded bg-amber-100 px-1">{liveOrigin}</code> but your production Site URL in
+            Company Info is <code className="rounded bg-amber-100 px-1">{configured}</code>. The URLs below use
+            the current browsing domain so what you submit matches what visitors actually see. Switch to your
+            production domain before submitting to Search Console if this is not final.
+          </div>
+        ) : null}
         <div className="md:col-span-2 flex flex-wrap items-center gap-3">
           <code className="grow rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground">
             {sitemapUrl}
