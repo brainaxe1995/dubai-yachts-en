@@ -281,7 +281,7 @@ export function Header() {
           {/* Desktop shrunk-only LangSwitcher on RIGHT (LEFT cluster's copy fades out when shrunk) */}
           <div
             style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden overflow-hidden lg:block ${
+            className={`hidden lg:block ${
               shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none max-w-0 overflow-hidden opacity-0"
             }`}
           >
