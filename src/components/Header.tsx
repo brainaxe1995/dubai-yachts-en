@@ -222,6 +222,16 @@ export function Header() {
 
         {/* RIGHT cluster: RIGHT split nav (shrunk) + CTA (expanded) + LangSwitcher (always) */}
         <div className="flex items-center justify-end gap-4">
+          {/* Desktop expanded: LangSwitcher next to phone (LEFT cluster) */}
+          <div
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden overflow-hidden lg:block ${
+              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[120px] opacity-100"
+            }`}
+          >
+            <LangSwitcher />
+          </div>
+
           {/* Desktop shrunk: physical-RIGHT cluster (Arabic reader's start) shows
               items 1-4 to preserve non-shrunk nav order. */}
           <ul
@@ -259,10 +269,17 @@ export function Header() {
             <WhatsAppIcon className="h-5 w-5" />
           </a>
 
-          {/* LangSwitcher — always visible on ALL breakpoints (mobile + desktop, expanded + shrunk) */}
-          <div className="hidden lg:block">
+          {/* Desktop shrunk-only LangSwitcher on RIGHT (LEFT cluster's copy fades out when shrunk) */}
+          <div
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden overflow-hidden lg:block ${
+              shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none max-w-0 opacity-0"
+            }`}
+          >
             <LangSwitcher align="end" />
           </div>
+
+          {/* Mobile: always visible pill on RIGHT */}
           <div className="rounded-full border border-gold/70 px-3 py-2 lg:hidden">
             <LangSwitcher align="end" />
           </div>
