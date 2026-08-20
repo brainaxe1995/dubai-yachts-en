@@ -10,6 +10,7 @@ export type SiteConfig = {
   email: string;
   address: string;
   siteUrl: string;
+  englishSiteUrl: string;
   social: {
     instagram: string;
     tiktok: string;
@@ -46,6 +47,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
   email: "info@tootfunyachts.com",
   address: "دبي مارينا، الإمارات العربية المتحدة",
   siteUrl: "https://dubai-yacht.ae",
+  englishSiteUrl: "https://tootfunyachts.com",
   social: {
     instagram: "https://www.instagram.com/tootfun.yachts/",
     tiktok: "https://www.tiktok.com/@tootfunyachts",

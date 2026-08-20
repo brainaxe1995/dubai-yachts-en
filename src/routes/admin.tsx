@@ -116,6 +116,11 @@ function Admin() {
         <Section title="Company Info">
           <Field label="Brand Name" v={cfg.brand} onChange={(v) => update("brand", v)} />
           <Field label="Site URL" v={cfg.siteUrl} onChange={(v) => update("siteUrl", v)} />
+          <Field
+            label="English Site URL (EN flag redirect)"
+            v={cfg.englishSiteUrl}
+            onChange={(v) => update("englishSiteUrl", v)}
+          />
           <Field label="Company Address" v={cfg.address} onChange={(v) => update("address", v)} />
         </Section>
 

@@ -4,6 +4,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import { CONTACT } from "@/data/site";
+import { getConfig, DEFAULT_CONFIG } from "@/data/config";
 
 const nav = [
   { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار" },
@@ -51,9 +52,11 @@ function UkFlag({ className = "h-4 w-6" }: { className?: string }) {
 
 function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
   const [open, setOpen] = useState(false);
+  const [englishUrl, setEnglishUrl] = useState(DEFAULT_CONFIG.englishSiteUrl);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setEnglishUrl(getConfig().englishSiteUrl || DEFAULT_CONFIG.englishSiteUrl);
     const onDoc = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
@@ -91,11 +94,8 @@ function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
           </li>
           <li>
             <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-              }}
+              href={englishUrl}
+              onClick={() => setOpen(false)}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-primary-foreground/80 hover:text-gold"
             >
               <UkFlag className="h-3.5 w-5 rounded-[2px]" /> EN
