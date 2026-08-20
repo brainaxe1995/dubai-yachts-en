@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Copy, Save, RotateCcw, Lock, LogOut, KeyRound, HelpCircle } from "lucide-react";
-import { DEFAULT_CONFIG, getConfig, saveConfig, resetConfig, type SiteConfig } from "@/data/config";
+import { Copy, Save, Lock, LogOut, KeyRound, HelpCircle } from "lucide-react";
+import { DEFAULT_CONFIG, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
 import {
   FORGOT_CHALLENGE_ANSWER,
@@ -396,17 +396,6 @@ function Admin() {
             className="inline-flex items-center gap-2 rounded-lg border border-gold bg-gold px-4 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep"
           >
             <Copy className="h-4 w-4" /> {saved ? "Copied ✓" : "Copy config.ts code (publish)"}
-          </button>
-          <button
-            onClick={() => {
-              if (confirm("Reset to default values?")) {
-                resetConfig();
-                setCfg(DEFAULT_CONFIG);
-              }
-            }}
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-3 text-sm font-bold hover:border-destructive hover:text-destructive"
-          >
-            <RotateCcw className="h-4 w-4" /> Reset to Default
           </button>
         </div>
 
