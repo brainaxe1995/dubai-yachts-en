@@ -87,7 +87,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  loader: async () => {
+    if (typeof window !== "undefined") return { storedConfig: null as null | Record<string, unknown> };
+    const { readStoredConfig } = await import("@/lib/server-config");
+    const storedConfig = await readStoredConfig();
+    return { storedConfig };
+  },
+  head: ({ loaderData }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -114,6 +120,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         : []),
     ],
     scripts: [
+      // Injects server-persisted config overrides into a window global BEFORE any client
+      // JS runs. Client getConfig() reads this and merges over DEFAULT_CONFIG so admin
+      // edits reach public visitors without a redeploy.
+      {
+        children: `window.__TFC__=${JSON.stringify(
+          (loaderData as { storedConfig?: unknown } | undefined)?.storedConfig ?? {},
+        )};`,
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

@@ -117,13 +117,24 @@ const STORAGE_KEY = "toot-fun-admin-config";
 
 export function getConfig(): SiteConfig {
   if (typeof window === "undefined") return DEFAULT_CONFIG;
+  // Base: server-persisted overrides injected in root head as window.__TFC__ (SSR),
+  // then per-browser admin preview overrides in localStorage on top.
+  let base: SiteConfig = DEFAULT_CONFIG;
+  try {
+    const serverOverride = (window as unknown as { __TFC__?: Partial<SiteConfig> }).__TFC__;
+    if (serverOverride && typeof serverOverride === "object" && Object.keys(serverOverride).length > 0) {
+      base = deepMerge(DEFAULT_CONFIG, serverOverride);
+    }
+  } catch {
+    // Ignore malformed injected globals.
+  }
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_CONFIG;
+    if (!raw) return base;
     const override = JSON.parse(raw) as Partial<SiteConfig>;
-    return deepMerge(DEFAULT_CONFIG, override);
+    return deepMerge(base, override);
   } catch {
-    return DEFAULT_CONFIG;
+    return base;
   }
 }
 

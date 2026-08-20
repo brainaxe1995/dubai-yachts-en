@@ -30,6 +30,21 @@ import {
 
 const AUTH_KEY = "toot-fun-admin-auth";
 
+function deepMergeClient<T>(base: T, patch: Partial<T>): T {
+  if (typeof base !== "object" || base === null) return (patch as T) ?? base;
+  const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const k of Object.keys(patch as Record<string, unknown>)) {
+    const bv = (base as Record<string, unknown>)[k];
+    const pv = (patch as Record<string, unknown>)[k];
+    if (typeof bv === "object" && bv !== null && typeof pv === "object" && pv !== null && !Array.isArray(bv)) {
+      out[k] = deepMergeClient(bv, pv as Partial<typeof bv>);
+    } else if (pv !== undefined) {
+      out[k] = pv;
+    }
+  }
+  return out as T;
+}
+
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
@@ -61,19 +76,41 @@ const TABS: { key: TabKey; label: string; icon: typeof Building2 }[] = [
   { key: "security", label: "Password & Security", icon: Shield },
 ];
 
+const AUTH_PW_KEY = "toot-fun-admin-pw-cache";
+
 function Admin() {
   const [authed, setAuthed] = useState(false);
   const [pw, setPw] = useState("");
   const [cfg, setCfg] = useState<SiteConfig>(DEFAULT_CONFIG);
-  const [saved, setSaved] = useState(false);
+  const [saveState, setSaveState] = useState<{ tone: "idle" | "saving" | "ok" | "err"; text: string }>({
+    tone: "idle",
+    text: "",
+  });
   const [tab, setTab] = useState<TabKey>("company");
   const [forgotStage, setForgotStage] = useState<"idle" | "sending" | "challenge" | "reset">("idle");
   const [challengeAnswer, setChallengeAnswer] = useState("");
   const [forgotMsg, setForgotMsg] = useState("");
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") setAuthed(true);
+    if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") {
+      setAuthed(true);
+      const cached = window.sessionStorage.getItem(AUTH_PW_KEY);
+      if (cached) setPw(cached);
+    }
+    // Load client localStorage first for instant preview, then merge server-side stored config over it.
     setCfg(getConfig());
+    (async () => {
+      try {
+        const res = await fetch("/api/config", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as { config?: Partial<SiteConfig> };
+        if (data.config && Object.keys(data.config).length > 0) {
+          setCfg((prev) => deepMergeClient(prev, data.config as Partial<SiteConfig>));
+        }
+      } catch {
+        // Non-fatal — admin still works with localStorage-only preview.
+      }
+    })();
   }, []);
 
   if (!authed) {
@@ -91,6 +128,7 @@ function Admin() {
                 e.preventDefault();
                 if (pw === getAdminPassword()) {
                   window.sessionStorage.setItem(AUTH_KEY, "1");
+                  window.sessionStorage.setItem(AUTH_PW_KEY, pw);
                   setAuthed(true);
                 } else {
                   alert("Incorrect password");
@@ -224,15 +262,25 @@ function Admin() {
     });
   }
 
-  function copyTsSnippet() {
-    const snippet = `// Paste the object below into src/data/config.ts as the new DEFAULT_CONFIG value.\nexport const DEFAULT_CONFIG: SiteConfig = ${JSON.stringify(
-      cfg,
-      null,
-      2,
-    )};`;
-    navigator.clipboard.writeText(snippet);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2500);
+  async function saveToServer() {
+    setSaveState({ tone: "saving", text: "Saving…" });
+    saveConfig(cfg);
+    try {
+      const res = await fetch("/api/config", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw, config: cfg }),
+      });
+      const data = (await res.json()) as { ok?: boolean; error?: string };
+      if (!res.ok || !data.ok) {
+        setSaveState({ tone: "err", text: data.error ?? "Save failed" });
+        return;
+      }
+      setSaveState({ tone: "ok", text: "Saved. Live for everyone visiting the site." });
+      setTimeout(() => setSaveState({ tone: "idle", text: "" }), 4000);
+    } catch (e) {
+      setSaveState({ tone: "err", text: e instanceof Error ? e.message : "Network error" });
+    }
   }
 
   return (
@@ -241,8 +289,8 @@ function Admin() {
         <div>
           <h1 className="text-2xl font-bold text-foreground md:text-3xl">Toot Fun Admin Dashboard</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Pick a tab on the left to edit that part of the site. Changes preview in your browser instantly — publish
-            by clicking "Copy config code" at the bottom and sending to your developer.
+            Pick a tab on the left to edit that part of the site. When you're done, click Save at the bottom — changes
+            apply live for everyone visiting the site.
           </p>
         </div>
         <button
@@ -288,24 +336,27 @@ function Admin() {
           {tab === "products" ? <ProductManager /> : null}
           {tab === "security" ? <SecurityTab cfg={cfg} update={update} /> : null}
 
-          <div className="sticky bottom-4 z-10 flex flex-wrap gap-3 rounded-2xl border border-gold/40 bg-card p-4 shadow-luxe">
+          <div className="sticky bottom-4 z-10 flex flex-wrap items-center gap-3 rounded-2xl border border-gold/40 bg-card p-4 shadow-luxe">
             <button
-              onClick={() => {
-                saveConfig(cfg);
-                alert(
-                  "Saved to this browser (preview only). For permanent publish, copy the code and send to developer.",
-                );
-              }}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
+              onClick={saveToServer}
+              disabled={saveState.tone === "saving"}
+              className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:cursor-not-allowed disabled:opacity-60"
             >
-              <Save className="h-4 w-4" /> Save Preview (this browser)
+              <Save className="h-4 w-4" /> {saveState.tone === "saving" ? "Saving…" : "Save Changes"}
             </button>
-            <button
-              onClick={copyTsSnippet}
-              className="inline-flex items-center gap-2 rounded-lg border border-gold bg-gold px-4 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep"
-            >
-              <Copy className="h-4 w-4" /> {saved ? "Copied ✓" : "Copy config code (for developer to publish)"}
-            </button>
+            {saveState.text ? (
+              <span
+                className={`text-sm font-semibold ${
+                  saveState.tone === "ok"
+                    ? "text-emerald-600"
+                    : saveState.tone === "err"
+                      ? "text-red-600"
+                      : "text-muted-foreground"
+                }`}
+              >
+                {saveState.text}
+              </span>
+            ) : null}
           </div>
         </div>
       </div>

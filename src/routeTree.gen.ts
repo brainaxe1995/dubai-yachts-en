@@ -27,6 +27,7 @@ import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char15
 import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport } from './routes/سياسة-الخصوصية'
 import { Route as Char1605Char1606Char1606Char1581Char1606RouteImport } from './routes/من-نحن'
 import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/يخوت-للإيجار-في-دبي'
+import { Route as ApiConfigRouteImport } from './routes/api.config'
 import { Route as Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport } from './routes/المدونة_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -155,6 +156,11 @@ const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Ch
       getParentRoute: () => rootRouteImport,
     } as any,
   )
+const ApiConfigRoute = ApiConfigRouteImport.update({
+  id: '/api/config',
+  path: '/api/config',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute =
   Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport.update(
     {
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/config': typeof ApiConfigRoute
   '/المدونة/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 export interface FileRoutesByTo {
@@ -204,6 +211,7 @@ export interface FileRoutesByTo {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/config': typeof ApiConfigRoute
   '/المدونة/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 export interface FileRoutesById {
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/config': typeof ApiConfigRoute
   '/المدونة_/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 export interface FileRouteTypes {
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/config'
     | '/المدونة/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -270,6 +280,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/config'
     | '/المدونة/$slug'
   id:
     | '__root__'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/config'
     | '/المدونة_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -313,6 +325,7 @@ export interface RootRouteChildren {
   Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   Char1605Char1606Char1606Char1581Char1606Route: typeof Char1605Char1606Char1606Char1581Char1606Route
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  ApiConfigRoute: typeof ApiConfigRoute
   Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
 }
 
@@ -444,6 +457,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/config': {
+      id: '/api/config'
+      path: '/api/config'
+      fullPath: '/api/config'
+      preLoaderRoute: typeof ApiConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/المدونة_/$slug': {
       id: '/المدونة_/$slug'
       path: '/المدونة/$slug'
@@ -487,6 +507,7 @@ const rootRouteChildren: RootRouteChildren = {
     Char1605Char1606Char1606Char1581Char1606Route,
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route:
     Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route,
+  ApiConfigRoute: ApiConfigRoute,
   Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute:
     Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute,
 }
