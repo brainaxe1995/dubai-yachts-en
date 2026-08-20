@@ -48,34 +48,32 @@ export function PageHero({
       <div
         className={`mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-14 text-center md:py-20`}
       >
+        {/* LCP text rendered directly — no Reveal wrapper so browser paints on first frame
+            instead of waiting for JS hydration + IntersectionObserver. */}
         {eyebrow ? (
-          <Reveal className="mb-4 rounded-full border border-gold/60 bg-primary-deep/70 px-4 py-1.5 text-xs font-bold tracking-wide text-gold shadow-lg">
+          <span className="mb-4 rounded-full border border-gold/60 bg-primary-deep/70 px-4 py-1.5 text-xs font-bold tracking-wide text-gold shadow-lg">
             {eyebrow}
-          </Reveal>
+          </span>
         ) : null}
-        <Reveal delay={60}>
-          <h1
-            className="text-3xl font-extrabold leading-tight text-primary-foreground md:text-5xl"
+        <h1
+          className="text-3xl font-extrabold leading-tight text-primary-foreground md:text-5xl"
+          style={{
+            textShadow:
+              "-1px -1px 0 rgba(7,20,38,0.9), 1px -1px 0 rgba(7,20,38,0.9), -1px 1px 0 rgba(7,20,38,0.9), 1px 1px 0 rgba(7,20,38,0.9), 0 4px 24px rgba(0,0,0,0.55)",
+          }}
+        >
+          {title}
+        </h1>
+        {subtitle ? (
+          <p
+            className="mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-primary-foreground md:text-base"
             style={{
               textShadow:
-                "-1px -1px 0 rgba(7,20,38,0.9), 1px -1px 0 rgba(7,20,38,0.9), -1px 1px 0 rgba(7,20,38,0.9), 1px 1px 0 rgba(7,20,38,0.9), 0 4px 24px rgba(0,0,0,0.55)",
+                "-0.5px -0.5px 0 rgba(7,20,38,0.9), 0.5px -0.5px 0 rgba(7,20,38,0.9), -0.5px 0.5px 0 rgba(7,20,38,0.9), 0.5px 0.5px 0 rgba(7,20,38,0.9), 0 2px 16px rgba(0,0,0,0.6)",
             }}
           >
-            {title}
-          </h1>
-        </Reveal>
-        {subtitle ? (
-          <Reveal delay={140}>
-            <p
-              className="mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-primary-foreground md:text-base"
-              style={{
-                textShadow:
-                  "-0.5px -0.5px 0 rgba(7,20,38,0.9), 0.5px -0.5px 0 rgba(7,20,38,0.9), -0.5px 0.5px 0 rgba(7,20,38,0.9), 0.5px 0.5px 0 rgba(7,20,38,0.9), 0 2px 16px rgba(0,0,0,0.6)",
-              }}
-            >
-              {renderInline(subtitle)}
-            </p>
-          </Reveal>
+            {renderInline(subtitle)}
+          </p>
         ) : null}
         <Reveal delay={220} className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {children ?? (
