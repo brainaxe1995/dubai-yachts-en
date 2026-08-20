@@ -23,6 +23,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { TrackingScripts } from "@/components/TrackingScripts";
+import { PageMetaOverride } from "@/components/PageMetaOverride";
 import { DEFAULT_CONFIG } from "@/data/config";
 
 function NotFoundComponent() {
@@ -186,6 +187,7 @@ function RootComponent() {
         <Footer />
         <WhatsAppFab />
         <TrackingScripts />
+        <PageMetaOverride />
       </div>
     </QueryClientProvider>
   );

@@ -45,7 +45,28 @@ export type SiteConfig = {
     emailjsTemplateId: string;
     emailjsPublicKey: string;
   };
+  // Per-page meta title/description overrides — keyed by pathname (with or without trailing slash).
+  // Applied client-side on route match. Empty string = fall back to route's baked-in default.
+  pageMeta: Record<string, { title: string; description: string }>;
 };
+
+export const EDITABLE_PAGES: { path: string; label: string }[] = [
+  { path: "/", label: "الرئيسية (Home)" },
+  { path: "/تأجير-يخوت-في-دبي", label: "تأجير يخوت في دبي" },
+  { path: "/إيجار-يخوت-في-دبي", label: "إيجار يخوت في دبي" },
+  { path: "/حجز-يخوت-في-دبي", label: "حجز يخوت في دبي" },
+  { path: "/يخوت-للإيجار-في-دبي", label: "يخوت للإيجار في دبي" },
+  { path: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
+  { path: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك" },
+  { path: "/باقات-تأجير-اليخوت-في-دبي", label: "باقات تأجير اليخوت" },
+  { path: "/من-نحن", label: "من نحن" },
+  { path: "/اتصل-بنا", label: "اتصل بنا" },
+  { path: "/المدونة", label: "المدونة" },
+  { path: "/خريطة-الموقع", label: "خريطة الموقع" },
+  { path: "/سياسة-الإلغاء", label: "سياسة الإلغاء" },
+  { path: "/الشروط-والأحكام", label: "الشروط والأحكام" },
+  { path: "/سياسة-الخصوصية", label: "سياسة الخصوصية" },
+];
 
 export const DEFAULT_CONFIG: SiteConfig = {
   brand: "توت فن لليخوت",
@@ -85,10 +106,11 @@ export const DEFAULT_CONFIG: SiteConfig = {
   },
   adminEmail: {
     recipient: "info@tootfunyachts.com",
-    emailjsServiceId: "",
-    emailjsTemplateId: "",
+    emailjsServiceId: "service_31orv7d",
+    emailjsTemplateId: "template_sb7ah6o",
     emailjsPublicKey: "",
   },
+  pageMeta: {},
 };
 
 const STORAGE_KEY = "toot-fun-admin-config";
