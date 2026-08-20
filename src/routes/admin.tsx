@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Copy, Save, RotateCcw, Lock, LogOut } from "lucide-react";
+import { Copy, Save, RotateCcw, Lock, LogOut, KeyRound, HelpCircle } from "lucide-react";
 import { DEFAULT_CONFIG, getConfig, saveConfig, resetConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
+import {
+  FORGOT_CHALLENGE_ANSWER,
+  getAdminPassword,
+  resetAdminPassword,
+  setAdminPassword,
+  verifyForgotAnswer,
+} from "@/lib/admin-auth";
 
-const ADMIN_PASSWORD = "Tootfun321+"; // change this constant to update the admin password
 const AUTH_KEY = "toot-fun-admin-auth";
 
 export const Route = createFileRoute("/admin")({
@@ -17,11 +23,99 @@ export const Route = createFileRoute("/admin")({
   component: Admin,
 });
 
+function ChangePasswordCard() {
+  const [current, setCurrent] = useState("");
+  const [next, setNext] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [msg, setMsg] = useState<{ tone: "ok" | "err"; text: string } | null>(null);
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setMsg(null);
+    if (current !== getAdminPassword()) {
+      setMsg({ tone: "err", text: "Current password is wrong." });
+      return;
+    }
+    if (next.length < 6) {
+      setMsg({ tone: "err", text: "New password must be at least 6 characters." });
+      return;
+    }
+    if (next !== confirm) {
+      setMsg({ tone: "err", text: "New password and confirmation do not match." });
+      return;
+    }
+    setAdminPassword(next);
+    setCurrent("");
+    setNext("");
+    setConfirm("");
+    setMsg({ tone: "ok", text: "Password updated. Next login will require the new password." });
+  }
+
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 shadow-luxe">
+      <div className="mb-3 flex items-center gap-3">
+        <KeyRound className="h-5 w-5 text-gold-deep" />
+        <h2 className="text-lg font-bold text-foreground">Change Admin Password</h2>
+      </div>
+      <p className="mb-4 text-xs text-muted-foreground">
+        Password stored per-browser (localStorage). To reset when forgotten, use the "Forgot password?" link on the login
+        screen — challenge is the last 4 digits of the master phone number ({FORGOT_CHALLENGE_ANSWER}).
+      </p>
+      <form onSubmit={submit} className="grid gap-3 sm:grid-cols-3">
+        <label className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">Current password</span>
+          <input
+            type="password"
+            value={current}
+            onChange={(e) => setCurrent(e.target.value)}
+            required
+            className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-gold"
+          />
+        </label>
+        <label className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">New password</span>
+          <input
+            type="password"
+            value={next}
+            onChange={(e) => setNext(e.target.value)}
+            required
+            minLength={6}
+            className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-gold"
+          />
+        </label>
+        <label className="grid gap-1.5">
+          <span className="text-xs font-bold text-muted-foreground">Confirm new password</span>
+          <input
+            type="password"
+            value={confirm}
+            onChange={(e) => setConfirm(e.target.value)}
+            required
+            className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-gold"
+          />
+        </label>
+        <div className="sm:col-span-3 flex flex-wrap items-center gap-3">
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep"
+          >
+            <Save className="h-4 w-4" /> Update password
+          </button>
+          {msg ? (
+            <span className={`text-sm ${msg.tone === "ok" ? "text-emerald-600" : "text-red-600"}`}>{msg.text}</span>
+          ) : null}
+        </div>
+      </form>
+    </div>
+  );
+}
+
 function Admin() {
   const [authed, setAuthed] = useState(false);
   const [pw, setPw] = useState("");
   const [cfg, setCfg] = useState<SiteConfig>(DEFAULT_CONFIG);
   const [saved, setSaved] = useState(false);
+  const [forgotStage, setForgotStage] = useState<"idle" | "challenge" | "reset">("idle");
+  const [challengeAnswer, setChallengeAnswer] = useState("");
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") setAuthed(true);
@@ -31,41 +125,108 @@ function Admin() {
   if (!authed) {
     return (
       <div dir="ltr" className="mx-auto flex min-h-[60vh] max-w-md items-center justify-center px-4">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (pw === ADMIN_PASSWORD) {
-              window.sessionStorage.setItem(AUTH_KEY, "1");
-              setAuthed(true);
-            } else {
-              alert("Incorrect password");
-            }
-          }}
-          className="w-full rounded-2xl border border-border bg-card p-8 shadow-luxe"
-        >
+        <div className="w-full rounded-2xl border border-border bg-card p-8 shadow-luxe">
           <div className="mb-4 flex items-center gap-3">
             <Lock className="h-6 w-6 text-gold" />
             <h1 className="text-xl font-bold text-foreground">Admin Login</h1>
           </div>
-          <input
-            type="password"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            placeholder="Password"
-            autoFocus
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none focus:border-gold"
-          />
-          <button
-            type="submit"
-            className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
-          >
-            Log in
-          </button>
-          <p className="mt-4 text-xs text-muted-foreground">
-            To change the password, edit the <code className="rounded bg-muted px-1">ADMIN_PASSWORD</code> constant in
-            <code className="ms-1 rounded bg-muted px-1">src/routes/admin.tsx</code>.
-          </p>
-        </form>
+
+          {forgotStage === "idle" ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (pw === getAdminPassword()) {
+                  window.sessionStorage.setItem(AUTH_KEY, "1");
+                  setAuthed(true);
+                } else {
+                  alert("Incorrect password");
+                }
+              }}
+            >
+              <input
+                type="password"
+                value={pw}
+                onChange={(e) => setPw(e.target.value)}
+                placeholder="Password"
+                autoFocus
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none focus:border-gold"
+              />
+              <button
+                type="submit"
+                className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
+              >
+                Log in
+              </button>
+              <button
+                type="button"
+                onClick={() => setForgotStage("challenge")}
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-gold-deep hover:text-gold"
+              >
+                <HelpCircle className="h-3.5 w-3.5" /> Forgot password?
+              </button>
+            </form>
+          ) : forgotStage === "challenge" ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (verifyForgotAnswer(challengeAnswer)) {
+                  resetAdminPassword();
+                  setForgotStage("reset");
+                } else {
+                  alert("Incorrect answer");
+                }
+              }}
+            >
+              <p className="mb-3 text-sm text-muted-foreground">
+                Enter the <strong className="text-foreground">last 4 digits</strong> of the master phone number to reset.
+              </p>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={4}
+                value={challengeAnswer}
+                onChange={(e) => setChallengeAnswer(e.target.value)}
+                placeholder="XXXX"
+                autoFocus
+                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-center text-lg font-bold tracking-widest outline-none focus:border-gold"
+              />
+              <button
+                type="submit"
+                className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
+              >
+                Verify
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setForgotStage("idle");
+                  setChallengeAnswer("");
+                }}
+                className="mt-3 text-xs font-bold text-muted-foreground hover:text-foreground"
+              >
+                ← Back to login
+              </button>
+            </form>
+          ) : (
+            <div>
+              <p className="text-sm text-emerald-600">
+                Password reset to default. Log in with <code className="rounded bg-muted px-1.5 py-0.5">Tootfun321+</code>{" "}
+                then change it from the dashboard.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setForgotStage("idle");
+                  setChallengeAnswer("");
+                  setPw("");
+                }}
+                className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
+              >
+                Go to login
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -113,6 +274,8 @@ function Admin() {
       </header>
 
       <div className="space-y-6">
+        <ChangePasswordCard />
+
         <Section title="Company Info">
           <Field label="Brand Name" v={cfg.brand} onChange={(v) => update("brand", v)} />
           <Field label="Site URL" v={cfg.siteUrl} onChange={(v) => update("siteUrl", v)} />

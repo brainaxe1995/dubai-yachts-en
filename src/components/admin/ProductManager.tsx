@@ -16,7 +16,7 @@ import { getProductOverrides, saveProductOverrides } from "@/lib/overrides";
 import { applyOverrides, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
 import { invalidateOverridesCache } from "@/hooks/useProductOverrides";
 
-const ADMIN_PASSWORD = "Tootfun321+";
+import { getAdminPassword } from "@/lib/admin-auth";
 
 const SOURCES: Record<Category, { title: string; label: string; page: string }[]> = {
   yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/تأجير-يخوت-في-دبي/" })),
@@ -82,7 +82,7 @@ export function ProductManager() {
     setSaving(true);
     setSaved(false);
     try {
-      await saveProductOverrides({ data: { password: ADMIN_PASSWORD, overrides } });
+      await saveProductOverrides({ data: { password: getAdminPassword(), overrides } });
       invalidateOverridesCache();
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);

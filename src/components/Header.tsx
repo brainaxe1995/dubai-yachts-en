@@ -119,20 +119,34 @@ export function Header() {
   }, [open]);
 
   useEffect(() => {
-    // Measure hero (first <section> after header) once, shrink when scroll passes half of it.
-    // Falls back to 300px if no hero found (e.g. admin route).
+    // Measure hero (first <section> after header). Shrink at scroll past 50% of it,
+    // expand back only after scroll drops below 35% — hysteresis kills the flap-jump
+    // that happens when scroll oscillates around a single threshold.
     const measure = () => {
       const hero = document.querySelector("main section, section") as HTMLElement | null;
       const heroHeight = hero?.offsetHeight ?? 600;
-      return Math.max(120, Math.floor(heroHeight * 0.5));
+      return {
+        shrinkAt: Math.max(160, Math.floor(heroHeight * 0.5)),
+        expandAt: Math.max(80, Math.floor(heroHeight * 0.35)),
+      };
     };
-    let threshold = measure();
-    const onScroll = () => setShrunk(window.scrollY > threshold);
+    let bounds = measure();
+    let currentShrunk = window.scrollY > bounds.shrinkAt;
+    setShrunk(currentShrunk);
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (!currentShrunk && y > bounds.shrinkAt) {
+        currentShrunk = true;
+        setShrunk(true);
+      } else if (currentShrunk && y < bounds.expandAt) {
+        currentShrunk = false;
+        setShrunk(false);
+      }
+    };
     const onResize = () => {
-      threshold = measure();
+      bounds = measure();
       onScroll();
     };
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     return () => {
