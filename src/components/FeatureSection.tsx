@@ -22,27 +22,29 @@ function BlockChapter({ i }: { i: number }) {
 
 function VariantSplit({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
-  const flip = i % 2 === 0;
+  // In a 3-variant cycle: Split is i=0. Force image on RTL start (physical right).
   return (
-    <div className={`grid items-center gap-8 md:grid-cols-2 md:gap-12 ${flip ? "md:[direction:ltr]" : ""}`}>
+    <div className="grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-12">
       {b.image ? (
-        <div className={`relative overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 ${flip ? "md:order-2" : ""}`}>
-          <img
-            src={b.image}
-            alt={b.imageAlt ?? b.h}
-            loading="lazy"
-            width={1200}
-            height={900}
-            className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
-          />
-          {Icon ? (
-            <span className="absolute end-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-gold text-primary-deep shadow-md">
-              <Icon className="h-5 w-5" />
-            </span>
-          ) : null}
+        <div className="md:order-1">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+            <img
+              src={b.image}
+              alt={b.imageAlt ?? b.h}
+              loading="lazy"
+              width={1200}
+              height={900}
+              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+            {Icon ? (
+              <span className="absolute end-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-gold text-primary-deep shadow-md">
+                <Icon className="h-5 w-5" />
+              </span>
+            ) : null}
+          </div>
         </div>
       ) : null}
-      <div className={flip ? "md:order-1 md:[direction:rtl]" : ""}>
+      <div className="md:order-2">
         <BlockChapter i={i} />
         <h3 className="mt-3 text-2xl font-extrabold text-primary md:text-3xl">{b.h}</h3>
         <span className="mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
@@ -102,52 +104,49 @@ function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
 
 function VariantCardStack({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
+  // Opposite side of VariantSplit — image on RTL end (physical left).
   return (
-    <div className="relative rounded-3xl border-2 border-gold/25 bg-gradient-to-br from-muted/50 via-card to-card p-6 shadow-luxe md:p-10">
-      <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:gap-12">
-        <div>
-          <BlockChapter i={i} />
-          <div className="mt-3 flex items-center gap-3">
-            {Icon ? (
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md">
-                <Icon className="h-6 w-6" />
-              </span>
-            ) : null}
-            <h3 className="text-2xl font-extrabold text-primary md:text-3xl">{b.h}</h3>
-          </div>
-          <span className="mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
-          <div className="mt-5 space-y-4">
-            {b.p.map((par, pi) => (
-              <p key={pi} className="text-sm leading-loose text-muted-foreground md:text-base">
-                {renderInline(par)}
-              </p>
-            ))}
-          </div>
-        </div>
-        {b.image ? (
-          <div className="relative">
-            <div className="absolute -inset-2 -z-10 rounded-3xl bg-gold/10 blur-lg" />
+    <div className="grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-12">
+      {b.image ? (
+        <div className="md:order-2">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
             <img
               src={b.image}
               alt={b.imageAlt ?? b.h}
               loading="lazy"
-              width={800}
-              height={800}
-              className="aspect-square w-full rounded-2xl object-cover shadow-md ring-1 ring-gold/30"
+              width={1200}
+              height={900}
+              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
             />
-            <span className="absolute -bottom-3 -end-3 grid h-16 w-16 place-items-center rounded-2xl bg-primary-deep text-primary-foreground shadow-luxe">
-              <span className="text-xs font-bold text-gold">TOOT</span>
-            </span>
           </div>
-        ) : null}
+        </div>
+      ) : null}
+      <div className="md:order-1">
+        <BlockChapter i={i} />
+        <div className="mt-3 flex items-center gap-3">
+          {Icon ? (
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-md">
+              <Icon className="h-6 w-6" />
+            </span>
+          ) : null}
+          <h3 className="text-2xl font-extrabold text-primary md:text-3xl">{b.h}</h3>
+        </div>
+        <span className="mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+        <div className="mt-5 space-y-4">
+          {b.p.map((par, pi) => (
+            <p key={pi} className="text-sm leading-loose text-muted-foreground md:text-base">
+              {renderInline(par)}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 /**
- * Renders story blocks with rotating layout variants so consecutive sections
- * never look identical. Variants: split (0), full-bleed overlay (1), stacked card (2).
+ * Rotating 3-variant layout for visual rhythm — split / full-bleed overlay / stacked card.
+ * All variants use the same 4/3 image aspect so pictures never feel bigger/smaller between blocks.
  */
 export function FeatureBlocks({ blocks }: { blocks: FeatureBlock[] }) {
   return (

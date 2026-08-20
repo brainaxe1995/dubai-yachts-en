@@ -195,7 +195,7 @@ function YachtsForRent() {
 
       {/* New visual feature section after products */}
       <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كل ما تحتاج معرفته عن إيجار اليخوت في دبي"
             subtitle="من الإضافات المشمولة إلى الفئات التي تناسبها رحلاتنا — دليل شامل قبل الحجز."
@@ -216,7 +216,7 @@ function YachtsForRent() {
 
       <ContactCta />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."

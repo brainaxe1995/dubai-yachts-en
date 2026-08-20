@@ -199,7 +199,7 @@ function Home() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center">
             <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك على متن اليخت</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -207,16 +207,18 @@ function Home() {
             </p>
             <span className="mx-auto mt-5 block h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
           </Reveal>
-          <div className="grid items-center gap-10 md:grid-cols-2">
+          <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
             <Reveal>
-              <img
-                src={whatIncludedImg}
-                alt="ماذا تشمل رحلة اليخت — كابتن، طاقم، وقود، تأمين، مشروبات وضيافة"
-                loading="lazy"
-                width={1200}
-                height={800}
-                className="rounded-2xl object-cover shadow-luxe"
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+                <img
+                  src={whatIncludedImg}
+                  alt="ماذا تشمل رحلة اليخت — كابتن، طاقم، وقود، تأمين، مشروبات وضيافة"
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
             </Reveal>
             <Reveal delay={120}>
               <ul className="grid grid-cols-2 gap-3 text-sm text-muted-foreground">
@@ -257,7 +259,7 @@ function Home() {
       />
 
       {/* Keyword cloud — LAST section (matches other pages) */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت والرحلات البحرية في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."

@@ -113,7 +113,7 @@ function RentYacht() {
 
       {/* New rich visual after products */}
       <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="دليل إيجار اليخوت في دبي"
             subtitle="كل ما تحتاج معرفته قبل استئجار يخت في دبي — من الأسطول إلى الفئات التي تناسبها رحلاتنا."
@@ -141,7 +141,7 @@ function RentYacht() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading title="مقاسات اليخوت المتاحة للإيجار" subtitle="اختر الحجم المناسب لعدد ضيوفك ونوع مناسبتك." />
           <div className="grid gap-5 md:grid-cols-3">
             {fleetGroups.map((g, i) => (
@@ -176,7 +176,7 @@ function RentYacht() {
 
       <ContactCta />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف الكلمات الأكثر بحثًا حول إيجار اليخوت في دبي."

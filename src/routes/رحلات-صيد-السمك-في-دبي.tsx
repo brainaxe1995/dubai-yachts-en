@@ -238,7 +238,7 @@ function Fishing() {
         <FeatureBlocks blocks={fishingFeatures} />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر أنواع الأسماك في مياه دبي"
           subtitle="تعرّف على أنواع الأسماك التي يمكنك اصطيادها خلال رحلتك."
@@ -281,7 +281,7 @@ function Fishing() {
       </section>
 
       <section className="surface-navy py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             onDark
             title="ماذا تشمل رحلة الصيد"
@@ -300,7 +300,7 @@ function Fishing() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="مواقع الصيد الرئيسية في دبي"
           subtitle="استمتع برحلة __صيد السمك في دبي__ في مجموعة من أفضل المواقع البحرية، ويتم اختيار منطقة الصيد المناسبة حسب حالة البحر والطقس ونوع الأسماك المستهدفة."
@@ -324,7 +324,7 @@ function Fishing() {
 
       {/* Fishing techniques */}
       <section className="bg-gradient-to-b from-muted via-background to-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="أفضل تقنيات الصيد في دبي"
             subtitle="أربع تقنيات يستخدمها طاقمنا لتحقيق أفضل صيد ممكن."
@@ -344,7 +344,7 @@ function Fishing() {
       </section>
 
       {/* Fish species you can catch */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أنواع الأسماك التي يمكنك اصطيادها في دبي"
           subtitle="أشهر الأنواع المتوفرة في مياه الخليج العربي طوال السنة."
@@ -372,7 +372,7 @@ function Fishing() {
       </section>
 
       <section className="bg-gradient-to-b from-muted via-background to-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كل ما تحتاج معرفته قبل رحلة الصيد"
             subtitle="نصائح ذهبية من الطاقم لتجربة صيد ناجحة، وقائمة بمن تناسبهم رحلاتنا."
@@ -468,7 +468,7 @@ function Fishing() {
         subtitle="تواصل معنا لاختيار الرحلة الأنسب لك ومعرفة توفر التواريخ."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول رحلات صيد السمك والتجارب البحرية في دبي للوصول بسرعة إلى ما يناسبك."

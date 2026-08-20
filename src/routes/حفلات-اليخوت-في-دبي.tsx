@@ -263,7 +263,7 @@ function Parties() {
         subtitle="تواصل معنا لتخصيص الباقة المناسبة والحصول على أفضل الأسعار."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول حفلات اليخوت والاحتفالات البحرية في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."

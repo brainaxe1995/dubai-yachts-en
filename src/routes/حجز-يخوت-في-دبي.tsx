@@ -140,7 +140,7 @@ function YachtBooking() {
 
       {/* New rich section after products */}
       <section className="bg-gradient-to-b from-muted via-background to-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="طريقة الحجز مع توت فن — سريعة وشفافة"
             subtitle="كل ما تحتاج معرفته عن خطوات حجز يختك في دبي، من الاختيار حتى الإبحار."
@@ -205,7 +205,7 @@ function YachtBooking() {
         subtitle="تواصل معنا عبر واتساب أو الهاتف لتأكيد التوفر ودفع العربون."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف الكلمات الأكثر بحثًا حول حجز اليخوت في دبي."

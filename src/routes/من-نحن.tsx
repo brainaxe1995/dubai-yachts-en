@@ -59,16 +59,18 @@ function About() {
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
           <Reveal>
-            <img
-              src={fleetImg}
-              alt="أسطول توت فن لليخوت في دبي"
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="rounded-2xl object-cover shadow-luxe"
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+              <img
+                src={fleetImg}
+                alt="أسطول توت فن لليخوت في دبي"
+                loading="lazy"
+                width={1200}
+                height={900}
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <h2 className="text-2xl text-foreground md:text-3xl">من نحن في توت فن لليخوت</h2>
@@ -139,7 +141,7 @@ function About() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
           <Reveal delay={120}>
             <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك</h2>
             <p className="mt-3 text-sm text-muted-foreground md:text-base">
@@ -155,29 +157,33 @@ function About() {
             </ul>
           </Reveal>
           <Reveal>
-            <img
-              src={whatIncludedImg}
-              alt="ماذا تشمل رحلة اليخت"
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="rounded-2xl object-cover shadow-luxe"
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+              <img
+                src={whatIncludedImg}
+                alt="ماذا تشمل رحلة اليخت"
+                loading="lazy"
+                width={1200}
+                height={900}
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
 
       <section className="surface-navy py-16">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-[1fr_1fr]">
           <Reveal>
-            <img
-              src={marinaImg}
-              alt="يخوت في دبي مارينا"
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="rounded-2xl object-cover shadow-luxe"
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+              <img
+                src={marinaImg}
+                alt="يخوت في دبي مارينا"
+                loading="lazy"
+                width={1200}
+                height={900}
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </Reveal>
           <Reveal delay={120} className="text-primary-foreground">
             <h2 className="text-2xl md:text-3xl">موقعنا في قلب دبي مارينا</h2>

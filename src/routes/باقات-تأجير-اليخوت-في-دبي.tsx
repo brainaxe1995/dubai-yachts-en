@@ -161,7 +161,7 @@ function Packages() {
       </section>
 
       <section className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="إضافات حجز اليخوت في دبي"
             subtitle="خصّص رحلتك بإضافات مميزة من الطعام، الحلويات، الديكورات، الرياضات المائية، والمزيد."
@@ -198,7 +198,7 @@ function Packages() {
         <BookingSteps steps={stepsPackage} />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <Reveal className="mx-auto mb-10 max-w-3xl text-center">
           <h2 className="text-2xl text-foreground md:text-3xl">أكثر من مجرّد باقة</h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -245,7 +245,7 @@ function Packages() {
         subtitle="تواصل معنا لحجز باقتك أو تخصيص واحدة حسب طلبك."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول باقات وعروض اليخوت في دبي للوصول بسرعة إلى الباقة التي تناسبك."

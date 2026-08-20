@@ -164,7 +164,7 @@ function YachtRental() {
 
       {/* Long-form SEO feature section */}
       <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="دليلك الكامل لتأجير اليخوت في دبي"
             subtitle="كل ما تحتاج معرفته قبل استئجار يختك — من خطوات الحجز إلى ما يشمله السعر وأشهر المعالم البحرية."
@@ -173,7 +173,7 @@ function YachtRental() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر ماركات اليخوت في أسطولنا"
           subtitle="نتعاون مع أفضل ماركات اليخوت العالمية لتقديم تجربة إبحار استثنائية."
@@ -217,7 +217,7 @@ function YachtRental() {
 
       <ContactCta />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."

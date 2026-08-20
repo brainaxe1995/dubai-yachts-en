@@ -157,7 +157,7 @@ function ImageSlider({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      {/* Info pills — length + guests + meta, raised above dots */}
+      {/* Info pills — length + guests only (meta pills moved to card body per client request) */}
       <div className="pointer-events-none absolute inset-x-4 bottom-10 flex flex-wrap items-center gap-2">
         {length ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
@@ -171,18 +171,6 @@ function ImageSlider({
             {guests}
           </span>
         ) : null}
-        {meta.map((s) => {
-          const MetaIcon = iconForMeta(s);
-          return (
-            <span
-              key={s}
-              className="inline-flex items-center gap-1.5 rounded-full bg-gold/95 px-2.5 py-1 text-[11px] font-bold text-primary-deep shadow-md ring-1 ring-white/25"
-            >
-              <MetaIcon className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />
-              {s}
-            </span>
-          );
-        })}
       </div>
 
       {/* Share badge — top-start corner (RTL right) */}
@@ -450,6 +438,27 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                 <span className="font-bold text-foreground">مرخّص</span>
               </div>
             </div>
+
+            {/* Meta feature strip — 3-col grid, icon on top + label below, always fits width */}
+            {meta.length > 0 ? (
+              <ul className="grid grid-cols-3 gap-1.5 pt-1">
+                {meta.map((s) => {
+                  const MetaIcon = iconForMeta(s);
+                  return (
+                    <li
+                      key={s}
+                      title={s}
+                      className="group flex min-w-0 flex-col items-center gap-1 rounded-lg border border-gold/25 bg-gradient-to-b from-gold/10 to-transparent px-1.5 py-2 text-center text-[10px] font-semibold text-foreground transition-all duration-300 hover:border-gold/60 hover:from-gold/20"
+                    >
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-gradient-to-br from-gold via-gold-soft to-gold-deep text-primary-deep shadow-sm ring-1 ring-gold/40 transition-transform duration-300 group-hover:scale-110">
+                        <MetaIcon className="h-3.5 w-3.5" strokeWidth={2.75} />
+                      </span>
+                      <span className="line-clamp-2 leading-tight">{s}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
 
             <div className="mt-auto flex gap-2 pt-3">
               <a
