@@ -37,6 +37,14 @@ export type SiteConfig = {
     ogImage: string;
     priceStartAed: number;
   };
+  adminEmail: {
+    // Address that receives password-reset OTP emails
+    recipient: string;
+    // EmailJS credentials (create free account at emailjs.com — service, template, public key)
+    emailjsServiceId: string;
+    emailjsTemplateId: string;
+    emailjsPublicKey: string;
+  };
 };
 
 export const DEFAULT_CONFIG: SiteConfig = {
@@ -74,6 +82,12 @@ export const DEFAULT_CONFIG: SiteConfig = {
       "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
     ogImage: "https://dubai-yacht.ae/og-cover.jpg",
     priceStartAed: 450,
+  },
+  adminEmail: {
+    recipient: "info@tootfunyachts.com",
+    emailjsServiceId: "",
+    emailjsTemplateId: "",
+    emailjsPublicKey: "",
   },
 };
 

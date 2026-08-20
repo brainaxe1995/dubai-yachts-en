@@ -4,11 +4,11 @@ import { Copy, Save, Lock, LogOut, KeyRound, HelpCircle } from "lucide-react";
 import { DEFAULT_CONFIG, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
 import {
-  FORGOT_CHALLENGE_ANSWER,
   getAdminPassword,
   resetAdminPassword,
+  sendPasswordResetOtp,
   setAdminPassword,
-  verifyForgotAnswer,
+  verifyOtp,
 } from "@/lib/admin-auth";
 
 const AUTH_KEY = "toot-fun-admin-auth";
@@ -24,7 +24,6 @@ export const Route = createFileRoute("/admin")({
 });
 
 function ChangePasswordCard() {
-  const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [msg, setMsg] = useState<{ tone: "ok" | "err"; text: string } | null>(null);
@@ -32,10 +31,6 @@ function ChangePasswordCard() {
   function submit(e: React.FormEvent) {
     e.preventDefault();
     setMsg(null);
-    if (current !== getAdminPassword()) {
-      setMsg({ tone: "err", text: "Current password is wrong." });
-      return;
-    }
     if (next.length < 6) {
       setMsg({ tone: "err", text: "New password must be at least 6 characters." });
       return;
@@ -45,7 +40,6 @@ function ChangePasswordCard() {
       return;
     }
     setAdminPassword(next);
-    setCurrent("");
     setNext("");
     setConfirm("");
     setMsg({ tone: "ok", text: "Password updated. Next login will require the new password." });
@@ -59,19 +53,9 @@ function ChangePasswordCard() {
       </div>
       <p className="mb-4 text-xs text-muted-foreground">
         Password stored per-browser (localStorage). To reset when forgotten, use the "Forgot password?" link on the login
-        screen — challenge is the last 4 digits of the master phone number ({FORGOT_CHALLENGE_ANSWER}).
+        screen — an OTP is emailed to the recipient set in the "Admin Email &amp; OTP" section below.
       </p>
-      <form onSubmit={submit} className="grid gap-3 sm:grid-cols-3">
-        <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">Current password</span>
-          <input
-            type="password"
-            value={current}
-            onChange={(e) => setCurrent(e.target.value)}
-            required
-            className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-gold"
-          />
-        </label>
+      <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2">
         <label className="grid gap-1.5">
           <span className="text-xs font-bold text-muted-foreground">New password</span>
           <input
@@ -93,7 +77,7 @@ function ChangePasswordCard() {
             className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-gold"
           />
         </label>
-        <div className="sm:col-span-3 flex flex-wrap items-center gap-3">
+        <div className="sm:col-span-2 flex flex-wrap items-center gap-3">
           <button
             type="submit"
             className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep"
@@ -114,8 +98,9 @@ function Admin() {
   const [pw, setPw] = useState("");
   const [cfg, setCfg] = useState<SiteConfig>(DEFAULT_CONFIG);
   const [saved, setSaved] = useState(false);
-  const [forgotStage, setForgotStage] = useState<"idle" | "challenge" | "reset">("idle");
+  const [forgotStage, setForgotStage] = useState<"idle" | "sending" | "challenge" | "reset">("idle");
   const [challengeAnswer, setChallengeAnswer] = useState("");
+  const [forgotMsg, setForgotMsg] = useState("");
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") setAuthed(true);
@@ -159,34 +144,47 @@ function Admin() {
               </button>
               <button
                 type="button"
-                onClick={() => setForgotStage("challenge")}
+                onClick={async () => {
+                  setForgotStage("sending");
+                  const res = await sendPasswordResetOtp();
+                  if (res.ok) {
+                    setForgotStage("challenge");
+                    setForgotMsg(`OTP sent to ${res.sentTo}. Check inbox (may take 30 sec).`);
+                  } else {
+                    setForgotStage("idle");
+                    alert(res.reason);
+                  }
+                }}
                 className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-gold-deep hover:text-gold"
               >
                 <HelpCircle className="h-3.5 w-3.5" /> Forgot password?
               </button>
             </form>
+          ) : forgotStage === "sending" ? (
+            <div className="text-center text-sm text-muted-foreground">Sending OTP…</div>
           ) : forgotStage === "challenge" ? (
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                if (verifyForgotAnswer(challengeAnswer)) {
+                if (verifyOtp(challengeAnswer)) {
                   resetAdminPassword();
                   setForgotStage("reset");
                 } else {
-                  alert("Incorrect answer");
+                  alert("Incorrect or expired OTP");
                 }
               }}
             >
+              {forgotMsg ? <p className="mb-3 text-xs text-emerald-600">{forgotMsg}</p> : null}
               <p className="mb-3 text-sm text-muted-foreground">
-                Enter the <strong className="text-foreground">last 4 digits</strong> of the master phone number to reset.
+                Enter the <strong className="text-foreground">6-digit code</strong> sent to the admin email.
               </p>
               <input
                 type="text"
                 inputMode="numeric"
-                maxLength={4}
+                maxLength={6}
                 value={challengeAnswer}
                 onChange={(e) => setChallengeAnswer(e.target.value)}
-                placeholder="XXXX"
+                placeholder="XXXXXX"
                 autoFocus
                 className="w-full rounded-lg border border-border bg-background px-4 py-3 text-center text-lg font-bold tracking-widest outline-none focus:border-gold"
               />
@@ -194,13 +192,14 @@ function Admin() {
                 type="submit"
                 className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
               >
-                Verify
+                Verify OTP
               </button>
               <button
                 type="button"
                 onClick={() => {
                   setForgotStage("idle");
                   setChallengeAnswer("");
+                  setForgotMsg("");
                 }}
                 className="mt-3 text-xs font-bold text-muted-foreground hover:text-foreground"
               >
@@ -218,6 +217,7 @@ function Admin() {
                 onClick={() => {
                   setForgotStage("idle");
                   setChallengeAnswer("");
+                  setForgotMsg("");
                   setPw("");
                 }}
                 className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
@@ -285,6 +285,37 @@ function Admin() {
             onChange={(v) => update("englishSiteUrl", v)}
           />
           <Field label="Company Address" v={cfg.address} onChange={(v) => update("address", v)} />
+        </Section>
+
+        <Section title="Admin Email & OTP (EmailJS)">
+          <Field
+            label="Admin Recipient Email (receives password-reset OTP)"
+            v={cfg.adminEmail.recipient}
+            onChange={(v) => update("adminEmail.recipient", v)}
+          />
+          <Field
+            label="EmailJS Service ID"
+            v={cfg.adminEmail.emailjsServiceId}
+            onChange={(v) => update("adminEmail.emailjsServiceId", v)}
+          />
+          <Field
+            label="EmailJS Template ID"
+            v={cfg.adminEmail.emailjsTemplateId}
+            onChange={(v) => update("adminEmail.emailjsTemplateId", v)}
+          />
+          <Field
+            label="EmailJS Public Key"
+            v={cfg.adminEmail.emailjsPublicKey}
+            onChange={(v) => update("adminEmail.emailjsPublicKey", v)}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            Sign up free at <code className="rounded bg-muted px-1">emailjs.com</code>. Create a Service (e.g. Gmail) +
+            Template with variables <code className="rounded bg-muted px-1">to_email</code>,{" "}
+            <code className="rounded bg-muted px-1">otp_code</code>,{" "}
+            <code className="rounded bg-muted px-1">subject</code>,{" "}
+            <code className="rounded bg-muted px-1">message</code>. Copy Service ID, Template ID, and Public Key into
+            fields above. Then "Save Preview" — Forgot Password on login sends OTP to Admin Recipient.
+          </p>
         </Section>
 
         <Section title="Contact Details">
