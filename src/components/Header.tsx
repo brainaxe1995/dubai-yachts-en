@@ -184,18 +184,6 @@ export function Header() {
             <span className="whitespace-nowrap text-base font-bold text-primary-foreground">+971 544 420 441</span>
           </a>
 
-          <span
-            style={{ transition: `opacity 400ms ${EASE}` }}
-            className={`hidden h-7 w-px bg-primary-foreground/25 lg:block ${shrunk ? "opacity-0" : "opacity-100"}`}
-          />
-
-          <div
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden overflow-hidden lg:block ${shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[120px] opacity-100"}`}
-          >
-            <LangSwitcher />
-          </div>
-
           {/* Desktop shrunk: physical-LEFT cluster shows the TAIL of nav (items 5-7)
               so Arabic RTL reader hits items 1-4 first on the right side, matching
               the non-shrunk 7-col grid order. */}
