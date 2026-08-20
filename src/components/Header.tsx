@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
@@ -32,14 +32,17 @@ function UaeFlag({ className = "h-4 w-6" }: { className?: string }) {
 }
 
 function UkFlag({ className = "h-4 w-6" }: { className?: string }) {
+  // Unique clipPath id per instance so multiple LangSwitcher renders
+  // (LEFT expanded + RIGHT shrunk cross-fade) don't clash and blank the flag.
+  const clipId = useId();
   return (
     <svg viewBox="0 0 60 30" className={className} aria-hidden role="img" focusable="false">
-      <clipPath id="uk-flag-clip">
+      <clipPath id={clipId}>
         <path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z" />
       </clipPath>
       <path d="M0,0v30h60v-30z" fill="#012169" />
       <path d="M0,0 60,30M60,0 0,30" stroke="#fff" strokeWidth="6" />
-      <path d="M0,0 60,30M60,0 0,30" clipPath="url(#uk-flag-clip)" stroke="#C8102E" strokeWidth="4" />
+      <path d="M0,0 60,30M60,0 0,30" clipPath={`url(#${clipId})`} stroke="#C8102E" strokeWidth="4" />
       <path d="M30,0v30M0,15h60" stroke="#fff" strokeWidth="10" />
       <path d="M30,0v30M0,15h60" stroke="#C8102E" strokeWidth="6" />
     </svg>
