@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
@@ -333,17 +334,32 @@ export function Header() {
         </ul>
       </div>
 
-      {/* Mobile drawer */}
+      <MobileDrawer open={open} onClose={() => setOpen(false)} />
+    </header>
+  );
+}
+
+// Portaled to document.body so header's shrunk-state backdrop-blur stacking context
+// can't obscure/hide the drawer (mobile Safari bug). z-index competes at root, not
+// inside header.
+function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  const drawer = (
+    <>
       <div
         aria-hidden={!open}
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-primary-deep/70 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${
+        onClick={onClose}
+        className={`fixed inset-0 z-[100] bg-primary-deep/70 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
       <aside
-        className={`fixed inset-y-0 right-0 z-50 flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
+        aria-hidden={!open}
+        className={`fixed inset-y-0 right-0 z-[110] flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+          open ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
@@ -357,7 +373,7 @@ export function Header() {
           <button
             type="button"
             aria-label="إغلاق القائمة"
-            onClick={() => setOpen(false)}
+            onClick={onClose}
             className="grid h-10 w-10 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
           >
             <X className="h-5 w-5" />
@@ -367,7 +383,7 @@ export function Header() {
         <nav className="flex flex-1 flex-col overflow-y-auto px-4 pb-6 pt-2">
           <Link
             to="/"
-            onClick={() => setOpen(false)}
+            onClick={onClose}
             className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:text-gold"
           >
             الرئيسية
@@ -376,7 +392,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              onClick={() => setOpen(false)}
+              onClick={onClose}
               activeProps={{ className: "text-gold" }}
               className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:text-gold"
             >
@@ -403,6 +419,8 @@ export function Header() {
           </a>
         </nav>
       </aside>
-    </header>
+    </>
   );
+
+  return createPortal(drawer, document.body);
 }
