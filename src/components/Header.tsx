@@ -184,6 +184,22 @@ export function Header() {
             <span className="whitespace-nowrap text-base font-bold text-primary-foreground">+971 544 420 441</span>
           </a>
 
+          {/* Divider + LangSwitcher — visually beside the phone (original position) */}
+          <span
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden h-7 w-px overflow-hidden bg-primary-foreground/25 lg:block ${
+              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[2px] opacity-100"
+            }`}
+          />
+          <div
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden overflow-hidden lg:block ${
+              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[120px] opacity-100"
+            }`}
+          >
+            <LangSwitcher />
+          </div>
+
           {/* Desktop shrunk: physical-LEFT cluster shows the TAIL of nav (items 5-7)
               so Arabic RTL reader hits items 1-4 first on the right side, matching
               the non-shrunk 7-col grid order. */}
@@ -220,18 +236,8 @@ export function Header() {
           />
         </Link>
 
-        {/* RIGHT cluster: RIGHT split nav (shrunk) + CTA (expanded) + LangSwitcher (always) */}
+        {/* RIGHT cluster: RIGHT split nav (shrunk) + CTA (expanded) + shrunk-lang + mobile-lang */}
         <div className="flex items-center justify-end gap-4">
-          {/* Desktop expanded: LangSwitcher next to phone (LEFT cluster) */}
-          <div
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden overflow-hidden lg:block ${
-              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[120px] opacity-100"
-            }`}
-          >
-            <LangSwitcher />
-          </div>
-
           {/* Desktop shrunk: physical-RIGHT cluster (Arabic reader's start) shows
               items 1-4 to preserve non-shrunk nav order. */}
           <ul
