@@ -161,7 +161,7 @@ export function Header() {
       style={{ transition: `background-color 500ms ${EASE}, backdrop-filter 500ms ${EASE}, box-shadow 500ms ${EASE}` }}
       className={`sticky top-0 z-50 ${
         shrunk
-          ? "bg-primary-deep/70 shadow-luxe backdrop-blur-xl"
+          ? "bg-primary-deep/90 shadow-luxe backdrop-blur-md"
           : "bg-primary-deep shadow-none"
       }`}
     >
@@ -343,9 +343,7 @@ export function Header() {
 // can't obscure/hide the drawer (mobile Safari bug). z-index competes at root, not
 // inside header.
 function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   const drawer = (
     <>
