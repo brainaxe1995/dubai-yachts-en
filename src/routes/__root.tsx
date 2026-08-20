@@ -18,6 +18,9 @@ import "@fontsource/tajawal/arabic-800.css";
 import "@fontsource/tajawal/arabic-900.css";
 import appCss from "../styles.css?url";
 import heroImg from "@/assets/hero-yacht.webp";
+import heroImg640 from "@/assets/hero-yacht-640.webp";
+import heroImg960 from "@/assets/hero-yacht-960.webp";
+import heroImg1280 from "@/assets/hero-yacht-1280.webp";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -163,8 +166,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
-      // Preload LCP hero image so browser discovers it during head parse
-      { rel: "preload", as: "image", href: heroImg, fetchPriority: "high" },
+      // Preload LCP hero — responsive srcset so mobile fetches the 640/960 variant
+      // (~18-40KB) instead of the 150KB desktop original.
+      {
+        rel: "preload",
+        as: "image",
+        href: heroImg,
+        imageSrcset: `${heroImg640} 640w, ${heroImg960} 960w, ${heroImg1280} 1280w, ${heroImg} 1600w`,
+        imageSizes: "(max-width: 768px) 100vw, 100vw",
+        fetchPriority: "high",
+      },
     ],
   }),
   shellComponent: RootShell,

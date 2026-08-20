@@ -1,8 +1,14 @@
 import type { ReactNode } from "react";
 import heroImg from "@/assets/hero-yacht.webp";
+import heroImg640 from "@/assets/hero-yacht-640.webp";
+import heroImg960 from "@/assets/hero-yacht-960.webp";
+import heroImg1280 from "@/assets/hero-yacht-1280.webp";
 import { BookButton, CallButton } from "./CtaButtons";
 import { Reveal } from "./Reveal";
 import { renderInline } from "@/lib/rich-text";
+
+const DEFAULT_HERO_SRCSET = `${heroImg640} 640w, ${heroImg960} 960w, ${heroImg1280} 1280w, ${heroImg} 1600w`;
+const DEFAULT_HERO_SIZES = "(max-width: 768px) 100vw, 100vw";
 
 export function PageHero({
   title,
@@ -30,9 +36,11 @@ export function PageHero({
     <section className={`relative isolate flex w-full overflow-hidden surface-navy ${shape}`}>
       <img
         src={image}
+        srcSet={image === heroImg ? DEFAULT_HERO_SRCSET : undefined}
+        sizes={image === heroImg ? DEFAULT_HERO_SIZES : undefined}
         alt={title}
-        width={1920}
-        height={1088}
+        width={1600}
+        height={907}
         fetchPriority="high"
         decoding="async"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
