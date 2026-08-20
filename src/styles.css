@@ -320,3 +320,12 @@ button:disabled {
   flex: 1;
   color: var(--foreground);
 }
+
+/* content-visibility utility — tells browser to skip rendering elements offscreen.
+   Massive styleLayout win on pages with many below-fold sections (product grids,
+   feature blocks, testimonials). contain-intrinsic-size gives the browser a
+   placeholder height so scroll position/scrollbar don't jump. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}

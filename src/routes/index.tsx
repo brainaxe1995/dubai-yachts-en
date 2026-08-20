@@ -115,7 +115,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+      <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="خدمات توت فن لتأجير اليخوت في دبي"
           subtitle="اكتشف خدمات توت فن المتنوعة لتأجير اليخوت في دبي."
@@ -148,7 +148,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-muted py-16 md:py-24">
+      <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="كيف تحجز يختك في دبي؟"
@@ -170,7 +170,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+      <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="إضافات حجز اليخوت في دبي"
           subtitle="خصّص تجربتك بإضافات مميزة — من الكيك والحلويات إلى الرياضات المائية والتصوير الاحترافي. مرّر بمؤشر الفأرة لإيقاف الحركة."
@@ -178,7 +178,7 @@ function Home() {
         <ExtrasMarquee items={extras} />
       </section>
 
-      <section className="surface-navy py-16 md:py-24">
+      <section className="cv-auto surface-navy py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             onDark
@@ -198,7 +198,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-muted py-16 md:py-24">
+      <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center">
             <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك على متن اليخت</h2>
@@ -234,7 +234,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
+      <section className="cv-auto mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
           title="أسئلة شائعة حول تأجير اليخوت في دبي"
           subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
@@ -243,7 +243,7 @@ function Home() {
       </section>
 
       {/* Customer reviews */}
-      <section className="bg-muted py-16 md:py-24">
+      <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             title="ماذا يقول ضيوفنا؟"
@@ -259,7 +259,7 @@ function Home() {
       />
 
       {/* Keyword cloud — LAST section (matches other pages) */}
-      <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
+      <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
           subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت والرحلات البحرية في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."
