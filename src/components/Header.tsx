@@ -282,7 +282,7 @@ export function Header() {
           <div
             style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
             className={`hidden overflow-hidden lg:block ${
-              shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none max-w-0 opacity-0"
+              shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none max-w-0 overflow-hidden opacity-0"
             }`}
           >
             <LangSwitcher align="end" />
