@@ -271,16 +271,11 @@ export function Header() {
             <WhatsAppIcon className="h-5 w-5" />
           </a>
 
-          {/* LangSwitcher — visible on desktop always (both expanded and shrunk) */}
+          {/* LangSwitcher — always visible on ALL breakpoints (mobile + desktop, expanded + shrunk) */}
           <div className="hidden lg:block">
             <LangSwitcher align="end" />
           </div>
-
-          {/* Mobile-only lang pill */}
-          <div
-            style={{ transition: `opacity 400ms ${EASE}` }}
-            className={`rounded-full border border-gold/70 px-3 py-2 lg:hidden ${shrunk ? "opacity-0" : "opacity-100"}`}
-          >
+          <div className="rounded-full border border-gold/70 px-3 py-2 lg:hidden">
             <LangSwitcher align="end" />
           </div>
         </div>
