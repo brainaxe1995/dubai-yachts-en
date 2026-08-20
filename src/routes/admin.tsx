@@ -15,6 +15,8 @@ import {
   Package,
   Map,
   Shield,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { DEFAULT_CONFIG, EDITABLE_PAGES, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
@@ -95,13 +97,12 @@ function Admin() {
                 }
               }}
             >
-              <input
-                type="password"
+              <PasswordInput
                 value={pw}
-                onChange={(e) => setPw(e.target.value)}
+                onChange={setPw}
                 placeholder="Password"
                 autoFocus
-                className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none focus:border-gold"
+                className="py-3 px-4"
               />
               <button
                 type="submit"
@@ -609,24 +610,11 @@ function SecurityTab({ cfg, update }: { cfg: SiteConfig; update: (p: string, v: 
         <form onSubmit={submitPw} className="contents">
           <label className="flex flex-col gap-1.5">
             <span className="text-xs font-bold text-muted-foreground">New password</span>
-            <input
-              type="password"
-              value={next}
-              onChange={(e) => setNext(e.target.value)}
-              required
-              minLength={6}
-              className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-gold"
-            />
+            <PasswordInput value={next} onChange={setNext} required minLength={6} />
           </label>
           <label className="flex flex-col gap-1.5">
             <span className="text-xs font-bold text-muted-foreground">Confirm new password</span>
-            <input
-              type="password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              required
-              className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-gold"
-            />
+            <PasswordInput value={confirm} onChange={setConfirm} required />
           </label>
           <div className="md:col-span-2 flex flex-wrap items-center gap-3">
             <button
@@ -696,6 +684,48 @@ function Section({
       <h2 className="text-lg font-bold text-gold-deep">{title}</h2>
       {subtitle ? <p className="mt-1 text-xs text-muted-foreground">{subtitle}</p> : null}
       <div className={`mt-4 grid gap-4 ${fullWidth ? "md:grid-cols-2" : "md:grid-cols-2"}`}>{children}</div>
+    </div>
+  );
+}
+
+function PasswordInput({
+  value,
+  onChange,
+  placeholder,
+  autoFocus,
+  required,
+  minLength,
+  className,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  autoFocus?: boolean;
+  required?: boolean;
+  minLength?: number;
+  className?: string;
+}) {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative">
+      <input
+        type={show ? "text" : "password"}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+        required={required}
+        minLength={minLength}
+        className={`w-full rounded-lg border border-border bg-background px-3 py-2.5 pe-10 text-sm outline-none focus:border-gold ${className ?? ""}`}
+      />
+      <button
+        type="button"
+        onClick={() => setShow((s) => !s)}
+        aria-label={show ? "Hide password" : "Show password"}
+        className="absolute end-2 top-1/2 -translate-y-1/2 grid h-7 w-7 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+      </button>
     </div>
   );
 }
