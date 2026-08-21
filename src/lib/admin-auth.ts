@@ -1,6 +1,7 @@
-// Client-side admin password + OTP helpers. Server persistence via TanStack Start
-// server functions is blocked by createCsrfMiddleware bug → all state lives in
-// localStorage/sessionStorage. OTP emails are sent via EmailJS (client-side, no backend).
+// Client-side admin password helpers. Verification + rotation both go through the
+// server so what the browser thinks is the current pw matches what the server
+// enforces on every /api/config, /api/overrides, /api/password call.
+// localStorage keeps the last-successful pw as a login autofill only.
 
 import emailjs from "@emailjs/browser";
 import { getConfig } from "@/data/config";
@@ -29,6 +30,48 @@ export function setAdminPassword(next: string): void {
 export function resetAdminPassword(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(PASSWORD_KEY);
+}
+
+// Server-side truth check. Used at login and before any admin operation.
+export async function verifyAdminPasswordOnServer(candidate: string): Promise<boolean> {
+  try {
+    const res = await fetch("/api/password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentPassword: candidate, verifyOnly: true }),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+// Rotate password on the server. Persists the new pw in hbuilds/admin-password.json
+// and, on success, updates the local autofill cache so future logins prefill correctly.
+export async function changeAdminPasswordOnServer(
+  currentPassword: string,
+  newPassword: string,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    const res = await fetch("/api/password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    let body: { ok?: boolean; error?: string } = {};
+    try {
+      body = (await res.json()) as { ok?: boolean; error?: string };
+    } catch {
+      /* ignore parse error */
+    }
+    if (!res.ok || !body.ok) {
+      return { ok: false, error: body.error ?? `Server responded ${res.status}` };
+    }
+    setAdminPassword(newPassword);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Network error" };
+  }
 }
 
 function generateOtp(): string {

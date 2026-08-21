@@ -18,15 +18,20 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-import { DEFAULT_CONFIG, EDITABLE_PAGES, getConfig, saveConfig, type SiteConfig } from "@/data/config";
+import { DEFAULT_CONFIG, EDITABLE_PAGES, PAGE_META_DEFAULTS, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
 import {
+  changeAdminPasswordOnServer,
   getAdminPassword,
   resetAdminPassword,
   sendPasswordResetOtp,
   setAdminPassword,
+  verifyAdminPasswordOnServer,
   verifyOtp,
 } from "@/lib/admin-auth";
+import { getProductOverrides, saveProductOverrides } from "@/lib/overrides";
+import { invalidateOverridesCache } from "@/hooks/useProductOverrides";
+import { EMPTY_OVERRIDES, type ProductOverrides } from "@/lib/overrides-types";
 
 const AUTH_KEY = "toot-fun-admin-auth";
 
@@ -81,7 +86,11 @@ const AUTH_PW_KEY = "toot-fun-admin-pw-cache";
 function Admin() {
   const [authed, setAuthed] = useState(false);
   const [pw, setPw] = useState("");
+  const [loginBusy, setLoginBusy] = useState(false);
+  const [loginError, setLoginError] = useState("");
   const [cfg, setCfg] = useState<SiteConfig>(DEFAULT_CONFIG);
+  const [overrides, setOverrides] = useState<ProductOverrides>(EMPTY_OVERRIDES);
+  const [overridesLoading, setOverridesLoading] = useState(true);
   const [saveState, setSaveState] = useState<{ tone: "idle" | "saving" | "ok" | "err"; text: string }>({
     tone: "idle",
     text: "",
@@ -96,6 +105,10 @@ function Admin() {
       setAuthed(true);
       const cached = window.sessionStorage.getItem(AUTH_PW_KEY);
       if (cached) setPw(cached);
+    } else {
+      // Autofill login field from last-successful pw so returning admins don't retype.
+      const stored = getAdminPassword();
+      if (stored) setPw(stored);
     }
     // Load client localStorage first for instant preview, then merge server-side stored config over it.
     setCfg(getConfig());
@@ -111,6 +124,10 @@ function Admin() {
         // Non-fatal — admin still works with localStorage-only preview.
       }
     })();
+    getProductOverrides()
+      .then((data) => setOverrides(data))
+      .catch(() => setOverrides(EMPTY_OVERRIDES))
+      .finally(() => setOverridesLoading(false));
   }, []);
 
   if (!authed) {
@@ -124,14 +141,22 @@ function Admin() {
 
           {forgotStage === "idle" ? (
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                if (pw === getAdminPassword()) {
+                setLoginError("");
+                setLoginBusy(true);
+                try {
+                  const ok = await verifyAdminPasswordOnServer(pw);
+                  if (!ok) {
+                    setLoginError("Incorrect password.");
+                    return;
+                  }
+                  setAdminPassword(pw); // cache last-successful pw for autofill
                   window.sessionStorage.setItem(AUTH_KEY, "1");
                   window.sessionStorage.setItem(AUTH_PW_KEY, pw);
                   setAuthed(true);
-                } else {
-                  alert("Incorrect password");
+                } finally {
+                  setLoginBusy(false);
                 }
               }}
             >
@@ -142,11 +167,15 @@ function Admin() {
                 autoFocus
                 className="py-3 px-4"
               />
+              {loginError ? (
+                <p className="mt-2 text-xs font-semibold text-red-600">{loginError}</p>
+              ) : null}
               <button
                 type="submit"
-                className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep"
+                disabled={loginBusy}
+                className="mt-3 w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary-deep disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Log in
+                {loginBusy ? "Checking…" : "Log in"}
               </button>
               <button
                 type="button"
@@ -215,8 +244,10 @@ function Admin() {
           ) : (
             <div>
               <p className="text-sm text-emerald-600">
-                Password reset to default. Log in with <code className="rounded bg-muted px-1.5 py-0.5">Tootfun321+</code>{" "}
-                then change it from the dashboard.
+                Local password cache cleared. Try logging in with the default{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5">Tootfun321+</code>. If the server rejects it (because
+                a custom password was previously saved server-side), recovery requires SSH access to remove{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5">hbuilds/admin-password.json</code>.
               </p>
               <button
                 type="button"
@@ -264,23 +295,29 @@ function Admin() {
 
   async function saveToServer() {
     setSaveState({ tone: "saving", text: "Saving…" });
-    saveConfig(cfg);
-    try {
-      const res = await fetch("/api/config", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: pw, config: cfg }),
-      });
-      const data = (await res.json()) as { ok?: boolean; error?: string };
-      if (!res.ok || !data.ok) {
-        setSaveState({ tone: "err", text: data.error ?? "Save failed" });
-        return;
-      }
-      setSaveState({ tone: "ok", text: "Saved. Live for everyone visiting the site." });
-      setTimeout(() => setSaveState({ tone: "idle", text: "" }), 4000);
-    } catch (e) {
-      setSaveState({ tone: "err", text: e instanceof Error ? e.message : "Network error" });
+    saveConfig(cfg); // optimistic local mirror
+    const results = await Promise.allSettled([
+      (async () => {
+        const res = await fetch("/api/config", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: pw, config: cfg }),
+        });
+        const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        if (!res.ok || !data.ok) throw new Error(data.error ?? `Config save failed (${res.status})`);
+      })(),
+      saveProductOverrides({ password: pw, overrides }),
+    ]);
+    const failures = results
+      .map((r) => (r.status === "rejected" ? (r.reason instanceof Error ? r.reason.message : String(r.reason)) : null))
+      .filter((s): s is string => Boolean(s));
+    if (failures.length > 0) {
+      setSaveState({ tone: "err", text: failures.join(" · ") });
+      return;
     }
+    invalidateOverridesCache();
+    setSaveState({ tone: "ok", text: "Saved. Live for everyone visiting the site." });
+    setTimeout(() => setSaveState({ tone: "idle", text: "" }), 4000);
   }
 
   return (
@@ -327,39 +364,85 @@ function Admin() {
         </nav>
 
         <div className="space-y-6">
-          {tab === "company" ? <CompanyTab cfg={cfg} update={update} /> : null}
-          {tab === "contact" ? <ContactTab cfg={cfg} update={update} /> : null}
-          {tab === "social" ? <SocialTab cfg={cfg} update={update} /> : null}
-          {tab === "tracking" ? <TrackingTab cfg={cfg} update={update} /> : null}
-          {tab === "pagemeta" ? <PageMetaTab cfg={cfg} updatePageMeta={updatePageMeta} /> : null}
+          {tab === "company" ? (
+            <>
+              <SaveBar onSave={saveToServer} state={saveState} />
+              <CompanyTab cfg={cfg} update={update} />
+            </>
+          ) : null}
+          {tab === "contact" ? (
+            <>
+              <SaveBar onSave={saveToServer} state={saveState} />
+              <ContactTab cfg={cfg} update={update} />
+            </>
+          ) : null}
+          {tab === "social" ? (
+            <>
+              <SaveBar onSave={saveToServer} state={saveState} />
+              <SocialTab cfg={cfg} update={update} />
+            </>
+          ) : null}
+          {tab === "tracking" ? (
+            <>
+              <SaveBar onSave={saveToServer} state={saveState} />
+              <TrackingTab cfg={cfg} update={update} />
+            </>
+          ) : null}
+          {tab === "pagemeta" ? (
+            <>
+              <SaveBar onSave={saveToServer} state={saveState} />
+              <PageMetaTab cfg={cfg} updatePageMeta={updatePageMeta} />
+            </>
+          ) : null}
           {tab === "sitemap" ? <SitemapTab cfg={cfg} /> : null}
-          {tab === "products" ? <ProductManager /> : null}
-          {tab === "security" ? <SecurityTab cfg={cfg} update={update} /> : null}
-
-          <div className="sticky bottom-4 z-10 flex flex-wrap items-center gap-3 rounded-2xl border border-gold/40 bg-card p-4 shadow-luxe">
-            <button
-              onClick={saveToServer}
-              disabled={saveState.tone === "saving"}
-              className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              <Save className="h-4 w-4" /> {saveState.tone === "saving" ? "Saving…" : "Save Changes"}
-            </button>
-            {saveState.text ? (
-              <span
-                className={`text-sm font-semibold ${
-                  saveState.tone === "ok"
-                    ? "text-emerald-600"
-                    : saveState.tone === "err"
-                      ? "text-red-600"
-                      : "text-muted-foreground"
-                }`}
-              >
-                {saveState.text}
-              </span>
-            ) : null}
-          </div>
+          {tab === "products" ? (
+            <ProductManager
+              overrides={overrides}
+              setOverrides={setOverrides}
+              loading={overridesLoading}
+              onSave={saveToServer}
+              saveState={saveState}
+            />
+          ) : null}
+          {tab === "security" ? (
+            <SecurityTab
+              cfg={cfg}
+              update={update}
+              currentPw={pw}
+              onPwChanged={(next) => setPw(next)}
+            />
+          ) : null}
         </div>
       </div>
+    </div>
+  );
+}
+
+export type AdminSaveState = { tone: "idle" | "saving" | "ok" | "err"; text: string };
+
+function SaveBar({ onSave, state }: { onSave: () => void; state: AdminSaveState }) {
+  return (
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-gold/40 bg-card p-4 shadow-luxe">
+      <button
+        onClick={onSave}
+        disabled={state.tone === "saving"}
+        className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        <Save className="h-4 w-4" /> {state.tone === "saving" ? "Saving…" : "Save Changes"}
+      </button>
+      {state.text ? (
+        <span
+          className={`text-sm font-semibold ${
+            state.tone === "ok"
+              ? "text-emerald-600"
+              : state.tone === "err"
+                ? "text-red-600"
+                : "text-muted-foreground"
+          }`}
+        >
+          {state.text}
+        </span>
+      ) : null}
     </div>
   );
 }
@@ -482,15 +565,26 @@ function PageMetaTab({
   updatePageMeta: (path: string, field: "title" | "description", value: string) => void;
 }) {
   const [selected, setSelected] = useState(EDITABLE_PAGES[0]?.path ?? "/");
-  const currentTitle = cfg.pageMeta[selected]?.title ?? "";
-  const currentDesc = cfg.pageMeta[selected]?.description ?? "";
-  const titleLen = currentTitle.length;
-  const descLen = currentDesc.length;
+  const defaults = PAGE_META_DEFAULTS[selected] ?? { title: "", description: "" };
+  const overrideTitle = cfg.pageMeta[selected]?.title ?? "";
+  const overrideDesc = cfg.pageMeta[selected]?.description ?? "";
+  // Show override when present, otherwise show baked-in default so editors see
+  // the current live text and can edit from it directly.
+  const effectiveTitle = overrideTitle.length > 0 ? overrideTitle : defaults.title;
+  const effectiveDesc = overrideDesc.length > 0 ? overrideDesc : defaults.description;
+
+  function onTitleChange(v: string) {
+    // If user types the default back, store empty so future default-changes still flow through.
+    updatePageMeta(selected, "title", v === defaults.title ? "" : v);
+  }
+  function onDescChange(v: string) {
+    updatePageMeta(selected, "description", v === defaults.description ? "" : v);
+  }
 
   return (
     <Section
       title="Page SEO — Meta Title & Description"
-      subtitle="Pick a page, then edit how it shows in Google. Aim for title 50-60 chars and description 140-160 chars for best results."
+      subtitle="Pick a page, then edit how it shows in Google. Fields are pre-filled with the current live text — edit freely, no length limits enforced."
       fullWidth
     >
       <label className="flex flex-col gap-1.5 md:col-span-2">
@@ -509,43 +603,37 @@ function PageMetaTab({
       </label>
 
       <label className="flex flex-col gap-1.5 md:col-span-2">
-        <span className="flex items-center justify-between text-xs font-bold text-muted-foreground">
-          <span>Meta Title (shown in browser tab and Google results)</span>
-          <span className={titleLen > 60 ? "text-red-600" : titleLen < 30 && titleLen > 0 ? "text-amber-600" : ""}>
-            {titleLen}/60
-          </span>
+        <span className="text-xs font-bold text-muted-foreground">
+          Meta Title (shown in browser tab and Google results)
         </span>
         <input
           type="text"
-          value={currentTitle}
-          onChange={(e) => updatePageMeta(selected, "title", e.target.value)}
-          placeholder="Leave empty to use the built-in default for this page"
+          value={effectiveTitle}
+          onChange={(e) => onTitleChange(e.target.value)}
+          placeholder="Type the meta title for this page"
           className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-gold"
         />
       </label>
 
       <label className="flex flex-col gap-1.5 md:col-span-2">
-        <span className="flex items-center justify-between text-xs font-bold text-muted-foreground">
-          <span>Meta Description (2-3 sentences that appear under the title in Google)</span>
-          <span className={descLen > 160 ? "text-red-600" : descLen < 80 && descLen > 0 ? "text-amber-600" : ""}>
-            {descLen}/160
-          </span>
+        <span className="text-xs font-bold text-muted-foreground">
+          Meta Description (2-3 sentences that appear under the title in Google)
         </span>
         <textarea
           rows={3}
-          value={currentDesc}
-          onChange={(e) => updatePageMeta(selected, "description", e.target.value)}
-          placeholder="Leave empty to use the built-in default"
+          value={effectiveDesc}
+          onChange={(e) => onDescChange(e.target.value)}
+          placeholder="Type the meta description for this page"
           className="resize-y rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-gold"
         />
       </label>
 
       <div className="md:col-span-2">
         <p className="rounded-lg border border-border bg-muted/50 p-3 text-xs text-muted-foreground">
-          <strong className="text-foreground">How it works:</strong> After you Save Preview, open the page in a new
-          tab in this browser — the new title appears in the tab and Google-style meta will update. For search engines
-          to see the change permanently, click "Copy config code" at the bottom and send it to your developer to
-          publish.
+          <strong className="text-foreground">How it works:</strong> Fields are pre-filled with the current
+          production text. Edit and click <strong>Save Changes</strong> at the top — the update is written
+          server-side and takes effect for every visitor. If you clear a field, the page falls back to its
+          built-in default.
         </p>
       </div>
     </Section>
@@ -650,12 +738,23 @@ function SitemapTab({ cfg }: { cfg: SiteConfig }) {
   );
 }
 
-function SecurityTab({ cfg, update }: { cfg: SiteConfig; update: (p: string, v: string) => void }) {
+function SecurityTab({
+  cfg,
+  update,
+  currentPw,
+  onPwChanged,
+}: {
+  cfg: SiteConfig;
+  update: (p: string, v: string) => void;
+  currentPw: string;
+  onPwChanged: (next: string) => void;
+}) {
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [msg, setMsg] = useState<{ tone: "ok" | "err"; text: string } | null>(null);
+  const [busy, setBusy] = useState(false);
 
-  function submitPw(e: React.FormEvent) {
+  async function submitPw(e: React.FormEvent) {
     e.preventDefault();
     setMsg(null);
     if (next.length < 6) {
@@ -666,15 +765,28 @@ function SecurityTab({ cfg, update }: { cfg: SiteConfig; update: (p: string, v: 
       setMsg({ tone: "err", text: "New password and confirmation do not match." });
       return;
     }
-    setAdminPassword(next);
+    setBusy(true);
+    const res = await changeAdminPasswordOnServer(currentPw, next);
+    setBusy(false);
+    if (!res.ok) {
+      setMsg({ tone: "err", text: `Server rejected the change: ${res.error}` });
+      return;
+    }
+    onPwChanged(next);
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("toot-fun-admin-pw-cache", next);
+    }
     setNext("");
     setConfirm("");
-    setMsg({ tone: "ok", text: "Password updated. Next login will require the new password." });
+    setMsg({ tone: "ok", text: "Password updated on the server. Use the new password on every device from now on." });
   }
 
   return (
     <div className="space-y-6">
-      <Section title="Change Admin Password" subtitle="Password stored per-browser. Min 6 characters.">
+      <Section
+        title="Change Admin Password"
+        subtitle="Rotates the password on the server for all devices. Min 6 characters. If you forget it, recovery requires SSH access to the server (remove hbuilds/admin-password.json)."
+      >
         <form onSubmit={submitPw} className="contents">
           <label className="flex flex-col gap-1.5">
             <span className="text-xs font-bold text-muted-foreground">New password</span>
@@ -687,9 +799,10 @@ function SecurityTab({ cfg, update }: { cfg: SiteConfig; update: (p: string, v: 
           <div className="md:col-span-2 flex flex-wrap items-center gap-3">
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep"
+              disabled={busy}
+              className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:cursor-not-allowed disabled:opacity-60"
             >
-              <KeyRound className="h-4 w-4" /> Update password
+              <KeyRound className="h-4 w-4" /> {busy ? "Updating…" : "Update password"}
             </button>
             {msg ? (
               <span className={`text-sm ${msg.tone === "ok" ? "text-emerald-600" : "text-red-600"}`}>{msg.text}</span>

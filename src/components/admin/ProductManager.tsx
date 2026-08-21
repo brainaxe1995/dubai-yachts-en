@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   DndContext,
   closestCenter,
@@ -8,15 +8,20 @@ import {
   useSensors,
   type DragEndEvent,
 } from "@dnd-kit/core";
-import { SortableContext, arrayMove, sortableKeyboardCoordinates, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  arrayMove,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Eye, EyeOff, GripVertical, Save, Check } from "lucide-react";
+import { Eye, EyeOff, GripVertical, Save } from "lucide-react";
+import { useState } from "react";
 import { yachts, parties, fishingTrips, packages } from "@/data/site";
-import { getProductOverrides, saveProductOverrides } from "@/lib/overrides";
-import { applyOverrides, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
-import { invalidateOverridesCache } from "@/hooks/useProductOverrides";
+import { applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides-types";
 
-import { getAdminPassword } from "@/lib/admin-auth";
+type SaveState = { tone: "idle" | "saving" | "ok" | "err"; text: string };
 
 const SOURCES: Record<Category, { title: string; label: string; page: string }[]> = {
   yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/تأجير-يخوت-في-دبي/" })),
@@ -32,25 +37,21 @@ const CAT_LABELS: Record<Category, string> = {
   packages: "الباقات",
 };
 
-const EMPTY = EMPTY_OVERRIDES;
+type Props = {
+  overrides: ProductOverrides;
+  setOverrides: React.Dispatch<React.SetStateAction<ProductOverrides>>;
+  loading: boolean;
+  onSave: () => void;
+  saveState: SaveState;
+};
 
-export function ProductManager() {
-  const [overrides, setOverrides] = useState<ProductOverrides>(EMPTY);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
+export function ProductManager({ overrides, setOverrides, loading, onSave, saveState }: Props) {
   const [activeCat, setActiveCat] = useState<Category>("yachts");
 
-  useEffect(() => {
-    getProductOverrides()
-      .then((data) => setOverrides(data))
-      .catch(() => setOverrides(EMPTY))
-      .finally(() => setLoading(false));
-  }, []);
-
   const ordered = useMemo(() => {
-    // Return full source list ordered by current overrides.order (with unranked items at end).
-    // Hidden ones still shown in admin — they just have visibility icon flipped.
+    // Show every source item in admin regardless of hidden state — the eye toggle
+    // reflects hidden state, but the row must remain visible so the admin can
+    // unhide it. We strip the hidden filter for display, then apply order only.
     const source = SOURCES[activeCat];
     return applyOverrides(source, { ...overrides, hidden: { ...overrides.hidden, [activeCat]: [] } }, activeCat);
   }, [overrides, activeCat]);
@@ -61,7 +62,6 @@ export function ProductManager() {
       const nextList = list.includes(title) ? list.filter((t) => t !== title) : [...list, title];
       return { ...prev, hidden: { ...prev.hidden, [activeCat]: nextList } };
     });
-    setSaved(false);
   }
 
   function handleDragEnd(e: DragEndEvent) {
@@ -75,51 +75,45 @@ export function ProductManager() {
       ...prev,
       order: { ...prev.order, [activeCat]: reordered.map((p) => p.title) },
     }));
-    setSaved(false);
   }
 
-  async function save() {
-    setSaving(true);
-    setSaved(false);
-    try {
-      await saveProductOverrides({ data: { password: getAdminPassword(), overrides } });
-      invalidateOverridesCache();
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2500);
-      // localStorage save is per-browser; show a hint on first save.
-      if (typeof window !== "undefined" && !window.localStorage.getItem("toot-fun-overrides-hint-shown")) {
-        window.localStorage.setItem("toot-fun-overrides-hint-shown", "1");
-        alert(
-          "Saved locally. This currently only affects THIS browser. Central server sync is temporarily disabled while we upgrade TanStack Start.",
-        );
-      }
-    } catch (err) {
-      alert("Save failed: " + (err instanceof Error ? err.message : String(err)));
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }));
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
 
   return (
     <div className="rounded-2xl border border-border bg-card p-6 shadow-luxe">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 className="text-lg font-bold text-foreground">Product Manager</h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Drag to reorder. Toggle eye to hide/show a card on its category page. Changes persist server-side once saved.
+            Drag to reorder. Toggle eye to hide/show a card on its category page. Changes go live once saved.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={save}
-          disabled={saving || loading}
-          className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:opacity-50"
-        >
-          {saved ? <Check className="h-4 w-4" /> : <Save className="h-4 w-4" />}
-          {saved ? "Saved" : saving ? "Saving..." : "Save changes"}
-        </button>
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={onSave}
+            disabled={saveState.tone === "saving" || loading}
+            className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2 text-sm font-bold text-primary-deep hover:bg-gold-deep disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <Save className="h-4 w-4" /> {saveState.tone === "saving" ? "Saving…" : "Save changes"}
+          </button>
+          {saveState.text ? (
+            <span
+              className={`text-sm font-semibold ${
+                saveState.tone === "ok"
+                  ? "text-emerald-600"
+                  : saveState.tone === "err"
+                    ? "text-red-600"
+                    : "text-muted-foreground"
+              }`}
+            >
+              {saveState.text}
+            </span>
+          ) : null}
+        </div>
       </div>
 
       {/* Category tabs */}
@@ -211,7 +205,9 @@ function SortableRow({
         onClick={onToggle}
         aria-label={hidden ? "Show product" : "Hide product"}
         className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-bold transition-colors ${
-          hidden ? "bg-red-500/15 text-red-600 hover:bg-red-500/25" : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
+          hidden
+            ? "bg-red-500/15 text-red-600 hover:bg-red-500/25"
+            : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
         }`}
       >
         {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
