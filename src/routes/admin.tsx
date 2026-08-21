@@ -20,6 +20,9 @@ import {
   ExternalLink,
   LayoutDashboard,
   Trash2,
+  CheckCircle2,
+  AlertTriangle,
+  X as XIcon,
 } from "lucide-react";
 import { DEFAULT_CONFIG, EDITABLE_PAGES, PAGE_META_DEFAULTS, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
@@ -105,6 +108,12 @@ function Admin() {
   const [challengeAnswer, setChallengeAnswer] = useState("");
   const [forgotMsg, setForgotMsg] = useState("");
   const [purging, setPurging] = useState(false);
+  const [toast, setToast] = useState<{ tone: "success" | "error"; title: string; body?: string } | null>(null);
+
+  function showToast(next: { tone: "success" | "error"; title: string; body?: string }, ttlMs = 6000) {
+    setToast(next);
+    if (ttlMs > 0) window.setTimeout(() => setToast((t) => (t === next ? null : t)), ttlMs);
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") {
@@ -357,14 +366,16 @@ function Admin() {
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; purgedAt?: string };
       if (!res.ok || !data.ok) {
-        alert(`Cache purge failed: ${data.error ?? `HTTP ${res.status}`}`);
+        showToast({ tone: "error", title: "Cache purge failed", body: data.error ?? `HTTP ${res.status}` });
         return;
       }
-      alert(
-        `Server cache purged at ${data.purgedAt ?? "just now"}.\n\nYour browser cache for this site has also been cleared. Ask visitors to hard-refresh (Ctrl+Shift+R) to pick up the changes.`,
-      );
+      showToast({
+        tone: "success",
+        title: "Cache cleared",
+        body: "Server version bumped, this browser's cache dropped. Visitors need a hard-refresh (Ctrl+Shift+R) to pick up changes.",
+      });
     } catch (e) {
-      alert(`Network error while purging cache: ${e instanceof Error ? e.message : String(e)}`);
+      showToast({ tone: "error", title: "Network error", body: e instanceof Error ? e.message : String(e) });
     } finally {
       setPurging(false);
     }
@@ -432,6 +443,35 @@ function Admin() {
           </div>
         </div>
       </div>
+
+      {/* Floating toast — slides in top-right, auto-dismisses after 6s. */}
+      {toast ? (
+        <div
+          role="status"
+          aria-live="polite"
+          className={`fixed end-4 top-16 z-50 flex max-w-sm items-start gap-3 rounded-xl border-l-4 bg-white p-4 shadow-xl transition-all ${
+            toast.tone === "success" ? "border-emerald-500" : "border-red-500"
+          }`}
+        >
+          {toast.tone === "success" ? (
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
+          ) : (
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
+          )}
+          <div className="flex-1 text-sm text-slate-800">
+            <p className="font-semibold text-slate-900">{toast.title}</p>
+            {toast.body ? <p className="mt-1 text-xs text-slate-600">{toast.body}</p> : null}
+          </div>
+          <button
+            type="button"
+            onClick={() => setToast(null)}
+            aria-label="Dismiss"
+            className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+          >
+            <XIcon className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
 
       <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
         <header className="mb-6">
