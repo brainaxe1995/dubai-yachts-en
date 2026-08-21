@@ -17,6 +17,9 @@ import {
   Shield,
   Eye,
   EyeOff,
+  ExternalLink,
+  LayoutDashboard,
+  Trash2,
 } from "lucide-react";
 import { DEFAULT_CONFIG, EDITABLE_PAGES, PAGE_META_DEFAULTS, getConfig, saveConfig, type SiteConfig } from "@/data/config";
 import { ProductManager } from "@/components/admin/ProductManager";
@@ -34,6 +37,8 @@ import { invalidateOverridesCache } from "@/hooks/useProductOverrides";
 import { EMPTY_OVERRIDES, type ProductOverrides } from "@/lib/overrides-types";
 
 const AUTH_KEY = "toot-fun-admin-auth";
+const AUTH_START_KEY = "toot-fun-admin-auth-started-at";
+const SESSION_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 function deepMergeClient<T>(base: T, patch: Partial<T>): T {
   if (typeof base !== "object" || base === null) return (patch as T) ?? base;
@@ -99,14 +104,20 @@ function Admin() {
   const [forgotStage, setForgotStage] = useState<"idle" | "sending" | "challenge" | "reset">("idle");
   const [challengeAnswer, setChallengeAnswer] = useState("");
   const [forgotMsg, setForgotMsg] = useState("");
+  const [purging, setPurging] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") {
       const cached = window.sessionStorage.getItem(AUTH_PW_KEY) ?? "";
-      // Trust the session only if the cached pw still verifies server-side.
-      // Prevents a stale-session trap after a deploy: old sessionStorage pointed
-      // at a client-only pw that the new server rejects, causing every save to 401.
-      if (cached.length > 0) {
+      const startedAt = Number(window.sessionStorage.getItem(AUTH_START_KEY) ?? 0);
+      const expired = !startedAt || Date.now() - startedAt > SESSION_TTL_MS;
+      // Trust the session only if the cached pw still verifies server-side AND
+      // the 1-hour idle-since-login window has not elapsed.
+      if (expired || cached.length === 0) {
+        window.sessionStorage.removeItem(AUTH_KEY);
+        window.sessionStorage.removeItem(AUTH_PW_KEY);
+        window.sessionStorage.removeItem(AUTH_START_KEY);
+      } else {
         (async () => {
           const ok = await verifyAdminPasswordOnServer(cached);
           if (ok) {
@@ -115,12 +126,11 @@ function Admin() {
           } else {
             window.sessionStorage.removeItem(AUTH_KEY);
             window.sessionStorage.removeItem(AUTH_PW_KEY);
+            window.sessionStorage.removeItem(AUTH_START_KEY);
             resetAdminPassword();
             setPw("");
           }
         })();
-      } else {
-        window.sessionStorage.removeItem(AUTH_KEY);
       }
     } else {
       // Autofill login field from last-successful pw so returning admins don't retype.
@@ -147,6 +157,31 @@ function Admin() {
       .finally(() => setOverridesLoading(false));
   }, []);
 
+  function logout() {
+    if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem(AUTH_KEY);
+      window.sessionStorage.removeItem(AUTH_PW_KEY);
+      window.sessionStorage.removeItem(AUTH_START_KEY);
+    }
+    setAuthed(false);
+    setPw("");
+  }
+
+  // Auto-logout after SESSION_TTL_MS from login. Poll once per minute so the
+  // check survives across tab-focus changes without needing a setTimeout that
+  // dies with the page. Kept BEFORE the !authed early-return so the hook
+  // ordering stays stable across auth transitions.
+  useEffect(() => {
+    if (!authed || typeof window === "undefined") return;
+    const check = () => {
+      const startedAt = Number(window.sessionStorage.getItem(AUTH_START_KEY) ?? 0);
+      if (!startedAt || Date.now() - startedAt > SESSION_TTL_MS) logout();
+    };
+    const id = window.setInterval(check, 60_000);
+    return () => window.clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authed]);
+
   if (!authed) {
     return (
       <div dir="ltr" className="mx-auto flex min-h-[60vh] max-w-md items-center justify-center px-4">
@@ -171,6 +206,7 @@ function Admin() {
                   setAdminPassword(pw); // cache last-successful pw for autofill
                   window.sessionStorage.setItem(AUTH_KEY, "1");
                   window.sessionStorage.setItem(AUTH_PW_KEY, pw);
+                  window.sessionStorage.setItem(AUTH_START_KEY, String(Date.now()));
                   setAuthed(true);
                 } finally {
                   setLoginBusy(false);
@@ -310,6 +346,30 @@ function Admin() {
     });
   }
 
+  async function purgeCache() {
+    if (purging) return;
+    setPurging(true);
+    try {
+      const res = await fetch("/api/cache-purge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; purgedAt?: string };
+      if (!res.ok || !data.ok) {
+        alert(`Cache purge failed: ${data.error ?? `HTTP ${res.status}`}`);
+        return;
+      }
+      alert(
+        `Server cache purged at ${data.purgedAt ?? "just now"}.\n\nYour browser cache for this site has also been cleared. Ask visitors to hard-refresh (Ctrl+Shift+R) to pick up the changes.`,
+      );
+    } catch (e) {
+      alert(`Network error while purging cache: ${e instanceof Error ? e.message : String(e)}`);
+    } finally {
+      setPurging(false);
+    }
+  }
+
   async function saveToServer() {
     setSaveState({ tone: "saving", text: "Saving…" });
     saveConfig(cfg); // optimistic local mirror
@@ -338,28 +398,52 @@ function Admin() {
   }
 
   return (
-    <div dir="ltr" className="mx-auto max-w-6xl px-4 py-8 md:py-12">
-      <header className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground md:text-3xl">Toot Fun Admin Dashboard</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Pick a tab on the left to edit that part of the site. When you're done, click Save at the bottom — changes
-            apply live for everyone visiting the site.
-          </p>
+    <div dir="ltr" className="min-h-screen bg-slate-100 text-slate-900">
+      {/* WordPress-style top toolbar. Sticky so it stays visible while scrolling long tabs. */}
+      <div className="sticky top-0 z-40 border-b border-slate-800 bg-slate-900 text-slate-100 shadow-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2">
+          <div className="flex items-center gap-3">
+            <LayoutDashboard className="h-4 w-4 text-gold" aria-hidden />
+            <span className="text-sm font-bold tracking-wide">Toot Fun Admin</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold text-slate-100 hover:bg-slate-800 hover:text-gold"
+            >
+              <ExternalLink className="h-3.5 w-3.5" /> Visit Site
+            </a>
+            <button
+              onClick={purgeCache}
+              disabled={purging}
+              title="Bumps server cache version + clears this browser's HTTP cache. Ask visitors to hard-refresh to pick up changes."
+              className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-100 hover:border-red-400 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <Trash2 className="h-3.5 w-3.5" /> {purging ? "Purging…" : "Clear Cache"}
+            </button>
+            <button
+              onClick={logout}
+              className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-100 hover:border-gold hover:text-gold"
+            >
+              <LogOut className="h-3.5 w-3.5" /> Log out
+            </button>
+          </div>
         </div>
-        <button
-          onClick={() => {
-            window.sessionStorage.removeItem(AUTH_KEY);
-            setAuthed(false);
-          }}
-          className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm hover:border-gold hover:text-gold"
-        >
-          <LogOut className="h-4 w-4" /> Log out
-        </button>
-      </header>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
+        <header className="mb-6">
+          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">Dashboard</h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Edit each section on the right, then click <strong className="text-slate-700">Save Changes</strong> at
+            the top of that section to publish live.
+          </p>
+        </header>
 
       <div className="grid gap-6 md:grid-cols-[240px_1fr]">
-        <nav className="flex flex-row flex-wrap gap-1 rounded-2xl border border-border bg-card p-2 shadow-luxe md:sticky md:top-24 md:flex-col md:self-start">
+        <nav className="flex flex-row flex-wrap gap-1 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm md:sticky md:top-20 md:flex-col md:self-start">
           {TABS.map((t) => {
             const Icon = t.icon;
             const active = tab === t.key;
@@ -430,6 +514,7 @@ function Admin() {
             />
           ) : null}
         </div>
+      </div>
       </div>
     </div>
   );

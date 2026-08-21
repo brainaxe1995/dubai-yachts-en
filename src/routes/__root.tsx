@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -200,6 +201,21 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
+
+  if (isAdmin) {
+    // Admin dashboard renders its own chrome (toolbar + sidebar). Skip site
+    // Header/Footer/WhatsApp/tracking so the panel looks like a real admin,
+    // not a public page with a form pasted on top.
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div className="min-h-screen bg-slate-50">
+          <Outlet />
+        </div>
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>

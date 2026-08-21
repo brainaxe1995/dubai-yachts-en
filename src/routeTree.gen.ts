@@ -27,6 +27,7 @@ import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char15
 import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport } from './routes/سياسة-الخصوصية'
 import { Route as Char1605Char1606Char1606Char1581Char1606RouteImport } from './routes/من-نحن'
 import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/يخوت-للإيجار-في-دبي'
+import { Route as ApiCachePurgeRouteImport } from './routes/api.cache-purge'
 import { Route as ApiConfigRouteImport } from './routes/api.config'
 import { Route as ApiOverridesRouteImport } from './routes/api.overrides'
 import { Route as ApiPasswordRouteImport } from './routes/api.password'
@@ -158,6 +159,11 @@ const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Ch
       getParentRoute: () => rootRouteImport,
     } as any,
   )
+const ApiCachePurgeRoute = ApiCachePurgeRouteImport.update({
+  id: '/api/cache-purge',
+  path: '/api/cache-purge',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiConfigRoute = ApiConfigRouteImport.update({
   id: '/api/config',
   path: '/api/config',
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
@@ -225,6 +232,7 @@ export interface FileRoutesByTo {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
@@ -250,6 +258,7 @@ export interface FileRoutesById {
   '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
   '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
@@ -276,6 +285,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
@@ -300,6 +310,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
@@ -324,6 +335,7 @@ export interface FileRouteTypes {
     | '/سياسة-الخصوصية'
     | '/من-نحن'
     | '/يخوت-للإيجار-في-دبي'
+    | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
@@ -349,6 +361,7 @@ export interface RootRouteChildren {
   Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
   Char1605Char1606Char1606Char1581Char1606Route: typeof Char1605Char1606Char1606Char1581Char1606Route
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  ApiCachePurgeRoute: typeof ApiCachePurgeRoute
   ApiConfigRoute: typeof ApiConfigRoute
   ApiOverridesRoute: typeof ApiOverridesRoute
   ApiPasswordRoute: typeof ApiPasswordRoute
@@ -483,6 +496,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/cache-purge': {
+      id: '/api/cache-purge'
+      path: '/api/cache-purge'
+      fullPath: '/api/cache-purge'
+      preLoaderRoute: typeof ApiCachePurgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/config': {
       id: '/api/config'
       path: '/api/config'
@@ -547,6 +567,7 @@ const rootRouteChildren: RootRouteChildren = {
     Char1605Char1606Char1606Char1581Char1606Route,
   Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route:
     Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route,
+  ApiCachePurgeRoute: ApiCachePurgeRoute,
   ApiConfigRoute: ApiConfigRoute,
   ApiOverridesRoute: ApiOverridesRoute,
   ApiPasswordRoute: ApiPasswordRoute,

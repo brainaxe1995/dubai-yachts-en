@@ -11,9 +11,9 @@ import {
 import {
   SortableContext,
   arrayMove,
+  rectSortingStrategy,
   sortableKeyboardCoordinates,
   useSortable,
-  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Eye, EyeOff, GripVertical, Save } from "lucide-react";
@@ -23,11 +23,13 @@ import { applyOverrides, type ProductOverrides, type Category } from "@/lib/over
 
 type SaveState = { tone: "idle" | "saving" | "ok" | "err"; text: string };
 
-const SOURCES: Record<Category, { title: string; label: string; page: string }[]> = {
-  yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/تأجير-يخوت-في-دبي/" })),
-  parties: parties.map((p) => ({ title: p.title, label: p.title, page: "/حفلات-اليخوت-في-دبي/" })),
-  fishing: fishingTrips.map((p) => ({ title: p.title, label: p.title, page: "/رحلات-صيد-السمك-في-دبي/" })),
-  packages: packages.map((p) => ({ title: p.title, label: p.title, page: "/باقات-تأجير-اليخوت-في-دبي/" })),
+type SourceItem = { title: string; label: string; page: string; image: string; price?: string };
+
+const SOURCES: Record<Category, SourceItem[]> = {
+  yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/تأجير-يخوت-في-دبي/", image: p.image, price: p.price })),
+  parties: parties.map((p) => ({ title: p.title, label: p.title, page: "/حفلات-اليخوت-في-دبي/", image: p.image, price: p.price })),
+  fishing: fishingTrips.map((p) => ({ title: p.title, label: p.title, page: "/رحلات-صيد-السمك-في-دبي/", image: p.image, price: p.price })),
+  packages: packages.map((p) => ({ title: p.title, label: p.title, page: "/باقات-تأجير-اليخوت-في-دبي/", image: p.image, price: p.price })),
 };
 
 const CAT_LABELS: Record<Category, string> = {
@@ -88,7 +90,8 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
         <div>
           <h2 className="text-lg font-bold text-foreground">Product Manager</h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Drag to reorder. Toggle eye to hide/show a card on its category page. Changes go live once saved.
+            Grid mirrors the frontend layout. Drag any image to reorder. Click <strong>Visible / Hidden</strong> to
+            toggle a card's visibility on its category page. Save when done.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
@@ -116,8 +119,8 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
         </div>
       </div>
 
-      {/* Category tabs */}
-      <div className="mb-4 flex flex-wrap gap-2">
+      {/* Category tabs — RTL so the category order matches the frontend nav. */}
+      <div dir="rtl" className="mb-4 flex flex-wrap gap-2">
         {(Object.keys(CAT_LABELS) as Category[]).map((c) => {
           const active = c === activeCat;
           return (
@@ -141,15 +144,18 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
         <div className="py-8 text-center text-sm text-muted-foreground">Loading...</div>
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <SortableContext items={ordered.map((p) => p.title)} strategy={verticalListSortingStrategy}>
-            <ul className="space-y-2">
+          <SortableContext items={ordered.map((p) => p.title)} strategy={rectSortingStrategy}>
+            {/* RTL mirrors the frontend so position 1 lands on the right in both places. */}
+            <ul dir="rtl" className="grid grid-cols-2 gap-3 md:grid-cols-3">
               {ordered.map((p) => {
                 const hidden = overrides.hidden[activeCat].includes(p.title);
                 return (
-                  <SortableRow
+                  <SortableCard
                     key={p.title}
                     id={p.title}
                     label={p.label}
+                    image={p.image}
+                    price={p.price}
                     hidden={hidden}
                     onToggle={() => toggleHidden(p.title)}
                   />
@@ -163,14 +169,18 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
   );
 }
 
-function SortableRow({
+function SortableCard({
   id,
   label,
+  image,
+  price,
   hidden,
   onToggle,
 }: {
   id: string;
   label: string;
+  image: string;
+  price: string | undefined;
   hidden: boolean;
   onToggle: () => void;
 }) {
@@ -184,35 +194,59 @@ function SortableRow({
     <li
       ref={setNodeRef}
       style={style}
-      className={`flex items-center gap-3 rounded-lg border p-3 ${
+      className={`group relative flex flex-col overflow-hidden rounded-xl border shadow-sm transition-shadow hover:shadow-md ${
         hidden ? "border-red-300 bg-red-50/40" : "border-border bg-background"
       }`}
     >
+      {/* Drag handle: full image is the grab target — matches how visual reorder feels on frontend. */}
       <button
         type="button"
         {...attributes}
         {...listeners}
         aria-label="Drag to reorder"
-        className="cursor-grab touch-none rounded p-1 text-muted-foreground hover:bg-muted active:cursor-grabbing"
+        className="relative block aspect-[4/3] cursor-grab touch-none overflow-hidden bg-slate-100 active:cursor-grabbing"
       >
-        <GripVertical className="h-4 w-4" />
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          className={`h-full w-full object-cover transition-transform group-hover:scale-105 ${
+            hidden ? "grayscale" : ""
+          }`}
+        />
+        <span className="absolute start-2 top-2 inline-flex items-center gap-1 rounded-md bg-slate-900/70 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
+          <GripVertical className="h-3 w-3" /> Drag
+        </span>
       </button>
-      <span dir="rtl" className={`flex-1 text-sm ${hidden ? "text-muted-foreground line-through" : "text-foreground"}`}>
-        {label}
-      </span>
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-label={hidden ? "Show product" : "Hide product"}
-        className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-bold transition-colors ${
-          hidden
-            ? "bg-red-500/15 text-red-600 hover:bg-red-500/25"
-            : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
-        }`}
-      >
-        {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
-        {hidden ? "Hidden" : "Visible"}
-      </button>
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <p
+          dir="rtl"
+          title={label}
+          className={`line-clamp-2 min-h-[2.4rem] text-xs font-semibold leading-tight ${
+            hidden ? "text-muted-foreground line-through" : "text-foreground"
+          }`}
+        >
+          {label}
+        </p>
+        {price ? (
+          <p dir="rtl" className="text-[11px] font-bold text-gold-deep">
+            {price}
+          </p>
+        ) : null}
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-label={hidden ? "Show product" : "Hide product"}
+          className={`mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-bold transition-colors ${
+            hidden
+              ? "bg-red-500/15 text-red-600 hover:bg-red-500/25"
+              : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
+          }`}
+        >
+          {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+          {hidden ? "Hidden" : "Visible"}
+        </button>
+      </div>
     </li>
   );
 }
