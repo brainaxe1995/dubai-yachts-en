@@ -102,9 +102,26 @@ function Admin() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) === "1") {
-      setAuthed(true);
-      const cached = window.sessionStorage.getItem(AUTH_PW_KEY);
-      if (cached) setPw(cached);
+      const cached = window.sessionStorage.getItem(AUTH_PW_KEY) ?? "";
+      // Trust the session only if the cached pw still verifies server-side.
+      // Prevents a stale-session trap after a deploy: old sessionStorage pointed
+      // at a client-only pw that the new server rejects, causing every save to 401.
+      if (cached.length > 0) {
+        (async () => {
+          const ok = await verifyAdminPasswordOnServer(cached);
+          if (ok) {
+            setPw(cached);
+            setAuthed(true);
+          } else {
+            window.sessionStorage.removeItem(AUTH_KEY);
+            window.sessionStorage.removeItem(AUTH_PW_KEY);
+            resetAdminPassword();
+            setPw("");
+          }
+        })();
+      } else {
+        window.sessionStorage.removeItem(AUTH_KEY);
+      }
     } else {
       // Autofill login field from last-successful pw so returning admins don't retype.
       const stored = getAdminPassword();
