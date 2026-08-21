@@ -3,7 +3,27 @@ import { Link } from "@tanstack/react-router";
 import { Phone, Mail, Instagram, MapPin, Facebook, Youtube, Music2, Ghost, Twitter, ShieldCheck, Anchor, Sparkles, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
-import paymentImg from "@/assets/branding/payment-methods.webp";
+import payVisa from "@/assets/branding/payments/visa.svg";
+import payMastercard from "@/assets/branding/payments/mastercard.svg";
+import payAmex from "@/assets/branding/payments/amex.svg";
+import payDiscover from "@/assets/branding/payments/discover.svg";
+import payDiners from "@/assets/branding/payments/diners.svg";
+import payJcb from "@/assets/branding/payments/jcb.svg";
+import payUnionpay from "@/assets/branding/payments/unionpay.svg";
+import payApple from "@/assets/branding/payments/applepay.svg";
+import payGoogle from "@/assets/branding/payments/googlepay.svg";
+
+const paymentMethods = [
+  { src: payVisa, alt: "Visa" },
+  { src: payMastercard, alt: "Mastercard" },
+  { src: payAmex, alt: "American Express" },
+  { src: payDiscover, alt: "Discover" },
+  { src: payDiners, alt: "Diners Club" },
+  { src: payJcb, alt: "JCB" },
+  { src: payUnionpay, alt: "UnionPay" },
+  { src: payApple, alt: "Apple Pay" },
+  { src: payGoogle, alt: "Google Pay" },
+];
 import { CONTACT } from "@/data/site";
 import { DEFAULT_CONFIG, getConfig } from "@/data/config";
 
@@ -185,14 +205,21 @@ export function Footer() {
           <p>© {new Date().getFullYear()} توت فن لليخوت — جميع الحقوق محفوظة</p>
           <div className="flex items-center gap-2" title="وسائل الدفع المتاحة">
             <span className="text-[11px] text-primary-foreground/50">الدفع:</span>
-            <img
-              src={paymentImg}
-              alt="وسائل الدفع المتاحة"
-              loading="lazy"
-              width={200}
-              height={24}
-              className="h-6 w-auto rounded bg-white/95 px-1 py-0.5 opacity-90"
-            />
+            <ul className="flex items-center gap-1" aria-label="وسائل الدفع المتاحة">
+              {paymentMethods.map((m) => (
+                <li key={m.alt}>
+                  <img
+                    src={m.src}
+                    alt={m.alt}
+                    title={m.alt}
+                    loading="lazy"
+                    width={32}
+                    height={20}
+                    className="h-5 w-auto rounded-[3px] bg-white/95 px-[3px] py-[1px] ring-1 ring-gold/25 transition-all hover:ring-gold/60 hover:brightness-110"
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link to="/الشروط-والأحكام/" className="hover:text-gold">
