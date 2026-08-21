@@ -48,10 +48,17 @@ export default defineConfig({
   nitro: {
     preset: "node-server",
     routeRules: {
+      // HTML pages: always revalidate so admin changes surface on the next
+      // navigation without waiting for the browser heuristic cache to expire.
+      // More-specific rules below override this for static + API responses.
+      "/**": { headers: { "cache-control": "no-cache, must-revalidate" } },
       "/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
       "/favicon.png": { headers: { "cache-control": "public, max-age=604800" } },
       "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
       "/sitemap.xml": { headers: { "cache-control": "public, max-age=3600" } },
+      // API handlers already set their own Cache-Control in the Response; the
+      // rule below is a belt-and-braces so an unset handler still gets no-store.
+      "/api/**": { headers: { "cache-control": "no-store" } },
     },
     // Compress public assets (brotli + gzip) at build time — Nitro serves .br/.gz automatically
     compressPublicAssets: { brotli: true, gzip: true },
