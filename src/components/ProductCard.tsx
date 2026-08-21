@@ -579,7 +579,7 @@ function IncludedModal({
             type="button"
             onClick={onClose}
             aria-label="إغلاق"
-            className="absolute end-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-black/50 text-white backdrop-blur-md ring-1 ring-white/20 hover:bg-black/70"
+            className="absolute start-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-black/50 text-white backdrop-blur-md ring-1 ring-white/20 hover:bg-black/70"
           >
             <X className="h-5 w-5" />
           </button>
