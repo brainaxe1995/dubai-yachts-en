@@ -602,10 +602,17 @@ export const keywordCloud: Record<string, string[]> = {
   ],
 };
 
-// Flattened keyword+target list for home page
-export const keywordCloudFlat: { keyword: string; to: string }[] = Object.entries(keywordCloud).flatMap(
-  ([to, list]) => list.map((keyword) => ({ keyword, to })),
-);
+// External partner links — dofollow outbound, appended to keyword cloud for cross-site SEO.
+// Add new entries here as partner URLs come in.
+export const externalKeywords: { keyword: string; href: string }[] = [
+  { keyword: "تأجير يخوت في دبي", href: "https://tootfunyachts.com/ar/yacht-rental-dubai/" },
+];
+
+// Flattened keyword+target list for home page (internal slugs + external partner URLs)
+export const keywordCloudFlat: { keyword: string; to?: string; href?: string }[] = [
+  ...Object.entries(keywordCloud).flatMap(([to, list]) => list.map((keyword) => ({ keyword, to }))),
+  ...externalKeywords,
+];
 
 export const steps = [
   { t: "اختر اليخت المناسب", d: "تصفّح الأسطول واختر اليخت أو الباقة التي تناسب مناسبتك." },

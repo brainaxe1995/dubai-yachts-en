@@ -5,7 +5,10 @@ import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { SmartContactForm } from "@/components/SmartContactForm";
+import { faqSchema } from "@/components/SeoJsonLd";
 import { CONTACT, faqs, keywordCloudFlat } from "@/data/site";
+
+const contactFaqs = faqs.slice(0, 5);
 
 export const Route = createFileRoute("/اتصل-بنا")({
   head: () => ({
@@ -56,6 +59,7 @@ export const Route = createFileRoute("/اتصل-بنا")({
           ],
         }),
       },
+      faqSchema(contactFaqs),
     ],
   }),
   component: Contact,
@@ -135,7 +139,7 @@ function Contact() {
                   إجابات سريعة على أكثر الأسئلة التي يطرحها ضيوفنا قبل الحجز.
                 </p>
                 <div className="mt-6">
-                  <Accordion items={faqs.slice(0, 5)} />
+                  <Accordion items={contactFaqs} titleAs="h4" />
                 </div>
               </div>
             </Reveal>

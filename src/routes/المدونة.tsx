@@ -42,7 +42,11 @@ function Blog() {
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-12 md:py-16">
-        <div className="flex flex-wrap justify-center gap-2">
+        <SectionHeading
+          title="أحدث مقالات ونصائح اليخوت في دبي"
+          subtitle="مقالات متخصّصة من فريق توت فن الخبير في تأجير اليخوت، الحفلات، والرحلات البحرية."
+        />
+        <div className="mb-10 flex flex-wrap justify-center gap-2">
           {tags.map((t) => {
             const active = activeTag === t;
             return (
@@ -61,13 +65,6 @@ function Blog() {
             );
           })}
         </div>
-      </section>
-
-      <section className="mx-auto max-w-[1440px] px-4 pb-16 md:pb-24">
-        <SectionHeading
-          title="أحدث مقالات ونصائح اليخوت في دبي"
-          subtitle="مقالات متخصّصة من فريق توت فن الخبير في تأجير اليخوت، الحفلات، والرحلات البحرية."
-        />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p, i) => (
             <Reveal as="article" key={p.slug} delay={i * 60}>

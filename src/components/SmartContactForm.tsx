@@ -1,14 +1,33 @@
-import { useMemo, useState } from "react";
-import { CheckCircle2, XCircle, ChevronDown } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { CalendarDays, CheckCircle2, ChevronLeftIcon, ChevronRightIcon, XCircle, ChevronDown } from "lucide-react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { format } from "date-fns";
+import { ar } from "date-fns/locale";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CONTACT } from "@/data/site";
+
+function startOfToday(): Date {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
 
 export function SmartContactForm() {
   const [phone, setPhone] = useState<string | undefined>(undefined);
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [today, setToday] = useState<Date | undefined>(undefined);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setToday(startOfToday());
+  }, []);
 
   const valid = useMemo(() => (phone ? isValidPhoneNumber(phone) : false), [phone]);
   const showStatus = Boolean(phone && phone.length > 3);
+  const dateValue = date ? format(date, "yyyy-MM-dd") : "";
+  const dateLabel = date ? format(date, "EEEE، d MMMM yyyy", { locale: ar }) : "اختر تاريخ";
 
   return (
     <form
@@ -91,14 +110,62 @@ export function SmartContactForm() {
         </label>
       </div>
 
-      <label className="grid gap-1.5 sm:max-w-[calc(50%-0.5rem)]">
+      <div className="grid gap-1.5 sm:max-w-[calc(50%-0.5rem)]">
         <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
-        <input
-          type="date"
-          name="date"
-          className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
-        />
-      </label>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <button
+              type="button"
+              className={`group flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-4 py-3 text-start text-sm outline-none transition-all hover:border-gold/60 focus:border-gold focus:ring-2 focus:ring-gold/20 ${
+                date ? "text-foreground" : "text-muted-foreground"
+              }`}
+            >
+              <span className="truncate">{dateLabel}</span>
+              <CalendarDays className="h-4 w-4 shrink-0 text-gold transition-transform group-hover:scale-110" />
+            </button>
+          </PopoverTrigger>
+          <PopoverContent
+            align="start"
+            dir="rtl"
+            className="w-auto overflow-hidden rounded-2xl border-gold/30 bg-background p-0 shadow-gold"
+          >
+            <div className="border-b border-gold/20 bg-gradient-to-l from-primary-deep via-primary to-primary-deep px-4 py-3 text-primary-foreground">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold-soft">
+                <CalendarDays className="h-4 w-4" />
+                <span>اختر تاريخ الحجز</span>
+              </div>
+              <div className="mt-1 text-sm font-medium text-primary-foreground/90">{dateLabel}</div>
+            </div>
+            <div dir="ltr" style={{ direction: "ltr" }}>
+              <Calendar
+                mode="single"
+                locale={ar}
+                dir="ltr"
+                weekStartsOn={0}
+                selected={date}
+                onSelect={(d) => {
+                  setDate(d);
+                  if (d) setOpen(false);
+                }}
+                disabled={today ? { before: today } : undefined}
+                startMonth={today}
+                defaultMonth={date ?? today}
+                className="p-3 [--cell-size:2.25rem]"
+                components={{
+                  Chevron: ({ orientation, className, ...p }) => {
+                    const cls = `size-4 ${className ?? ""}`;
+                    const style = { transform: "rotate(0deg)" };
+                    if (orientation === "left") return <ChevronRightIcon className={cls} style={style} {...p} />;
+                    if (orientation === "right") return <ChevronLeftIcon className={cls} style={style} {...p} />;
+                    return <ChevronDown className={cls} style={style} {...p} />;
+                  },
+                }}
+              />
+            </div>
+          </PopoverContent>
+        </Popover>
+        <input type="hidden" name="date" value={dateValue} />
+      </div>
 
       <label className="grid gap-1.5">
         <span className="text-xs font-bold text-muted-foreground">تفاصيل الحجز أو الاستفسار</span>

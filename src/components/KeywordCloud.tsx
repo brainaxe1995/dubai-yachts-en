@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Search, ArrowLeft } from "lucide-react";
+import { Search, ArrowLeft, ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 
-export type KeywordItem = { keyword: string; to: string };
+export type KeywordItem = { keyword: string; to?: string; href?: string };
+
+const pillClass =
+  "group inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-background/80 px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-primary-deep md:text-sm";
 
 // Renders as compact SEO-friendly clickable pill grid. Each keyword links to its target URL.
 export function KeywordCloud({ items }: { items: readonly KeywordItem[] }) {
@@ -18,13 +21,23 @@ export function KeywordCloud({ items }: { items: readonly KeywordItem[] }) {
       <div className="flex flex-wrap gap-2">
         {items.map((k, i) => (
           <Reveal key={`${k.keyword}-${i}`} delay={i * 20}>
-            <Link
-              to={k.to}
-              className="group inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-background/80 px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-primary-deep md:text-sm"
-            >
-              <span>{k.keyword}</span>
-              <ArrowLeft className="h-3 w-3 opacity-0 -translate-x-1 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
-            </Link>
+            {k.href ? (
+              <a
+                href={k.href}
+                target="_blank"
+                rel="noopener"
+                className={pillClass}
+                title={k.keyword}
+              >
+                <span>{k.keyword}</span>
+                <ExternalLink className="h-3 w-3 opacity-0 -translate-x-1 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+              </a>
+            ) : (
+              <Link to={k.to!} className={pillClass}>
+                <span>{k.keyword}</span>
+                <ArrowLeft className="h-3 w-3 opacity-0 -translate-x-1 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+              </Link>
+            )}
           </Reveal>
         ))}
       </div>

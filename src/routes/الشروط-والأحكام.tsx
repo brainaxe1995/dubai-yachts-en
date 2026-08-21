@@ -156,7 +156,7 @@ function Page() {
 
       <section className="mx-auto max-w-4xl px-4 pt-14">
         <SectionHeading
-          title="اقرأ الشروط قبل تأكيد الحجز"
+          title="اقرأ الشروط والأحكام قبل تأكيد الحجز"
           subtitle="بنود بسيطة وواضحة تنظم الحجز، الدفع، الإلغاء، والسلوك على متن اليخت — تضمن رحلة آمنة وممتعة لك ولطاقمنا."
         />
       </section>

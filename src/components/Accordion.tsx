@@ -7,9 +7,11 @@ export type FaqItem = { q: string; a: string };
 export function Accordion({
   items,
   defaultOpen = 0,
+  titleAs: TitleTag = "h3",
 }: {
   items: readonly FaqItem[];
   defaultOpen?: number;
+  titleAs?: "h3" | "h4" | "h5" | "h6" | "div";
 }) {
   const [open, setOpen] = useState<number>(defaultOpen);
 
@@ -29,7 +31,7 @@ export function Accordion({
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 p-5 text-start"
             >
-              <h3 className="text-base font-bold text-foreground md:text-[17px]">{it.q}</h3>
+              <TitleTag className="text-base font-bold text-foreground md:text-[17px]">{it.q}</TitleTag>
               <span
                 className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold/50 text-gold transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   isOpen ? "rotate-180 bg-gold/10" : ""
