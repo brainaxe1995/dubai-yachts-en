@@ -46,7 +46,7 @@ export function serviceSchema(opts: {
       name: opts.name,
       description: opts.description,
       areaServed: { "@type": "City", name: "Dubai" },
-      provider: { "@type": "Organization", name: "توت فن لليخوت", url: "https://dubai-yacht.ae/" },
+      provider: { "@type": "Organization", name: "Toot Fun Yachts", url: "https://dubai-yacht.ae/" },
       url: opts.url,
       ...(opts.price ? { offers: { "@type": "Offer", price: opts.price, priceCurrency: "AED" } } : {}),
       ...(opts.image ? { image: opts.image } : {}),

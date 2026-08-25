@@ -8,13 +8,13 @@ import { CONTACT } from "@/data/site";
 import { getConfig, DEFAULT_CONFIG } from "@/data/config";
 
 const nav = [
-  { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار" },
-  { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
-  { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات الصيد" },
-  { to: "/باقات-تأجير-اليخوت-في-دبي", label: "العروض" },
-  { to: "/من-نحن", label: "عن الشركة" },
-  { to: "/المدونة", label: "المدونة" },
-  { to: "/اتصل-بنا", label: "اتصل بنا" },
+  { to: "/yacht-rental-dubai", label: "Yachts for Rent" },
+  { to: "/yacht-party-dubai", label: "Yacht Parties" },
+  { to: "/fishing-trip-dubai", label: "Fishing Trips" },
+  { to: "/yacht-packages-dubai", label: "Offers" },
+  { to: "/about-us", label: "About Us" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contact-us", label: "Contact Us" },
 ] as const;
 
 const navLeft = nav.slice(0, 4);
@@ -53,11 +53,11 @@ function UkFlag({ className = "h-4 w-6" }: { className?: string }) {
 
 function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
   const [open, setOpen] = useState(false);
-  const [englishUrl, setEnglishUrl] = useState(DEFAULT_CONFIG.englishSiteUrl);
+  const [englishUrl, setEnglishUrl] = useState(DEFAULT_CONFIG.arabicSiteUrl);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setEnglishUrl(getConfig().englishSiteUrl || DEFAULT_CONFIG.englishSiteUrl);
+    setEnglishUrl(getConfig().arabicSiteUrl || DEFAULT_CONFIG.arabicSiteUrl);
     const onDoc = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
@@ -74,8 +74,8 @@ function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
         aria-expanded={open}
         className="flex items-center gap-1.5 text-primary-foreground"
       >
-        <UaeFlag className="h-4 w-6 rounded-[2px]" />
-        <span className="text-sm font-bold">AR</span>
+        <UkFlag className="h-4 w-6 rounded-[2px]" />
+        <span className="text-sm font-bold">EN</span>
         <ChevronDown className={`h-4 w-4 text-primary-foreground/70 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
@@ -90,7 +90,7 @@ function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
               onClick={() => setOpen(false)}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-gold"
             >
-              <UaeFlag className="h-3.5 w-5 rounded-[2px]" /> AR
+              <UkFlag className="h-3.5 w-5 rounded-[2px]" /> EN
             </button>
           </li>
           <li>
@@ -99,7 +99,7 @@ function LangSwitcher({ align = "start" }: { align?: "start" | "end" }) {
               onClick={() => setOpen(false)}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm font-bold text-primary-foreground/80 hover:text-gold"
             >
-              <UkFlag className="h-3.5 w-5 rounded-[2px]" /> EN
+              <UaeFlag className="h-3.5 w-5 rounded-[2px]" /> AR
             </a>
           </li>
         </ul>
@@ -120,39 +120,60 @@ export function Header() {
   }, [open]);
 
   useEffect(() => {
-    // Measure hero (first <section> after header). Shrink at scroll past 50% of it,
-    // expand back only after scroll drops below 35% — hysteresis kills the flap-jump
-    // that happens when scroll oscillates around a single threshold.
+    // Hero-relative shrink with hysteresis + post-change cooldown + rAF throttle.
+    // shrinkAt 60% / expandAt 25% gives a wide safety band. After each state
+    // change, ignore scroll thresholds for 500ms (matches header CSS transition)
+    // so animations can settle before the next flip is allowed. Re-measure on
+    // window `load` so late-arriving hero image sets the correct threshold.
+    const TRANSITION_MS = 500;
     const measure = () => {
       const hero = document.querySelector("main section, section") as HTMLElement | null;
       const heroHeight = hero?.offsetHeight ?? 600;
       return {
-        shrinkAt: Math.max(160, Math.floor(heroHeight * 0.5)),
-        expandAt: Math.max(80, Math.floor(heroHeight * 0.35)),
+        shrinkAt: Math.max(180, Math.floor(heroHeight * 0.6)),
+        expandAt: Math.max(80, Math.floor(heroHeight * 0.25)),
       };
     };
     let bounds = measure();
     let currentShrunk = window.scrollY > bounds.shrinkAt;
+    let lockedUntil = 0;
+    let rafId = 0;
     setShrunk(currentShrunk);
-    const onScroll = () => {
+
+    const evaluate = () => {
+      rafId = 0;
+      if (performance.now() < lockedUntil) return;
       const y = window.scrollY;
       if (!currentShrunk && y > bounds.shrinkAt) {
         currentShrunk = true;
+        lockedUntil = performance.now() + TRANSITION_MS;
         setShrunk(true);
       } else if (currentShrunk && y < bounds.expandAt) {
         currentShrunk = false;
+        lockedUntil = performance.now() + TRANSITION_MS;
         setShrunk(false);
       }
+    };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(evaluate);
     };
     const onResize = () => {
       bounds = measure();
       onScroll();
     };
+    const onLoad = () => {
+      bounds = measure();
+      onScroll();
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+    window.addEventListener("load", onLoad);
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", onLoad);
     };
   }, []);
 
@@ -181,85 +202,36 @@ export function Header() {
           {/* Mobile hamburger — always mobile-only */}
           <button
             type="button"
-            aria-label="القائمة"
+            aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
             className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Desktop expanded: phone + langswitcher */}
-          <a
-            href={`tel:${CONTACT.phone}`}
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}, margin 400ms ${EASE}` }}
-            className={`hidden items-center gap-2.5 overflow-hidden md:flex ${
-              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[400px] opacity-100"
-            }`}
-          >
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
-              <Phone className="h-4 w-4" />
-            </span>
-            <span className="whitespace-nowrap text-base font-bold text-primary-foreground">+971 544 420 441</span>
-          </a>
-
-          {/* Divider + LangSwitcher — visually beside the phone (original position) */}
-          <span
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden h-7 w-px overflow-hidden bg-primary-foreground/25 lg:block ${
-              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[2px] opacity-100"
-            }`}
-          />
+          {/* Desktop expanded: phone + divider + langswitcher wrapped as ONE
+              collapsing unit so gap-4 between them doesn't leak margin when shrunk. */}
           <div
             style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden lg:block ${
-              shrunk ? "pointer-events-none max-w-0 overflow-hidden opacity-0" : "max-w-[120px] opacity-100"
+            className={`hidden items-center gap-4 overflow-hidden md:flex ${
+              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[600px] opacity-100"
             }`}
           >
-            <LangSwitcher />
+            <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2.5 whitespace-nowrap">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
+                <Phone className="h-4 w-4" />
+              </span>
+              <span className="text-base font-bold text-primary-foreground">+971 544 420 441</span>
+            </a>
+            <span className="hidden h-7 w-px bg-primary-foreground/25 lg:block" />
+            <div className="hidden lg:block">
+              <LangSwitcher />
+            </div>
           </div>
 
-          {/* Desktop shrunk: physical-LEFT cluster shows the TAIL of nav (items 5-7)
-              so Arabic RTL reader hits items 1-4 first on the right side, matching
-              the non-shrunk 7-col grid order. */}
+          {/* Desktop shrunk: physical-LEFT cluster shows items 1-4 (LTR reader
+              hits nav in order left-to-right). */}
           <ul
-            dir="rtl"
-            style={{ transition: `opacity 500ms ${EASE} ${shrunk ? "200ms" : "0ms"}, max-width 500ms ${EASE}` }}
-            className={`hidden flex-1 items-center justify-end gap-2 overflow-hidden whitespace-nowrap lg:flex ${
-              shrunk ? "max-w-[1000px] opacity-100" : "pointer-events-none max-w-0 opacity-0"
-            }`}
-          >
-            {navRight.map((n) => (
-              <li key={n.to}>
-                <Link
-                  to={n.to}
-                  activeProps={{ className: "border-gold bg-gold/10 text-gold" }}
-                  className="rounded-full border border-gold/40 px-3 py-1.5 text-sm font-bold text-primary-foreground transition-all hover:border-gold hover:bg-gold/10 hover:text-gold"
-                >
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* CENTER logo — smoothly resizes */}
-        <Link to="/" onClick={() => setOpen(false)} className="justify-self-center">
-          <img
-            src={logo}
-            alt="توت فن لليخوت"
-            width={240}
-            height={140}
-            style={{ transition: `height 500ms ${EASE}` }}
-            className={`w-auto object-contain ${shrunk ? "h-10 md:h-12" : "h-16 md:h-28"}`}
-          />
-        </Link>
-
-        {/* RIGHT cluster: RIGHT split nav (shrunk) + CTA (expanded) + shrunk-lang + mobile-lang */}
-        <div className="flex items-center justify-end gap-4">
-          {/* Desktop shrunk: physical-RIGHT cluster (Arabic reader's start) shows
-              items 1-4 to preserve non-shrunk nav order. */}
-          <ul
-            dir="rtl"
             style={{ transition: `opacity 500ms ${EASE} ${shrunk ? "200ms" : "0ms"}, max-width 500ms ${EASE}` }}
             className={`hidden flex-1 items-center justify-start gap-2 overflow-hidden whitespace-nowrap lg:flex ${
               shrunk ? "max-w-[1000px] opacity-100" : "pointer-events-none max-w-0 opacity-0"
@@ -277,27 +249,64 @@ export function Header() {
               </li>
             ))}
           </ul>
+        </div>
 
-          {/* Desktop expanded: احجز الآن CTA */}
+        {/* CENTER logo — smoothly resizes */}
+        <Link to="/" onClick={() => setOpen(false)} className="justify-self-center">
+          <img
+            src={logo}
+            alt="Toot Fun Yachts"
+            width={240}
+            height={140}
+            style={{ transition: `height 500ms ${EASE}` }}
+            className={`w-auto object-contain ${shrunk ? "h-10 md:h-12" : "h-16 md:h-28"}`}
+          />
+        </Link>
+
+        {/* RIGHT cluster: RIGHT split nav (shrunk) + CTA (expanded) + shrunk-lang + mobile-lang */}
+        <div className="flex items-center justify-end gap-4">
+          {/* Desktop shrunk: physical-RIGHT cluster shows tail items 5-7. */}
+          <ul
+            style={{ transition: `opacity 500ms ${EASE} ${shrunk ? "200ms" : "0ms"}, max-width 500ms ${EASE}` }}
+            className={`hidden flex-1 items-center justify-end gap-2 overflow-hidden whitespace-nowrap lg:flex ${
+              shrunk ? "max-w-[1000px] opacity-100" : "pointer-events-none max-w-0 opacity-0"
+            }`}
+          >
+            {navRight.map((n) => (
+              <li key={n.to}>
+                <Link
+                  to={n.to}
+                  activeProps={{ className: "border-gold bg-gold/10 text-gold" }}
+                  className="rounded-full border border-gold/40 px-3 py-1.5 text-sm font-bold text-primary-foreground transition-all hover:border-gold hover:bg-gold/10 hover:text-gold"
+                >
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop expanded: Book Now CTA — collapses to zero when shrunk
+              so there's no gap-4 leak between navRight and the shrunk lang switcher. */}
           <a
             href={CONTACT.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            dir="rtl"
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
-            className={`hidden items-center gap-3 overflow-hidden whitespace-nowrap rounded-full border border-gold px-6 py-3 text-base font-bold text-gold hover:bg-gold hover:text-primary-deep md:inline-flex ${
-              shrunk ? "pointer-events-none max-w-0 border-transparent px-0 opacity-0" : "max-w-[300px] opacity-100"
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}, margin 400ms ${EASE}, padding 400ms ${EASE}` }}
+            className={`hidden items-center gap-3 overflow-hidden whitespace-nowrap rounded-full border font-bold hover:bg-gold hover:text-primary-deep md:inline-flex ${
+              shrunk
+                ? "pointer-events-none -mx-2 max-w-0 border-transparent px-0 py-0 text-transparent opacity-0"
+                : "max-w-[300px] border-gold px-6 py-3 text-base text-gold opacity-100"
             }`}
           >
-            احجز الآن
             <WhatsAppIcon className="h-5 w-5" />
+            Book Now
           </a>
 
           {/* Desktop shrunk-only LangSwitcher on RIGHT (LEFT cluster's copy fades out when shrunk) */}
           <div
-            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}, margin 400ms ${EASE}` }}
             className={`hidden lg:block ${
-              shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none max-w-0 overflow-hidden opacity-0"
+              shrunk ? "max-w-[120px] opacity-100" : "pointer-events-none -ml-4 max-w-0 overflow-hidden opacity-0"
             }`}
           >
             <LangSwitcher align="end" />
@@ -363,14 +372,14 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         <div className="flex items-center justify-between border-b border-gold/25 px-4 py-4">
           <img
             src={logo}
-            alt="توت فن لليخوت"
+            alt="Toot Fun Yachts"
             width={200}
             height={100}
             className="h-12 w-auto object-contain"
           />
           <button
             type="button"
-            aria-label="إغلاق القائمة"
+            aria-label="Close menu"
             onClick={onClose}
             className="grid h-10 w-10 place-items-center rounded-lg border border-gold/70 text-gold transition-colors hover:bg-gold hover:text-primary-deep"
           >
@@ -384,7 +393,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
             onClick={onClose}
             className="border-b border-gold/15 py-3.5 text-sm font-bold text-primary-foreground transition-colors hover:text-gold"
           >
-            الرئيسية
+            Home
           </Link>
           {nav.map((n) => (
             <Link
@@ -413,7 +422,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
             rel="noopener noreferrer"
             className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-secondary-foreground"
           >
-            <WhatsAppIcon className="h-4 w-4" /> احجز الآن
+            <WhatsAppIcon className="h-4 w-4" /> Book Now
           </a>
         </nav>
       </aside>

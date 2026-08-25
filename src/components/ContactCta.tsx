@@ -2,8 +2,8 @@ import { BookButton, CallButton } from "./CtaButtons";
 import { Reveal } from "./Reveal";
 
 export function ContactCta({
-  title = "جاهز لرحلتك البحرية في دبي؟",
-  subtitle = "احجز يختك الآن أو تواصل معنا للاستفسار وتخصيص باقتك.",
+  title = "Ready for your Dubai sea escape?",
+  subtitle = "Book your yacht now, or contact us to customize your package.",
 }: {
   title?: string;
   subtitle?: string;

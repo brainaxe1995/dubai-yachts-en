@@ -88,7 +88,7 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
               </div>
               <GoogleG className="h-5 w-5" />
             </div>
-            <div className="flex items-center gap-1" aria-label={`${t.rating} من 5`}>
+            <div className="flex items-center gap-1" aria-label={`${t.rating} of 5`}>
               {Array.from({ length: 5 }).map((_, si) => (
                 <Star
                   key={si}
@@ -106,7 +106,7 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
       <div className="mt-8 flex items-center justify-center gap-4">
         <button
           type="button"
-          aria-label="السابق"
+          aria-label="Previous"
           onClick={() => scrollBy(-1)}
           disabled={!canScrollPrev}
           className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep disabled:cursor-not-allowed disabled:opacity-30"
@@ -118,7 +118,7 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
             <button
               key={i}
               type="button"
-              aria-label={`مراجعة ${i + 1}`}
+              aria-label={`Review ${i + 1}`}
               onClick={() => goToIndex(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === activeIdx ? "w-8 bg-gold" : "w-1.5 bg-border"
@@ -128,7 +128,7 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
         </div>
         <button
           type="button"
-          aria-label="التالي"
+          aria-label="Next"
           onClick={() => scrollBy(1)}
           disabled={!canScrollNext}
           className="grid h-10 w-10 place-items-center rounded-full border border-gold/60 text-gold transition-colors hover:bg-gold hover:text-primary-deep disabled:cursor-not-allowed disabled:opacity-30"
@@ -139,7 +139,7 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
 
       <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
         <GoogleG />
-        <span>مراجعات من ضيوفنا على Google</span>
+        <span>Reviews from our guests on Google</span>
       </div>
     </div>
   );

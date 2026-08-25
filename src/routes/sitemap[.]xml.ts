@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { posts } from "@/data/blog";
 
 // Fallback used only when the incoming request has no Host header (dev CLI, curl -H trickery).
-const FALLBACK_BASE_URL = "https://dubai-yacht.ae";
+const FALLBACK_BASE_URL = "https://tootfunyachts.com";
 
 function resolveBaseUrl(req: Request): string {
   try {
@@ -27,20 +27,20 @@ interface SitemapEntry {
 
 const staticEntries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/تأجير-يخوت-في-دبي", changefreq: "weekly", priority: "0.9" },
-  { path: "/إيجار-يخوت-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/حجز-يخوت-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/يخوت-للإيجار-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/حفلات-اليخوت-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/رحلات-صيد-السمك-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/باقات-تأجير-اليخوت-في-دبي", changefreq: "weekly", priority: "0.8" },
-  { path: "/من-نحن", changefreq: "monthly", priority: "0.5" },
-  { path: "/اتصل-بنا", changefreq: "monthly", priority: "0.7" },
-  { path: "/المدونة", changefreq: "weekly", priority: "0.6" },
-  { path: "/خريطة-الموقع", changefreq: "monthly", priority: "0.3" },
-  { path: "/سياسة-الإلغاء", changefreq: "yearly", priority: "0.3" },
-  { path: "/الشروط-والأحكام", changefreq: "yearly", priority: "0.3" },
-  { path: "/سياسة-الخصوصية", changefreq: "yearly", priority: "0.3" },
+  { path: "/yacht-rental-dubai", changefreq: "weekly", priority: "0.9" },
+  { path: "/rent-a-yacht-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/yacht-charter-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/yacht-booking-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/yacht-party-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/fishing-trip-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/yacht-packages-dubai", changefreq: "weekly", priority: "0.8" },
+  { path: "/about-us", changefreq: "monthly", priority: "0.5" },
+  { path: "/contact-us", changefreq: "monthly", priority: "0.7" },
+  { path: "/blog", changefreq: "weekly", priority: "0.6" },
+  { path: "/sitemap", changefreq: "monthly", priority: "0.3" },
+  { path: "/cancellation-policy", changefreq: "yearly", priority: "0.3" },
+  { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.3" },
+  { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
 ];
 
 // Blog entries appended lazily inside the handler to avoid module-init circular imports.
@@ -48,7 +48,7 @@ function getEntries(): SitemapEntry[] {
   return [
     ...staticEntries,
     ...posts.map((p) => ({
-      path: `/المدونة/${p.slug}`,
+      path: `/blog/${p.slug}`,
       changefreq: "monthly" as const,
       priority: "0.5",
     })),

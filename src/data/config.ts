@@ -10,7 +10,7 @@ export type SiteConfig = {
   email: string;
   address: string;
   siteUrl: string;
-  englishSiteUrl: string;
+  arabicSiteUrl: string;
   social: {
     instagram: string;
     tiktok: string;
@@ -38,127 +38,118 @@ export type SiteConfig = {
     priceStartAed: number;
   };
   adminEmail: {
-    // Address that receives password-reset OTP emails
     recipient: string;
-    // EmailJS credentials (create free account at emailjs.com — service, template, public key)
     emailjsServiceId: string;
     emailjsTemplateId: string;
     emailjsPublicKey: string;
   };
-  // Per-page meta title/description overrides — keyed by pathname (with or without trailing slash).
-  // Applied client-side on route match. Empty string = fall back to route's baked-in default.
   pageMeta: Record<string, { title: string; description: string }>;
 };
 
-// Baked-in title + description per editable page — kept in sync with each
-// route's own `head.meta`. The admin PageMeta tab pre-fills fields from this
-// map so editors can see the current default before overriding it. When the
-// override string equals the default, it is stored as empty (falls back to
-// route default at runtime, so future default-changes flow through).
 export const PAGE_META_DEFAULTS: Record<string, { title: string; description: string }> = {
   "/": {
-    title: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت",
+    title: "Yacht Rental in Dubai | Best Prices - Toot Fun Yachts",
     description:
-      "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
+      "Luxury yacht rental in Dubai with competitive rates, private cruises, and a professional crew for every occasion. Book your yacht today.",
   },
-  "/تأجير-يخوت-في-دبي": {
-    title: "تأجير يخوت في دبي | أسطول اليخوت والأسعار – توت فن",
+  "/yacht-rental-dubai": {
+    title: "Yacht Rental in Dubai | Fleet & Prices - Toot Fun",
     description:
-      "نوفر خدمات تأجير يخوت في دبي مع رحلات خاصة، يخوت متنوعة، وأسعار تبدأ من 450 درهم للساعة لجميع المناسبات.",
+      "Yacht rental services in Dubai with private cruises, diverse yachts, and rates from AED 450/hour for all occasions.",
   },
-  "/إيجار-يخوت-في-دبي": {
-    title: "إيجار يخوت في دبي | توت فن لليخوت",
+  "/rent-a-yacht-dubai": {
+    title: "Yacht Hire in Dubai | Toot Fun Yachts",
     description:
-      "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
+      "Yacht hire in Dubai at competitive rates from AED 450/hour, with a varied fleet and options for private trips and events.",
   },
-  "/حجز-يخوت-في-دبي": {
-    title: "حجز يخوت في دبي | توت فن لليخوت",
+  "/yacht-booking-dubai": {
+    title: "Yacht Booking in Dubai | Toot Fun Yachts",
     description:
-      "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 450 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
+      "Discover the best yacht booking options in Dubai from AED 450/hour, with luxury yachts and private cruises for every occasion.",
   },
-  "/يخوت-للإيجار-في-دبي": {
-    title: "يخوت للإيجار في دبي | 15 يخت فاخر من 450 د.إ — توت فن",
+  "/yacht-charter-dubai": {
+    title: "Yachts for Rent in Dubai | 15 Luxury Yachts from AED 450 - Toot Fun",
     description:
-      "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة. أسطول متنوع من 40 حتى 105 قدم، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
+      "The best yachts for rent in Dubai from AED 450/hour. Varied fleet from 40 to 105 ft, private cruises, and options for every occasion.",
   },
-  "/حفلات-اليخوت-في-دبي": {
-    title: "أفضل حفلات اليخوت في دبي | باقات مميزة — توت فن لليخوت",
+  "/yacht-party-dubai": {
+    title: "Best Yacht Parties in Dubai | Premium Packages - Toot Fun Yachts",
     description:
-      "احجز حفلات اليخوت في دبي للمناسبات وأعياد الميلاد وحفلات الزفاف مع يخوت فاخرة، ديكورات مميزة، طاقم محترف، وباقات خاصة بأسعار تنافسية تبدأ من 1,500 د.إ.",
+      "Book yacht parties in Dubai for celebrations, birthdays, and weddings with luxury yachts, styling, a professional crew, and packages from AED 1,500.",
   },
-  "/رحلات-صيد-السمك-في-دبي": {
-    title: "أفضل رحلات صيد السمك في دبي | توت فن لليخوت",
+  "/fishing-trip-dubai": {
+    title: "Best Fishing Trips in Dubai | Toot Fun Yachts",
     description:
-      "احجز أفضل رحلات صيد السمك في دبي مع قوارب مجهزة، معدات صيد، طاقم محترف، وخيارات خاصة أو مشتركة بأسعار مميزة.",
+      "Book the best fishing trips in Dubai with fully-equipped boats, tackle, a professional crew, and private or shared options at great rates.",
   },
-  "/باقات-تأجير-اليخوت-في-دبي": {
-    title: "باقات تأجير اليخوت في دبي | إفطار وعشاء — توت فن",
+  "/yacht-packages-dubai": {
+    title: "Yacht Rental Packages in Dubai | Breakfast & Dinner - Toot Fun",
     description:
-      "اكتشف أفضل باقات تأجير اليخوت في دبي بخيارات متنوعة تناسب الرحلات الخاصة، الحفلات والمناسبات بأسعار مرنة تبدأ من 1,800 د.إ.",
+      "Discover the best yacht rental packages in Dubai for private trips, parties, and events with flexible pricing from AED 1,800.",
   },
-  "/من-نحن": {
-    title: "من نحن | توت فن لليخوت",
+  "/about-us": {
+    title: "About Us | Toot Fun Yachts",
     description:
-      "تعرّف على من نحن في توت فن لليخوت، وخبرتنا في تقديم خدمات تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
+      "Meet Toot Fun Yachts and our experience delivering luxury yacht rental and private cruise services in Dubai.",
   },
-  "/اتصل-بنا": {
-    title: "اتصل بنا | توت فن لليخوت",
-    description: "اتصل بنا لحجز يختك، معرفة الأسعار والباقات، واختيار الرحلة المناسبة لك مع توت فن لليخوت.",
+  "/contact-us": {
+    title: "Contact Us | Toot Fun Yachts",
+    description: "Contact us to book your yacht, see prices and packages, and choose the trip that fits you.",
   },
-  "/المدونة": {
-    title: "المدونة | نصائح ودليل تأجير اليخوت في دبي | توت فن لليخوت",
+  "/blog": {
+    title: "Blog | Dubai Yacht Rental Tips & Guides | Toot Fun Yachts",
     description:
-      "اكتشف المدونة وتعرّف على أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي.",
+      "Read our blog for the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai.",
   },
-  "/خريطة-الموقع": {
-    title: "خريطة الموقع | توت فن لتأجير اليخوت في دبي",
+  "/sitemap": {
+    title: "Sitemap | Toot Fun Yachts Dubai",
     description:
-      "تصفح خريطة الموقع لتوت فن لليخوت للوصول بسهولة إلى صفحات تأجير اليخوت، الحفلات، الرحلات البحرية، والباقات المتوفرة في دبي.",
+      "Browse the Toot Fun Yachts sitemap to easily reach yacht rental, party, cruise, and package pages in Dubai.",
   },
-  "/سياسة-الإلغاء": {
-    title: "سياسة الإلغاء سهلة | توت فن لليخوت",
+  "/cancellation-policy": {
+    title: "Easy Cancellation Policy | Toot Fun Yachts",
     description:
-      "تعرّف على سياسة الإلغاء والاسترداد لدى توت فن لليخوت، بما يشمل شروط الإلغاء، إعادة الجدولة، المبالغ المستردة، وحالات عدم الحضور.",
+      "Read the cancellation and refund policy at Toot Fun Yachts, including cancellation terms, rescheduling, refunds, and no-show cases.",
   },
-  "/الشروط-والأحكام": {
-    title: "الشروط والأحكام | توت فن لليخوت",
+  "/terms-and-conditions": {
+    title: "Terms & Conditions | Toot Fun Yachts",
     description:
-      "اطلع على الشروط والأحكام الخاصة بتوت فن لليخوت، بما يشمل الحجز، الدفع، الإلغاء، مسؤوليات العملاء، واستخدام خدمات تأجير اليخوت في دبي.",
+      "Read the terms and conditions of Toot Fun Yachts, covering booking, payment, cancellation, customer responsibilities, and use of our services in Dubai.",
   },
-  "/سياسة-الخصوصية": {
-    title: "سياسة الخصوصية | توت فن لليخوت",
+  "/privacy-policy": {
+    title: "Privacy Policy | Toot Fun Yachts",
     description:
-      "توضح سياسة الخصوصية التزامنا بحماية معلوماتك الشخصية والحفاظ على سريتها عند استخدام موقع وخدمات توت فن لليخوت.",
+      "Our privacy policy explains our commitment to protecting your personal information when you use the Toot Fun Yachts website and services.",
   },
 };
 
 export const EDITABLE_PAGES: { path: string; label: string }[] = [
-  { path: "/", label: "الرئيسية (Home)" },
-  { path: "/تأجير-يخوت-في-دبي", label: "تأجير يخوت في دبي" },
-  { path: "/إيجار-يخوت-في-دبي", label: "إيجار يخوت في دبي" },
-  { path: "/حجز-يخوت-في-دبي", label: "حجز يخوت في دبي" },
-  { path: "/يخوت-للإيجار-في-دبي", label: "يخوت للإيجار في دبي" },
-  { path: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
-  { path: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك" },
-  { path: "/باقات-تأجير-اليخوت-في-دبي", label: "باقات تأجير اليخوت" },
-  { path: "/من-نحن", label: "من نحن" },
-  { path: "/اتصل-بنا", label: "اتصل بنا" },
-  { path: "/المدونة", label: "المدونة" },
-  { path: "/خريطة-الموقع", label: "خريطة الموقع" },
-  { path: "/سياسة-الإلغاء", label: "سياسة الإلغاء" },
-  { path: "/الشروط-والأحكام", label: "الشروط والأحكام" },
-  { path: "/سياسة-الخصوصية", label: "سياسة الخصوصية" },
+  { path: "/", label: "Home" },
+  { path: "/yacht-rental-dubai", label: "Yacht Rental in Dubai" },
+  { path: "/rent-a-yacht-dubai", label: "Yacht Hire in Dubai" },
+  { path: "/yacht-booking-dubai", label: "Yacht Booking in Dubai" },
+  { path: "/yacht-charter-dubai", label: "Yachts for Rent in Dubai" },
+  { path: "/yacht-party-dubai", label: "Yacht Parties" },
+  { path: "/fishing-trip-dubai", label: "Fishing Trips" },
+  { path: "/yacht-packages-dubai", label: "Yacht Rental Packages" },
+  { path: "/about-us", label: "About Us" },
+  { path: "/contact-us", label: "Contact Us" },
+  { path: "/blog", label: "Blog" },
+  { path: "/sitemap", label: "Sitemap" },
+  { path: "/cancellation-policy", label: "Cancellation Policy" },
+  { path: "/terms-and-conditions", label: "Terms & Conditions" },
+  { path: "/privacy-policy", label: "Privacy Policy" },
 ];
 
 export const DEFAULT_CONFIG: SiteConfig = {
-  brand: "توت فن لليخوت",
+  brand: "Toot Fun Yachts",
   phone: "+971544420441",
-  phoneDisplay: "‎+971 54 442 0441",
+  phoneDisplay: "+971 54 442 0441",
   whatsapp: "https://wa.me/971544420441",
   email: "info@tootfunyachts.com",
-  address: "دبي مارينا، الإمارات العربية المتحدة",
-  siteUrl: "https://dubai-yacht.ae",
-  englishSiteUrl: "https://tootfunyachts.com",
+  address: "Dubai Marina, United Arab Emirates",
+  siteUrl: "https://tootfunyachts.com",
+  arabicSiteUrl: "https://dubai-yacht.ae",
   social: {
     instagram: "https://www.instagram.com/tootfun.yachts/",
     tiktok: "https://www.tiktok.com/@tootfunyachts",
@@ -180,10 +171,10 @@ export const DEFAULT_CONFIG: SiteConfig = {
     bingSiteVerification: "",
   },
   seo: {
-    defaultTitle: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت",
+    defaultTitle: "Yacht Rental in Dubai | Best Prices - Toot Fun Yachts",
     defaultDescription:
-      "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
-    ogImage: "https://dubai-yacht.ae/og-cover.jpg",
+      "Luxury yacht rental in Dubai with competitive rates, private cruises, and a professional crew for every occasion. Book your yacht today.",
+    ogImage: "https://tootfunyachts.com/og-cover.jpg",
     priceStartAed: 450,
   },
   adminEmail: {
@@ -199,8 +190,6 @@ const STORAGE_KEY = "toot-fun-admin-config";
 
 export function getConfig(): SiteConfig {
   if (typeof window === "undefined") return DEFAULT_CONFIG;
-  // Base: server-persisted overrides injected in root head as window.__TFC__ (SSR),
-  // then per-browser admin preview overrides in localStorage on top.
   let base: SiteConfig = DEFAULT_CONFIG;
   try {
     const serverOverride = (window as unknown as { __TFC__?: Partial<SiteConfig> }).__TFC__;

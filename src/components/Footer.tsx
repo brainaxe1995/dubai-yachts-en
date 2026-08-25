@@ -28,29 +28,29 @@ import { CONTACT } from "@/data/site";
 import { DEFAULT_CONFIG, getConfig } from "@/data/config";
 
 const quick = [
-  { to: "/من-نحن", label: "من نحن" },
-  { to: "/اتصل-بنا", label: "اتصل بنا" },
-  { to: "/الشروط-والأحكام", label: "الشروط والأحكام" },
-  { to: "/سياسة-الخصوصية", label: "سياسة الخصوصية" },
-  { to: "/سياسة-الإلغاء", label: "سياسة الإلغاء" },
+  { to: "/about-us", label: "About Us" },
+  { to: "/contact-us", label: "Contact Us" },
+  { to: "/terms-and-conditions", label: "Terms & Conditions" },
+  { to: "/privacy-policy", label: "Privacy Policy" },
+  { to: "/cancellation-policy", label: "Cancellation Policy" },
 ] as const;
 
 const discover = [
-  { to: "/تأجير-يخوت-في-دبي", label: "يخوت للإيجار في دبي" },
-  { to: "/حفلات-اليخوت-في-دبي", label: "حفلات اليخوت" },
-  { to: "/رحلات-صيد-السمك-في-دبي", label: "رحلات صيد السمك" },
-  { to: "/باقات-تأجير-اليخوت-في-دبي", label: "الباقات والعروض" },
-  { to: "/المدونة", label: "المدونة" },
-  { to: "/خريطة-الموقع", label: "خريطة الموقع" },
+  { to: "/yacht-rental-dubai", label: "Yachts for Rent in Dubai" },
+  { to: "/yacht-party-dubai", label: "Yacht Parties" },
+  { to: "/fishing-trip-dubai", label: "Fishing Trips" },
+  { to: "/yacht-packages-dubai", label: "Packages & Offers" },
+  { to: "/blog", label: "Blog" },
+  { to: "/sitemap", label: "Sitemap" },
 ] as const;
 
 const socialDefs = [
-  { key: "instagram" as const, icon: Instagram, label: "إنستغرام" },
-  { key: "facebook" as const, icon: Facebook, label: "فيسبوك" },
-  { key: "youtube" as const, icon: Youtube, label: "يوتيوب" },
-  { key: "tiktok" as const, icon: Music2, label: "تيك توك" },
+  { key: "instagram" as const, icon: Instagram, label: "Instagram" },
+  { key: "facebook" as const, icon: Facebook, label: "Facebook" },
+  { key: "youtube" as const, icon: Youtube, label: "YouTube" },
+  { key: "tiktok" as const, icon: Music2, label: "TikTok" },
   { key: "x" as const, icon: Twitter, label: "X" },
-  { key: "snapchat" as const, icon: Ghost, label: "سناب شات" },
+  { key: "snapchat" as const, icon: Ghost, label: "Snapchat" },
 ];
 
 function ColTitle({ children }: { children: React.ReactNode }) {
@@ -74,10 +74,10 @@ export function Footer() {
       <div className="border-b border-primary-foreground/10 bg-gradient-to-b from-primary-deep to-primary">
         <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-4 px-4 py-8 sm:grid-cols-4 md:px-8">
           {[
-            { icon: ShieldCheck, t: "أسطول مرخّص", d: "تأمين شامل + سلامة معتمدة" },
-            { icon: Anchor, t: "من دبي مارينا", d: "أفضل نقطة انطلاق في دبي" },
-            { icon: Sparkles, t: "طاقم محترف", d: "مدرّب على أعلى مستوى" },
-            { icon: Clock, t: "دعم 24/7", d: "استفسر أو احجز في أي وقت" },
+            { icon: ShieldCheck, t: "Licensed Fleet", d: "Fully insured & safety certified" },
+            { icon: Anchor, t: "From Dubai Marina", d: "The best departure point in Dubai" },
+            { icon: Sparkles, t: "Professional Crew", d: "Trained to the highest standards" },
+            { icon: Clock, t: "24/7 Support", d: "Ask or book anytime" },
           ].map((b) => (
             <div
               key={b.t}
@@ -99,14 +99,14 @@ export function Footer() {
         <div className="col-span-2 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-start">
           <img
             src={logo}
-            alt="توت فن لليخوت"
+            alt="Toot Fun Yachts"
             loading="lazy"
             width={220}
             height={130}
             className="h-24 w-auto object-contain"
           />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            توت فن لليخوت — تأجير يخوت في دبي مع رحلات خاصة، حفلات، ورحلات صيد بأسعار تبدأ من 450 درهم للساعة.
+            Toot Fun Yachts — yacht rentals in Dubai with private cruises, parties, and fishing trips starting from AED 450 per hour.
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             {socialDefs.map((s) => {
@@ -132,7 +132,7 @@ export function Footer() {
 
         {/* Quick links */}
         <div>
-          <ColTitle>روابط سريعة</ColTitle>
+          <ColTitle>Quick Links</ColTitle>
           <ul className="space-y-2 md:space-y-3">
             {quick.map((l) => (
               <li key={l.label}>
@@ -146,7 +146,7 @@ export function Footer() {
 
         {/* Discover */}
         <div>
-          <ColTitle>اكتشف</ColTitle>
+          <ColTitle>Discover</ColTitle>
           <ul className="space-y-2 md:space-y-3">
             {discover.map((l) => (
               <li key={l.label}>
@@ -160,7 +160,7 @@ export function Footer() {
 
         {/* Contact */}
         <div className="col-span-2 lg:col-span-1">
-          <ColTitle>تواصل معنا</ColTitle>
+          <ColTitle>Contact Us</ColTitle>
           <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
             <li>
               <a href={`tel:${CONTACT.phone}`} className="group flex items-center gap-3">
@@ -184,7 +184,7 @@ export function Footer() {
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/60 text-gold">
                 <MapPin className="h-4 w-4" />
               </span>
-              <span className="text-xs text-primary-foreground/80 sm:text-sm">دبي مارينا، الإمارات العربية المتحدة</span>
+              <span className="text-xs text-primary-foreground/80 sm:text-sm">Dubai Marina, United Arab Emirates</span>
             </li>
           </ul>
 
@@ -194,7 +194,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="mt-6 mb-16 inline-flex items-center gap-3 rounded-full border border-gold bg-primary-deep/60 px-6 py-3 text-sm font-bold text-gold shadow-lg transition-colors hover:bg-gold hover:text-primary-deep sm:mb-0"
           >
-            احجز الآن
+            Book Now
             <WhatsAppIcon className="h-4 w-4" />
           </a>
         </div>
@@ -202,10 +202,10 @@ export function Footer() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-4 px-4 py-5 text-xs text-primary-foreground/55 md:flex-row md:px-8">
-          <p>© {new Date().getFullYear()} توت فن لليخوت — جميع الحقوق محفوظة</p>
-          <div className="flex items-center gap-2" title="وسائل الدفع المتاحة">
-            <span className="text-[11px] text-primary-foreground/50">الدفع:</span>
-            <ul className="flex items-center gap-1" aria-label="وسائل الدفع المتاحة">
+          <p>© {new Date().getFullYear()} Toot Fun Yachts — All rights reserved</p>
+          <div className="flex items-center gap-2" title="Accepted payment methods">
+            <span className="text-[11px] text-primary-foreground/50">Payments:</span>
+            <ul className="flex items-center gap-1" aria-label="Accepted payment methods">
               {paymentMethods.map((m) => (
                 <li key={m.alt}>
                   <img
@@ -222,17 +222,17 @@ export function Footer() {
             </ul>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link to="/الشروط-والأحكام/" className="hover:text-gold">
-              الشروط والأحكام
+            <Link to="/terms-and-conditions/" className="hover:text-gold">
+              Terms & Conditions
             </Link>
-            <Link to="/سياسة-الخصوصية/" className="hover:text-gold">
-              سياسة الخصوصية
+            <Link to="/privacy-policy/" className="hover:text-gold">
+              Privacy Policy
             </Link>
-            <Link to="/سياسة-الإلغاء/" className="hover:text-gold">
-              سياسة الإلغاء
+            <Link to="/cancellation-policy/" className="hover:text-gold">
+              Cancellation Policy
             </Link>
-            <Link to="/خريطة-الموقع/" className="hover:text-gold">
-              خريطة الموقع
+            <Link to="/sitemap/" className="hover:text-gold">
+              Sitemap
             </Link>
           </div>
         </div>

@@ -27,48 +27,48 @@ import { Reveal } from "./Reveal";
 type Item = { icon: LucideIcon; t: string };
 
 const included: Item[] = [
-  { icon: Clock, t: "رحلة صيد سمك لمدة 4 ساعات في دبي" },
-  { icon: Fish, t: "طُعم ومعدات الصيد" },
-  { icon: Fish, t: "الصيد بطريقة الجيغينغ" },
-  { icon: Anchor, t: "خطافات وخيوط الصيد" },
-  { icon: Compass, t: "جهاز كشف الأسماك" },
-  { icon: Fish, t: "الصيد بالتّرولينغ" },
-  { icon: Fish, t: "صنارات الصيد وبكرات الصيد" },
-  { icon: Fish, t: "جميع معدات الصيد اللازمة" },
-  { icon: Shield, t: "معدات السلامة" },
-  { icon: GlassWater, t: "المشروبات الغازية والمياه والثلج" },
-  { icon: Flame, t: "الصيد والشوي على متن اليخت أو القارب" },
-  { icon: Utensils, t: "أدوات المائدة – أطباق وأكواب وأدوات تناول الطعام" },
-  { icon: BadgeCheck, t: "قبطان وطاقم ذو خبرة" },
-  { icon: FileCheck2, t: "يشمل الترخيص والتأمين والوقود" },
+  { icon: Clock, t: "4-hour fishing trip in Dubai" },
+  { icon: Fish, t: "Bait and fishing gear" },
+  { icon: Fish, t: "Jigging fishing" },
+  { icon: Anchor, t: "Fishing hooks and lines" },
+  { icon: Compass, t: "Fish finder device" },
+  { icon: Fish, t: "Trolling fishing" },
+  { icon: Fish, t: "Fishing rods and reels" },
+  { icon: Fish, t: "All necessary fishing equipment" },
+  { icon: Shield, t: "Safety gear" },
+  { icon: GlassWater, t: "Soft drinks, water, and ice" },
+  { icon: Flame, t: "Fish and grill on board the yacht or boat" },
+  { icon: Utensils, t: "Tableware — plates, cups, and dining utensils" },
+  { icon: BadgeCheck, t: "Experienced captain and crew" },
+  { icon: FileCheck2, t: "License, insurance, and fuel included" },
 ];
 
 const bring: Item[] = [
-  { icon: Clock, t: "جواز السفر الأصلي أو بطاقة الهوية الإماراتية مطلوبة." },
-  { icon: Sun, t: "كريم واقي شمس" },
-  { icon: Umbrella, t: "ملابس بأكمام طويلة وقبعة." },
-  { icon: Snowflake, t: "جاكيت خفيف خلال أشهر الشتاء." },
-  { icon: Footprints, t: "أحذية رياضية أو صنادل بنعال مطاطية." },
-  { icon: Waves, t: "ملابس سباحة إذا كنت ترغب في السباحة." },
-  { icon: Pill, t: "أقراص دوار البحر إذا لزم الأمر." },
-  { icon: Camera, t: "كاميرات للتصوير." },
-  { icon: Music, t: "هواتف محمولة تحتوي على موسيقاك المفضلة." },
-  { icon: BatteryFull, t: "شواحن وبطاريات إضافية." },
+  { icon: Clock, t: "Original passport or Emirates ID required." },
+  { icon: Sun, t: "Sunscreen" },
+  { icon: Umbrella, t: "Long-sleeved clothing and a hat." },
+  { icon: Snowflake, t: "Light jacket during winter months." },
+  { icon: Footprints, t: "Sneakers or sandals with rubber soles." },
+  { icon: Waves, t: "Swimwear if you plan to swim." },
+  { icon: Pill, t: "Seasickness tablets if needed." },
+  { icon: Camera, t: "Cameras for photos." },
+  { icon: Music, t: "Mobile phones with your favorite music." },
+  { icon: BatteryFull, t: "Extra chargers and batteries." },
 ];
 
 const sites: string[] = [
-  "دبي مارينا",
-  "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-  "نخلة جميرا",
-  "فندق أتلانتس بالم",
-  "مناطق الصيد في البحر المفتوح لصيد أعماق البحر",
+  "Dubai Marina",
+  "JBR Beach (Jumeirah Beach Residence)",
+  "Palm Jumeirah",
+  "Atlantis The Palm",
+  "Open-sea fishing zones for deep-sea fishing",
 ];
 
 type TabId = "included" | "bring" | "sites";
 const TABS: { id: TabId; label: string }[] = [
-  { id: "included", label: "ما الذي يشمله الحجز؟" },
-  { id: "bring", label: "ما تحتاجه قبل الرحلة" },
-  { id: "sites", label: "المواقع الرئيسية" },
+  { id: "included", label: "What does the booking include?" },
+  { id: "bring", label: "What you need before the trip" },
+  { id: "sites", label: "Key locations" },
 ];
 
 function IconList({ items }: { items: Item[] }) {
@@ -118,10 +118,10 @@ export function FishingEssentialsTabs() {
           {active === "included" ? (
             <Reveal key="included">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما الذي تشمله رحلات صيد سمك في دبي؟</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What do fishing trips in Dubai include?</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  استمتع بتجربة صيد بحري متكاملة في دبي مع كل ما تحتاجه لرحلة ممتعة وناجحة.
+                  Enjoy a complete deep-sea fishing experience in Dubai with everything you need for a fun and successful trip.
                 </p>
               </div>
               <IconList items={included} />
@@ -131,10 +131,10 @@ export function FishingEssentialsTabs() {
           {active === "bring" ? (
             <Reveal key="bring">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما تحتاجه قبل رحلة الصيد في دبي</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What you need before your fishing trip in Dubai</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  حجز رحلة الصيد في دبي سهل وبسيط. اختر مدة الرحلة، وأكد عدد الضيوف، وأحضر بطاقة هوية سارية، واستعد للاستمتاع بتجربة صيد بحري ممتعة ومريحة في أعماق البحر.
+                  Booking a fishing trip in Dubai is easy and simple. Pick your trip duration, confirm your guest count, bring a valid ID, and get ready for a fun and comfortable deep-sea fishing experience.
                 </p>
               </div>
               <IconList items={bring} />
@@ -145,11 +145,11 @@ export function FishingEssentialsTabs() {
             <Reveal key="sites">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-2xl font-extrabold text-primary md:text-3xl">
-                  أهم المواقع التي يمكنك الوصول إليها خلال رحلة الصيد في دبي
+                  Top locations you can reach during your fishing trip in Dubai
                 </h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  استمتع بتجربة الصيد في أعماق البحر في دبي أثناء استكشاف أشهر مواقع الصيد البحرية والاستمتاع بالمناظر الساحلية الخلابة.
+                  Enjoy the deep-sea fishing experience in Dubai while exploring the most famous marine fishing sites and enjoying stunning coastal views.
                 </p>
               </div>
               <ul className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2">

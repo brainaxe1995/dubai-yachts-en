@@ -25,13 +25,13 @@ import {
 } from "lucide-react";
 
 function iconForMeta(s: string): LucideIcon {
-  if (/شمبانيا|خمر|كأس|زجاجة/.test(s)) return Wine;
-  if (/كيك|كيكة|كعك/.test(s)) return Cake;
-  if (/إفطار|فطور|قهوة/.test(s)) return Coffee;
-  if (/مشاوي|طعام|وجبة|بوفيه|سي فود|ميكس/.test(s)) return Utensils;
-  if (/جيت سكي|بانانا|دونات|رياض/.test(s)) return Waves;
-  if (/صباح|الصعود|الساعة|شروق/.test(s)) return Sunrise;
-  if (/دقيق|ساع|مدة|رحلة\b/.test(s)) return Timer;
+  if (/champagne|wine|glass|bottle/i.test(s)) return Wine;
+  if (/cake|dessert/i.test(s)) return Cake;
+  if (/breakfast|coffee/i.test(s)) return Coffee;
+  if (/bbq|grill|food|meal|buffet|seafood|mix/i.test(s)) return Utensils;
+  if (/jet ski|banana|donut|water sport/i.test(s)) return Waves;
+  if (/morning|boarding|sunrise|o'clock/i.test(s)) return Sunrise;
+  if (/minute|hour|duration|trip\b/i.test(s)) return Timer;
   return Tag;
 }
 import type { Product } from "@/data/site";
@@ -58,16 +58,16 @@ function parseSpecs(specs: string[]) {
   // Track which original strings were consumed by primary slots
   const consumed = new Set<string>();
   for (const s of uniq) {
-    if (!guests && /ضيف|ضيوف|شخص|أشخاص/.test(s)) {
+    if (!guests && /guest|guests|person|people|pax/i.test(s)) {
       guests = s;
       consumed.add(s);
-    } else if (!bedrooms && (/غرف|نوم|غرفة/.test(s) || /بدون غرف/.test(s))) {
-      bedrooms = /بدون/.test(s) ? "بدون غرف نوم" : s;
+    } else if (!bedrooms && (/bedroom|bedrooms|cabin|cabins/i.test(s) || /no bedrooms/i.test(s))) {
+      bedrooms = /no bedrooms/i.test(s) ? "No bedrooms" : s;
       consumed.add(s);
-    } else if (!length && /قدم/.test(s)) {
+    } else if (!length && /ft|feet/i.test(s)) {
       length = s;
       consumed.add(s);
-    } else if (!duration && (/رحلة/.test(s) || /ساع/.test(s))) {
+    } else if (!duration && (/trip/i.test(s) || /hour/i.test(s))) {
       duration = s;
       consumed.add(s);
     }
@@ -79,7 +79,7 @@ function parseSpecs(specs: string[]) {
 }
 
 function buildWhatsAppLink(title: string, price: string) {
-  const msg = `مرحبًا توت فن،\nأود الاستفسار عن حجز:\n${title}\nالسعر: ${price}\nأرجو تزويدي بالتوفر والتفاصيل. شكرًا.`;
+  const msg = `Hi Toot Fun,\nI'd like to enquire about booking:\n${title}\nPrice: ${price}\nPlease share availability and details. Thank you.`;
   return `${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
@@ -134,7 +134,7 @@ function ImageSlider({
           <button
             key={i}
             type="button"
-            aria-label={`عرض الصورة ${i + 1}`}
+            aria-label={`View image ${i + 1}`}
             className="relative h-full w-full shrink-0 bg-muted"
             onClick={() => onOpenLightbox?.(idx)}
           >
@@ -176,7 +176,7 @@ function ImageSlider({
       {/* Share badge — top-start corner (RTL right) */}
       <button
         type="button"
-        aria-label="مشاركة"
+        aria-label="Share"
         onClick={(e) => {
           e.stopPropagation();
           if (typeof navigator !== "undefined" && "share" in navigator) {
@@ -198,7 +198,7 @@ function ImageSlider({
         <>
           <button
             type="button"
-            aria-label="السابق"
+            aria-label="Previous"
             onClick={(e) => {
               e.stopPropagation();
               setIdx((i) => (i - 1 + count) % count);
@@ -209,7 +209,7 @@ function ImageSlider({
           </button>
           <button
             type="button"
-            aria-label="التالي"
+            aria-label="Next"
             onClick={(e) => {
               e.stopPropagation();
               setIdx((i) => (i + 1) % count);
@@ -225,7 +225,7 @@ function ImageSlider({
               <button
                 key={i}
                 type="button"
-                aria-label={`صورة ${i + 1}`}
+                aria-label={`Image ${i + 1}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setIdx(i);
@@ -302,7 +302,7 @@ function Lightbox({
     >
       <button
         type="button"
-        aria-label="إغلاق"
+        aria-label="Close"
         onClick={(e) => {
           e.stopPropagation();
           onClose();
@@ -316,7 +316,7 @@ function Lightbox({
         <>
           <button
             type="button"
-            aria-label="السابق"
+            aria-label="Previous"
             onClick={(e) => {
               e.stopPropagation();
               setIdx((i) => (i - 1 + images.length) % images.length);
@@ -327,7 +327,7 @@ function Lightbox({
           </button>
           <button
             type="button"
-            aria-label="التالي"
+            aria-label="Next"
             onClick={(e) => {
               e.stopPropagation();
               setIdx((i) => (i + 1) % images.length);
@@ -354,7 +354,7 @@ function Lightbox({
             <button
               key={i}
               type="button"
-              aria-label={`صورة ${i + 1}`}
+              aria-label={`Image ${i + 1}`}
               onClick={() => setIdx(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === idx ? "w-10 bg-gold" : "w-2 bg-white/50"
@@ -401,7 +401,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
           />
 
           <div className="flex flex-1 flex-col gap-3 p-5">
-            <h3 className="relative inline-block text-[17px] font-extrabold leading-snug text-primary md:text-lg">
+            <h3 className="relative inline-block text-[19px] font-extrabold leading-snug text-primary md:text-xl">
               <span className="bg-gradient-to-l from-gold to-gold-deep bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
                 {product.title}
               </span>
@@ -410,7 +410,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
             <p className="text-sm leading-relaxed text-muted-foreground">{renderInline(product.desc)}</p>
 
             <div className="flex items-baseline gap-2 border-y border-gold/20 py-2.5">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">تبدأ من</span>
+              <span className="text-xs font-medium text-muted-foreground">from</span>
               <span className="text-2xl font-extrabold text-gold-deep">{priceNumber}</span>
               <span className="text-xs font-bold text-muted-foreground">{priceUnit}</span>
             </div>
@@ -425,17 +425,17 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                 ) : (
                   <>
                     <Anchor className="h-4 w-4 text-gold-deep" />
-                    <span className="font-bold text-foreground">قبطان محترف</span>
+                    <span className="font-bold text-foreground">Professional captain</span>
                   </>
                 )}
               </div>
               <div className="flex flex-col items-center gap-1">
                 <Clock className="h-4 w-4 text-gold-deep" />
-                <span className="font-bold text-foreground">{duration || "ساعتان+"}</span>
+                <span className="font-bold text-foreground">{duration || "2+ hours"}</span>
               </div>
               <div className="flex flex-col items-center gap-1">
                 <CheckCircle2 className="h-4 w-4 text-gold-deep" />
-                <span className="font-bold text-foreground">مرخّص</span>
+                <span className="font-bold text-foreground">Licensed</span>
               </div>
             </div>
 
@@ -468,7 +468,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary-deep px-4 py-3 text-sm font-bold text-primary-foreground shadow-lg ring-1 ring-black/5 transition-all hover:bg-primary hover:scale-[1.02] active:scale-[0.97]"
               >
                 <WhatsAppIcon className="h-4 w-4 text-gold" />
-                احجز الآن
+                Book Now
               </a>
 
               {hasIncluded ? (
@@ -478,12 +478,12 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
                   className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-gold bg-gold px-4 py-3 text-sm font-bold text-primary-deep transition-all hover:bg-gold-deep hover:text-primary-foreground hover:scale-[1.02] active:scale-[0.97]"
                 >
                   <Info className="h-4 w-4" />
-                  ماذا يشمل
+                  What's Included
                 </button>
               ) : (
                 <a
                   href={`tel:${CONTACT.phone}`}
-                  aria-label="اتصل بنا"
+                  aria-label="Call us"
                   className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-gold/60 text-gold transition-all hover:bg-gold hover:text-primary-deep hover:scale-105 active:scale-95"
                 >
                   <Phone className="h-4 w-4" />
@@ -578,7 +578,7 @@ function IncludedModal({
           <button
             type="button"
             onClick={onClose}
-            aria-label="إغلاق"
+            aria-label="Close"
             className="absolute start-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-black/50 text-white backdrop-blur-md ring-1 ring-white/20 hover:bg-black/70"
           >
             <X className="h-5 w-5" />
@@ -586,7 +586,7 @@ function IncludedModal({
           <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
             <div className="inline-flex items-center gap-2 rounded-full bg-gold/95 px-3 py-1 text-xs font-bold text-primary-deep">
               <Sparkles className="h-3 w-3" />
-              ماذا تشمل هذه الباقة
+              What this package includes
             </div>
             <h3
               id={`incl-title-${product.title}`}
@@ -595,7 +595,7 @@ function IncludedModal({
               {product.title}
             </h3>
             <div className="mt-1 flex items-baseline gap-2 text-primary-foreground/90">
-              <span className="text-xs">تبدأ من</span>
+              <span className="text-xs">Starting from</span>
               <span className="text-lg font-extrabold text-gold">{priceNumber}</span>
               <span className="text-xs">{priceUnit}</span>
             </div>
@@ -605,7 +605,7 @@ function IncludedModal({
         <div className="flex-1 overflow-y-auto p-5 sm:p-6">
           <h4 className="mb-4 text-base font-bold text-gold-deep">
             <CheckCircle2 className="me-2 inline h-5 w-5" />
-            يشمل السعر
+            Price includes
           </h4>
           <ul className="grid gap-2.5 sm:grid-cols-2">
             {product.included?.map((item) => (
@@ -623,7 +623,7 @@ function IncludedModal({
             <>
               <h4 className="mb-3 mt-6 text-base font-bold text-gold-deep">
                 <Sparkles className="me-2 inline h-5 w-5" />
-                إضافات اختيارية
+                Optional add-ons
               </h4>
               <ul className="grid gap-2 sm:grid-cols-2">
                 {product.addOns.map((a) => (
@@ -648,14 +648,14 @@ function IncludedModal({
             className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary-deep px-4 py-3 text-sm font-bold text-primary-foreground hover:bg-primary"
           >
             <WhatsAppIcon className="h-4 w-4 text-gold" />
-            احجز الآن عبر واتساب
+            Book Now on WhatsApp
           </a>
           <a
             href={`tel:${CONTACT.phone}`}
             className="flex items-center gap-2 rounded-xl border border-gold bg-gold px-4 py-3 text-sm font-bold text-primary-deep hover:bg-gold-deep hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4" />
-            اتصل
+            Call
           </a>
         </div>
       </div>

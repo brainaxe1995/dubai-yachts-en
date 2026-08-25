@@ -1,7 +1,7 @@
 import { CONTACT } from "@/data/site";
 import { cn } from "@/lib/utils";
 
-export function BookButton({ className, label = "احجز الآن" }: { className?: string; label?: string }) {
+export function BookButton({ className, label = "Book Now" }: { className?: string; label?: string }) {
   return (
     <a
       href={CONTACT.whatsapp}
@@ -17,7 +17,7 @@ export function BookButton({ className, label = "احجز الآن" }: { classNa
   );
 }
 
-export function CallButton({ className, label = "اتصل بنا" }: { className?: string; label?: string }) {
+export function CallButton({ className, label = "Call Us" }: { className?: string; label?: string }) {
   return (
     <a
       href={`tel:${CONTACT.phone}`}

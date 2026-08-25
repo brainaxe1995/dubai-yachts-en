@@ -8,42 +8,42 @@ import fleetImg from "@/assets/yachts/majesty-88.webp";
 import marinaImg from "@/assets/yachts/gulfcraft-90.webp";
 import whatIncludedImg from "@/assets/branding/what-included.webp";
 
-export const Route = createFileRoute("/من-نحن")({
+export const Route = createFileRoute("/about-us")({
   head: () => ({
     meta: [
-      { title: "من نحن | توت فن لليخوت" },
+      { title: "About Us | Toot Fun Yachts" },
       {
         name: "description",
         content:
-          "تعرّف على من نحن في توت فن لليخوت، وخبرتنا في تقديم خدمات تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
+          "Learn who we are at Toot Fun Yachts and our track record in luxury yacht rentals and sea trips in Dubai.",
       },
-      { property: "og:title", content: "من نحن | توت فن لليخوت" },
-      { property: "og:description", content: "خبرتنا في تأجير اليخوت والرحلات البحرية الفاخرة في دبي." },
-      { property: "og:url", content: "https://dubai-yacht.ae/من-نحن/" },
+      { property: "og:title", content: "About Us | Toot Fun Yachts" },
+      { property: "og:description", content: "Our track record in luxury yacht rentals and sea trips in Dubai." },
+      { property: "og:url", content: "https://tootfunyachts.com/about-us/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/من-نحن/" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/من-نحن/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/من-نحن/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/about-us/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/about-us/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/about-us/" },
     ],
   }),
   component: About,
 });
 
 const stats = [
-  { n: "15+", l: "يخت وقارب فاخر" },
-  { n: "450 د.إ", l: "تبدأ الأسعار من / الساعة" },
-  { n: "24/7", l: "خدمة عملاء" },
-  { n: "+1000", l: "رحلة بحرية سعيدة" },
+  { n: "15+", l: "Luxury yachts and boats" },
+  { n: "AED 450", l: "Rates start from / hour" },
+  { n: "24/7", l: "Customer service" },
+  { n: "+1000", l: "Happy cruises" },
 ];
 
 const values = [
-  { icon: Award, t: "خبرة موثوقة", d: "سنوات من التجربة في تنظيم الرحلات البحرية في دبي مارينا." },
-  { icon: ShieldCheck, t: "أمان وترخيص", d: "جميع يخوتنا مرخّصة ومطابقة لمعايير السلامة البحرية." },
-  { icon: Sparkles, t: "خدمة راقية", d: "طاقم مدرّب على تقديم تجربة ضيافة من الطراز الأول." },
-  { icon: HeartHandshake, t: "شفافية كاملة", d: "أسعار واضحة بدون رسوم مخفية أو مفاجآت." },
-  { icon: Compass, t: "مرونة كاملة", d: "نخصّص الرحلات والباقات حسب طلبك ومناسبتك." },
-  { icon: Star, t: "تقييمات ممتازة", d: "مئات العملاء السعداء يعودون إلينا مرة بعد مرة." },
+  { icon: Award, t: "Trusted Experience", d: "Years of running sea trips out of Dubai Marina." },
+  { icon: ShieldCheck, t: "Safety & Licensing", d: "All our yachts are licensed and meet marine safety standards." },
+  { icon: Sparkles, t: "Refined Service", d: "A crew trained to deliver first-class hospitality." },
+  { icon: HeartHandshake, t: "Complete Transparency", d: "Clear pricing with no hidden fees or surprises." },
+  { icon: Compass, t: "Full Flexibility", d: "We tailor trips and packages to your brief and occasion." },
+  { icon: Star, t: "Outstanding Reviews", d: "Hundreds of happy guests come back to us again and again." },
 ];
 
 function About() {
@@ -51,11 +51,11 @@ function About() {
     <>
       <PageHero
         compact
-        eyebrow="عن الشركة"
-        title="من نحن"
-        subtitle="نحن فريق متخصّص في تأجير اليخوت الفاخرة والرحلات البحرية في دبي، نحرص على تقديم تجربة استثنائية تجمع بين الأمان، الفخامة، والخدمة الشخصية لكل ضيف."
+        eyebrow="About the Company"
+        title="About Us"
+        subtitle="We're a team specialised in luxury yacht rentals and sea trips in Dubai. Our focus is delivering an exceptional experience that blends safety, luxury, and personal service for every guest."
       >
-        <CallButton label="تواصل معنا" />
+        <CallButton label="Contact Us" />
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
@@ -64,7 +64,7 @@ function About() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
               <img
                 src={fleetImg}
-                alt="أسطول توت فن لليخوت في دبي"
+                alt="Toot Fun Yachts fleet in Dubai"
                 loading="lazy"
                 width={1200}
                 height={900}
@@ -73,20 +73,19 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <h2 className="text-2xl text-foreground md:text-3xl">من نحن في توت فن لليخوت</h2>
+            <h2 className="text-2xl text-foreground md:text-3xl">About Toot Fun Yachts</h2>
             <p className="mt-4 text-sm leading-loose text-muted-foreground md:text-base">
-              تُعد <strong>توت فن لليخوت</strong> شركة متخصصة في <strong>تأجير اليخوت والقوارب في دبي</strong> منذ عام
-              2018، وتوفر أسطولًا متنوعًا من اليخوت لتناسب الرحلات البحرية الخاصة، الرحلات العائلية، الحفلات والمناسبات،
-              ورحلات الصيد.
+              <strong>Toot Fun Yachts</strong> is a company specialised in <strong>yacht and boat rentals in Dubai</strong> since
+              2018, with a diverse fleet of yachts to suit private cruises, family trips, parties and occasions, and fishing trips.
             </p>
             <p className="mt-3 text-sm leading-loose text-muted-foreground md:text-base">
-              نحرص على تقديم تجربة بحرية آمنة ومريحة مع <strong>طاقم محترف</strong>، وأسعار واضحة وتفاصيل كاملة قبل
-              الحجز. كما يتوفر فريقنا على مدار الساعة لمساعدتك في اختيار اليخت والباقة المناسبة والاستمتاع برحلتك في دبي
-              مارينا، دبي هاربور، نخلة جميرا والخليج العربي.
+              We're committed to a safe, comfortable sea trip with a <strong>professional crew</strong>, clear pricing, and full
+              details before you book. Our team is available around the clock to help you pick the right yacht and package and
+              enjoy your trip through Dubai Marina, Dubai Harbour, Palm Jumeirah, and the Arabian Gulf.
             </p>
             <p className="mt-3 text-sm leading-loose text-muted-foreground md:text-base">
-              نؤمن بالشفافية في الأسعار ووضوح التفاصيل قبل الحجز، مع دعم متواصل على مدار الساعة لمساعدتك في اختيار اليخت
-              والباقة الأنسب لك.
+              We believe in pricing transparency and clear details before booking, backed by continuous support to help you pick
+              the yacht and package that suit you best.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <BookButton />
@@ -107,7 +106,7 @@ function About() {
       </section>
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
-        <SectionHeading title="قيمنا في كل رحلة" subtitle="خدمة احترافية، أسعار واضحة، وتجربة بحرية لا تُنسى." />
+        <SectionHeading title="Our Values on Every Trip" subtitle="Professional service, clear pricing, and an unforgettable sea experience." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => (
             <Reveal key={v.t} delay={i * 70}>
@@ -124,8 +123,8 @@ function About() {
       <section className="bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
-            title="مناسبات نصنع لها ذكريات لا تُنسى"
-            subtitle="من عيد الميلاد إلى الزفاف، من حفلات الشركات إلى رحلات العائلة — يخوتنا مسرح مثالي لكل مناسبة تستحق البقاء في الذاكرة."
+            title="Occasions We Make Unforgettable"
+            subtitle="From birthdays to weddings, corporate events to family trips — our yachts are the ideal stage for every occasion worth remembering."
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {occasions.map((o, i) => (
@@ -143,9 +142,9 @@ function About() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
           <Reveal delay={120}>
-            <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك</h2>
+            <h2 className="text-2xl text-foreground md:text-3xl">What's Included in Your Trip</h2>
             <p className="mt-3 text-sm text-muted-foreground md:text-base">
-              نتضمّن كل ما تحتاجه للاستمتاع برحلتك دون قلق — سعر واحد يشمل الطاقم، الوقود، التأمين، وضيافة أساسية.
+              We include everything you need to enjoy your trip without worry — one price covers the crew, fuel, insurance, and basic hospitality.
             </p>
             <ul className="mt-5 grid grid-cols-2 gap-3 text-sm text-muted-foreground">
               {inclusions.map((i) => (
@@ -160,7 +159,7 @@ function About() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
               <img
                 src={whatIncludedImg}
-                alt="ماذا تشمل رحلة اليخت"
+                alt="What's included in your yacht trip"
                 loading="lazy"
                 width={1200}
                 height={900}
@@ -177,7 +176,7 @@ function About() {
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
               <img
                 src={marinaImg}
-                alt="يخوت في دبي مارينا"
+                alt="Yachts at Dubai Marina"
                 loading="lazy"
                 width={1200}
                 height={900}
@@ -186,10 +185,10 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={120} className="text-primary-foreground">
-            <h2 className="text-2xl md:text-3xl">موقعنا في قلب دبي مارينا</h2>
+            <h2 className="text-2xl md:text-3xl">Our Location in the Heart of Dubai Marina</h2>
             <p className="mt-4 text-sm leading-loose text-primary-foreground/80 md:text-base">
-              تنطلق معظم رحلاتنا من دبي مارينا — أفضل نقطة انطلاق للاستمتاع بمعالم دبي البحرية: عين دبي، JBR، نخلة جميرا،
-              وأتلانتس، وحتى برج العرب.
+              Most of our trips depart from Dubai Marina — the best launch point to enjoy Dubai's marine landmarks: Ain Dubai,
+              JBR, Palm Jumeirah, Atlantis, and even Burj Al Arab.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <BookButton />

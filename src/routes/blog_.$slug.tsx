@@ -8,7 +8,7 @@ import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { findPost, posts } from "@/data/blog";
 
-export const Route = createFileRoute("/المدونة_/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   loader: ({ params }) => {
     const post = findPost(params.slug);
     if (!post) throw notFound();
@@ -17,10 +17,10 @@ export const Route = createFileRoute("/المدونة_/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData;
     if (!p) return {};
-    const url = `https://dubai-yacht.ae/المدونة/${p.slug}`;
+    const url = `https://tootfunyachts.com/blog/${p.slug}`;
     return {
       meta: [
-        { title: `${p.title} | مدونة توت فن لليخوت` },
+        { title: `${p.title} | Toot Fun Yachts Blog` },
         { name: "description", content: p.description },
         { name: "keywords", content: p.keywords },
         { property: "og:title", content: p.title },
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/المدونة_/$slug")({
       ],
       links: [
         { rel: "canonical", href: url },
-        { rel: "alternate", hrefLang: "ar", href: url },
+        { rel: "alternate", hrefLang: "en", href: url },
         { rel: "alternate", hrefLang: "x-default", href: url },
       ],
       scripts: [
@@ -45,19 +45,19 @@ export const Route = createFileRoute("/المدونة_/$slug")({
             description: p.description,
             image: p.image,
             datePublished: p.date,
-            author: { "@type": "Organization", name: "توت فن لليخوت" },
+            author: { "@type": "Organization", name: "Toot Fun Yachts" },
             publisher: {
               "@type": "Organization",
-              name: "توت فن لليخوت",
-              logo: { "@type": "ImageObject", url: "https://dubai-yacht.ae/favicon.png" },
+              name: "Toot Fun Yachts",
+              logo: { "@type": "ImageObject", url: "https://tootfunyachts.com/favicon.png" },
             },
             mainEntityOfPage: url,
             keywords: p.keywords,
           }),
         },
         breadcrumbSchema([
-          { name: "الرئيسية", url: "https://dubai-yacht.ae/" },
-          { name: "المدونة", url: "https://dubai-yacht.ae/المدونة/" },
+          { name: "Home", url: "https://tootfunyachts.com/" },
+          { name: "Blog", url: "https://tootfunyachts.com/blog/" },
           { name: p.title, url },
         ]),
       ],
@@ -95,7 +95,7 @@ function BlogPost() {
   const related = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
   const readMin = estimateReadMinutes(p);
   const progress = useReadingProgress();
-  const shareUrl = `https://dubai-yacht.ae/المدونة/${p.slug}`;
+  const shareUrl = `https://tootfunyachts.com/blog/${p.slug}`;
   const shareMsg = `${p.title}\n${shareUrl}`;
   const [showTop, setShowTop] = useState(false);
 
@@ -129,11 +129,11 @@ function BlogPost() {
         <div className="relative mx-auto flex min-h-[70vh] max-w-4xl flex-col items-start justify-end px-4 pb-16 pt-32 md:pb-24 md:pt-40">
           <div className="mb-6 flex flex-wrap items-center gap-2">
             <Link
-              to="/المدونة/"
+              to="/blog/"
               className="inline-flex items-center gap-1 rounded-full border border-gold/40 bg-black/30 px-3 py-1 text-xs font-bold text-gold backdrop-blur-md hover:bg-gold hover:text-primary-deep"
             >
               <ArrowRight className="h-3 w-3 rotate-180" />
-              المدونة
+              Blog
             </Link>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-xs font-bold text-primary-deep">
               <Tag className="h-3 w-3" />
@@ -153,7 +153,7 @@ function BlogPost() {
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-gold" />
-              {readMin} دقائق قراءة
+              {readMin} min read
             </span>
             <a
               href={`https://wa.me/?text=${encodeURIComponent(shareMsg)}`}
@@ -162,7 +162,7 @@ function BlogPost() {
               className="inline-flex items-center gap-1.5 rounded-full border border-gold/50 px-3 py-1 text-xs font-bold text-gold transition-colors hover:bg-gold hover:text-primary-deep"
             >
               <Share2 className="h-3 w-3" />
-              مشاركة
+              Share
             </a>
           </div>
         </div>
@@ -174,10 +174,10 @@ function BlogPost() {
         {p.sections.length > 3 ? (
           <Reveal>
             <nav
-              aria-label="محتويات المقال"
+              aria-label="Article contents"
               className="mb-12 rounded-2xl border border-gold/30 bg-card p-6 shadow-luxe"
             >
-              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-gold-deep">في هذا المقال</h2>
+              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-gold-deep">In this article</h2>
               <ol className="grid gap-2 sm:grid-cols-2">
                 {p.sections.map((s, i) => (
                   <li key={s.h}>
@@ -288,18 +288,18 @@ function BlogPost() {
         <Reveal>
           <div className="mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-primary-deep via-primary to-primary-deep p-8 shadow-luxe">
             <div className="relative z-10 text-center">
-              <h3 className="text-2xl font-extrabold text-primary-foreground">{p.cta ?? "احجز يختك اليوم"}</h3>
+              <h3 className="text-2xl font-extrabold text-primary-foreground">{p.cta ?? "Book your yacht today"}</h3>
               <p className="mt-2 text-sm text-primary-foreground/70">
-                تواصل معنا الآن للاستفسار أو الحجز عبر واتساب.
+                Message us now to enquire or book on WhatsApp.
               </p>
               <a
-                href={`https://wa.me/971544420441?text=${encodeURIComponent(`مرحبًا، قرأت مقال: ${p.title} وأود الاستفسار.`)}`}
+                href={`https://wa.me/971544420441?text=${encodeURIComponent(`Hi, I just read the article: ${p.title} and would like to enquire.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-primary-deep transition-transform hover:scale-105"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                تواصل الآن
+                Contact us now
               </a>
             </div>
           </div>
@@ -325,7 +325,7 @@ function BlogPost() {
               className="inline-flex items-center gap-2 rounded-full bg-primary-deep px-5 py-2.5 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary"
             >
               <Share2 className="h-4 w-4" />
-              شارك المقال
+              Share article
             </a>
           </div>
         </Reveal>
@@ -333,11 +333,11 @@ function BlogPost() {
         {/* Back link */}
         <div className="mt-8">
           <Link
-            to="/المدونة/"
+            to="/blog/"
             className="inline-flex items-center gap-2 text-sm font-bold text-gold-deep hover:text-gold"
           >
             <ArrowRight className="h-4 w-4 rotate-180" />
-            العودة لكل المقالات
+            Back to all articles
           </Link>
         </div>
       </article>
@@ -346,13 +346,13 @@ function BlogPost() {
       <section className="bg-muted py-12">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center md:flex-row md:text-start">
           <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-primary-deep text-2xl font-black text-gold">
-            ت
+            T
           </div>
           <div className="flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">كتب بواسطة</p>
-            <p className="text-lg font-bold text-foreground">فريق توت فن لليخوت</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">Written by</p>
+            <p className="text-lg font-bold text-foreground">The Toot Fun Yachts Team</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              خبراء تأجير اليخوت والرحلات البحرية في دبي — نشارك تجاربنا ونصائحنا العملية.
+              Dubai yacht rental and sea cruise experts — sharing our first-hand experience and practical tips.
             </p>
           </div>
         </div>
@@ -362,12 +362,12 @@ function BlogPost() {
       {related.length > 0 ? (
         <section className="bg-background py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-4">
-            <SectionHeading title="مقالات ذات صلة" subtitle="اكتشف المزيد من مقالات مدونة توت فن." />
+            <SectionHeading title="Related articles" subtitle="Discover more from the Toot Fun blog." />
             <div className="grid gap-6 md:grid-cols-3">
               {related.map((r) => (
                 <Reveal key={r.slug}>
                   <Link
-                    to="/المدونة/$slug/"
+                    to="/blog/$slug/"
                     params={{ slug: r.slug }}
                     className="group block h-full overflow-hidden rounded-2xl border border-border bg-card shadow-luxe transition-transform hover:-translate-y-1"
                   >
@@ -394,14 +394,14 @@ function BlogPost() {
         </section>
       ) : null}
 
-      <ContactCta title={p.cta ?? "احجز يختك في دبي الآن"} />
+      <ContactCta title={p.cta ?? "Book your Dubai yacht today"} />
 
       {/* Back-to-top FAB */}
       {showTop ? (
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="عد إلى الأعلى"
+          aria-label="Back to top"
           className="fixed bottom-24 start-6 z-40 grid h-11 w-11 place-items-center rounded-full bg-gold text-primary-deep shadow-luxe transition-transform hover:scale-110"
         >
           <ChevronUp className="h-5 w-5" />

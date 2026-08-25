@@ -22,39 +22,39 @@ import { Reveal } from "./Reveal";
 type Item = { icon: LucideIcon; t: string };
 
 const included: Item[] = [
-  { icon: Anchor, t: "قبطان وطاقم محترف طوال الرحلة" },
-  { icon: Fuel, t: "الوقود مشمول ضمن السعر" },
-  { icon: Shield, t: "التأمين الشامل والترخيص" },
-  { icon: GlassWater, t: "مياه معدنية ومشروبات غازية" },
-  { icon: Utensils, t: "أدوات مائدة كاملة (أطباق، أكواب، ثلج)" },
-  { icon: Music2, t: "نظام صوت بلوتوث عالي الجودة" },
-  { icon: LifeBuoy, t: "سترات نجاة ومعدات سلامة معتمدة" },
-  { icon: Snowflake, t: "مقصورات مكيّفة داخلية" },
-  { icon: BadgeCheck, t: "طاقم يتحدث العربية والإنجليزية" },
+  { icon: Anchor, t: "Professional captain and crew throughout the trip" },
+  { icon: Fuel, t: "Fuel included in the price" },
+  { icon: Shield, t: "Comprehensive insurance and licensing" },
+  { icon: GlassWater, t: "Bottled water and soft drinks" },
+  { icon: Utensils, t: "Full tableware (plates, cups, ice)" },
+  { icon: Music2, t: "Premium Bluetooth sound system" },
+  { icon: LifeBuoy, t: "Certified life jackets and safety gear" },
+  { icon: Snowflake, t: "Air-conditioned indoor cabins" },
+  { icon: BadgeCheck, t: "Crew speaks Arabic and English" },
 ];
 
 const bring: Item[] = [
-  { icon: Clock, t: "جواز السفر الأصلي أو بطاقة الهوية الإماراتية." },
-  { icon: Sun, t: "كريم واقي شمس (SPF 50+)." },
-  { icon: Shirt, t: "ملابس صيفية خفيفة وسترة للسهرات." },
-  { icon: Camera, t: "كاميرا أو هاتف لالتقاط الصور." },
-  { icon: Sparkles, t: "طعامك أو مشروباتك الخاصة (مسموح بدون رسوم)." },
+  { icon: Clock, t: "Original passport or Emirates ID required." },
+  { icon: Sun, t: "Sunscreen (SPF 50+)." },
+  { icon: Shirt, t: "Light summer clothing and a jacket for evenings." },
+  { icon: Camera, t: "Camera or phone for photos." },
+  { icon: Sparkles, t: "Your own food or drinks (allowed at no extra charge)." },
 ];
 
 const sites: string[] = [
-  "دبي مارينا",
-  "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-  "عين دبي (جزيرة بلوواترز)",
-  "نخلة جميرا",
-  "فندق أتلانتس بالم",
-  "برج العرب",
+  "Dubai Marina",
+  "JBR Beach (Jumeirah Beach Residence)",
+  "Ain Dubai (Bluewaters Island)",
+  "Palm Jumeirah",
+  "Atlantis The Palm",
+  "Burj Al Arab",
 ];
 
 type TabId = "included" | "bring" | "sites";
 const TABS: { id: TabId; label: string }[] = [
-  { id: "included", label: "ما الذي يشمله الإيجار؟" },
-  { id: "bring", label: "ما تحتاجه قبل الرحلة" },
-  { id: "sites", label: "المواقع الرئيسية" },
+  { id: "included", label: "What does the rental include?" },
+  { id: "bring", label: "What you need before the trip" },
+  { id: "sites", label: "Key locations" },
 ];
 
 function IconList({ items }: { items: Item[] }) {
@@ -104,10 +104,10 @@ export function YachtEssentialsTabs() {
           {active === "included" ? (
             <Reveal key="included">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما الذي يشمله إيجار اليخت في دبي؟</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What does yacht rental in Dubai include?</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  كل إيجار يخت لدينا في دبي يشمل كل ما تحتاجه لرحلة بحرية آمنة ومريحة — بدون رسوم مخفية.
+                  Every yacht rental with us in Dubai includes everything you need for a safe and comfortable sea trip — with no hidden fees.
                 </p>
               </div>
               <IconList items={included} />
@@ -117,10 +117,10 @@ export function YachtEssentialsTabs() {
           {active === "bring" ? (
             <Reveal key="bring">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما تحتاجه قبل رحلة اليخت في دبي</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What you need before your yacht trip in Dubai</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  الاستعداد لرحلة يخت في دبي بسيط — أحضر بطاقة هوية سارية والأشياء التالية لتجربة كاملة على متن اليخت.
+                  Getting ready for a yacht trip in Dubai is simple — bring a valid ID and the items below for the complete on-board experience.
                 </p>
               </div>
               <IconList items={bring} />
@@ -131,12 +131,11 @@ export function YachtEssentialsTabs() {
             <Reveal key="sites">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-2xl font-extrabold text-primary md:text-3xl">
-                  أهم المواقع التي يمكنك الوصول إليها عند إيجار يخت في دبي
+                  Top locations you can reach when renting a yacht in Dubai
                 </h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  استمتع برحلة بحرية تمر عبر أشهر معالم دبي البحرية، مع إطلالات خلابة على أفق المدينة وأماكن مثالية
-                  لالتقاط الصور طوال الرحلة.
+                  Enjoy a sea trip that passes Dubai's most famous marine landmarks, with stunning skyline views and perfect photo spots throughout the ride.
                 </p>
               </div>
               <ul className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2">

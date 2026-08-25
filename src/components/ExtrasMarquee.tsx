@@ -30,7 +30,7 @@ export function ExtrasMarquee({ items }: { items: readonly Extra[] }) {
 
               {/* Bottom label + subtle overline */}
               <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold/80">إضافة</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold/80">Add-on</p>
                 <h3 className="mt-1 text-sm font-extrabold leading-tight text-primary-foreground md:text-base">
                   {e.label}
                 </h3>

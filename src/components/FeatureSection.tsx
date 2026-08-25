@@ -14,7 +14,7 @@ function BlockChapter({ i }: { i: number }) {
   return (
     <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
       <span className="h-px w-8 bg-gold" />
-      الفصل {String(i + 1).padStart(2, "0")}
+      Chapter {String(i + 1).padStart(2, "0")}
       <span className="h-px w-8 bg-gold" />
     </span>
   );

@@ -10,13 +10,18 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import "@fontsource/cairo/arabic-400.css";
-import "@fontsource/cairo/arabic-600.css";
-import "@fontsource/cairo/arabic-700.css";
-import "@fontsource/tajawal/arabic-500.css";
-import "@fontsource/tajawal/arabic-700.css";
-import "@fontsource/tajawal/arabic-800.css";
-import "@fontsource/tajawal/arabic-900.css";
+import "@fontsource/cormorant-garamond/400.css";
+import "@fontsource/cormorant-garamond/500.css";
+import "@fontsource/cormorant-garamond/600.css";
+import "@fontsource/cormorant-garamond/700.css";
+import "@fontsource/cormorant-garamond/400-italic.css";
+import "@fontsource/cormorant-garamond/500-italic.css";
+import "@fontsource/manrope/300.css";
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
 import appCss from "../styles.css?url";
 import heroImg from "@/assets/hero-yacht.webp";
 import heroImg640 from "@/assets/hero-yacht-640.webp";
@@ -101,20 +106,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "توت فن لليخوت | تأجير وحجز اليخوت الفاخرة في دبي" },
+      { title: "Toot Fun Yachts | Luxury Yacht Rental & Charter in Dubai" },
       {
         name: "description",
         content:
-          "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات.",
+          "Luxury yacht rental in Dubai. Competitive rates, private cruises, professional crew, for all occasions.",
       },
-      { name: "author", content: "توت فن لليخوت" },
-      { property: "og:title", content: "توت فن لليخوت | تأجير وحجز اليخوت الفاخرة في دبي" },
+      { name: "author", content: "Toot Fun Yachts" },
+      { property: "og:title", content: "Toot Fun Yachts | Luxury Yacht Rental & Charter in Dubai" },
       {
         property: "og:description",
-        content: "يخوت فاخرة، حفلات ورحلات صيد في دبي بأسعار تبدأ من 450 درهم للساعة.",
+        content: "Luxury yachts, parties and fishing trips in Dubai from AED 450/hour.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "توت فن لليخوت" },
+      { property: "og:site_name", content: "Toot Fun Yachts" },
       { name: "twitter:card", content: "summary_large_image" },
       ...(DEFAULT_CONFIG.tracking.googleSiteVerification
         ? [{ name: "google-site-verification", content: DEFAULT_CONFIG.tracking.googleSiteVerification }]
@@ -140,16 +145,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebSite",
               "@id": "https://dubai-yacht.ae/#website",
-              name: "توت فن لليخوت",
+              name: "Toot Fun Yachts",
               alternateName: "Toot Fun Yacht Rental",
               url: "https://dubai-yacht.ae/",
-              inLanguage: "ar",
+              inLanguage: "en",
               publisher: { "@id": "https://dubai-yacht.ae/#organization" },
             },
             {
               "@type": "Organization",
               "@id": "https://dubai-yacht.ae/#organization",
-              name: "توت فن لليخوت",
+              name: "Toot Fun Yachts",
               url: "https://dubai-yacht.ae/",
               logo: "https://dubai-yacht.ae/favicon.png",
               areaServed: "Dubai, United Arab Emirates",
@@ -187,7 +192,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="en" dir="ltr">
       <head>
         <HeadContent />
       </head>

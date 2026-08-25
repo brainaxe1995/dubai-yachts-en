@@ -25,31 +25,31 @@ import jbrImg from "@/assets/yachts/houseboat-55.webp";
 type Item = { icon: LucideIcon; t: string; d: string };
 
 const included: Item[] = [
-  { icon: Anchor, t: "قبطان وطاقم محترف", d: "قبطان مرخّص مع طاقم مدرّب يهتم براحتك طوال الرحلة." },
-  { icon: Fuel, t: "وقود بدون حدود", d: "الوقود مشمول ضمن السعر — لا رسوم مخفية." },
-  { icon: Utensils, t: "أدوات ضيافة", d: "أطباق، أكواب، أدوات مائدة، ثلج، ومياه معدنية." },
-  { icon: Wine, t: "مشروبات باردة", d: "مياه ومشروبات غازية مجانية — شمبانيا وعصائر طازجة كإضافة." },
-  { icon: Music2, t: "نظام صوت ممتاز", d: "بلوتوث ومكبرات صوت عالية الجودة — اربط قائمتك المفضلة." },
-  { icon: LifeBuoy, t: "أمان كامل", d: "سترات نجاة، طفايات حريق، ومعدات إسعافات أولية معتمدة." },
-  { icon: Shield, t: "تأمين ورخصة", d: "اليخت مؤمّن بالكامل ومرخّص من هيئة موانئ دبي." },
-  { icon: Snowflake, t: "تكييف داخلي", d: "مقصورات مبرّدة للاستراحة بعيدًا عن حرارة النهار." },
+  { icon: Anchor, t: "Professional captain and crew", d: "Licensed captain with a trained crew who look after your comfort throughout the trip." },
+  { icon: Fuel, t: "Unlimited fuel", d: "Fuel is included in the price — no hidden charges." },
+  { icon: Utensils, t: "Hospitality kit", d: "Plates, cups, cutlery, ice, and bottled water." },
+  { icon: Wine, t: "Cold beverages", d: "Complimentary water and soft drinks — champagne and fresh juices available as add-ons." },
+  { icon: Music2, t: "Premium sound system", d: "Bluetooth and high-quality speakers — connect your favorite playlist." },
+  { icon: LifeBuoy, t: "Full safety kit", d: "Life jackets, fire extinguishers, and certified first-aid gear." },
+  { icon: Shield, t: "Insurance and license", d: "Yacht is fully insured and licensed by Dubai Ports Authority." },
+  { icon: Snowflake, t: "Air-conditioned interior", d: "Cooled cabins for a break away from the daytime heat." },
 ];
 
 const bring: Item[] = [
-  { icon: Sun, t: "واقي شمس", d: "شمس دبي قوية على البحر — SPF 50+ ضروري خلال ساعات النهار." },
-  { icon: Shirt, t: "ملابس مريحة", d: "قماش خفيف نهارًا، وسترة خفيفة للسهرات على السطح." },
-  { icon: Sparkles, t: "طعامك المفضل", d: "مسموح إحضار طعامك ومشروباتك بدون رسوم إضافية." },
-  { icon: Camera, t: "كاميرا أو هاتف", d: "لحظات الغروب على أفق دبي تستحق التوثيق." },
+  { icon: Sun, t: "Sunscreen", d: "Dubai's sun is strong on the water — SPF 50+ is essential during daylight hours." },
+  { icon: Shirt, t: "Comfortable clothing", d: "Light fabric during the day, and a light jacket for evenings on deck." },
+  { icon: Sparkles, t: "Your favorite food", d: "Bringing your own food and drinks is welcome at no extra charge." },
+  { icon: Camera, t: "Camera or phone", d: "Sunset moments over the Dubai skyline are worth capturing." },
 ];
 
 type Destination = { img: string; t: string; d: string; en: string };
 const destinations: Destination[] = [
-  { img: marinaImg, t: "مرسى دبي", en: "Dubai Marina", d: "نقطة الانطلاق الأشهر — ناطحات السحاب من الماء." },
-  { img: palmImg, t: "نخلة جميرا", en: "Palm Jumeirah", d: "أطول جزيرة اصطناعية بالعالم — منظر جوي من البحر." },
-  { img: burjImg, t: "برج العرب", en: "Burj Al Arab", d: "أفضل زاوية تصوير لأشهر فنادق العالم." },
-  { img: atlantisImg, t: "أتلانتس النخلة", en: "Atlantis The Palm", d: "منتجع فاخر يطل على مياه الخليج." },
-  { img: ainImg, t: "عين دبي", en: "Ain Dubai", d: "أكبر عجلة مراقبة بالعالم — إضاءة ليلية ساحرة." },
-  { img: jbrImg, t: "شاطئ JBR", en: "JBR Beach", d: "الكورنيش الحديث ومارينا الجديدة — إبحار هادئ." },
+  { img: marinaImg, t: "Dubai Marina", en: "Dubai Marina", d: "The most famous departure point — skyscrapers viewed from the water." },
+  { img: palmImg, t: "Palm Jumeirah", en: "Palm Jumeirah", d: "The world's largest man-made island — an aerial view from the sea." },
+  { img: burjImg, t: "Burj Al Arab", en: "Burj Al Arab", d: "The best photo angle of the world's most iconic hotel." },
+  { img: atlantisImg, t: "Atlantis The Palm", en: "Atlantis The Palm", d: "A luxury resort overlooking the Gulf waters." },
+  { img: ainImg, t: "Ain Dubai", en: "Ain Dubai", d: "The world's largest observation wheel — magical night lighting." },
+  { img: jbrImg, t: "JBR Beach", en: "JBR Beach", d: "The modern promenade and new marina — calm cruising." },
 ];
 
 // -------- Panel 1: Included — uniform grid, first card featured navy --------
@@ -72,7 +72,7 @@ function IncludedPanel({ items }: { items: Item[] }) {
                 <p className="relative mt-1.5 text-xs leading-relaxed text-primary-foreground/80">{it.d}</p>
                 <span className="relative mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] font-bold text-gold">
                   <Sparkles className="h-2.5 w-2.5" />
-                  الأساس في كل رحلة
+                  The essential in every trip
                 </span>
               </div>
             </Reveal>
@@ -151,7 +151,7 @@ function DestinationsMasonry({ items }: { items: Destination[] }) {
               <h3 className="mt-2 text-lg font-extrabold leading-tight sm:text-xl">{d.t}</h3>
               <p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/85 line-clamp-2">{d.d}</p>
               <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-gold transition-transform duration-500 group-hover:translate-x-1">
-                استكشف الوجهة
+                Explore destination
                 <ArrowLeft className="h-3.5 w-3.5" />
               </span>
             </div>
@@ -197,18 +197,18 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
         <div className="space-y-16 md:space-y-24">
           <div>
             <PanelHeading
-              eyebrow="مشمول في السعر"
-              title="ما هو مشمول في السعر"
-              subtitle="كل رحلة تشمل الأساسيات — بدون رسوم مخفية أو إضافات مفاجئة."
+              eyebrow="Included in the price"
+              title="What's included in the price"
+              subtitle="Every trip includes the essentials — no hidden fees or surprise add-ons."
             />
             <IncludedPanel items={included} />
           </div>
 
           <div>
             <PanelHeading
-              eyebrow="حقيبتك الذكية"
-              title="ماذا تحضر معك"
-              subtitle="أربع خطوات بسيطة تحضّرك لتجربة كاملة على متن اليخت."
+              eyebrow="Your smart pack"
+              title="What to bring with you"
+              subtitle="Four simple steps to prepare you for the complete on-board yacht experience."
             />
             <BringSteps items={bring} />
           </div>
@@ -216,9 +216,9 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
           {showDestinations ? (
             <div>
               <PanelHeading
-                eyebrow="مسارات الإبحار"
-                title="أشهر الوجهات التي نبحر إليها"
-                subtitle="أيقونات دبي البحرية — يمكن تخصيص المسار بالكامل مع القبطان."
+                eyebrow="Cruising routes"
+                title="The top destinations we cruise to"
+                subtitle="Dubai's marine icons — the route can be fully customized with the captain."
               />
               <DestinationsMasonry items={destinations} />
             </div>

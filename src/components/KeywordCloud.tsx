@@ -14,9 +14,9 @@ export function KeywordCloud({ items }: { items: readonly KeywordItem[] }) {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-gold/20 pb-4">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-deep">
           <Search className="h-4 w-4" />
-          الأكثر بحثًا
+          Most Searched
         </div>
-        <span className="text-xs text-muted-foreground">{items.length} مصطلح شائع</span>
+        <span className="text-xs text-muted-foreground">{items.length} popular terms</span>
       </div>
       <div className="flex flex-wrap gap-2">
         {items.map((k, i) => (

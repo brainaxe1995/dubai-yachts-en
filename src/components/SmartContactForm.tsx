@@ -3,7 +3,7 @@ import { CalendarDays, CheckCircle2, ChevronLeftIcon, ChevronRightIcon, XCircle,
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { format } from "date-fns";
-import { ar } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CONTACT } from "@/data/site";
@@ -27,7 +27,7 @@ export function SmartContactForm() {
   const valid = useMemo(() => (phone ? isValidPhoneNumber(phone) : false), [phone]);
   const showStatus = Boolean(phone && phone.length > 3);
   const dateValue = date ? format(date, "yyyy-MM-dd") : "";
-  const dateLabel = date ? format(date, "EEEE، d MMMM yyyy", { locale: ar }) : "اختر تاريخ";
+  const dateLabel = date ? format(date, "EEEE, d MMMM yyyy", { locale: enUS }) : "Pick a date";
 
   return (
     <form
@@ -39,18 +39,18 @@ export function SmartContactForm() {
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">الاسم الكامل</span>
+          <span className="text-xs font-bold text-muted-foreground">Full Name</span>
           <input
             type="text"
             name="name"
             required
-            placeholder="مثال: أحمد الشامسي"
+            placeholder="e.g. John Smith"
             className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
           />
         </label>
 
         <div className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">رقم الهاتف</span>
+          <span className="text-xs font-bold text-muted-foreground">Phone Number</span>
           <div
             className={`smart-phone flex items-center gap-2 overflow-hidden rounded-xl border bg-background px-3 transition-colors ${
               showStatus ? (valid ? "border-emerald-500/60" : "border-red-500/60") : "border-border focus-within:border-gold"
@@ -62,7 +62,7 @@ export function SmartContactForm() {
               value={phone}
               onChange={setPhone}
               name="phone"
-              placeholder="أدخل رقم الهاتف"
+              placeholder="Enter phone number"
               className="flex-1"
             />
             {showStatus ? (
@@ -74,14 +74,14 @@ export function SmartContactForm() {
             ) : null}
           </div>
           {showStatus && !valid ? (
-            <span className="text-xs text-red-500">رقم غير صحيح — تحقق من عدد الأرقام</span>
+            <span className="text-xs text-red-500">Invalid phone number — check the digit count</span>
           ) : null}
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">البريد الإلكتروني (اختياري)</span>
+          <span className="text-xs font-bold text-muted-foreground">Email (optional)</span>
           <input
             type="email"
             name="email"
@@ -92,18 +92,18 @@ export function SmartContactForm() {
         </label>
 
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">نوع الخدمة</span>
+          <span className="text-xs font-bold text-muted-foreground">Service Type</span>
           <div className="relative">
             <select
               name="service"
               className="w-full appearance-none rounded-xl border border-border bg-background px-4 py-3 pe-10 text-sm outline-none transition-colors focus:border-gold"
             >
-              <option value="">اختر الخدمة</option>
-              <option>تأجير يخت</option>
-              <option>حفلة على يخت</option>
-              <option>رحلة صيد</option>
-              <option>باقة عشاء / إفطار</option>
-              <option>حفل زفاف / طلب زواج</option>
+              <option value="">Select service</option>
+              <option>Yacht Rental</option>
+              <option>Yacht Party</option>
+              <option>Fishing Trip</option>
+              <option>Dinner / Breakfast Package</option>
+              <option>Wedding / Proposal</option>
             </select>
             <ChevronDown className="pointer-events-none absolute end-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           </div>
@@ -111,7 +111,7 @@ export function SmartContactForm() {
       </div>
 
       <div className="grid gap-1.5 sm:max-w-[calc(50%-0.5rem)]">
-        <span className="text-xs font-bold text-muted-foreground">التاريخ المرغوب</span>
+        <span className="text-xs font-bold text-muted-foreground">Preferred Date</span>
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <button
@@ -126,20 +126,19 @@ export function SmartContactForm() {
           </PopoverTrigger>
           <PopoverContent
             align="start"
-            dir="rtl"
             className="w-auto overflow-hidden rounded-2xl border-gold/30 bg-background p-0 shadow-gold"
           >
             <div className="border-b border-gold/20 bg-gradient-to-l from-primary-deep via-primary to-primary-deep px-4 py-3 text-primary-foreground">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold-soft">
                 <CalendarDays className="h-4 w-4" />
-                <span>اختر تاريخ الحجز</span>
+                <span>Pick your booking date</span>
               </div>
               <div className="mt-1 text-sm font-medium text-primary-foreground/90">{dateLabel}</div>
             </div>
             <div dir="ltr" style={{ direction: "ltr" }}>
               <Calendar
                 mode="single"
-                locale={ar}
+                locale={enUS}
                 dir="ltr"
                 weekStartsOn={0}
                 selected={date}
@@ -155,8 +154,8 @@ export function SmartContactForm() {
                   Chevron: ({ orientation, className, ...p }) => {
                     const cls = `size-4 ${className ?? ""}`;
                     const style = { transform: "rotate(0deg)" };
-                    if (orientation === "left") return <ChevronRightIcon className={cls} style={style} {...p} />;
-                    if (orientation === "right") return <ChevronLeftIcon className={cls} style={style} {...p} />;
+                    if (orientation === "left") return <ChevronLeftIcon className={cls} style={style} {...p} />;
+                    if (orientation === "right") return <ChevronRightIcon className={cls} style={style} {...p} />;
                     return <ChevronDown className={cls} style={style} {...p} />;
                   },
                 }}
@@ -168,11 +167,11 @@ export function SmartContactForm() {
       </div>
 
       <label className="grid gap-1.5">
-        <span className="text-xs font-bold text-muted-foreground">تفاصيل الحجز أو الاستفسار</span>
+        <span className="text-xs font-bold text-muted-foreground">Booking Details or Enquiry</span>
         <textarea
           name="text"
           rows={5}
-          placeholder="اكتب هنا عدد الضيوف، المناسبة، والوقت المفضل..."
+          placeholder="Tell us the guest count, occasion, and preferred time..."
           className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
         />
       </label>
@@ -182,7 +181,7 @@ export function SmartContactForm() {
         disabled={showStatus && !valid}
         className="mt-2 rounded-xl bg-primary-deep px-6 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
       >
-        إرسال الاستفسار عبر واتساب
+        Send Enquiry via WhatsApp
       </button>
     </form>
   );

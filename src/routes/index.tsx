@@ -26,55 +26,55 @@ import whatIncludedImg from "@/assets/branding/what-included.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت" },
+      { title: "Yacht Rental Dubai | Best Prices - Toot Fun Yachts" },
       {
         name: "description",
         content:
-          "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
+          "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
       },
-      { property: "og:title", content: "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت" },
+      { property: "og:title", content: "Yacht Rental Dubai | Best Prices - Toot Fun Yachts" },
       {
         property: "og:description",
         content:
-          "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
+          "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
       },
-      { property: "og:url", content: "https://dubai-yacht.ae/" },
+      { property: "og:url", content: "https://tootfunyachts.com/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/" },
     ],
   }),
   component: Home,
 });
 
 const features = [
-  { icon: Anchor, t: "يخوت فاخرة", d: "مجموعة واسعة من أفخم اليخوت للإيجار في دبي" },
-  { icon: ShieldCheck, t: "أمان وراحة", d: "معايير أمان عالية وخدمة مميزة" },
-  { icon: Users, t: "طاقم محترف", d: "طاقم مدرب لتقديم أفضل خدمة" },
-  { icon: Headphones, t: "دعم 24/7", d: "خدمة عملاء متاحة على مدار الساعة" },
+  { icon: Anchor, t: "Luxury Yachts", d: "A wide selection of the finest yachts for rent in Dubai" },
+  { icon: ShieldCheck, t: "Safety & Comfort", d: "High safety standards and premium service" },
+  { icon: Users, t: "Professional Crew", d: "Trained crew delivering the best service" },
+  { icon: Headphones, t: "24/7 Support", d: "Customer service available around the clock" },
 ];
 
 const services = [
-  { to: "/حفلات-اليخوت-في-دبي/", img: partyImg, t: "حفلات اليخوت في دبي", d: "أعياد ميلاد، خطوبة، زفاف وتخرج على متن يخت فاخر." },
-  { to: "/رحلات-صيد-السمك-في-دبي/", img: fishingImg, t: "رحلات صيد السمك", d: "رحلات خاصة ومشتركة مع قوارب مجهزة وطاقم محترف." },
-  { to: "/باقات-تأجير-اليخوت-في-دبي/", img: packagesImg, t: "باقات وعروض اليخوت", d: "إفطار، عشاء رومانسي، وجيت سكي ضمن باقات مميزة." },
+  { to: "/yacht-party-dubai/", img: partyImg, t: "Yacht Parties in Dubai", d: "Birthdays, engagements, weddings, and graduations aboard a luxury yacht." },
+  { to: "/fishing-trip-dubai/", img: fishingImg, t: "Fishing Trips", d: "Private and shared trips with fully equipped boats and a professional crew." },
+  { to: "/yacht-packages-dubai/", img: packagesImg, t: "Yacht Packages & Offers", d: "Breakfast, romantic dinner, and jet ski within curated packages." },
 ] as const;
 
 function Home() {
   return (
     <>
       <PageHero
-        eyebrow="رحلة بحرية لا تُنسى"
-        title="تأجير يخوت في دبي مع توت فن"
-        subtitle="استمتع بأفضل خدمات تأجير اليخوت في دبي مع رحلات خاصة، أسعار مميزة، ويخوت فاخرة لجميع المناسبات."
+        eyebrow="An Unforgettable Sea Trip"
+        title="Yacht Rental in Dubai with Toot Fun"
+        subtitle="Enjoy the best yacht rental services in Dubai with private trips, competitive prices, and luxury yachts for every occasion."
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="أفضل اليخوت للإيجار في دبي بأسعار تنافسية"
-          subtitle="اختر من مجموعة متنوعة من أفضل اليخوت للإيجار في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة."
+          title="Best Yachts for Rent in Dubai at Competitive Prices"
+          subtitle="Choose from a diverse range of the best yachts for rent in Dubai at competitive prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {yachts.slice(0, 6).map((p, i) => (
@@ -83,10 +83,10 @@ function Home() {
         </div>
         <Reveal className="mt-10 text-center">
           <Link
-            to="/تأجير-يخوت-في-دبي/"
+            to="/yacht-rental-dubai/"
             className="inline-flex rounded-full border border-primary/20 px-7 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            اكتشف المزيد
+            Discover More
           </Link>
         </Reveal>
       </section>
@@ -95,10 +95,10 @@ function Home() {
         <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <h2 className="text-2xl text-primary-foreground md:text-3xl">
-              لماذا تختار <span className="text-gold-gradient">توت فن</span> لتأجير اليخوت في دبي؟
+              Why choose <span className="text-gold-gradient">Toot Fun</span> for yacht rental in Dubai?
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70 md:text-base">
-              تتميز توت فن بخدمة احترافية، يخوت متنوعة، أسعار واضحة، وطاقم متمرس لتجربة بحرية مريحة ومميزة في دبي.
+              Toot Fun stands out with professional service, a diverse fleet, transparent pricing, and an experienced crew for a comfortable, memorable sea experience in Dubai.
             </p>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -117,8 +117,8 @@ function Home() {
 
       <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="خدمات توت فن لتأجير اليخوت في دبي"
-          subtitle="اكتشف خدمات توت فن المتنوعة لتأجير اليخوت في دبي."
+          title="Toot Fun Yacht Rental Services in Dubai"
+          subtitle="Discover Toot Fun's diverse yacht rental services in Dubai."
         />
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((s, i) => (
@@ -140,7 +140,7 @@ function Home() {
                 <div className="p-5">
                   <h3 className="text-lg text-foreground">{s.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
-                  <span className="mt-4 inline-block text-sm font-bold text-gold-deep">اكتشف الآن ←</span>
+                  <span className="mt-4 inline-block text-sm font-bold text-gold-deep">Discover Now →</span>
                 </div>
               </Link>
             </Reveal>
@@ -151,8 +151,8 @@ function Home() {
       <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
-            title="كيف تحجز يختك في دبي؟"
-            subtitle="ثماني خطوات بسيطة تفصلك عن رحلة بحرية فاخرة."
+            title="How to Book Your Yacht in Dubai?"
+            subtitle="Eight simple steps between you and a luxury sea trip."
           />
           <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
@@ -172,8 +172,8 @@ function Home() {
 
       <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="إضافات حجز اليخوت في دبي"
-          subtitle="خصّص تجربتك بإضافات مميزة — من الكيك والحلويات إلى الرياضات المائية والتصوير الاحترافي. مرّر بمؤشر الفأرة لإيقاف الحركة."
+          title="Yacht Booking Add-Ons in Dubai"
+          subtitle="Customize your experience with premium add-ons — from cakes and desserts to water sports and professional photography. Hover to pause the motion."
         />
         <ExtrasMarquee items={extras} />
       </section>
@@ -182,8 +182,8 @@ function Home() {
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
             onDark
-            title="أشهر الوجهات البحرية في دبي"
-            subtitle="استمتع برحلة بحرية مميزة واكتشف أشهر الوجهات البحرية في دبي، من دبي مارينا وJBR إلى نخلة جميرا وأتلانتس وبرج العرب."
+            title="Top Sea Destinations in Dubai"
+            subtitle="Enjoy a memorable sea trip and discover the most iconic marine destinations in Dubai, from Dubai Marina and JBR to Palm Jumeirah, Atlantis, and Burj Al Arab."
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {destinations.map((d, i) => (
@@ -201,9 +201,9 @@ function Home() {
       <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-            <h2 className="text-2xl text-foreground md:text-3xl">ماذا تشمل رحلتك على متن اليخت</h2>
+            <h2 className="text-2xl text-foreground md:text-3xl">What Your Yacht Trip Includes</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              استمتع برحلة يخت في دبي تشمل الطاقم، الوقود، معدات السلامة والمشروبات، مع خيارات إضافية حسب رغبتك.
+              Enjoy a yacht trip in Dubai that includes the crew, fuel, safety equipment, and drinks, with optional add-ons to suit your preferences.
             </p>
             <span className="mx-auto mt-5 block h-px w-24 bg-gradient-to-l from-transparent via-gold to-transparent" />
           </Reveal>
@@ -212,7 +212,7 @@ function Home() {
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
                 <img
                   src={whatIncludedImg}
-                  alt="ماذا تشمل رحلة اليخت — كابتن، طاقم، وقود، تأمين، مشروبات وضيافة"
+                  alt="What the yacht trip includes — captain, crew, fuel, insurance, drinks, and hospitality"
                   loading="lazy"
                   width={1200}
                   height={900}
@@ -236,8 +236,8 @@ function Home() {
 
       <section className="cv-auto mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="أسئلة شائعة حول تأجير اليخوت في دبي"
-          subtitle="اكتشف أهم الإجابات حول تأجير اليخوت في دبي، بما في ذلك الأسعار، الحجز، المدة، الخدمات المتوفرة، وما تحتاج معرفته قبل رحلتك."
+          title="Frequently Asked Questions About Yacht Rental in Dubai"
+          subtitle="Discover key answers about yacht rental in Dubai — including prices, booking, duration, available services, and what you need to know before your trip."
         />
         <Accordion items={faqs} />
       </section>
@@ -246,23 +246,23 @@ function Home() {
       <section className="cv-auto bg-muted py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
-            title="ماذا يقول ضيوفنا؟"
-            subtitle="اكتشف آراء ضيوفنا حول تجارب تأجير اليخوت في دبي، من الرحلات الخاصة والاحتفالات إلى أجمل اللحظات على متن اليخت."
+            title="What Our Guests Say"
+            subtitle="Discover guest reviews of yacht rental experiences in Dubai, from private trips and celebrations to the finest moments aboard our yachts."
           />
           <Testimonials items={testimonials} />
         </div>
       </section>
 
       <ContactCta
-        title="جاهز للإبحار في دبي؟"
-        subtitle="احجز يختك الآن واستفد من أفضل عروض تأجير اليخوت في دبي مارينا."
+        title="Ready to Sail in Dubai?"
+        subtitle="Book your yacht now and take advantage of the best yacht rental offers in Dubai Marina."
       />
 
       {/* Keyword cloud — LAST section (matches other pages) */}
       <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="أشهر عمليات البحث عن اليخوت والرحلات البحرية في دبي"
-          subtitle="اكتشف أكثر عمليات البحث شيوعًا حول تأجير اليخوت والرحلات البحرية في دبي للوصول بسرعة إلى الخدمة أو التجربة التي تناسبك."
+          title="Top Searches for Yachts and Sea Trips in Dubai"
+          subtitle="Discover the most popular searches about yacht rental and sea trips in Dubai to quickly reach the service or experience that suits you."
         />
         <KeywordCloud items={keywordCloudFlat} />
       </section>

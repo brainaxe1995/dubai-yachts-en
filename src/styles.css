@@ -92,8 +92,8 @@
   --gradient-gold: linear-gradient(120deg, oklch(0.68 0.115 82), oklch(0.87 0.086 88), oklch(0.72 0.122 84));
   --shadow-luxe: 0 24px 60px -28px oklch(0.19 0.037 258 / 0.45);
   --shadow-gold: 0 18px 40px -20px oklch(0.76 0.128 85.5 / 0.55);
-  --font-display: "Tajawal", system-ui, sans-serif;
-  --font-body: "Cairo", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Manrope", system-ui, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -176,8 +176,13 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: -0.01em;
+    line-height: 1.1;
+    /* Cormorant's x-height is smaller than sans — this tells the browser
+       to render the serif with the visual size of a sans at the same px,
+       so tailwind text-* classes read at their intended visual size. */
+    font-size-adjust: 0.5;
   }
 }
 

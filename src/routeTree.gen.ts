@@ -10,32 +10,37 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CancellationPolicyRouteImport } from './routes/cancellation-policy'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as FishingTripDubaiRouteImport } from './routes/fishing-trip-dubai'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as RentAYachtDubaiRouteImport } from './routes/rent-a-yacht-dubai'
 import { Route as SeoAuditRouteImport } from './routes/seo-audit'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/إيجار-يخوت-في-دبي'
-import { Route as Char1575Char1578Char1589Char1604Char1576Char1606Char1575RouteImport } from './routes/اتصل-بنا'
-import { Route as Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605RouteImport } from './routes/الشروط-والأحكام'
-import { Route as Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteImport } from './routes/المدونة'
-import { Route as Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/باقات-تأجير-اليخوت-في-دبي'
-import { Route as Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/تأجير-يخوت-في-دبي'
-import { Route as Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/حجز-يخوت-في-دبي'
-import { Route as Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/حفلات-اليخوت-في-دبي'
-import { Route as Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593RouteImport } from './routes/خريطة-الموقع'
-import { Route as Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/رحلات-صيد-السمك-في-دبي'
-import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569RouteImport } from './routes/سياسة-الإلغاء'
-import { Route as Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport } from './routes/سياسة-الخصوصية'
-import { Route as Char1605Char1606Char1606Char1581Char1606RouteImport } from './routes/من-نحن'
-import { Route as Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport } from './routes/يخوت-للإيجار-في-دبي'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as YachtBookingDubaiRouteImport } from './routes/yacht-booking-dubai'
+import { Route as YachtCharterDubaiRouteImport } from './routes/yacht-charter-dubai'
+import { Route as YachtPackagesDubaiRouteImport } from './routes/yacht-packages-dubai'
+import { Route as YachtPartyDubaiRouteImport } from './routes/yacht-party-dubai'
+import { Route as YachtRentalDubaiRouteImport } from './routes/yacht-rental-dubai'
 import { Route as ApiCachePurgeRouteImport } from './routes/api.cache-purge'
 import { Route as ApiConfigRouteImport } from './routes/api.config'
 import { Route as ApiOverridesRouteImport } from './routes/api.overrides'
 import { Route as ApiPasswordRouteImport } from './routes/api.password'
-import { Route as Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport } from './routes/المدونة_.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -43,9 +48,44 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CancellationPolicyRoute = CancellationPolicyRouteImport.update({
+  id: '/cancellation-policy',
+  path: '/cancellation-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FishingTripDubaiRoute = FishingTripDubaiRouteImport.update({
+  id: '/fishing-trip-dubai',
+  path: '/fishing-trip-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RentAYachtDubaiRoute = RentAYachtDubaiRouteImport.update({
+  id: '/rent-a-yacht-dubai',
+  path: '/rent-a-yacht-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SeoAuditRoute = SeoAuditRouteImport.update({
   id: '/seo-audit',
   path: '/seo-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -53,112 +93,36 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
-  Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/إيجار-يخوت-في-دبي',
-      path: '/إيجار-يخوت-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route =
-  Char1575Char1578Char1589Char1604Char1576Char1606Char1575RouteImport.update({
-    id: '/اتصل-بنا',
-    path: '/اتصل-بنا',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route =
-  Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605RouteImport.update(
-    {
-      id: '/الشروط-والأحكام',
-      path: '/الشروط-والأحكام',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route =
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteImport.update({
-    id: '/المدونة',
-    path: '/المدونة',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
-  Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/باقات-تأجير-اليخوت-في-دبي',
-      path: '/باقات-تأجير-اليخوت-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
-  Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/تأجير-يخوت-في-دبي',
-      path: '/تأجير-يخوت-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
-  Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/حجز-يخوت-في-دبي',
-      path: '/حجز-يخوت-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route =
-  Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/حفلات-اليخوت-في-دبي',
-      path: '/حفلات-اليخوت-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route =
-  Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593RouteImport.update(
-    {
-      id: '/خريطة-الموقع',
-      path: '/خريطة-الموقع',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route =
-  Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/رحلات-صيد-السمك-في-دبي',
-      path: '/رحلات-صيد-السمك-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route =
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569RouteImport.update(
-    {
-      id: '/سياسة-الإلغاء',
-      path: '/سياسة-الإلغاء',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route =
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport.update(
-    {
-      id: '/سياسة-الخصوصية',
-      path: '/سياسة-الخصوصية',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const Char1605Char1606Char1606Char1581Char1606Route =
-  Char1605Char1606Char1606Char1581Char1606RouteImport.update({
-    id: '/من-نحن',
-    path: '/من-نحن',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route =
-  Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport.update(
-    {
-      id: '/يخوت-للإيجار-في-دبي',
-      path: '/يخوت-للإيجار-في-دبي',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtBookingDubaiRoute = YachtBookingDubaiRouteImport.update({
+  id: '/yacht-booking-dubai',
+  path: '/yacht-booking-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtCharterDubaiRoute = YachtCharterDubaiRouteImport.update({
+  id: '/yacht-charter-dubai',
+  path: '/yacht-charter-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtPackagesDubaiRoute = YachtPackagesDubaiRouteImport.update({
+  id: '/yacht-packages-dubai',
+  path: '/yacht-packages-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtPartyDubaiRoute = YachtPartyDubaiRouteImport.update({
+  id: '/yacht-party-dubai',
+  path: '/yacht-party-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YachtRentalDubaiRoute = YachtRentalDubaiRouteImport.update({
+  id: '/yacht-rental-dubai',
+  path: '/yacht-rental-dubai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiCachePurgeRoute = ApiCachePurgeRouteImport.update({
   id: '/api/cache-purge',
   path: '/api/cache-purge',
@@ -179,193 +143,190 @@ const ApiPasswordRoute = ApiPasswordRouteImport.update({
   path: '/api/password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute =
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport.update(
-    {
-      id: '/المدونة_/$slug',
-      path: '/المدونة/$slug',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog_/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
+  '/cancellation-policy': typeof CancellationPolicyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/fishing-trip-dubai': typeof FishingTripDubaiRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rent-a-yacht-dubai': typeof RentAYachtDubaiRoute
   '/seo-audit': typeof SeoAuditRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
-  '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
-  '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حفلات-اليخوت-في-دبي': typeof Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/خريطة-الموقع': typeof Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route
-  '/رحلات-صيد-السمك-في-دبي': typeof Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route
-  '/سياسة-الإلغاء': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route
-  '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
-  '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
-  '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/yacht-booking-dubai': typeof YachtBookingDubaiRoute
+  '/yacht-charter-dubai': typeof YachtCharterDubaiRoute
+  '/yacht-packages-dubai': typeof YachtPackagesDubaiRoute
+  '/yacht-party-dubai': typeof YachtPartyDubaiRoute
+  '/yacht-rental-dubai': typeof YachtRentalDubaiRoute
   '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
-  '/المدونة/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
+  '/cancellation-policy': typeof CancellationPolicyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/fishing-trip-dubai': typeof FishingTripDubaiRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rent-a-yacht-dubai': typeof RentAYachtDubaiRoute
   '/seo-audit': typeof SeoAuditRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
-  '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
-  '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حفلات-اليخوت-في-دبي': typeof Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/خريطة-الموقع': typeof Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route
-  '/رحلات-صيد-السمك-في-دبي': typeof Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route
-  '/سياسة-الإلغاء': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route
-  '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
-  '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
-  '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/yacht-booking-dubai': typeof YachtBookingDubaiRoute
+  '/yacht-charter-dubai': typeof YachtCharterDubaiRoute
+  '/yacht-packages-dubai': typeof YachtPackagesDubaiRoute
+  '/yacht-party-dubai': typeof YachtPartyDubaiRoute
+  '/yacht-rental-dubai': typeof YachtRentalDubaiRoute
   '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
-  '/المدونة/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
+  '/cancellation-policy': typeof CancellationPolicyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/fishing-trip-dubai': typeof FishingTripDubaiRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rent-a-yacht-dubai': typeof RentAYachtDubaiRoute
   '/seo-audit': typeof SeoAuditRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/إيجار-يخوت-في-دبي': typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/اتصل-بنا': typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
-  '/الشروط-والأحكام': typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  '/المدونة': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
-  '/باقات-تأجير-اليخوت-في-دبي': typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/تأجير-يخوت-في-دبي': typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حجز-يخوت-في-دبي': typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/حفلات-اليخوت-في-دبي': typeof Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  '/خريطة-الموقع': typeof Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route
-  '/رحلات-صيد-السمك-في-دبي': typeof Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route
-  '/سياسة-الإلغاء': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route
-  '/سياسة-الخصوصية': typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
-  '/من-نحن': typeof Char1605Char1606Char1606Char1581Char1606Route
-  '/يخوت-للإيجار-في-دبي': typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/yacht-booking-dubai': typeof YachtBookingDubaiRoute
+  '/yacht-charter-dubai': typeof YachtCharterDubaiRoute
+  '/yacht-packages-dubai': typeof YachtPackagesDubaiRoute
+  '/yacht-party-dubai': typeof YachtPartyDubaiRoute
+  '/yacht-rental-dubai': typeof YachtRentalDubaiRoute
   '/api/cache-purge': typeof ApiCachePurgeRoute
   '/api/config': typeof ApiConfigRoute
   '/api/overrides': typeof ApiOverridesRoute
   '/api/password': typeof ApiPasswordRoute
-  '/المدونة_/$slug': typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
+  '/blog_/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-us'
     | '/admin'
+    | '/blog'
+    | '/cancellation-policy'
+    | '/contact-us'
+    | '/fishing-trip-dubai'
+    | '/privacy-policy'
+    | '/rent-a-yacht-dubai'
     | '/seo-audit'
+    | '/sitemap'
     | '/sitemap.xml'
-    | '/إيجار-يخوت-في-دبي'
-    | '/اتصل-بنا'
-    | '/الشروط-والأحكام'
-    | '/المدونة'
-    | '/باقات-تأجير-اليخوت-في-دبي'
-    | '/تأجير-يخوت-في-دبي'
-    | '/حجز-يخوت-في-دبي'
-    | '/حفلات-اليخوت-في-دبي'
-    | '/خريطة-الموقع'
-    | '/رحلات-صيد-السمك-في-دبي'
-    | '/سياسة-الإلغاء'
-    | '/سياسة-الخصوصية'
-    | '/من-نحن'
-    | '/يخوت-للإيجار-في-دبي'
+    | '/terms-and-conditions'
+    | '/yacht-booking-dubai'
+    | '/yacht-charter-dubai'
+    | '/yacht-packages-dubai'
+    | '/yacht-party-dubai'
+    | '/yacht-rental-dubai'
     | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
-    | '/المدونة/$slug'
+    | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-us'
     | '/admin'
+    | '/blog'
+    | '/cancellation-policy'
+    | '/contact-us'
+    | '/fishing-trip-dubai'
+    | '/privacy-policy'
+    | '/rent-a-yacht-dubai'
     | '/seo-audit'
+    | '/sitemap'
     | '/sitemap.xml'
-    | '/إيجار-يخوت-في-دبي'
-    | '/اتصل-بنا'
-    | '/الشروط-والأحكام'
-    | '/المدونة'
-    | '/باقات-تأجير-اليخوت-في-دبي'
-    | '/تأجير-يخوت-في-دبي'
-    | '/حجز-يخوت-في-دبي'
-    | '/حفلات-اليخوت-في-دبي'
-    | '/خريطة-الموقع'
-    | '/رحلات-صيد-السمك-في-دبي'
-    | '/سياسة-الإلغاء'
-    | '/سياسة-الخصوصية'
-    | '/من-نحن'
-    | '/يخوت-للإيجار-في-دبي'
+    | '/terms-and-conditions'
+    | '/yacht-booking-dubai'
+    | '/yacht-charter-dubai'
+    | '/yacht-packages-dubai'
+    | '/yacht-party-dubai'
+    | '/yacht-rental-dubai'
     | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
-    | '/المدونة/$slug'
+    | '/blog/$slug'
   id:
     | '__root__'
     | '/'
+    | '/about-us'
     | '/admin'
+    | '/blog'
+    | '/cancellation-policy'
+    | '/contact-us'
+    | '/fishing-trip-dubai'
+    | '/privacy-policy'
+    | '/rent-a-yacht-dubai'
     | '/seo-audit'
+    | '/sitemap'
     | '/sitemap.xml'
-    | '/إيجار-يخوت-في-دبي'
-    | '/اتصل-بنا'
-    | '/الشروط-والأحكام'
-    | '/المدونة'
-    | '/باقات-تأجير-اليخوت-في-دبي'
-    | '/تأجير-يخوت-في-دبي'
-    | '/حجز-يخوت-في-دبي'
-    | '/حفلات-اليخوت-في-دبي'
-    | '/خريطة-الموقع'
-    | '/رحلات-صيد-السمك-في-دبي'
-    | '/سياسة-الإلغاء'
-    | '/سياسة-الخصوصية'
-    | '/من-نحن'
-    | '/يخوت-للإيجار-في-دبي'
+    | '/terms-and-conditions'
+    | '/yacht-booking-dubai'
+    | '/yacht-charter-dubai'
+    | '/yacht-packages-dubai'
+    | '/yacht-party-dubai'
+    | '/yacht-rental-dubai'
     | '/api/cache-purge'
     | '/api/config'
     | '/api/overrides'
     | '/api/password'
-    | '/المدونة_/$slug'
+    | '/blog_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
   AdminRoute: typeof AdminRoute
+  BlogRoute: typeof BlogRoute
+  CancellationPolicyRoute: typeof CancellationPolicyRoute
+  ContactUsRoute: typeof ContactUsRoute
+  FishingTripDubaiRoute: typeof FishingTripDubaiRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RentAYachtDubaiRoute: typeof RentAYachtDubaiRoute
   SeoAuditRoute: typeof SeoAuditRoute
+  SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route: typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route
-  Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route: typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route
-  Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route: typeof Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route
-  Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route: typeof Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route
-  Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route: typeof Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route
-  Char1605Char1606Char1606Char1581Char1606Route: typeof Char1605Char1606Char1606Char1581Char1606Route
-  Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  YachtBookingDubaiRoute: typeof YachtBookingDubaiRoute
+  YachtCharterDubaiRoute: typeof YachtCharterDubaiRoute
+  YachtPackagesDubaiRoute: typeof YachtPackagesDubaiRoute
+  YachtPartyDubaiRoute: typeof YachtPartyDubaiRoute
+  YachtRentalDubaiRoute: typeof YachtRentalDubaiRoute
   ApiCachePurgeRoute: typeof ApiCachePurgeRoute
   ApiConfigRoute: typeof ApiConfigRoute
   ApiOverridesRoute: typeof ApiOverridesRoute
   ApiPasswordRoute: typeof ApiPasswordRoute
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute
+  BlogSlugRoute: typeof BlogSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -377,11 +338,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cancellation-policy': {
+      id: '/cancellation-policy'
+      path: '/cancellation-policy'
+      fullPath: '/cancellation-policy'
+      preLoaderRoute: typeof CancellationPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fishing-trip-dubai': {
+      id: '/fishing-trip-dubai'
+      path: '/fishing-trip-dubai'
+      fullPath: '/fishing-trip-dubai'
+      preLoaderRoute: typeof FishingTripDubaiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rent-a-yacht-dubai': {
+      id: '/rent-a-yacht-dubai'
+      path: '/rent-a-yacht-dubai'
+      fullPath: '/rent-a-yacht-dubai'
+      preLoaderRoute: typeof RentAYachtDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/seo-audit': {
@@ -391,6 +401,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeoAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -398,102 +415,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/إيجار-يخوت-في-دبي': {
-      id: '/إيجار-يخوت-في-دبي'
-      path: '/إيجار-يخوت-في-دبي'
-      fullPath: '/إيجار-يخوت-في-دبي'
-      preLoaderRoute: typeof Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/اتصل-بنا': {
-      id: '/اتصل-بنا'
-      path: '/اتصل-بنا'
-      fullPath: '/اتصل-بنا'
-      preLoaderRoute: typeof Char1575Char1578Char1589Char1604Char1576Char1606Char1575RouteImport
+    '/yacht-booking-dubai': {
+      id: '/yacht-booking-dubai'
+      path: '/yacht-booking-dubai'
+      fullPath: '/yacht-booking-dubai'
+      preLoaderRoute: typeof YachtBookingDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/الشروط-والأحكام': {
-      id: '/الشروط-والأحكام'
-      path: '/الشروط-والأحكام'
-      fullPath: '/الشروط-والأحكام'
-      preLoaderRoute: typeof Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605RouteImport
+    '/yacht-charter-dubai': {
+      id: '/yacht-charter-dubai'
+      path: '/yacht-charter-dubai'
+      fullPath: '/yacht-charter-dubai'
+      preLoaderRoute: typeof YachtCharterDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/المدونة': {
-      id: '/المدونة'
-      path: '/المدونة'
-      fullPath: '/المدونة'
-      preLoaderRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577RouteImport
+    '/yacht-packages-dubai': {
+      id: '/yacht-packages-dubai'
+      path: '/yacht-packages-dubai'
+      fullPath: '/yacht-packages-dubai'
+      preLoaderRoute: typeof YachtPackagesDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/باقات-تأجير-اليخوت-في-دبي': {
-      id: '/باقات-تأجير-اليخوت-في-دبي'
-      path: '/باقات-تأجير-اليخوت-في-دبي'
-      fullPath: '/باقات-تأجير-اليخوت-في-دبي'
-      preLoaderRoute: typeof Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport
+    '/yacht-party-dubai': {
+      id: '/yacht-party-dubai'
+      path: '/yacht-party-dubai'
+      fullPath: '/yacht-party-dubai'
+      preLoaderRoute: typeof YachtPartyDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/تأجير-يخوت-في-دبي': {
-      id: '/تأجير-يخوت-في-دبي'
-      path: '/تأجير-يخوت-في-دبي'
-      fullPath: '/تأجير-يخوت-في-دبي'
-      preLoaderRoute: typeof Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/حجز-يخوت-في-دبي': {
-      id: '/حجز-يخوت-في-دبي'
-      path: '/حجز-يخوت-في-دبي'
-      fullPath: '/حجز-يخوت-في-دبي'
-      preLoaderRoute: typeof Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/حفلات-اليخوت-في-دبي': {
-      id: '/حفلات-اليخوت-في-دبي'
-      path: '/حفلات-اليخوت-في-دبي'
-      fullPath: '/حفلات-اليخوت-في-دبي'
-      preLoaderRoute: typeof Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/خريطة-الموقع': {
-      id: '/خريطة-الموقع'
-      path: '/خريطة-الموقع'
-      fullPath: '/خريطة-الموقع'
-      preLoaderRoute: typeof Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/رحلات-صيد-السمك-في-دبي': {
-      id: '/رحلات-صيد-السمك-في-دبي'
-      path: '/رحلات-صيد-السمك-في-دبي'
-      fullPath: '/رحلات-صيد-السمك-في-دبي'
-      preLoaderRoute: typeof Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/سياسة-الإلغاء': {
-      id: '/سياسة-الإلغاء'
-      path: '/سياسة-الإلغاء'
-      fullPath: '/سياسة-الإلغاء'
-      preLoaderRoute: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/سياسة-الخصوصية': {
-      id: '/سياسة-الخصوصية'
-      path: '/سياسة-الخصوصية'
-      fullPath: '/سياسة-الخصوصية'
-      preLoaderRoute: typeof Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/من-نحن': {
-      id: '/من-نحن'
-      path: '/من-نحن'
-      fullPath: '/من-نحن'
-      preLoaderRoute: typeof Char1605Char1606Char1606Char1581Char1606RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/يخوت-للإيجار-في-دبي': {
-      id: '/يخوت-للإيجار-في-دبي'
-      path: '/يخوت-للإيجار-في-دبي'
-      fullPath: '/يخوت-للإيجار-في-دبي'
-      preLoaderRoute: typeof Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610RouteImport
+    '/yacht-rental-dubai': {
+      id: '/yacht-rental-dubai'
+      path: '/yacht-rental-dubai'
+      fullPath: '/yacht-rental-dubai'
+      preLoaderRoute: typeof YachtRentalDubaiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/cache-purge': {
@@ -524,11 +485,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/المدونة_/$slug': {
-      id: '/المدونة_/$slug'
-      path: '/المدونة/$slug'
-      fullPath: '/المدونة/$slug'
-      preLoaderRoute: typeof Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRouteImport
+    '/blog_/$slug': {
+      id: '/blog_/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -536,43 +497,28 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
   AdminRoute: AdminRoute,
+  BlogRoute: BlogRoute,
+  CancellationPolicyRoute: CancellationPolicyRoute,
+  ContactUsRoute: ContactUsRoute,
+  FishingTripDubaiRoute: FishingTripDubaiRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RentAYachtDubaiRoute: RentAYachtDubaiRoute,
   SeoAuditRoute: SeoAuditRoute,
+  SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
-    Char1573Char1610Char1580Char1575Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
-  Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route:
-    Char1575Char1578Char1589Char1604Char1576Char1606Char1575Route,
-  Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route:
-    Char1575Char1604Char1588Char1585Char1608Char1591Char1608Char1575Char1604Char1571Char1581Char1603Char1575Char1605Route,
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route:
-    Char1575Char1604Char1605Char1583Char1608Char1606Char1577Route,
-  Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
-    Char1576Char1575Char1602Char1575Char1578Char1578Char1571Char1580Char1610Char1585Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
-  Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
-    Char1578Char1571Char1580Char1610Char1585Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
-  Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
-    Char1581Char1580Char1586Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
-  Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route:
-    Char1581Char1601Char1604Char1575Char1578Char1575Char1604Char1610Char1582Char1608Char1578Char1601Char1610Char1583Char1576Char1610Route,
-  Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route:
-    Char1582Char1585Char1610Char1591Char1577Char1575Char1604Char1605Char1608Char1602Char1593Route,
-  Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route:
-    Char1585Char1581Char1604Char1575Char1578Char1589Char1610Char1583Char1575Char1604Char1587Char1605Char1603Char1601Char1610Char1583Char1576Char1610Route,
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route:
-    Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1573Char1604Char1594Char1575Char1569Route,
-  Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route:
-    Char1587Char1610Char1575Char1587Char1577Char1575Char1604Char1582Char1589Char1608Char1589Char1610Char1577Route,
-  Char1605Char1606Char1606Char1581Char1606Route:
-    Char1605Char1606Char1606Char1581Char1606Route,
-  Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route:
-    Char1610Char1582Char1608Char1578Char1604Char1604Char1573Char1610Char1580Char1575Char1585Char1601Char1610Char1583Char1576Char1610Route,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
+  YachtBookingDubaiRoute: YachtBookingDubaiRoute,
+  YachtCharterDubaiRoute: YachtCharterDubaiRoute,
+  YachtPackagesDubaiRoute: YachtPackagesDubaiRoute,
+  YachtPartyDubaiRoute: YachtPartyDubaiRoute,
+  YachtRentalDubaiRoute: YachtRentalDubaiRoute,
   ApiCachePurgeRoute: ApiCachePurgeRoute,
   ApiConfigRoute: ApiConfigRoute,
   ApiOverridesRoute: ApiOverridesRoute,
   ApiPasswordRoute: ApiPasswordRoute,
-  Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute:
-    Char1575Char1604Char1605Char1583Char1608Char1606Char1577SlugRoute,
+  BlogSlugRoute: BlogSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

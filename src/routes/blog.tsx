@@ -5,46 +5,46 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { posts } from "@/data/blog";
 
-export const Route = createFileRoute("/المدونة")({
+export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "المدونة | نصائح ودليل تأجير اليخوت في دبي | توت فن لليخوت" },
+      { title: "Blog | Dubai Yacht Rental Tips & Guides | Toot Fun Yachts" },
       {
         name: "description",
         content:
-          "اكتشف المدونة وتعرّف على أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي.",
+          "Explore the blog for the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai.",
       },
-      { property: "og:title", content: "المدونة | دليل تأجير اليخوت في دبي" },
-      { property: "og:description", content: "نصائح وأفكار حول الرحلات البحرية وحفلات اليخوت في دبي." },
-      { property: "og:url", content: "https://dubai-yacht.ae/المدونة/" },
+      { property: "og:title", content: "Blog | Dubai Yacht Rental Guide" },
+      { property: "og:description", content: "Tips and ideas for sea cruises and yacht parties in Dubai." },
+      { property: "og:url", content: "https://tootfunyachts.com/blog/" },
     ],
     links: [
-      { rel: "canonical", href: "https://dubai-yacht.ae/المدونة/" },
-      { rel: "alternate", hrefLang: "ar", href: "https://dubai-yacht.ae/المدونة/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yacht.ae/المدونة/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/blog/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/blog/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/blog/" },
     ],
   }),
   component: Blog,
 });
 
 function Blog() {
-  const [activeTag, setActiveTag] = useState<string>("الكل");
-  const tags = ["الكل", ...Array.from(new Set(posts.map((p) => p.tag)))];
-  const filtered = activeTag === "الكل" ? posts : posts.filter((p) => p.tag === activeTag);
+  const [activeTag, setActiveTag] = useState<string>("All");
+  const tags = ["All", ...Array.from(new Set(posts.map((p) => p.tag)))];
+  const filtered = activeTag === "All" ? posts : posts.filter((p) => p.tag === activeTag);
 
   return (
     <>
       <PageHero
         compact
-        eyebrow="المدونة"
-        title="المدونة"
-        subtitle="اكتشف أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي."
+        eyebrow="Blog"
+        title="Blog"
+        subtitle="Discover the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai."
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-12 md:py-16">
         <SectionHeading
-          title="أحدث مقالات ونصائح اليخوت في دبي"
-          subtitle="مقالات متخصّصة من فريق توت فن الخبير في تأجير اليخوت، الحفلات، والرحلات البحرية."
+          title="Latest Dubai Yacht Articles & Tips"
+          subtitle="Expert articles from the Toot Fun team on yacht rentals, parties, and sea cruises."
         />
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {tags.map((t) => {
@@ -69,7 +69,7 @@ function Blog() {
           {filtered.map((p, i) => (
             <Reveal as="article" key={p.slug} delay={i * 60}>
               <Link
-                to="/المدونة/$slug/"
+                to="/blog/$slug/"
                 params={{ slug: p.slug }}
                 className="group block h-full overflow-hidden rounded-2xl border border-border bg-card shadow-luxe transition-transform hover:-translate-y-1"
               >
@@ -99,7 +99,7 @@ function Blog() {
                     {p.title}
                   </h3>
                   <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-                  <span className="mt-4 inline-block text-sm font-bold text-gold-deep">اقرأ المقال ←</span>
+                  <span className="mt-4 inline-block text-sm font-bold text-gold-deep">Read article →</span>
                 </div>
               </Link>
             </Reveal>

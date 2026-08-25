@@ -23,23 +23,23 @@ import { Reveal } from "./Reveal";
 type Item = { icon: LucideIcon; t: string };
 
 const included: Item[] = [
-  { icon: GlassWater, t: "المشروبات الغازية والمياه والثلج" },
-  { icon: Utensils, t: "أدوات المائدة – أطباق وأكواب وأدوات تناول الطعام" },
-  { icon: BadgeCheck, t: "قبطان وطاقم ذو خبرة" },
-  { icon: FileCheck2, t: "يخت مرخّص، تأمين، ووقود مشمولون" },
+  { icon: GlassWater, t: "Soft drinks, water, and ice" },
+  { icon: Utensils, t: "Tableware — plates, cups, and dining utensils" },
+  { icon: BadgeCheck, t: "Experienced captain and crew" },
+  { icon: FileCheck2, t: "Licensed yacht, insurance, and fuel included" },
 ];
 
 const bring: Item[] = [
-  { icon: Clock, t: "جواز السفر الأصلي أو بطاقة الهوية الإماراتية مطلوبة." },
-  { icon: Sun, t: "كريم واقي شمس" },
-  { icon: Umbrella, t: "قبعة ونظارات شمسية" },
-  { icon: Snowflake, t: "جاكيت خفيف خلال أشهر الشتاء." },
-  { icon: Footprints, t: "أحذية رياضية أو صنادل بنعال مطاطية." },
-  { icon: Waves, t: "ملابس سباحة إذا كنت ترغب في السباحة." },
-  { icon: Pill, t: "أقراص دوار البحر إذا لزم الأمر." },
-  { icon: Camera, t: "كاميرات للتصوير." },
-  { icon: Music, t: "هواتف محمولة تحتوي على موسيقاك المفضلة." },
-  { icon: BatteryFull, t: "شواحن وبطاريات إضافية." },
+  { icon: Clock, t: "Original passport or Emirates ID required." },
+  { icon: Sun, t: "Sunscreen" },
+  { icon: Umbrella, t: "Hat and sunglasses" },
+  { icon: Snowflake, t: "Light jacket during winter months." },
+  { icon: Footprints, t: "Sneakers or sandals with rubber soles." },
+  { icon: Waves, t: "Swimwear if you plan to swim." },
+  { icon: Pill, t: "Seasickness tablets if needed." },
+  { icon: Camera, t: "Cameras for photos." },
+  { icon: Music, t: "Mobile phones with your favorite music." },
+  { icon: BatteryFull, t: "Extra chargers and batteries." },
 ];
 
 type Route = { h: string; sub?: string; landmarks: string[] };
@@ -47,89 +47,89 @@ type RouteGroup = { h: string; intro?: string; routes: Route[] };
 
 const routeGroups: RouteGroup[] = [
   {
-    h: "رحلة يخت لمدة ساعتين",
-    intro: "يمكنك الاختيار بين هذين الخيارين:",
+    h: "2-hour yacht trip",
+    intro: "You can choose between these two options:",
     routes: [
       {
-        h: "الخيار 1: رحلة يخت لمدة ساعتين (مسار برج العرب)",
+        h: "Option 1: 2-hour yacht trip (Burj Al Arab route)",
         landmarks: [
-          "دبي مارينا",
-          "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-          "عين دبي (جزيرة بلوواترز)",
-          "منطقة اللاجون المخصصة للسباحة",
-          "نخلة جميرا",
-          "برج العرب",
+          "Dubai Marina",
+          "JBR Beach (Jumeirah Beach Residence)",
+          "Ain Dubai (Bluewaters Island)",
+          "Dedicated swimming lagoon area",
+          "Palm Jumeirah",
+          "Burj Al Arab",
         ],
       },
       {
-        h: "الخيار 2: رحلة يخت لمدة ساعتين (مسار أتلانتس)",
+        h: "Option 2: 2-hour yacht trip (Atlantis route)",
         landmarks: [
-          "دبي مارينا",
-          "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-          "عين دبي (جزيرة بلوواترز)",
-          "منطقة اللاجون المخصصة للسباحة",
-          "نخلة جميرا",
-          "فندق أتلانتس بالم",
-        ],
-      },
-    ],
-  },
-  {
-    h: "رحلة يخت لمدة 3 ساعات",
-    routes: [
-      {
-        h: "المسار",
-        landmarks: [
-          "دبي مارينا",
-          "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-          "عين دبي (جزيرة بلوواترز)",
-          "منطقة اللاجون المخصصة للسباحة",
-          "نخلة جميرا",
-          "فندق أتلانتس بالم",
-          "برج العرب",
+          "Dubai Marina",
+          "JBR Beach (Jumeirah Beach Residence)",
+          "Ain Dubai (Bluewaters Island)",
+          "Dedicated swimming lagoon area",
+          "Palm Jumeirah",
+          "Atlantis The Palm",
         ],
       },
     ],
   },
   {
-    h: "رحلة يخت لمدة 4 ساعات (المسار الأصلي)",
+    h: "3-hour yacht trip",
     routes: [
       {
-        h: "المسار",
+        h: "The route",
         landmarks: [
-          "دبي مارينا",
-          "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-          "عين دبي (جزيرة بلوواترز)",
-          "منطقة اللاجون المخصصة للسباحة",
-          "نخلة جميرا",
-          "فندق أتلانتس بالم",
-          "برج العرب",
-          "زعبيل سراي (جميرا زعبيل سراي)",
+          "Dubai Marina",
+          "JBR Beach (Jumeirah Beach Residence)",
+          "Ain Dubai (Bluewaters Island)",
+          "Dedicated swimming lagoon area",
+          "Palm Jumeirah",
+          "Atlantis The Palm",
+          "Burj Al Arab",
         ],
       },
     ],
   },
   {
-    h: "رحلة يخت لمدة 6 ساعات (جولة بريميوم)",
+    h: "4-hour yacht trip (Original route)",
     routes: [
       {
-        h: "المسار",
+        h: "The route",
         landmarks: [
-          "دبي مارينا",
-          "شاطئ جي بي آر (جميرا بيتش ريزيدنس)",
-          "عين دبي (جزيرة بلوواترز)",
-          "منطقة اللاجون المخصصة للسباحة",
-          "نخلة جميرا",
-          "فندق أتلانتس بالم",
-          "برج العرب",
-          "زعبيل سراي (جميرا زعبيل سراي)",
-          "فندق أنانتارا النخلة دبي",
-          "سوفيتيل دبي النخلة – منتجع وسبا",
-          "قناة دبي المائية",
-          "برج خليفة",
-          "خور دبي",
-          "شلال قناة دبي المائية",
-          "مراسي مارينا الخليج التجاري",
+          "Dubai Marina",
+          "JBR Beach (Jumeirah Beach Residence)",
+          "Ain Dubai (Bluewaters Island)",
+          "Dedicated swimming lagoon area",
+          "Palm Jumeirah",
+          "Atlantis The Palm",
+          "Burj Al Arab",
+          "Zabeel Saray (Jumeirah Zabeel Saray)",
+        ],
+      },
+    ],
+  },
+  {
+    h: "6-hour yacht trip (Premium tour)",
+    routes: [
+      {
+        h: "The route",
+        landmarks: [
+          "Dubai Marina",
+          "JBR Beach (Jumeirah Beach Residence)",
+          "Ain Dubai (Bluewaters Island)",
+          "Dedicated swimming lagoon area",
+          "Palm Jumeirah",
+          "Atlantis The Palm",
+          "Burj Al Arab",
+          "Zabeel Saray (Jumeirah Zabeel Saray)",
+          "Anantara The Palm Dubai Resort",
+          "Sofitel Dubai The Palm — Resort & Spa",
+          "Dubai Water Canal",
+          "Burj Khalifa",
+          "Dubai Creek",
+          "Dubai Water Canal Waterfall",
+          "Marasi Marina Business Bay",
         ],
       },
     ],
@@ -138,9 +138,9 @@ const routeGroups: RouteGroup[] = [
 
 type TabId = "included" | "bring" | "sites";
 const TABS: { id: TabId; label: string }[] = [
-  { id: "included", label: "ما الذي يشمله الحجز؟" },
-  { id: "bring", label: "ما تحتاجه قبل الرحلة" },
-  { id: "sites", label: "المواقع الرئيسية" },
+  { id: "included", label: "What does the booking include?" },
+  { id: "bring", label: "What you need before the trip" },
+  { id: "sites", label: "Key locations" },
 ];
 
 function IconList({ items }: { items: Item[] }) {
@@ -267,10 +267,10 @@ export function PartyEssentialsTabs() {
           {active === "included" ? (
             <Reveal key="included">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما الذي تشمله حفلة يخت في دبي؟</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What does a yacht party in Dubai include?</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  استمتع بتجربة حفلة يخت فاخرة ومتكاملة في دبي مع خدمات راقية مصممة لتوفير الراحة، والمتعة، ولحظات لا تُنسى على المياه.
+                  Enjoy a luxurious, all-inclusive yacht party experience in Dubai with premium services designed to deliver comfort, fun, and unforgettable moments on the water.
                 </p>
               </div>
               <IconList items={included} />
@@ -280,10 +280,10 @@ export function PartyEssentialsTabs() {
           {active === "bring" ? (
             <Reveal key="bring">
               <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">ما تحتاجه قبل حفلة اليخت في دبي</h2>
+                <h2 className="text-2xl font-extrabold text-primary md:text-3xl">What you need before your yacht party in Dubai</h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  التخطيط لحفلة يخت في دبي سهل وبسيط. اختر اليخت المفضل لديك، وأكد عدد الضيوف ومدة الرحلة البحرية، وأحضر بطاقة هوية سارية مثل الهوية الإماراتية أو جواز السفر، واستعد للاستمتاع بحفلة ممتعة ولا تُنسى على المياه.
+                  Planning a yacht party in Dubai is easy and simple. Pick your favorite yacht, confirm your guest count and cruise duration, bring a valid ID such as an Emirates ID or passport, and get ready for a fun and unforgettable party on the water.
                 </p>
               </div>
               <IconList items={bring} />
@@ -294,11 +294,11 @@ export function PartyEssentialsTabs() {
             <Reveal key="sites">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-2xl font-extrabold text-primary md:text-3xl">
-                  أهم المعالم التي يمكنك الوصول إليها خلال حفلة يخت في دبي
+                  Top landmarks you can reach during a yacht party in Dubai
                 </h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  استمتع برحلة بحرية تمر عبر أشهر الوجهات البحرية في دبي أثناء حفلة اليخت، مع إطلالات خلابة على أفق المدينة وأماكن مثالية لالتقاط الصور طوال الرحلة.
+                  Enjoy a sea trip that passes Dubai's most famous marine destinations during your yacht party, with stunning skyline views and perfect photo spots throughout the ride.
                 </p>
               </div>
               <div className="mx-auto mt-8 max-w-4xl space-y-3">
