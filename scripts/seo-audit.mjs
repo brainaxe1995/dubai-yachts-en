@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ROUTES_DIR = join(root, "src/routes");
 const OUT = join(root, "src/data/seo-audit.json");
-export const BASE_URL = "https://dubai-yacht.ae";
+export const BASE_URL = "https://tootfunyachts.com";
 
 /** find the substring balanced from an opening bracket index */
 function balanced(src, start, open, close) {
@@ -131,8 +131,8 @@ function isEmpty(v) {
 }
 
 /** Locales the site publishes. Arabic is the only live version today. */
-export const LOCALES = ["ar"];
-export const X_DEFAULT = "ar";
+export const LOCALES = ["en"];
+export const X_DEFAULT = "en";
 
 /** Value-format validators applied per property name, anywhere in the graph. */
 const FORMAT_RULES = {

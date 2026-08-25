@@ -33,4 +33,4 @@ Disallow: /admin/
 Disallow: /seo-audit
 Disallow: /api/
 
-Sitemap: https://dubai-yacht.ae/sitemap.xml
+Sitemap: https://tootfunyachts.com/sitemap.xml
