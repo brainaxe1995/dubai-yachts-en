@@ -33,4 +33,4 @@ Disallow: /admin/
 Disallow: /seo-audit
 Disallow: /api/
 
-Sitemap: https://tootfunyachts.com/sitemap.xml
+Sitemap: https://seashell-spoonbill-893561.hostingersite.com/sitemap.xml

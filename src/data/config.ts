@@ -148,7 +148,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
   whatsapp: "https://wa.me/971544420441",
   email: "info@tootfunyachts.com",
   address: "Dubai Marina, United Arab Emirates",
-  siteUrl: "https://tootfunyachts.com",
+  siteUrl: "https://seashell-spoonbill-893561.hostingersite.com",
   arabicSiteUrl: "https://dubai-yacht.ae",
   social: {
     instagram: "https://www.instagram.com/tootfun.yachts/",
@@ -174,7 +174,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
     defaultTitle: "Yacht Rental in Dubai | Best Prices - Toot Fun Yachts",
     defaultDescription:
       "Luxury yacht rental in Dubai with competitive rates, private cruises, and a professional crew for every occasion. Book your yacht today.",
-    ogImage: "https://tootfunyachts.com/og-cover.jpg",
+    ogImage: "https://seashell-spoonbill-893561.hostingersite.com/og-cover.jpg",
     priceStartAed: 450,
   },
   adminEmail: {

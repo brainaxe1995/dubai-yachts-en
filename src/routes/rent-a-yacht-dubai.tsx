@@ -63,12 +63,12 @@ export const Route = createFileRoute("/rent-a-yacht-dubai")({
         content:
           "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
       },
-      { property: "og:url", content: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
     ],
   }),
   component: RentYacht,

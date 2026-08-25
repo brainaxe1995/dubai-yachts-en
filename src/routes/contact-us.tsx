@@ -20,12 +20,12 @@ export const Route = createFileRoute("/contact-us")({
       },
       { property: "og:title", content: "Contact Us | Toot Fun Yachts" },
       { property: "og:description", content: "Get in touch with the Toot Fun Yachts team for bookings and enquiries in Dubai." },
-      { property: "og:url", content: "https://tootfunyachts.com/contact-us/" },
+      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/contact-us/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/contact-us/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/contact-us/" },
+      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
+      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
     ],
     scripts: [
       {
@@ -35,8 +35,8 @@ export const Route = createFileRoute("/contact-us")({
           "@type": "LocalBusiness",
           name: "Toot Fun Yachts",
           alternateName: "Toot Fun Yacht Rental",
-          url: "https://tootfunyachts.com/contact-us/",
-          image: "https://tootfunyachts.com/favicon.png",
+          url: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
+          image: "https://seashell-spoonbill-893561.hostingersite.com/favicon.png",
           telephone: CONTACT.phone,
           email: CONTACT.email,
           priceRange: "AED 450+",

@@ -1,43 +1,70 @@
 {
-  "generatedAt": "2026-08-24T16:42:13.737Z",
-  "baseUrl": "https://dubai-yacht.ae",
+  "generatedAt": "2026-08-25T07:45:11.662Z",
+  "baseUrl": "https://seashell-spoonbill-893561.hostingersite.com",
   "sitemapPaths": [
     "/",
-    "/تأجير-يخوت-في-دبي",
-    "/إيجار-يخوت-في-دبي",
-    "/حجز-يخوت-في-دبي",
-    "/يخوت-للإيجار-في-دبي",
-    "/حفلات-اليخوت-في-دبي",
-    "/رحلات-صيد-السمك-في-دبي",
-    "/باقات-تأجير-اليخوت-في-دبي",
-    "/من-نحن",
-    "/اتصل-بنا",
-    "/المدونة",
-    "/خريطة-الموقع",
-    "/سياسة-الإلغاء",
-    "/الشروط-والأحكام",
-    "/سياسة-الخصوصية"
+    "/yacht-rental-dubai",
+    "/rent-a-yacht-dubai",
+    "/yacht-charter-dubai",
+    "/yacht-booking-dubai",
+    "/yacht-party-dubai",
+    "/fishing-trip-dubai",
+    "/yacht-packages-dubai",
+    "/about-us",
+    "/contact-us",
+    "/blog",
+    "/sitemap",
+    "/cancellation-policy",
+    "/terms-and-conditions",
+    "/privacy-policy"
   ],
-  "robotsSitemap": "https://dubai-yacht.ae/sitemap.xml",
+  "robotsSitemap": "https://seashell-spoonbill-893561.hostingersite.com/sitemap.xml",
   "routes": [
     {
       "file": "index.tsx",
       "path": "/",
-      "title": "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت",
-      "description": "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
-      "ogTitle": "تأجير يخوت في دبي | أفضل الأسعار - توت فن لليخوت",
-      "ogDescription": "استمتع بخدمة تأجير يخوت في دبي مع يخوت فاخرة، أسعار تنافسية، رحلات خاصة، وطاقم محترف لجميع المناسبات. احجز يختك الآن.",
-      "ogUrl": "https://dubai-yacht.ae/",
+      "title": "Yacht Rental Dubai | Best Prices - Toot Fun Yachts",
+      "description": "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
+      "ogTitle": "Yacht Rental Dubai | Best Prices - Toot Fun Yachts",
+      "ogDescription": "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "about-us.tsx",
+      "path": "/about-us",
+      "title": "About Us | Toot Fun Yachts",
+      "description": "Learn who we are at Toot Fun Yachts and our track record in luxury yacht rentals and sea trips in Dubai.",
+      "ogTitle": "About Us | Toot Fun Yachts",
+      "ogDescription": "Our track record in luxury yacht rentals and sea trips in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/about-us/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/about-us/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/about-us/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/about-us/"
         }
       ],
       "robots": null,
@@ -66,41 +93,23 @@
       "isDynamic": false
     },
     {
-      "file": "seo-audit.tsx",
-      "path": "/seo-audit",
-      "title": "تدقيق السيو | توت فن لليخوت",
-      "description": "لوحة داخلية لمراجعة بيانات السيو والوسوم الوصفية لكل صفحة في الموقع.",
-      "ogTitle": null,
-      "ogDescription": null,
-      "ogUrl": null,
+      "file": "blog.tsx",
+      "path": "/blog",
+      "title": "Blog | Dubai Yacht Rental Tips & Guides | Toot Fun Yachts",
+      "description": "Explore the blog for the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai.",
+      "ogTitle": "Blog | Dubai Yacht Rental Guide",
+      "ogDescription": "Tips and ideas for sea cruises and yacht parties in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/blog/",
       "ogImage": null,
-      "canonical": null,
-      "alternates": [],
-      "robots": "noindex, nofollow",
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": true,
-      "isDynamic": false
-    },
-    {
-      "file": "إيجار-يخوت-في-دبي.tsx",
-      "path": "/إيجار-يخوت-في-دبي",
-      "title": "إيجار يخوت في دبي | توت فن لليخوت",
-      "description": "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
-      "ogTitle": "إيجار يخوت في دبي | توت فن لليخوت",
-      "ogDescription": "نوفر خدمات إيجار يخوت في دبي بأسعار تنافسية تبدأ من 450 درهم للساعة، مع أسطول متنوع وخيارات مناسبة للرحلات الخاصة والمناسبات.",
-      "ogUrl": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/blog/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/blog/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/إيجار-يخوت-في-دبي/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/blog/"
         }
       ],
       "robots": null,
@@ -111,23 +120,68 @@
       "isDynamic": false
     },
     {
-      "file": "اتصل-بنا.tsx",
-      "path": "/اتصل-بنا",
-      "title": "اتصل بنا | توت فن لليخوت",
-      "description": "اتصل بنا لحجز يختك، معرفة الأسعار والباقات، واختيار الرحلة المناسبة لك مع توت فن لليخوت.",
-      "ogTitle": "اتصل بنا | توت فن لليخوت",
-      "ogDescription": "تواصل مع فريق توت فن لليخوت للحجز والاستفسارات في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/اتصل-بنا/",
+      "file": "blog_.$slug.tsx",
+      "path": "/blog_/$slug",
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "ogUrl": null,
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/اتصل-بنا/",
+      "canonical": null,
+      "alternates": [],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": true
+    },
+    {
+      "file": "cancellation-policy.tsx",
+      "path": "/cancellation-policy",
+      "title": "Easy Cancellation Policy | Toot Fun Yachts",
+      "description": "Learn about the cancellation and refund policy at Toot Fun Yachts, including cancellation terms, rescheduling, refund amounts, and no-show cases.",
+      "ogTitle": "Cancellation Policy | Toot Fun Yachts",
+      "ogDescription": "Cancellation, rescheduling, and refund terms.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/اتصل-بنا/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/اتصل-بنا/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "contact-us.tsx",
+      "path": "/contact-us",
+      "title": "Contact Us | Toot Fun Yachts",
+      "description": "Contact us to book your yacht, check pricing and packages, and pick the right trip for you with Toot Fun Yachts.",
+      "ogTitle": "Contact Us | Toot Fun Yachts",
+      "ogDescription": "Get in touch with the Toot Fun Yachts team for bookings and enquiries in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/"
         }
       ],
       "robots": null,
@@ -146,23 +200,23 @@
       "isDynamic": false
     },
     {
-      "file": "الشروط-والأحكام.tsx",
-      "path": "/الشروط-والأحكام",
-      "title": "الشروط والأحكام | توت فن لليخوت",
-      "description": "اطلع على الشروط والأحكام الخاصة بتوت فن لليخوت، بما يشمل الحجز، الدفع، الإلغاء، مسؤوليات العملاء، واستخدام خدمات تأجير اليخوت في دبي.",
-      "ogTitle": "الشروط والأحكام | توت فن لليخوت",
-      "ogDescription": "شروط الحجز والدفع والإلغاء ومسؤوليات العملاء.",
-      "ogUrl": "https://dubai-yacht.ae/الشروط-والأحكام/",
+      "file": "fishing-trip-dubai.tsx",
+      "path": "/fishing-trip-dubai",
+      "title": "Best Fishing Trips in Dubai | Toot Fun Yachts",
+      "description": "Book the best fishing trips in Dubai with fully equipped boats, tackle provided, professional crew, and private or shared options at competitive rates.",
+      "ogTitle": "Best Fishing Trips in Dubai | Toot Fun Yachts",
+      "ogDescription": "Private and shared fishing trips in Dubai — fully equipped.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/الشروط-والأحكام/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/الشروط-والأحكام/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/الشروط-والأحكام/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/"
         }
       ],
       "robots": null,
@@ -173,23 +227,23 @@
       "isDynamic": false
     },
     {
-      "file": "المدونة.tsx",
-      "path": "/المدونة",
-      "title": "المدونة | نصائح ودليل تأجير اليخوت في دبي | توت فن لليخوت",
-      "description": "اكتشف المدونة وتعرّف على أحدث النصائح والأفكار حول تأجير اليخوت، الرحلات البحرية، حفلات اليخوت، ورحلات الصيد في دبي.",
-      "ogTitle": "المدونة | دليل تأجير اليخوت في دبي",
-      "ogDescription": "نصائح وأفكار حول الرحلات البحرية وحفلات اليخوت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/المدونة/",
+      "file": "privacy-policy.tsx",
+      "path": "/privacy-policy",
+      "title": "Privacy Policy | Toot Fun Yachts",
+      "description": "Our privacy policy explains how we protect your personal information and keep it confidential when you use the Toot Fun Yachts website and services.",
+      "ogTitle": "Privacy Policy | Toot Fun Yachts",
+      "ogDescription": "How we collect, use, and protect your personal information.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/المدونة/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/المدونة/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/المدونة/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/"
         }
       ],
       "robots": null,
@@ -200,41 +254,74 @@
       "isDynamic": false
     },
     {
-      "file": "المدونة_.$slug.tsx",
-      "path": "/المدونة_/$slug",
-      "title": null,
-      "description": null,
+      "file": "rent-a-yacht-dubai.tsx",
+      "path": "/rent-a-yacht-dubai",
+      "title": "Yacht Hire Dubai | Toot Fun Yachts",
+      "description": "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
+      "ogTitle": "Yacht Hire Dubai | Toot Fun Yachts",
+      "ogDescription": "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [
+        {
+          "level": "warning",
+          "rule": "description-length",
+          "message": "طول الوصف 162 حرفًا (يُفضّل أقل من 160)"
+        }
+      ],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "seo-audit.tsx",
+      "path": "/seo-audit",
+      "title": "تدقيق السيو | توت فن لليخوت",
+      "description": "لوحة داخلية لمراجعة بيانات السيو والوسوم الوصفية لكل صفحة في الموقع.",
       "ogTitle": null,
       "ogDescription": null,
       "ogUrl": null,
       "ogImage": null,
       "canonical": null,
       "alternates": [],
-      "robots": null,
+      "robots": "noindex, nofollow",
       "structuredData": [],
       "hasHead": true,
       "issues": [],
-      "noindex": false,
-      "isDynamic": true
+      "noindex": true,
+      "isDynamic": false
     },
     {
-      "file": "باقات-تأجير-اليخوت-في-دبي.tsx",
-      "path": "/باقات-تأجير-اليخوت-في-دبي",
-      "title": "باقات تأجير اليخوت في دبي | إفطار وعشاء — توت فن",
-      "description": "اكتشف أفضل باقات تأجير اليخوت في دبي بخيارات متنوعة تناسب الرحلات الخاصة، الحفلات والمناسبات بأسعار مرنة تبدأ من 1,800 د.إ.",
-      "ogTitle": "أفضل باقات تأجير اليخوت في دبي | توت فن لليخوت",
-      "ogDescription": "باقات إفطار، عشاء رومانسي، وجيت سكي على متن اليخت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/",
+      "file": "sitemap.tsx",
+      "path": "/sitemap",
+      "title": "Sitemap | Toot Fun Yacht Rental Dubai",
+      "description": "Browse the Toot Fun Yachts sitemap to easily find pages for yacht rentals, parties, sea cruises, and packages available in Dubai.",
+      "ogTitle": "Sitemap | Toot Fun Yachts",
+      "ogDescription": "Links to every page and service on Toot Fun Yachts in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/باقات-تأجير-اليخوت-في-دبي/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/"
         }
       ],
       "robots": null,
@@ -245,23 +332,186 @@
       "isDynamic": false
     },
     {
-      "file": "تأجير-يخوت-في-دبي.tsx",
-      "path": "/تأجير-يخوت-في-دبي",
-      "title": "تأجير يخوت في دبي | أسطول اليخوت والأسعار – توت فن",
-      "description": "نوفر خدمات تأجير يخوت في دبي مع رحلات خاصة، يخوت متنوعة، وأسعار تبدأ من 450 درهم للساعة لجميع المناسبات.",
-      "ogTitle": "تأجير يخوت في دبي | أسطول اليخوت والأسعار – توت فن",
-      "ogDescription": "أسطول متنوع من اليخوت الفاخرة للإيجار في دبي بأسعار تنافسية.",
-      "ogUrl": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/",
+      "file": "terms-and-conditions.tsx",
+      "path": "/terms-and-conditions",
+      "title": "Terms and Conditions | Toot Fun Yachts",
+      "description": "Read the Toot Fun Yachts terms and conditions covering booking, payment, cancellation, guest responsibilities, and use of yacht rental services in Dubai.",
+      "ogTitle": "Terms and Conditions | Toot Fun Yachts",
+      "ogDescription": "Booking, payment, cancellation terms and guest responsibilities.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/",
       "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/",
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/",
       "alternates": [
         {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/"
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/تأجير-يخوت-في-دبي/"
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "yacht-booking-dubai.tsx",
+      "path": "/yacht-booking-dubai",
+      "title": "Yacht Booking Dubai | Toot Fun Yachts",
+      "description": "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
+      "ogTitle": "Yacht Booking Dubai | Toot Fun Yachts",
+      "ogDescription": "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "yacht-charter-dubai.tsx",
+      "path": "/yacht-charter-dubai",
+      "title": "Yachts for Rent in Dubai | 15 Luxury Yachts from AED 450 — Toot Fun",
+      "description": "Discover the best yachts for rent in Dubai at prices starting from AED 450 per hour. A diverse fleet from 40 to 105 feet, with private trips and options for every occasion.",
+      "ogTitle": "Yachts for Rent in Dubai | Toot Fun Yachts",
+      "ogDescription": "A fleet of 15 luxury yachts for rent in Dubai — from 40 ft to 105 ft.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [
+        {
+          "level": "warning",
+          "rule": "title-length",
+          "message": "طول العنوان 67 حرفًا (يُفضّل أقل من 60)"
+        },
+        {
+          "level": "warning",
+          "rule": "description-length",
+          "message": "طول الوصف 172 حرفًا (يُفضّل أقل من 160)"
+        }
+      ],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "yacht-packages-dubai.tsx",
+      "path": "/yacht-packages-dubai",
+      "title": "Yacht Rental Packages in Dubai | Breakfast & Dinner — Toot Fun",
+      "description": "Discover the best yacht rental packages in Dubai with varied options for private cruises, parties, and events — flexible pricing starts at AED 1,800.",
+      "ogTitle": "Best Yacht Rental Packages in Dubai | Toot Fun Yachts",
+      "ogDescription": "Breakfast, romantic dinner, and jet ski packages on board a yacht in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [
+        {
+          "level": "warning",
+          "rule": "title-length",
+          "message": "طول العنوان 62 حرفًا (يُفضّل أقل من 60)"
+        }
+      ],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "yacht-party-dubai.tsx",
+      "path": "/yacht-party-dubai",
+      "title": "Best Yacht Parties in Dubai | Signature Packages — Toot Fun Yachts",
+      "description": "Book yacht parties in Dubai for special occasions, birthdays, and weddings with luxury yachts, standout decor, professional crew, and competitive packages starting from AED 1,500.",
+      "ogTitle": "Best Yacht Parties in Dubai | Toot Fun Yachts",
+      "ogDescription": "Weddings, engagements, graduations, and birthdays on board a yacht in Dubai.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/"
+        }
+      ],
+      "robots": null,
+      "structuredData": [],
+      "hasHead": true,
+      "issues": [
+        {
+          "level": "warning",
+          "rule": "title-length",
+          "message": "طول العنوان 66 حرفًا (يُفضّل أقل من 60)"
+        },
+        {
+          "level": "warning",
+          "rule": "description-length",
+          "message": "طول الوصف 179 حرفًا (يُفضّل أقل من 160)"
+        }
+      ],
+      "noindex": false,
+      "isDynamic": false
+    },
+    {
+      "file": "yacht-rental-dubai.tsx",
+      "path": "/yacht-rental-dubai",
+      "title": "Yacht Rental Dubai | Fleet & Prices – Toot Fun",
+      "description": "We provide yacht rental services in Dubai with private trips, a diverse fleet, and prices starting from AED 450 per hour for every occasion.",
+      "ogTitle": "Yacht Rental Dubai | Fleet & Prices – Toot Fun",
+      "ogDescription": "A diverse fleet of luxury yachts for rent in Dubai at competitive prices.",
+      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/",
+      "ogImage": null,
+      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/",
+      "alternates": [
+        {
+          "hreflang": "en",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/"
         }
       ],
       "robots": null,
@@ -278,228 +528,12 @@
       "issues": [],
       "noindex": false,
       "isDynamic": false
-    },
-    {
-      "file": "حجز-يخوت-في-دبي.tsx",
-      "path": "/حجز-يخوت-في-دبي",
-      "title": "حجز يخوت في دبي | توت فن لليخوت",
-      "description": "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 450 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
-      "ogTitle": "حجز يخوت في دبي | توت فن لليخوت",
-      "ogDescription": "اكتشف أفضل خيارات حجز يخوت في دبي بأسعار تبدأ من 450 درهم للساعة، مع يخوت فاخرة ورحلات خاصة تناسب جميع المناسبات.",
-      "ogUrl": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/حجز-يخوت-في-دبي/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "حفلات-اليخوت-في-دبي.tsx",
-      "path": "/حفلات-اليخوت-في-دبي",
-      "title": "أفضل حفلات اليخوت في دبي | باقات مميزة — توت فن لليخوت",
-      "description": "احجز حفلات اليخوت في دبي للمناسبات وأعياد الميلاد وحفلات الزفاف مع يخوت فاخرة، ديكورات مميزة، طاقم محترف، وباقات خاصة بأسعار تنافسية تبدأ من 1,500 د.إ.",
-      "ogTitle": "أفضل حفلات اليخوت في دبي | توت فن لليخوت",
-      "ogDescription": "حفلات زفاف، خطوبة، تخرج وأعياد ميلاد على متن يخت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/حفلات-اليخوت-في-دبي/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "خريطة-الموقع.tsx",
-      "path": "/خريطة-الموقع",
-      "title": "خريطة الموقع | توت فن لتأجير اليخوت في دبي",
-      "description": "تصفح خريطة الموقع لتوت فن لليخوت للوصول بسهولة إلى صفحات تأجير اليخوت، الحفلات، الرحلات البحرية، والباقات المتوفرة في دبي.",
-      "ogTitle": "خريطة الموقع | توت فن لليخوت",
-      "ogDescription": "روابط جميع صفحات وخدمات توت فن لليخوت في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/خريطة-الموقع/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/خريطة-الموقع/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/خريطة-الموقع/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/خريطة-الموقع/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "رحلات-صيد-السمك-في-دبي.tsx",
-      "path": "/رحلات-صيد-السمك-في-دبي",
-      "title": "أفضل رحلات صيد السمك في دبي | توت فن لليخوت",
-      "description": "احجز أفضل رحلات صيد السمك في دبي مع قوارب مجهزة، معدات صيد، طاقم محترف، وخيارات خاصة أو مشتركة بأسعار مميزة.",
-      "ogTitle": "أفضل رحلات صيد السمك في دبي | توت فن لليخوت",
-      "ogDescription": "رحلات صيد خاصة ومشتركة في دبي مع تجهيزات كاملة.",
-      "ogUrl": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/رحلات-صيد-السمك-في-دبي/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "سياسة-الإلغاء.tsx",
-      "path": "/سياسة-الإلغاء",
-      "title": "سياسة الإلغاء سهلة | توت فن لليخوت",
-      "description": "تعرّف على سياسة الإلغاء والاسترداد لدى توت فن لليخوت، بما يشمل شروط الإلغاء، إعادة الجدولة، المبالغ المستردة، وحالات عدم الحضور.",
-      "ogTitle": "سياسة الإلغاء | توت فن لليخوت",
-      "ogDescription": "شروط الإلغاء، إعادة الجدولة واسترداد المبالغ.",
-      "ogUrl": "https://dubai-yacht.ae/سياسة-الإلغاء/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/سياسة-الإلغاء/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/سياسة-الإلغاء/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/سياسة-الإلغاء/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "سياسة-الخصوصية.tsx",
-      "path": "/سياسة-الخصوصية",
-      "title": "سياسة الخصوصية | توت فن لليخوت",
-      "description": "توضح سياسة الخصوصية التزامنا بحماية معلوماتك الشخصية والحفاظ على سريتها عند استخدام موقع وخدمات توت فن لليخوت.",
-      "ogTitle": "سياسة الخصوصية | توت فن لليخوت",
-      "ogDescription": "كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها.",
-      "ogUrl": "https://dubai-yacht.ae/سياسة-الخصوصية/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/سياسة-الخصوصية/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/سياسة-الخصوصية/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/سياسة-الخصوصية/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "من-نحن.tsx",
-      "path": "/من-نحن",
-      "title": "من نحن | توت فن لليخوت",
-      "description": "تعرّف على من نحن في توت فن لليخوت، وخبرتنا في تقديم خدمات تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
-      "ogTitle": "من نحن | توت فن لليخوت",
-      "ogDescription": "خبرتنا في تأجير اليخوت والرحلات البحرية الفاخرة في دبي.",
-      "ogUrl": "https://dubai-yacht.ae/من-نحن/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/من-نحن/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/من-نحن/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/من-نحن/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
-    },
-    {
-      "file": "يخوت-للإيجار-في-دبي.tsx",
-      "path": "/يخوت-للإيجار-في-دبي",
-      "title": "يخوت للإيجار في دبي | 15 يخت فاخر من 450 د.إ — توت فن",
-      "description": "اكتشف أفضل يخوت للإيجار في دبي بأسعار تبدأ من 450 درهم للساعة. أسطول متنوع من 40 حتى 105 قدم، مع رحلات خاصة وخيارات تناسب جميع المناسبات.",
-      "ogTitle": "يخوت للإيجار في دبي | توت فن لليخوت",
-      "ogDescription": "أسطول 15 يخت فاخر للإيجار في دبي — من 40 قدم حتى 105 قدم.",
-      "ogUrl": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/",
-      "ogImage": null,
-      "canonical": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/",
-      "alternates": [
-        {
-          "hreflang": "ar",
-          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/"
-        },
-        {
-          "hreflang": "x-default",
-          "href": "https://dubai-yacht.ae/يخوت-للإيجار-في-دبي/"
-        }
-      ],
-      "robots": null,
-      "structuredData": [],
-      "hasHead": true,
-      "issues": [],
-      "noindex": false,
-      "isDynamic": false
     }
   ],
   "globalIssues": [],
   "summary": {
     "routes": 18,
     "errors": 0,
-    "warnings": 0
+    "warnings": 6
   }
 }

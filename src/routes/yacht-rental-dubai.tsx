@@ -25,12 +25,12 @@ export const Route = createFileRoute("/yacht-rental-dubai")({
       },
       { property: "og:title", content: "Yacht Rental Dubai | Fleet & Prices – Toot Fun" },
       { property: "og:description", content: "A diverse fleet of luxury yachts for rent in Dubai at competitive prices." },
-      { property: "og:url", content: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
     ],
     scripts: [
       {

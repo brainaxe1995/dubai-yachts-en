@@ -38,12 +38,12 @@ export const Route = createFileRoute("/")({
         content:
           "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
       },
-      { property: "og:url", content: "https://tootfunyachts.com/" },
+      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/" },
+      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
+      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
     ],
   }),
   component: Home,
