@@ -268,7 +268,7 @@ function Parties() {
           title="Top Yacht and Cruise Searches in Dubai"
           subtitle="Explore the most-searched terms for yacht parties and celebrations at sea in Dubai — find the service or experience you need in seconds."
         />
-        <KeywordCloud items={keywordCloud["/حفلات-اليخوت-في-دبي/"].map((k) => ({ keyword: k, to: "/yacht-party-dubai/" }))} />
+        <KeywordCloud items={keywordCloud["/yacht-party-dubai/"].map((k) => ({ keyword: k, to: "/yacht-party-dubai/" }))} />
       </section>
     </>
   );

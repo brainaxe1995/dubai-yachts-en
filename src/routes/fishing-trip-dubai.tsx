@@ -473,7 +473,7 @@ function Fishing() {
           title="Top Yacht and Cruise Searches in Dubai"
           subtitle="Explore the most-searched terms for fishing trips and sea experiences in Dubai — find what fits you in seconds."
         />
-        <KeywordCloud items={keywordCloud["/رحلات-صيد-السمك-في-دبي/"].map((k) => ({ keyword: k, to: "/fishing-trip-dubai/" }))} />
+        <KeywordCloud items={keywordCloud["/fishing-trip-dubai/"].map((k) => ({ keyword: k, to: "/fishing-trip-dubai/" }))} />
       </section>
     </>
   );

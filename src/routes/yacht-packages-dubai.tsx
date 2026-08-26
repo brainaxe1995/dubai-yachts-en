@@ -250,7 +250,7 @@ function Packages() {
           title="Top Yacht and Cruise Searches in Dubai"
           subtitle="Explore the most-searched terms for yacht packages and offers in Dubai — find the package that suits you in seconds."
         />
-        <KeywordCloud items={keywordCloud["/باقات-تأجير-اليخوت-في-دبي/"].map((k) => ({ keyword: k, to: "/yacht-packages-dubai/" }))} />
+        <KeywordCloud items={keywordCloud["/yacht-packages-dubai/"].map((k) => ({ keyword: k, to: "/yacht-packages-dubai/" }))} />
       </section>
     </>
   );

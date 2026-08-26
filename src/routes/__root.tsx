@@ -182,7 +182,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "preload",
         as: "image",
         href: heroImg,
-        imageSrcset: `${heroImg640} 640w, ${heroImg960} 960w, ${heroImg1280} 1280w, ${heroImg} 1600w`,
+        imageSrcSet: `${heroImg640} 640w, ${heroImg960} 960w, ${heroImg1280} 1280w, ${heroImg} 1600w`,
         imageSizes: "(max-width: 768px) 100vw, 100vw",
         fetchPriority: "high",
       },
