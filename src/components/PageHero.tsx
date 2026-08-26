@@ -25,13 +25,8 @@ export function PageHero({
   compact?: boolean;
   children?: ReactNode;
 }) {
-  // Fixed aspect ratio so mobile + desktop show identical horizontal banner shape.
-  // Min height floors keep tiny screens usable.
-  // Mobile: 16:9 banner shape (with min-h floor for text comfort).
-  // Desktop: fixed standard hero height (no aspect ratio bloat on wide screens).
-  const shape = compact
-    ? "aspect-[16/9] min-h-[380px] md:aspect-auto md:h-[420px] lg:h-[460px]"
-    : "aspect-[16/9] min-h-[440px] md:aspect-auto md:h-[500px] lg:h-[560px]";
+  void compact;
+  const shape = "aspect-[16/9] min-h-[440px] md:aspect-auto md:h-[500px] lg:h-[560px]";
   return (
     <section className={`relative isolate flex w-full overflow-hidden surface-navy ${shape}`}>
       <img
