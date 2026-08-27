@@ -158,20 +158,20 @@ function BlogPost() {
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 md:text-base">
             {p.description}
           </p>
-          {/* Two CTAs — WhatsApp + Call */}
+          {/* Two CTAs — WhatsApp + Call (home-page brand style) */}
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <a
               href={CONTACT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-md ring-2 ring-white/20 transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-secondary-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-deep"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Chat on WhatsApp
             </a>
             <a
               href={`tel:${CONTACT.phone}`}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-gold/60 bg-primary-deep/70 px-5 py-3 text-sm font-bold text-gold backdrop-blur-md transition-transform hover:scale-105 hover:bg-gold hover:text-primary-deep"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-gold bg-primary-deep/80 px-6 py-3 text-sm font-bold text-gold shadow-lg backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-gold hover:text-secondary-foreground"
             >
               <Phone className="h-4 w-4" />
               Call now
@@ -199,7 +199,7 @@ function BlogPost() {
         </div>
       </header>
 
-      {/* H2 hero-adjacent + drop-cap intro + CTAs (moved up from below TOC) */}
+      {/* H2 hero-adjacent + drop-cap intro (own container) */}
       {p.sections.length > 0 ? (
         <section className="mx-auto max-w-3xl px-4 pt-12 md:pt-16">
           <Reveal>
@@ -214,6 +214,8 @@ function BlogPost() {
         </section>
       ) : null}
 
+      {/* All post content after hero-adjacent intro lives inside one wrapper */}
+      <div className="blog-post-body">
       {/* Article body */}
       <article className="mx-auto max-w-3xl px-4 py-16 md:py-24">
         {/* Table of contents (excludes hero-adjacent intro) */}
@@ -488,6 +490,7 @@ function BlogPost() {
           <ChevronUp className="h-5 w-5" />
         </button>
       ) : null}
+      </div>
     </>
   );
 }
