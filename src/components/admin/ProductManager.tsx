@@ -17,7 +17,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Eye, EyeOff, GripVertical, Save, Copy, Check } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { yachts, parties, fishingTrips, packages } from "@/data/site";
 import { applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides-types";
 
@@ -219,16 +219,6 @@ function SortableCard({
   onToggleCopy: (cat: Category) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
-  const [copyOpen, setCopyOpen] = useState(false);
-  const popRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    if (!copyOpen) return;
-    function onDoc(e: MouseEvent) {
-      if (popRef.current && !popRef.current.contains(e.target as Node)) setCopyOpen(false);
-    }
-    document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
-  }, [copyOpen]);
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -291,46 +281,37 @@ function SortableCard({
             {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
             {hidden ? "Hidden" : "Visible"}
           </button>
-          <div ref={popRef} className="relative">
-            <button
-              type="button"
-              onClick={() => setCopyOpen((v) => !v)}
-              className={`inline-flex w-full items-center justify-center gap-1.5 rounded-md border px-2.5 py-1.5 text-[11px] font-bold transition-colors ${
-                copiedTo.length > 0
-                  ? "border-gold/60 bg-gold/15 text-gold-deep"
-                  : "border-border bg-background text-muted-foreground hover:bg-muted"
-              }`}
-            >
-              <Copy className="h-3.5 w-3.5" />
-              Copy to
-              {copiedTo.length > 0 ? <span className="ml-1 rounded-full bg-gold px-1.5 text-[10px] text-primary-deep">{copiedTo.length}</span> : null}
-            </button>
-            {copyOpen ? (
-              <div className="absolute end-0 top-full z-30 mt-1 w-44 rounded-lg border border-border bg-popover p-1.5 text-xs shadow-lg">
-                {(Object.keys(CAT_LABELS) as Category[]).map((c) => {
-                  const isNative = c === nativeCat;
-                  const isCopied = copiedTo.includes(c);
-                  return (
-                    <button
-                      key={c}
-                      type="button"
-                      disabled={isNative}
-                      onClick={() => onToggleCopy(c)}
-                      className={`flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-start font-semibold transition-colors ${
-                        isNative
-                          ? "cursor-not-allowed bg-muted/50 text-muted-foreground/60"
-                          : isCopied
-                            ? "bg-gold/20 text-gold-deep hover:bg-gold/30"
-                            : "text-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span>{CAT_LABELS[c]}</span>
-                      {isNative ? <span className="text-[9px] font-bold uppercase">native</span> : isCopied ? <Check className="h-3.5 w-3.5" /> : null}
-                    </button>
-                  );
-                })}
-              </div>
-            ) : null}
+          {/* Show on pages — click category chip to copy this product there */}
+          <div className="rounded-md border border-border bg-muted/40 p-2">
+            <p className="mb-1.5 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+              <Copy className="h-3 w-3" /> Show on pages
+            </p>
+            <div className="flex flex-wrap gap-1">
+              {(Object.keys(CAT_LABELS) as Category[]).map((c) => {
+                const isNative = c === nativeCat;
+                const isCopied = copiedTo.includes(c);
+                const isActive = isNative || isCopied;
+                return (
+                  <button
+                    key={c}
+                    type="button"
+                    disabled={isNative}
+                    onClick={() => onToggleCopy(c)}
+                    title={isNative ? "This product lives here (native page)" : isCopied ? "Click to remove from this page" : "Click to copy to this page"}
+                    className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold transition-colors ${
+                      isNative
+                        ? "cursor-not-allowed border-gold/60 bg-gold/25 text-gold-deep"
+                        : isCopied
+                          ? "border-gold/60 bg-gold/15 text-gold-deep hover:bg-gold/25"
+                          : "border-border bg-background text-muted-foreground hover:border-gold/40 hover:text-foreground"
+                    }`}
+                  >
+                    {isActive ? <Check className="h-3 w-3" /> : null}
+                    {CAT_LABELS[c]}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
