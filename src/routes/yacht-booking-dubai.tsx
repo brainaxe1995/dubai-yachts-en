@@ -71,12 +71,12 @@ export const Route = createFileRoute("/yacht-booking-dubai")({
         content:
           "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
       },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/yacht-booking-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
     ],
   }),
   component: YachtBooking,
@@ -89,15 +89,15 @@ function YachtBooking() {
       <PageHero
         compact
         eyebrow="Yacht Booking"
-        title="Yacht Booking in Dubai"
-        subtitle="Book your yacht in Dubai easily at prices starting from AED 450 per hour."
+        title="Yacht Booking Dubai"
+        subtitle="Book your yacht in Dubai easily, with prices starting from AED 450 per hour."
       />
 
       {/* Products first */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="Best Yacht Booking Options in Dubai at Competitive Prices"
-          subtitle="Book your yacht in Dubai easily at prices starting from AED 450 per hour."
+          subtitle="Book your yacht in Dubai easily, with prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleYachts.map((p, i) => (

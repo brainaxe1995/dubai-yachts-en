@@ -17,7 +17,7 @@ export const Route = createFileRoute("/blog_/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData;
     if (!p) return {};
-    const url = `https://seashell-spoonbill-893561.hostingersite.com/blog/${p.slug}`;
+    const url = `https://tootfunyachts.com/blog/${p.slug}`;
     return {
       meta: [
         { title: `${p.title} | Toot Fun Yachts Blog` },
@@ -49,15 +49,15 @@ export const Route = createFileRoute("/blog_/$slug")({
             publisher: {
               "@type": "Organization",
               name: "Toot Fun Yachts",
-              logo: { "@type": "ImageObject", url: "https://seashell-spoonbill-893561.hostingersite.com/favicon.png" },
+              logo: { "@type": "ImageObject", url: "https://tootfunyachts.com/favicon.png" },
             },
             mainEntityOfPage: url,
             keywords: p.keywords,
           }),
         },
         breadcrumbSchema([
-          { name: "Home", url: "https://seashell-spoonbill-893561.hostingersite.com/" },
-          { name: "Blog", url: "https://seashell-spoonbill-893561.hostingersite.com/blog/" },
+          { name: "Home", url: "https://tootfunyachts.com/" },
+          { name: "Blog", url: "https://tootfunyachts.com/blog/" },
           { name: p.title, url },
         ]),
       ],
@@ -95,7 +95,7 @@ function BlogPost() {
   const related = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
   const readMin = estimateReadMinutes(p);
   const progress = useReadingProgress();
-  const shareUrl = `https://seashell-spoonbill-893561.hostingersite.com/blog/${p.slug}`;
+  const shareUrl = `https://tootfunyachts.com/blog/${p.slug}`;
   const shareMsg = `${p.title}\n${shareUrl}`;
   const [showTop, setShowTop] = useState(false);
 

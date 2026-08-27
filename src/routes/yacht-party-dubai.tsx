@@ -90,18 +90,18 @@ export const Route = createFileRoute("/yacht-party-dubai")({
       { name: "keywords", content: "yacht parties dubai, birthday yacht party, wedding yacht party, marriage proposal on yacht, graduation party, anniversary, dubai marina yacht" },
       { property: "og:title", content: "Best Yacht Parties in Dubai | Toot Fun Yachts" },
       { property: "og:description", content: "Weddings, engagements, graduations, and birthdays on board a yacht in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/yacht-party-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/yacht-party-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-party-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-party-dubai/" },
     ],
     scripts: [
       faqSchema(partyFaqs),
       breadcrumbSchema([
-        { name: "Home", url: "https://seashell-spoonbill-893561.hostingersite.com/" },
-        { name: "Yacht Parties", url: "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/" },
+        { name: "Home", url: "https://tootfunyachts.com/" },
+        { name: "Yacht Parties", url: "https://tootfunyachts.com/yacht-party-dubai/" },
       ]),
     ],
   }),
@@ -116,15 +116,15 @@ function Parties() {
         compact
         image={partyImg}
         eyebrow="Yacht Parties"
-        title="Yacht Parties in Dubai"
-        subtitle="Enjoy the best yacht parties in Dubai with luxury yachts, private cruises, and ideal setups for birthdays and special occasions."
+        title="Yacht Party Dubai"
+        subtitle="Enjoy the best yacht parties in Dubai with luxury yachts, private cruises, and ideal options for birthdays and special occasions."
       />
 
       {/* Products FIRST (right after hero) */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="Packages for Every Yacht Party in Dubai"
-          subtitle="Pick the party style that fits your budget and celebrate on board a yacht in Dubai."
+          title="Yacht Party Packages for All Occasions in Dubai"
+          subtitle="Choose the yacht party that suits your budget and celebrate onboard a yacht in Dubai."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleParties.map((p, i) => (

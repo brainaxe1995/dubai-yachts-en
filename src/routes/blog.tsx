@@ -16,12 +16,12 @@ export const Route = createFileRoute("/blog")({
       },
       { property: "og:title", content: "Blog | Dubai Yacht Rental Guide" },
       { property: "og:description", content: "Tips and ideas for sea cruises and yacht parties in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/blog/" },
+      { property: "og:url", content: "https://tootfunyachts.com/blog/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/blog/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/blog/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/blog/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/blog/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/blog/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/blog/" },
     ],
   }),
   component: Blog,
@@ -38,13 +38,13 @@ function Blog() {
         compact
         eyebrow="Blog"
         title="Blog"
-        subtitle="Discover the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai."
+        subtitle="Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai."
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-12 md:py-16">
         <SectionHeading
-          title="Latest Dubai Yacht Articles & Tips"
-          subtitle="Expert articles from the Toot Fun team on yacht rentals, parties, and sea cruises."
+          title="Latest Yacht Articles & Tips in Dubai"
+          subtitle="Discover the latest articles and tips on yacht rental, yacht parties, fishing trips, and marine experiences in Dubai."
         />
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {tags.map((t) => {

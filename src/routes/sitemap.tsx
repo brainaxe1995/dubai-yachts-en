@@ -14,12 +14,12 @@ export const Route = createFileRoute("/sitemap")({
       },
       { property: "og:title", content: "Sitemap | Toot Fun Yachts" },
       { property: "og:description", content: "Links to every page and service on Toot Fun Yachts in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/sitemap/" },
+      { property: "og:url", content: "https://tootfunyachts.com/sitemap/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/sitemap/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/sitemap/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/sitemap/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/sitemap/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/sitemap/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/sitemap/" },
     ],
   }),
   component: Sitemap,
@@ -69,12 +69,12 @@ function Sitemap() {
         compact
         eyebrow="Sitemap"
         title="Sitemap"
-        subtitle="Browse the Toot Fun sitemap to easily find pages for yacht rentals, parties, sea cruises, fishing, and packages available in Dubai."
+        subtitle="Browse the Toot Fun sitemap to easily access yacht rental, yacht parties, cruises, fishing trips, water sports, and yacht packages available in Dubai."
       />
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="Explore every Toot Fun yacht rental service in Dubai"
-          subtitle="Browse our full range of services and pick what fits — yacht rentals, party packages, fishing trips, and private sea experiences in Dubai."
+          title="Discover All Toot Fun Yacht Rental Services in Dubai"
+          subtitle="Browse our wide range of services and choose from yacht rentals, party packages, fishing trips, water sports, and private marine experiences in Dubai."
         />
         <div className="grid gap-8 md:grid-cols-2">
           {groups.map((g, gi) => (

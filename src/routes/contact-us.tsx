@@ -20,12 +20,12 @@ export const Route = createFileRoute("/contact-us")({
       },
       { property: "og:title", content: "Contact Us | Toot Fun Yachts" },
       { property: "og:description", content: "Get in touch with the Toot Fun Yachts team for bookings and enquiries in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
+      { property: "og:url", content: "https://tootfunyachts.com/contact-us/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/contact-us/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/contact-us/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/contact-us/" },
     ],
     scripts: [
       {
@@ -35,8 +35,8 @@ export const Route = createFileRoute("/contact-us")({
           "@type": "LocalBusiness",
           name: "Toot Fun Yachts",
           alternateName: "Toot Fun Yacht Rental",
-          url: "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
-          image: "https://seashell-spoonbill-893561.hostingersite.com/favicon.png",
+          url: "https://tootfunyachts.com/contact-us/",
+          image: "https://tootfunyachts.com/favicon.png",
           telephone: CONTACT.phone,
           email: CONTACT.email,
           priceRange: "AED 450+",
@@ -79,14 +79,14 @@ function Contact() {
       <PageHero
         compact
         eyebrow="Contact Us"
-        title="Contact Us to Book Your Yacht in Dubai"
-        subtitle="Get in touch with the Toot Fun Yachts team to check pricing and packages and pick the right yacht for your trip or occasion."
+        title="Contact Us"
+        subtitle="Contact the Toot Fun Yachts team for bookings, inquiries, and help choose the right yacht for your trip in Dubai."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="Ways to Reach Us"
-          subtitle="Pick the channel that works for you — WhatsApp, phone, email, or a visit to Dubai Marina."
+          title="Contact Us to Book Your Yacht in Dubai"
+          subtitle="Contact the Toot Fun Yachts team to check prices and packages and choose the right yacht for your trip or special occasion."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => {

@@ -31,12 +31,12 @@ export const Route = createFileRoute("/terms-and-conditions")({
       },
       { property: "og:title", content: "Terms and Conditions | Toot Fun Yachts" },
       { property: "og:description", content: "Booking, payment, cancellation terms and guest responsibilities." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/" },
+      { property: "og:url", content: "https://tootfunyachts.com/terms-and-conditions/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/terms-and-conditions/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/terms-and-conditions/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/terms-and-conditions/" },
     ],
   }),
   component: Page,
@@ -147,17 +147,17 @@ function Page() {
     <>
       <PageHero
         compact
-        eyebrow="Terms and conditions"
-        title="Terms and conditions"
-        subtitle="Read the terms and conditions for booking, payment, cancellation, and use of Toot Fun Yachts services."
+        eyebrow="Terms and Conditions"
+        title="Terms and Conditions"
+        subtitle="Learn about Toot Fun Yachts' terms and conditions for booking, payment, cancellation, and use of our yacht services."
       >
-        <CallButton label="Contact us" />
+        <CallButton label="Get in Touch" />
       </PageHero>
 
       <section className="mx-auto max-w-4xl px-4 pt-14">
         <SectionHeading
-          title="Read the terms and conditions before confirming your booking"
-          subtitle="Simple, clear terms covering booking, payment, cancellation, and on-board conduct — so every trip stays safe and enjoyable for you and our crew."
+          title="Booking Terms and Conditions"
+          subtitle="Learn about booking, payment, cancellation terms, and customer responsibilities when using Toot Fun Yachts' services."
         />
       </section>
 

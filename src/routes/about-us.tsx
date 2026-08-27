@@ -19,12 +19,12 @@ export const Route = createFileRoute("/about-us")({
       },
       { property: "og:title", content: "About Us | Toot Fun Yachts" },
       { property: "og:description", content: "Our track record in luxury yacht rentals and sea trips in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/about-us/" },
+      { property: "og:url", content: "https://tootfunyachts.com/about-us/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/about-us/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/about-us/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/about-us/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/about-us/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/about-us/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/about-us/" },
     ],
   }),
   component: About,
@@ -53,9 +53,9 @@ function About() {
         compact
         eyebrow="About the Company"
         title="About Us"
-        subtitle="We're a team specialised in luxury yacht rentals and sea trips in Dubai. Our focus is delivering an exceptional experience that blends safety, luxury, and personal service for every guest."
+        subtitle="Learn more about Toot Fun Yachts, our experience, and our expertise in providing luxury yacht rental and private cruise services in Dubai."
       >
-        <CallButton label="Contact Us" />
+        <CallButton label="Get in Touch" />
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">

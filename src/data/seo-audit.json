@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-25T07:45:11.662Z",
-  "baseUrl": "https://seashell-spoonbill-893561.hostingersite.com",
+  "baseUrl": "https://tootfunyachts.com",
   "sitemapPaths": [
     "/",
     "/yacht-rental-dubai",
@@ -18,7 +18,7 @@
     "/terms-and-conditions",
     "/privacy-policy"
   ],
-  "robotsSitemap": "https://seashell-spoonbill-893561.hostingersite.com/sitemap.xml",
+  "robotsSitemap": "https://tootfunyachts.com/sitemap.xml",
   "routes": [
     {
       "file": "index.tsx",
@@ -27,17 +27,17 @@
       "description": "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
       "ogTitle": "Yacht Rental Dubai | Best Prices - Toot Fun Yachts",
       "ogDescription": "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/",
+      "ogUrl": "https://tootfunyachts.com/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/",
+      "canonical": "https://tootfunyachts.com/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/"
+          "href": "https://tootfunyachts.com/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/"
+          "href": "https://tootfunyachts.com/"
         }
       ],
       "robots": null,
@@ -54,17 +54,17 @@
       "description": "Learn who we are at Toot Fun Yachts and our track record in luxury yacht rentals and sea trips in Dubai.",
       "ogTitle": "About Us | Toot Fun Yachts",
       "ogDescription": "Our track record in luxury yacht rentals and sea trips in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/about-us/",
+      "ogUrl": "https://tootfunyachts.com/about-us/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/about-us/",
+      "canonical": "https://tootfunyachts.com/about-us/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/about-us/"
+          "href": "https://tootfunyachts.com/about-us/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/about-us/"
+          "href": "https://tootfunyachts.com/about-us/"
         }
       ],
       "robots": null,
@@ -99,17 +99,17 @@
       "description": "Explore the blog for the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai.",
       "ogTitle": "Blog | Dubai Yacht Rental Guide",
       "ogDescription": "Tips and ideas for sea cruises and yacht parties in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/blog/",
+      "ogUrl": "https://tootfunyachts.com/blog/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/blog/",
+      "canonical": "https://tootfunyachts.com/blog/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/blog/"
+          "href": "https://tootfunyachts.com/blog/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/blog/"
+          "href": "https://tootfunyachts.com/blog/"
         }
       ],
       "robots": null,
@@ -144,17 +144,17 @@
       "description": "Learn about the cancellation and refund policy at Toot Fun Yachts, including cancellation terms, rescheduling, refund amounts, and no-show cases.",
       "ogTitle": "Cancellation Policy | Toot Fun Yachts",
       "ogDescription": "Cancellation, rescheduling, and refund terms.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/",
+      "ogUrl": "https://tootfunyachts.com/cancellation-policy/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/",
+      "canonical": "https://tootfunyachts.com/cancellation-policy/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/"
+          "href": "https://tootfunyachts.com/cancellation-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/"
+          "href": "https://tootfunyachts.com/cancellation-policy/"
         }
       ],
       "robots": null,
@@ -171,17 +171,17 @@
       "description": "Contact us to book your yacht, check pricing and packages, and pick the right trip for you with Toot Fun Yachts.",
       "ogTitle": "Contact Us | Toot Fun Yachts",
       "ogDescription": "Get in touch with the Toot Fun Yachts team for bookings and enquiries in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
+      "ogUrl": "https://tootfunyachts.com/contact-us/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/",
+      "canonical": "https://tootfunyachts.com/contact-us/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/"
+          "href": "https://tootfunyachts.com/contact-us/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/contact-us/"
+          "href": "https://tootfunyachts.com/contact-us/"
         }
       ],
       "robots": null,
@@ -206,17 +206,17 @@
       "description": "Book the best fishing trips in Dubai with fully equipped boats, tackle provided, professional crew, and private or shared options at competitive rates.",
       "ogTitle": "Best Fishing Trips in Dubai | Toot Fun Yachts",
       "ogDescription": "Private and shared fishing trips in Dubai — fully equipped.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/",
+      "ogUrl": "https://tootfunyachts.com/fishing-trip-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/",
+      "canonical": "https://tootfunyachts.com/fishing-trip-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/"
+          "href": "https://tootfunyachts.com/fishing-trip-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/"
+          "href": "https://tootfunyachts.com/fishing-trip-dubai/"
         }
       ],
       "robots": null,
@@ -233,17 +233,17 @@
       "description": "Our privacy policy explains how we protect your personal information and keep it confidential when you use the Toot Fun Yachts website and services.",
       "ogTitle": "Privacy Policy | Toot Fun Yachts",
       "ogDescription": "How we collect, use, and protect your personal information.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/",
+      "ogUrl": "https://tootfunyachts.com/privacy-policy/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/",
+      "canonical": "https://tootfunyachts.com/privacy-policy/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/"
+          "href": "https://tootfunyachts.com/privacy-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/"
+          "href": "https://tootfunyachts.com/privacy-policy/"
         }
       ],
       "robots": null,
@@ -260,17 +260,17 @@
       "description": "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
       "ogTitle": "Yacht Hire Dubai | Toot Fun Yachts",
       "ogDescription": "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/",
+      "ogUrl": "https://tootfunyachts.com/rent-a-yacht-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/",
+      "canonical": "https://tootfunyachts.com/rent-a-yacht-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/"
+          "href": "https://tootfunyachts.com/rent-a-yacht-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/"
+          "href": "https://tootfunyachts.com/rent-a-yacht-dubai/"
         }
       ],
       "robots": null,
@@ -311,17 +311,17 @@
       "description": "Browse the Toot Fun Yachts sitemap to easily find pages for yacht rentals, parties, sea cruises, and packages available in Dubai.",
       "ogTitle": "Sitemap | Toot Fun Yachts",
       "ogDescription": "Links to every page and service on Toot Fun Yachts in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/",
+      "ogUrl": "https://tootfunyachts.com/sitemap/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/",
+      "canonical": "https://tootfunyachts.com/sitemap/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/"
+          "href": "https://tootfunyachts.com/sitemap/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/sitemap/"
+          "href": "https://tootfunyachts.com/sitemap/"
         }
       ],
       "robots": null,
@@ -338,17 +338,17 @@
       "description": "Read the Toot Fun Yachts terms and conditions covering booking, payment, cancellation, guest responsibilities, and use of yacht rental services in Dubai.",
       "ogTitle": "Terms and Conditions | Toot Fun Yachts",
       "ogDescription": "Booking, payment, cancellation terms and guest responsibilities.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/",
+      "ogUrl": "https://tootfunyachts.com/terms-and-conditions/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/",
+      "canonical": "https://tootfunyachts.com/terms-and-conditions/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/"
+          "href": "https://tootfunyachts.com/terms-and-conditions/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/terms-and-conditions/"
+          "href": "https://tootfunyachts.com/terms-and-conditions/"
         }
       ],
       "robots": null,
@@ -365,17 +365,17 @@
       "description": "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
       "ogTitle": "Yacht Booking Dubai | Toot Fun Yachts",
       "ogDescription": "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/",
+      "ogUrl": "https://tootfunyachts.com/yacht-booking-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/",
+      "canonical": "https://tootfunyachts.com/yacht-booking-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/"
+          "href": "https://tootfunyachts.com/yacht-booking-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-booking-dubai/"
+          "href": "https://tootfunyachts.com/yacht-booking-dubai/"
         }
       ],
       "robots": null,
@@ -392,17 +392,17 @@
       "description": "Discover the best yachts for rent in Dubai at prices starting from AED 450 per hour. A diverse fleet from 40 to 105 feet, with private trips and options for every occasion.",
       "ogTitle": "Yachts for Rent in Dubai | Toot Fun Yachts",
       "ogDescription": "A fleet of 15 luxury yachts for rent in Dubai — from 40 ft to 105 ft.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/",
+      "ogUrl": "https://tootfunyachts.com/yacht-charter-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/",
+      "canonical": "https://tootfunyachts.com/yacht-charter-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/"
+          "href": "https://tootfunyachts.com/yacht-charter-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/"
+          "href": "https://tootfunyachts.com/yacht-charter-dubai/"
         }
       ],
       "robots": null,
@@ -430,17 +430,17 @@
       "description": "Discover the best yacht rental packages in Dubai with varied options for private cruises, parties, and events — flexible pricing starts at AED 1,800.",
       "ogTitle": "Best Yacht Rental Packages in Dubai | Toot Fun Yachts",
       "ogDescription": "Breakfast, romantic dinner, and jet ski packages on board a yacht in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/",
+      "ogUrl": "https://tootfunyachts.com/yacht-packages-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/",
+      "canonical": "https://tootfunyachts.com/yacht-packages-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/"
+          "href": "https://tootfunyachts.com/yacht-packages-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/"
+          "href": "https://tootfunyachts.com/yacht-packages-dubai/"
         }
       ],
       "robots": null,
@@ -463,17 +463,17 @@
       "description": "Book yacht parties in Dubai for special occasions, birthdays, and weddings with luxury yachts, standout decor, professional crew, and competitive packages starting from AED 1,500.",
       "ogTitle": "Best Yacht Parties in Dubai | Toot Fun Yachts",
       "ogDescription": "Weddings, engagements, graduations, and birthdays on board a yacht in Dubai.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/",
+      "ogUrl": "https://tootfunyachts.com/yacht-party-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/",
+      "canonical": "https://tootfunyachts.com/yacht-party-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/"
+          "href": "https://tootfunyachts.com/yacht-party-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-party-dubai/"
+          "href": "https://tootfunyachts.com/yacht-party-dubai/"
         }
       ],
       "robots": null,
@@ -501,17 +501,17 @@
       "description": "We provide yacht rental services in Dubai with private trips, a diverse fleet, and prices starting from AED 450 per hour for every occasion.",
       "ogTitle": "Yacht Rental Dubai | Fleet & Prices – Toot Fun",
       "ogDescription": "A diverse fleet of luxury yachts for rent in Dubai at competitive prices.",
-      "ogUrl": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/",
+      "ogUrl": "https://tootfunyachts.com/yacht-rental-dubai/",
       "ogImage": null,
-      "canonical": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/",
+      "canonical": "https://tootfunyachts.com/yacht-rental-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/"
+          "href": "https://tootfunyachts.com/yacht-rental-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/"
+          "href": "https://tootfunyachts.com/yacht-rental-dubai/"
         }
       ],
       "robots": null,

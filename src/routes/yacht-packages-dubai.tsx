@@ -81,18 +81,18 @@ export const Route = createFileRoute("/yacht-packages-dubai")({
       { name: "keywords", content: "dubai yacht packages, breakfast yacht package, romantic dinner yacht, jet ski package, dubai yacht deals" },
       { property: "og:title", content: "Best Yacht Rental Packages in Dubai | Toot Fun Yachts" },
       { property: "og:description", content: "Breakfast, romantic dinner, and jet ski packages on board a yacht in Dubai." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/yacht-packages-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/yacht-packages-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-packages-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-packages-dubai/" },
     ],
     scripts: [
       faqSchema(pkgFaqs),
       breadcrumbSchema([
-        { name: "Home", url: "https://seashell-spoonbill-893561.hostingersite.com/" },
-        { name: "Yacht Packages", url: "https://seashell-spoonbill-893561.hostingersite.com/yacht-packages-dubai/" },
+        { name: "Home", url: "https://tootfunyachts.com/" },
+        { name: "Yacht Packages", url: "https://tootfunyachts.com/yacht-packages-dubai/" },
       ]),
     ],
   }),
@@ -107,15 +107,15 @@ function Packages() {
         compact
         image={packagesImg}
         eyebrow="Offers"
-        title="Yacht Rental Packages in Dubai"
-        subtitle="Discover the best yacht rental packages in Dubai with varied options for private cruises, parties, and occasions — with flexible pricing."
+        title="Yacht Packages Dubai"
+        subtitle="Discover the best yacht packages in Dubai, with flexible options for private trips, parties, and special occasions, plus competitive prices and selected services for a memorable experience on the water."
       />
 
       {/* Products FIRST */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="Hand-Picked Packages for a Standout Cruise"
-          subtitle="Three ready packages covering the cruise, meal, and extras at one transparent rate."
+          title="Choose Your Yacht Rental Package in Dubai"
+          subtitle="Choose the yacht package that suits your trip, celebration, or special occasion."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visiblePackages.map((p, i) => (

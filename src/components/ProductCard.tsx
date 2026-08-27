@@ -173,7 +173,7 @@ function ImageSlider({
         ) : null}
       </div>
 
-      {/* Share badge — top-start corner (RTL right) */}
+      {/* Share badge — top-end corner (right on LTR) */}
       <button
         type="button"
         aria-label="Share"
@@ -189,7 +189,7 @@ function ImageSlider({
             window.open(wa, "_blank", "noopener,noreferrer");
           }
         }}
-        className="absolute start-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep"
+        className="absolute end-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/55 text-white backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep"
       >
         <Share2 className="h-4 w-4" />
       </button>
@@ -205,7 +205,7 @@ function ImageSlider({
             }}
             className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" />
           </button>
           <button
             type="button"
@@ -216,7 +216,7 @@ function ImageSlider({
             }}
             className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" />
           </button>
 
           {/* Progress dots — bottom center, below pills */}
@@ -282,8 +282,8 @@ function Lightbox({
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") setIdx((i) => (i - 1 + images.length) % images.length);
-      if (e.key === "ArrowLeft") setIdx((i) => (i + 1) % images.length);
+      if (e.key === "ArrowRight") setIdx((i) => (i + 1) % images.length);
+      if (e.key === "ArrowLeft") setIdx((i) => (i - 1 + images.length) % images.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -307,7 +307,7 @@ function Lightbox({
           e.stopPropagation();
           onClose();
         }}
-        className="absolute start-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-white/25"
+        className="absolute end-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-white/25"
       >
         <X className="h-6 w-6" />
       </button>
@@ -323,7 +323,7 @@ function Lightbox({
             }}
             className="absolute start-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-gold hover:text-primary-deep md:start-8"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronLeft className="h-6 w-6" />
           </button>
           <button
             type="button"
@@ -334,7 +334,7 @@ function Lightbox({
             }}
             className="absolute end-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md hover:bg-gold hover:text-primary-deep md:end-8"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronRight className="h-6 w-6" />
           </button>
         </>
       ) : null}

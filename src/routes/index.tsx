@@ -38,22 +38,22 @@ export const Route = createFileRoute("/")({
         content:
           "Enjoy yacht rental in Dubai with luxury yachts, competitive prices, private trips, and a professional crew for every occasion. Book your yacht now.",
       },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/" },
+      { property: "og:url", content: "https://tootfunyachts.com/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/" },
     ],
   }),
   component: Home,
 });
 
 const features = [
-  { icon: Anchor, t: "Luxury Yachts", d: "A wide selection of the finest yachts for rent in Dubai" },
-  { icon: ShieldCheck, t: "Safety & Comfort", d: "High safety standards and premium service" },
-  { icon: Users, t: "Professional Crew", d: "Trained crew delivering the best service" },
-  { icon: Headphones, t: "24/7 Support", d: "Customer service available around the clock" },
+  { icon: Anchor, t: "Luxury Yachts", d: "A wide selection of luxury yachts for rent in Dubai." },
+  { icon: ShieldCheck, t: "Safety & Comfort", d: "High safety standards and quality service." },
+  { icon: Users, t: "Professional Crew", d: "Experienced crew trained to provide excellent service." },
+  { icon: Headphones, t: "24/7 Support", d: "Customer support is available around the clock." },
 ];
 
 const services = [
@@ -66,15 +66,15 @@ function Home() {
   return (
     <>
       <PageHero
-        eyebrow="An Unforgettable Sea Trip"
-        title="Yacht Rental in Dubai with Toot Fun"
-        subtitle="Enjoy the best yacht rental services in Dubai with private trips, competitive prices, and luxury yachts for every occasion."
+        eyebrow="An Unforgettable Yacht Experience"
+        title="Yacht Rental Dubai with Toot Fun"
+        subtitle="Enjoy premium yacht rental in Dubai with private cruises, competitive prices, and luxury yachts for every occasion."
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="Best Yachts for Rent in Dubai at Competitive Prices"
-          subtitle="Choose from a diverse range of the best yachts for rent in Dubai at competitive prices starting from AED 450 per hour."
+          subtitle="Choose from a wide selection of the best yachts for rent in Dubai at competitive prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {yachts.slice(0, 6).map((p, i) => (
@@ -95,10 +95,10 @@ function Home() {
         <div className="mx-auto max-w-[1440px] px-4">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <h2 className="text-2xl text-primary-foreground md:text-3xl">
-              Why choose <span className="text-gold-gradient">Toot Fun</span> for yacht rental in Dubai?
+              Why Choose <span className="text-gold-gradient">Toot Fun</span> for Yacht Rental Dubai?
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70 md:text-base">
-              Toot Fun stands out with professional service, a diverse fleet, transparent pricing, and an experienced crew for a comfortable, memorable sea experience in Dubai.
+              Toot Fun offers professional service, a diverse fleet of yachts, transparent pricing, and an experienced crew for a comfortable and memorable yacht experience in Dubai. Whether you are planning a private cruise, yacht party, or luxury event, we provide options to suit your needs.
             </p>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -118,7 +118,7 @@ function Home() {
       <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="Toot Fun Yacht Rental Services in Dubai"
-          subtitle="Discover Toot Fun's diverse yacht rental services in Dubai."
+          subtitle="Discover Toot Fun's wide range of yacht rental services in Dubai."
         />
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((s, i) => (
@@ -172,8 +172,8 @@ function Home() {
 
       <section className="cv-auto mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="Yacht Booking Add-Ons in Dubai"
-          subtitle="Customize your experience with premium add-ons — from cakes and desserts to water sports and professional photography. Hover to pause the motion."
+          title="Extra Yacht Services Dubai"
+          subtitle="Discover extra yacht services in Dubai, including catering, decorations, photography, water sports, transfers, and more to customize your trip."
         />
         <ExtrasMarquee items={extras} />
       </section>
@@ -254,8 +254,8 @@ function Home() {
       </section>
 
       <ContactCta
-        title="Ready to Sail in Dubai?"
-        subtitle="Book your yacht now and take advantage of the best yacht rental offers in Dubai Marina."
+        title="Yacht Rental Prices in Dubai Marina"
+        subtitle="Book your yacht now and take advantage of the best yacht rental offers in Dubai."
       />
 
       {/* Keyword cloud — LAST section (matches other pages) */}

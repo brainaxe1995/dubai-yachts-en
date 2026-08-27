@@ -25,12 +25,12 @@ export const Route = createFileRoute("/cancellation-policy")({
       },
       { property: "og:title", content: "Cancellation Policy | Toot Fun Yachts" },
       { property: "og:description", content: "Cancellation, rescheduling, and refund terms." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/" },
+      { property: "og:url", content: "https://tootfunyachts.com/cancellation-policy/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/cancellation-policy/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/cancellation-policy/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/cancellation-policy/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/cancellation-policy/" },
     ],
   }),
   component: Page,
@@ -111,17 +111,17 @@ function Page() {
     <>
       <PageHero
         compact
-        eyebrow="Cancellation policy"
-        title="Cancellation policy"
-        subtitle="Learn about the cancellation and refund policy at Toot Fun Yachts, including cancellation terms, rescheduling, refund amounts, and no-show cases."
+        eyebrow="Cancellation Policy"
+        title="Cancellation Policy"
+        subtitle="Learn about Toot Fun Yachts' cancellation and refund policy, including cancellation terms, rescheduling, refunds, and no-show conditions."
       >
-        <CallButton label="Contact us" />
+        <CallButton label="Get in Touch" />
       </PageHero>
 
       <section className="mx-auto max-w-4xl px-4 pt-14">
         <SectionHeading
-          title="Full flexibility on cancellation and rescheduling"
-          subtitle="Life changes — here's how we handle cancellations, rescheduling, and refunds, clearly and up front."
+          title="Yacht Rental Cancellation Policy & Refund Terms in Dubai"
+          subtitle="Learn about Toot Fun Yachts' booking cancellation, rescheduling, and refund terms."
         />
       </section>
 

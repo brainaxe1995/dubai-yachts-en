@@ -34,12 +34,12 @@ export const Route = createFileRoute("/privacy-policy")({
       },
       { property: "og:title", content: "Privacy Policy | Toot Fun Yachts" },
       { property: "og:description", content: "How we collect, use, and protect your personal information." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/" },
+      { property: "og:url", content: "https://tootfunyachts.com/privacy-policy/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/privacy-policy/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/privacy-policy/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/privacy-policy/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/privacy-policy/" },
     ],
   }),
   component: Page,
@@ -208,17 +208,17 @@ function Page() {
     <>
       <PageHero
         compact
-        eyebrow="Privacy policy"
-        title="Privacy policy"
-        subtitle="Our privacy policy explains how we protect your personal information and keep it confidential when you use the Toot Fun Yachts website and services."
+        eyebrow="Privacy Policy"
+        title="Privacy Policy"
+        subtitle="Our Privacy Policy explains our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services."
       >
-        <CallButton label="Contact us" />
+        <CallButton label="Get in Touch" />
       </PageHero>
 
       <section className="mx-auto max-w-4xl px-4 pt-14">
         <SectionHeading
-          title="Your privacy is a responsibility we take seriously"
-          subtitle="We follow the highest UAE data-protection standards — collecting only what we need to serve you, and safeguarding it with proven security tools."
+          title="Privacy Policy & Data Protection"
+          subtitle="Learn how your personal information is collected, used, and protected when using the Toot Fun Yachts website and services."
         />
       </section>
 

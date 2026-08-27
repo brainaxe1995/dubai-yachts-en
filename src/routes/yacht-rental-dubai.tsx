@@ -25,12 +25,12 @@ export const Route = createFileRoute("/yacht-rental-dubai")({
       },
       { property: "og:title", content: "Yacht Rental Dubai | Fleet & Prices – Toot Fun" },
       { property: "og:description", content: "A diverse fleet of luxury yachts for rent in Dubai at competitive prices." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/yacht-rental-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-rental-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
     ],
     scripts: [
       {
@@ -113,14 +113,14 @@ function YachtRental() {
       <PageHero
         compact
         eyebrow="Yacht Rental"
-        title="Yacht Rental in Dubai"
-        subtitle="We provide yacht rental services in Dubai with private trips, a diverse fleet, and prices starting from AED 450 per hour for every occasion."
+        title="Yacht Rental Dubai"
+        subtitle="We offer yacht rental in Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions."
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="Private Yacht Rental Services in Dubai"
-          subtitle="Choose from the finest private yachts in Dubai at prices starting from AED 450 per hour, and enjoy a luxury trip for every occasion."
+          title="Private Yacht Rental Dubai | Luxury Yacht Charter"
+          subtitle="Choose from the best private yachts in Dubai, with prices starting from AED 450 per hour, and enjoy a luxury cruise for every occasion."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleYachts.map((p, i) => (

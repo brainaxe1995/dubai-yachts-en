@@ -63,12 +63,12 @@ export const Route = createFileRoute("/rent-a-yacht-dubai")({
         content:
           "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
       },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/rent-a-yacht-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
     ],
   }),
   component: RentYacht,
@@ -93,16 +93,16 @@ function RentYacht() {
     <>
       <PageHero
         compact
-        eyebrow="Yacht Hire"
-        title="Yacht Hire in Dubai"
-        subtitle="We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events."
+        eyebrow="Rent a Yacht"
+        title="Rent a Yacht Dubai"
+        subtitle="Rent a yacht in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and flexible options for private trips and special occasions."
       />
 
       {/* Products first */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
           title="Our Luxury Yacht Fleet"
-          subtitle="Choose from our diverse fleet of luxury yachts available for hire in Dubai for every trip and occasion."
+          subtitle="Choose from our diverse fleet of luxury yachts available for rent in Dubai for private trips and all special occasions."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleYachts.map((p, i) => (

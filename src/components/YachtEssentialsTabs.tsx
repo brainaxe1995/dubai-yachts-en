@@ -52,9 +52,9 @@ const sites: string[] = [
 
 type TabId = "included" | "bring" | "sites";
 const TABS: { id: TabId; label: string }[] = [
-  { id: "included", label: "What does the rental include?" },
-  { id: "bring", label: "What you need before the trip" },
-  { id: "sites", label: "Key locations" },
+  { id: "included", label: "What Is Included" },
+  { id: "bring", label: "What You Need" },
+  { id: "sites", label: "Key Sites" },
 ];
 
 function IconList({ items }: { items: Item[] }) {
@@ -131,7 +131,7 @@ export function YachtEssentialsTabs() {
             <Reveal key="sites">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-2xl font-extrabold text-primary md:text-3xl">
-                  Top locations you can reach when renting a yacht in Dubai
+                  Key Sites You Can Reach with Yacht Rental Dubai
                 </h2>
                 <span className="mx-auto mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">

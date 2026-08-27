@@ -138,9 +138,9 @@ const routeGroups: RouteGroup[] = [
 
 type TabId = "included" | "bring" | "sites";
 const TABS: { id: TabId; label: string }[] = [
-  { id: "included", label: "What does the booking include?" },
-  { id: "bring", label: "What you need before the trip" },
-  { id: "sites", label: "Key locations" },
+  { id: "included", label: "What Is Included" },
+  { id: "bring", label: "What You Need" },
+  { id: "sites", label: "Key Sites" },
 ];
 
 function IconList({ items }: { items: Item[] }) {

@@ -27,12 +27,12 @@ export const Route = createFileRoute("/fishing-trip-dubai")({
       },
       { property: "og:title", content: "Best Fishing Trips in Dubai | Toot Fun Yachts" },
       { property: "og:description", content: "Private and shared fishing trips in Dubai — fully equipped." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/fishing-trip-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/fishing-trip-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/fishing-trip-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/fishing-trip-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/fishing-trip-dubai/" },
     ],
   }),
   component: Fishing,
@@ -164,15 +164,15 @@ function Fishing() {
         compact
         image={fishingImg}
         eyebrow="Fishing Trips"
-        title="Fishing Trips in Dubai"
-        subtitle="Discover the best fishing trips in Dubai with fully equipped boats, a professional crew, and an enjoyable time at sea."
+        title="Fishing Trip Dubai"
+        subtitle="Discover the best fishing trips in Dubai with fully equipped boats, a professional crew, and an enjoyable experience on the water."
       />
 
       {/* Products FIRST */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="Top Fishing Trip Options in Dubai"
-          subtitle="Choose between private and shared fishing trips with equipped boats and a professional crew."
+          title="Fishing Trip Options in Dubai"
+          subtitle="Choose from private and shared fishing trips with fully equipped boats and a professional crew."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleFishing.map((p, i) => (

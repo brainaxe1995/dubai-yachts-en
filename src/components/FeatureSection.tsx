@@ -74,10 +74,10 @@ function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
             height={900}
             className="aspect-[16/10] w-full object-cover md:aspect-auto md:h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/70 to-primary-deep/20 md:bg-gradient-to-l md:from-primary-deep/95 md:via-primary-deep/60 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/70 to-primary-deep/20 md:bg-gradient-to-r md:from-transparent md:via-primary-deep/60 md:to-primary-deep/95" />
         </div>
       ) : null}
-      <div className="relative md:absolute md:inset-0 md:flex md:items-center">
+      <div className="relative md:absolute md:inset-0 md:flex md:items-center md:justify-end">
         <div className="w-full max-w-xl p-6 text-primary-foreground md:p-10 lg:p-14">
           <BlockChapter i={i} />
           <div className="mt-3 flex items-center gap-3">
@@ -104,11 +104,11 @@ function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
 
 function VariantCardStack({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
-  // Opposite side of VariantSplit — image on RTL end (physical left).
+  // Text on right, image on left — matches VariantSplit/Overlay right-align convention.
   return (
     <div className="grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-12">
       {b.image ? (
-        <div className="md:order-2">
+        <div className="md:order-1">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
             <img
               src={b.image}
@@ -121,7 +121,7 @@ function VariantCardStack({ b, i }: { b: FeatureBlock; i: number }) {
           </div>
         </div>
       ) : null}
-      <div className="md:order-1">
+      <div className="md:order-2">
         <BlockChapter i={i} />
         <div className="mt-3 flex items-center gap-3">
           {Icon ? (

@@ -63,18 +63,18 @@ export const Route = createFileRoute("/yacht-charter-dubai")({
       { name: "keywords", content: "yachts for rent in Dubai, yacht rental Dubai, private yacht Dubai, luxury yachts, Dubai Marina yacht" },
       { property: "og:title", content: "Yachts for Rent in Dubai | Toot Fun Yachts" },
       { property: "og:description", content: "A fleet of 15 luxury yachts for rent in Dubai — from 40 ft to 105 ft." },
-      { property: "og:url", content: "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/" },
+      { property: "og:url", content: "https://tootfunyachts.com/yacht-charter-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/" },
+      { rel: "canonical", href: "https://tootfunyachts.com/yacht-charter-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-charter-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-charter-dubai/" },
     ],
     scripts: [
       faqSchema(yachtFaqs),
       breadcrumbSchema([
-        { name: "Home", url: "https://seashell-spoonbill-893561.hostingersite.com/" },
-        { name: "Yachts for Rent", url: "https://seashell-spoonbill-893561.hostingersite.com/yacht-charter-dubai/" },
+        { name: "Home", url: "https://tootfunyachts.com/" },
+        { name: "Yachts for Rent", url: "https://tootfunyachts.com/yacht-charter-dubai/" },
       ]),
     ],
   }),
@@ -95,15 +95,15 @@ function YachtsForRent() {
       <PageHero
         compact
         eyebrow="The Fleet"
-        title="Yachts for Rent in Dubai"
-        subtitle="Choose from a diverse range of yachts for rent in Dubai at prices starting from AED 450 per hour."
+        title="Yacht Charter Dubai"
+        subtitle="Explore the best Yacht Charter in Dubai options, with a wide range of yachts and prices starting from AED 450 per hour."
       />
 
       {/* Products FIRST */}
       <section className="mx-auto max-w-[1440px] px-4 py-16 md:py-24">
         <SectionHeading
-          title="All Yachts Available for Rent in Dubai"
-          subtitle="Choose from a diverse range of luxury yachts available for rent in Dubai, in sizes and prices that suit private trips and every occasion."
+          title="Private Yacht Charter Dubai at Competitive Prices"
+          subtitle="Choose from a wide range of luxury yachts for private charter in Dubai, with professional crew, flexible trip options, and prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleYachts.map((p, i) => (
