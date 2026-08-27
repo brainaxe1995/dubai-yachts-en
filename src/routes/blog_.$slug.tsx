@@ -305,21 +305,33 @@ function BlogPost() {
           })}
         </div>
 
-        {/* CTA banner mid-article */}
+        {/* CTA banner mid-article — cream/gold split layout, distinct from numbered sections */}
         <Reveal>
-          <div className="mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-primary-deep via-primary to-primary-deep p-8 shadow-luxe">
-            <div className="relative z-10 text-center">
-              <h3 className="text-2xl font-extrabold text-primary-foreground">{p.cta ?? "Book your yacht today"}</h3>
-              <p className="mt-2 text-sm text-primary-foreground/70">
-                Message us now to enquire or book on WhatsApp.
-              </p>
+          <div className="relative mt-20 overflow-hidden rounded-[2rem] border-2 border-gold/40 bg-gradient-to-br from-[#FFF8E7] via-[#FDECC8] to-[#F5D98A] p-8 shadow-luxe md:p-12">
+            <WhatsAppIcon
+              aria-hidden
+              className="pointer-events-none absolute -end-6 -top-6 h-40 w-40 text-primary-deep/[0.06] md:h-56 md:w-56"
+            />
+            <div className="relative z-10 grid items-center gap-6 md:grid-cols-[1fr_auto]">
+              <div className="text-start">
+                <span className="inline-flex items-center gap-2 rounded-full bg-primary-deep px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+                  Available now
+                </span>
+                <h3 className="mt-4 text-2xl font-extrabold leading-tight text-primary-deep md:text-3xl">
+                  {p.cta ?? "Book your yacht today"}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-primary-deep/75 md:text-base">
+                  Message us on WhatsApp for pricing, availability, or booking — quick reply within minutes.
+                </p>
+              </div>
               <a
                 href={`https://wa.me/971544420441?text=${encodeURIComponent(`Hi, I just read the article: ${p.title} and would like to enquire.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-primary-deep transition-transform hover:scale-105"
+                className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-[#25D366] px-7 py-4 text-base font-bold text-white shadow-lg ring-2 ring-white/40 transition-all hover:scale-105 hover:bg-[#1FBA57] hover:shadow-xl"
               >
-                <WhatsAppIcon className="h-4 w-4" />
+                <WhatsAppIcon className="h-6 w-6" />
                 Contact us now
               </a>
             </div>
