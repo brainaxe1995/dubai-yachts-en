@@ -391,6 +391,46 @@ function BlogPost() {
         </div>
       </article>
 
+      {/* CTA frame — sibling of article, own H2 + brand gold buttons */}
+      <Reveal>
+        <section className="relative mx-auto mt-8 max-w-3xl overflow-hidden rounded-[2rem] border-2 border-gold/40 bg-gradient-to-br from-[#FFF8E7] via-[#FDECC8] to-[#F5D98A] p-8 shadow-luxe md:p-12">
+          <WhatsAppIcon
+            aria-hidden
+            className="pointer-events-none absolute -end-6 -top-6 h-40 w-40 text-primary-deep/[0.06] md:h-56 md:w-56"
+          />
+          <div className="relative z-10 grid items-center gap-6 px-4 md:grid-cols-[1fr_auto]">
+            <div className="text-start">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary-deep px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+                Available now
+              </span>
+              <h2 className="mt-4 text-2xl font-extrabold leading-tight text-primary-deep md:text-3xl">
+                Book Your Yacht in Dubai
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-primary-deep/75 md:text-base">
+                Message us on WhatsApp or call for pricing, availability, or booking — quick reply within minutes.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={CONTACT.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-secondary-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-deep"
+              >
+                <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
+              </a>
+              <a
+                href={`tel:${CONTACT.phone}`}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-primary-deep bg-primary-deep px-6 py-3 text-sm font-bold text-gold shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary"
+              >
+                <Phone className="h-4 w-4" /> Call now
+              </a>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
       {/* Author / brand byline */}
       <section className="bg-muted py-12">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center md:flex-row md:text-start">
