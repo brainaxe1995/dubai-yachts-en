@@ -207,7 +207,7 @@ export const fishingTrips: Product[] = [
     title: "Private Yacht Fishing Trip Dubai",
     desc: "Enjoy a private yacht fishing trip in Dubai with full tackle and a professional crew.",
     specs: ["4-hour trip", "Fits up to 10 guests", "48 ft", "2 bedrooms"],
-    price: "AED 2,000 / 4 hours",
+    price: "AED 2,000 / 4 Hours",
     image: fishingPrivateYacht,
     images: imagesFor("private-yacht", "fishing"),
   },
@@ -215,7 +215,7 @@ export const fishingTrips: Product[] = [
     title: "Private Boat Fishing Trip Dubai",
     desc: "Private boat fishing trip in Dubai with full tackle for deep-sea fishing.",
     specs: ["4-hour trip", "Fits up to 10 guests", "40 ft", "1 bedroom"],
-    price: "AED 1,200 / 4 hours",
+    price: "AED 1,200 / 4 Hours",
     image: fishingPrivateBoat,
     images: imagesFor("private-boat", "fishing"),
   },
@@ -242,7 +242,7 @@ export const parties: Product[] = [
     title: "Marriage Proposal Yacht Dubai",
     desc: "Plan a romantic marriage proposal on a yacht in Dubai with a private setting, elegant decor, and unforgettable sea views.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
-    price: "AED 2,600 / 2 hours",
+    price: "AED 2,600 / 2 Hours",
     image: partyProposal,
     images: imagesFor("proposal", "parties"),
     included: [
@@ -285,7 +285,7 @@ export const parties: Product[] = [
     title: "Anniversary Yacht Party Dubai",
     desc: "Host an anniversary party on a yacht in Dubai and enjoy a private experience combining luxury and intimacy.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
-    price: "AED 2,100 / 2 hours",
+    price: "AED 2,100 / 2 Hours",
     image: partyAnniversary,
     images: imagesFor("anniversary", "parties"),
     included: [
@@ -303,7 +303,7 @@ export const parties: Product[] = [
     title: "Graduation Yacht Party Dubai",
     desc: "Celebrate your graduation on a yacht in Dubai with friends and enjoy a unique sea experience.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
-    price: "AED 1,800 / 2 hours",
+    price: "AED 1,800 / 2 Hours",
     image: partyGraduation,
     images: imagesFor("graduation", "parties"),
     included: [
@@ -320,7 +320,7 @@ export const parties: Product[] = [
     title: "Engagement Yacht Party Dubai",
     desc: "Celebrate your engagement on a yacht in Dubai with family and friends on a special private cruise.",
     specs: ["2-hour cruise", "Fits up to 15 guests", "55 ft", "2 bedrooms"],
-    price: "AED 1,900 / 2 hours",
+    price: "AED 1,900 / 2 Hours",
     image: partyEngagement,
     images: imagesFor("engagement", "parties"),
     included: [
@@ -338,7 +338,7 @@ export const parties: Product[] = [
     title: "Yacht Birthday Party Dubai",
     desc: "Gather your guests for a birthday party on a yacht in Dubai with cake, music, and dedicated styling.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
-    price: "AED 1,500 / 2 hours",
+    price: "AED 1,500 / 2 Hours",
     image: partyBirthday,
     images: imagesFor("birthday", "parties"),
     included: [
@@ -366,7 +366,7 @@ export const packages: Product[] = [
     title: "Yacht Breakfast Package Dubai",
     desc: "Start your morning with the breakfast on a yacht package in Dubai — a tasty meal and a calm sea cruise.",
     specs: ["4-hour trip", "Fits up to 12 guests", "48 ft", "2 bedrooms", "Breakfast on board", "1-hour jet ski"],
-    price: "AED 3,000 / 4 hours",
+    price: "AED 3,000 / 4 Hours",
     image: pkgBreakfast,
     images: imagesFor("breakfast", "packages"),
     included: [
@@ -386,7 +386,7 @@ export const packages: Product[] = [
     title: "Yacht Rental with Jet Ski Dubai",
     desc: "Combine a yacht cruise with a jet ski adventure in Dubai in one action-packed sea experience.",
     specs: ["4-hour trip", "Fits up to 12 guests", "48 ft", "2 bedrooms", "1-hour jet ski"],
-    price: "AED 2,300 / 4 hours",
+    price: "AED 2,300 / 4 Hours",
     image: pkgJetski,
     images: imagesFor("jetski", "packages"),
     included: [
@@ -406,7 +406,7 @@ export const packages: Product[] = [
     title: "Romantic Yacht Dinner Package Dubai",
     desc: "Turn your evening into a private date with the romantic dinner on a yacht package in Dubai and enchanting city views.",
     specs: ["2-hour cruise", "Fits up to 2 guests", "48 ft", "2 bedrooms", "Grill meal for 2", "Romantic cake", "Bottle of champagne"],
-    price: "AED 1,800 / 2 hours",
+    price: "AED 1,800 / 2 Hours",
     image: pkgRomantic,
     images: imagesFor("romantic-dinner", "packages"),
     included: [
