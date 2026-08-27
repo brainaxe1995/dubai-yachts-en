@@ -223,7 +223,7 @@ function BlogPost() {
               aria-label="Article contents"
               className="mb-12 rounded-2xl border border-gold/30 bg-card p-6 shadow-luxe"
             >
-              <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-gold-deep">In this article</h2>
+              <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-gold-deep">In this article</h3>
               <ol className="grid gap-2 sm:grid-cols-2">
                 {p.sections.slice(1).map((s, idx) => {
                   const i = idx + 1;
@@ -269,9 +269,9 @@ function BlogPost() {
                         Chapter {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
+                    <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
                       {s.h}
-                    </h2>
+                    </h3>
                     <span className="mt-4 block h-[3px] w-14 bg-gradient-to-r from-gold to-gold-deep" />
                   </div>
 
