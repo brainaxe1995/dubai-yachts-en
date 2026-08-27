@@ -168,10 +168,27 @@ function BlogPost() {
         </div>
       </header>
 
+      {/* H2 hero-adjacent — intro heading + short description right after hero */}
+      {p.sections.length > 0 ? (
+        <section className="mx-auto max-w-3xl px-4 pt-12 md:pt-16">
+          <Reveal>
+            <h2 className="text-2xl font-extrabold leading-snug text-primary md:text-3xl">
+              {p.sections[0].h}
+            </h2>
+            <span className="mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+            {p.sections[0].p.map((para, pi) => (
+              <p key={pi} className="mt-4 text-base leading-loose text-muted-foreground md:text-lg">
+                {para}
+              </p>
+            ))}
+          </Reveal>
+        </section>
+      ) : null}
+
       {/* Article body */}
       <article className="mx-auto max-w-3xl px-4 py-16 md:py-24">
-        {/* Table of contents */}
-        {p.sections.length > 3 ? (
+        {/* Table of contents (excludes hero-adjacent intro) */}
+        {p.sections.length > 4 ? (
           <Reveal>
             <nav
               aria-label="Article contents"
@@ -179,19 +196,22 @@ function BlogPost() {
             >
               <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-gold-deep">In this article</h2>
               <ol className="grid gap-2 sm:grid-cols-2">
-                {p.sections.map((s, i) => (
-                  <li key={s.h}>
-                    <a
-                      href={`#section-${i}`}
-                      className="flex items-start gap-2 text-sm text-foreground transition-colors hover:text-gold-deep"
-                    >
-                      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold/20 text-[10px] font-bold text-gold-deep">
-                        {i + 1}
-                      </span>
-                      <span className="leading-snug">{s.h}</span>
-                    </a>
-                  </li>
-                ))}
+                {p.sections.slice(1).map((s, idx) => {
+                  const i = idx + 1;
+                  return (
+                    <li key={s.h}>
+                      <a
+                        href={`#section-${i}`}
+                        className="flex items-start gap-2 text-sm text-foreground transition-colors hover:text-gold-deep"
+                      >
+                        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold/20 text-[10px] font-bold text-gold-deep">
+                          {idx + 1}
+                        </span>
+                        <span className="leading-snug">{s.h}</span>
+                      </a>
+                    </li>
+                  );
+                })}
               </ol>
             </nav>
           </Reveal>
@@ -204,10 +224,11 @@ function BlogPost() {
           </p>
         </Reveal>
 
-        {/* Sections */}
+        {/* Sections (starts at index 1 — index 0 rendered hero-adjacent) */}
         <div className="mt-12 space-y-16">
-          {p.sections.map((s, i) => {
-            const isCallout = i % 3 === 2 && s.p.length > 0;
+          {p.sections.slice(1).map((s, idx) => {
+            const i = idx + 1;
+            const isCallout = idx % 3 === 2 && s.p.length > 0;
             return (
               <Reveal key={s.h} delay={i * 40}>
                 <section id={`section-${i}`} className="scroll-mt-24">
@@ -217,7 +238,7 @@ function BlogPost() {
                       aria-hidden
                       className="select-none text-[64px] font-black leading-none text-transparent bg-gradient-to-b from-gold to-gold-deep bg-clip-text md:text-[80px]"
                     >
-                      {String(i + 1).padStart(2, "0")}
+                      {String(idx + 1).padStart(2, "0")}
                     </span>
                     <div className="flex-1 pt-3 md:pt-6">
                       <h2 className="text-xl font-extrabold leading-snug text-primary md:text-2xl">{s.h}</h2>
@@ -272,7 +293,7 @@ function BlogPost() {
                 </section>
 
                 {/* Divider between sections */}
-                {i < p.sections.length - 1 ? (
+                {idx < p.sections.length - 2 ? (
                   <div className="mt-16 flex items-center justify-center gap-3">
                     <span className="h-px w-16 bg-gold/30" />
                     <span className="h-2 w-2 rotate-45 bg-gold/60" />
