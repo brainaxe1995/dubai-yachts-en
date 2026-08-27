@@ -23,14 +23,13 @@ import { ContactCta } from "@/components/ContactCta";
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
     meta: [
-      { title: "Terms and Conditions | Toot Fun Yachts" },
+      { title: "Terms and Conditions | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content:
-          "Read the Toot Fun Yachts terms and conditions covering booking, payment, cancellation, guest responsibilities, and use of yacht rental services in Dubai.",
+        content:"Learn about Toot Fun Yachts’ terms and conditions, including booking, payment, cancellation, customer responsibilities, and the use of yacht rental services in Dubai.",
       },
-      { property: "og:title", content: "Terms and Conditions | Toot Fun Yachts" },
-      { property: "og:description", content: "Booking, payment, cancellation terms and guest responsibilities." },
+      { property: "og:title", content: "Terms and Conditions | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "Learn about Toot Fun Yachts’ terms and conditions, including booking, payment, cancellation, customer responsibilities, and the use of yacht rental services in Dubai." },
       { property: "og:url", content: "https://tootfunyachts.com/terms-and-conditions/" },
     ],
     links: [

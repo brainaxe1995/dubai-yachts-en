@@ -54,15 +54,14 @@ const yachtFaqs = [
 export const Route = createFileRoute("/yacht-charter-dubai")({
   head: () => ({
     meta: [
-      { title: "Yachts for Rent in Dubai | 15 Luxury Yachts from AED 450 — Toot Fun" },
+      { title: "Private Yacht Charter Dubai | From AED 450" },
       {
         name: "description",
-        content:
-          "Discover the best yachts for rent in Dubai at prices starting from AED 450 per hour. A diverse fleet from 40 to 105 feet, with private trips and options for every occasion.",
+        content:"Book a Private Yacht Charter Dubai with Toot Fun Yachts. Choose luxury yachts, private cruises, professional crew, and prices from AED 450 per hour.",
       },
       { name: "keywords", content: "yachts for rent in Dubai, yacht rental Dubai, private yacht Dubai, luxury yachts, Dubai Marina yacht" },
-      { property: "og:title", content: "Yachts for Rent in Dubai | Toot Fun Yachts" },
-      { property: "og:description", content: "A fleet of 15 luxury yachts for rent in Dubai — from 40 ft to 105 ft." },
+      { property: "og:title", content: "Private Yacht Charter Dubai | From AED 450" },
+      { property: "og:description", content: "Book a Private Yacht Charter Dubai with Toot Fun Yachts. Choose luxury yachts, private cruises, professional crew, and prices from AED 450 per hour." },
       { property: "og:url", content: "https://tootfunyachts.com/yacht-charter-dubai/" },
     ],
     links: [

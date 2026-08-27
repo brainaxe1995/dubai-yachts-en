@@ -17,14 +17,13 @@ import { ContactCta } from "@/components/ContactCta";
 export const Route = createFileRoute("/cancellation-policy")({
   head: () => ({
     meta: [
-      { title: "Easy Cancellation Policy | Toot Fun Yachts" },
+      { title: "Easy Cancellation Policy | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content:
-          "Learn about the cancellation and refund policy at Toot Fun Yachts, including cancellation terms, rescheduling, refund amounts, and no-show cases.",
+        content:"Learn about Toot Fun Yachts’ Cancellation Policy, including cancellation terms, rescheduling, refunds, and no-show conditions.",
       },
-      { property: "og:title", content: "Cancellation Policy | Toot Fun Yachts" },
-      { property: "og:description", content: "Cancellation, rescheduling, and refund terms." },
+      { property: "og:title", content: "Easy Cancellation Policy | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "Learn about Toot Fun Yachts’ Cancellation Policy, including cancellation terms, rescheduling, refunds, and no-show conditions." },
       { property: "og:url", content: "https://tootfunyachts.com/cancellation-policy/" },
     ],
     links: [

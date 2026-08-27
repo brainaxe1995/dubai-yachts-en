@@ -81,15 +81,14 @@ const occasionTypes = [
 export const Route = createFileRoute("/yacht-party-dubai")({
   head: () => ({
     meta: [
-      { title: "Best Yacht Parties in Dubai | Signature Packages — Toot Fun Yachts" },
+      { title: "Private Yacht Party Dubai | Toot Fun Yachts" },
       {
         name: "description",
-        content:
-          "Book yacht parties in Dubai for special occasions, birthdays, and weddings with luxury yachts, standout decor, professional crew, and competitive packages starting from AED 1,500.",
+        content:"Book a Yacht Party Dubai experience for birthdays and special occasions with luxury yachts, stylish decorations, professional crew, and competitive packages.",
       },
       { name: "keywords", content: "yacht parties dubai, birthday yacht party, wedding yacht party, marriage proposal on yacht, graduation party, anniversary, dubai marina yacht" },
-      { property: "og:title", content: "Best Yacht Parties in Dubai | Toot Fun Yachts" },
-      { property: "og:description", content: "Weddings, engagements, graduations, and birthdays on board a yacht in Dubai." },
+      { property: "og:title", content: "Private Yacht Party Dubai | Toot Fun Yachts" },
+      { property: "og:description", content: "Book a Yacht Party Dubai experience for birthdays and special occasions with luxury yachts, stylish decorations, professional crew, and competitive packages." },
       { property: "og:url", content: "https://tootfunyachts.com/yacht-party-dubai/" },
     ],
     links: [

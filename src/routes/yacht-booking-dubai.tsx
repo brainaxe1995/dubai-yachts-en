@@ -59,17 +59,16 @@ const bookingFeatures = [
 export const Route = createFileRoute("/yacht-booking-dubai")({
   head: () => ({
     meta: [
-      { title: "Yacht Booking Dubai | Toot Fun Yachts" },
+      { title: "Luxury Yacht Booking Dubai | Toot Fun Yachts" },
       {
         name: "description",
-        content:
-          "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
+        content:"Discover the best yacht booking options in Dubai, with prices starting from AED 450 per hour, luxury yachts, and private cruises for all occasions.",
       },
-      { property: "og:title", content: "Yacht Booking Dubai | Toot Fun Yachts" },
+      { property: "og:title", content: "Luxury Yacht Booking Dubai | Toot Fun Yachts" },
       {
         property: "og:description",
         content:
-          "Discover the best yacht booking options in Dubai at prices starting from AED 450 per hour, with luxury yachts and private trips for every occasion.",
+          "Discover the best yacht booking options in Dubai, with prices starting from AED 450 per hour, luxury yachts, and private cruises for all occasions.",
       },
       { property: "og:url", content: "https://tootfunyachts.com/yacht-booking-dubai/" },
     ],

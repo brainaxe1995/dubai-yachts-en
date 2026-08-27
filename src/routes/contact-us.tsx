@@ -13,13 +13,13 @@ const contactFaqs = faqs.slice(0, 5);
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Toot Fun Yachts" },
+      { title: "Contact Us | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content: "Contact us to book your yacht, check pricing and packages, and pick the right trip for you with Toot Fun Yachts.",
+        content: "Contact us to book your yacht, check prices and packages, and choose the right trip with Toot Fun Yachts.",
       },
-      { property: "og:title", content: "Contact Us | Toot Fun Yachts" },
-      { property: "og:description", content: "Get in touch with the Toot Fun Yachts team for bookings and enquiries in Dubai." },
+      { property: "og:title", content: "Contact Us | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "Contact us to book your yacht, check prices and packages, and choose the right trip with Toot Fun Yachts." },
       { property: "og:url", content: "https://tootfunyachts.com/contact-us/" },
     ],
     links: [

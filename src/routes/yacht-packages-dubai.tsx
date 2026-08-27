@@ -72,15 +72,14 @@ const pkgHighlights = [
 export const Route = createFileRoute("/yacht-packages-dubai")({
   head: () => ({
     meta: [
-      { title: "Yacht Rental Packages in Dubai | Breakfast & Dinner — Toot Fun" },
+      { title: "Yacht Packages Dubai | Private Yacht Deals & Offers" },
       {
         name: "description",
-        content:
-          "Discover the best yacht rental packages in Dubai with varied options for private cruises, parties, and events — flexible pricing starts at AED 1,800.",
+        content:"Discover yacht packages Dubai for private trips, birthdays, parties and special occasions, with flexible options and competitive prices.",
       },
       { name: "keywords", content: "dubai yacht packages, breakfast yacht package, romantic dinner yacht, jet ski package, dubai yacht deals" },
-      { property: "og:title", content: "Best Yacht Rental Packages in Dubai | Toot Fun Yachts" },
-      { property: "og:description", content: "Breakfast, romantic dinner, and jet ski packages on board a yacht in Dubai." },
+      { property: "og:title", content: "Yacht Packages Dubai | Private Yacht Deals & Offers" },
+      { property: "og:description", content: "Discover yacht packages Dubai for private trips, birthdays, parties and special occasions, with flexible options and competitive prices." },
       { property: "og:url", content: "https://tootfunyachts.com/yacht-packages-dubai/" },
     ],
     links: [

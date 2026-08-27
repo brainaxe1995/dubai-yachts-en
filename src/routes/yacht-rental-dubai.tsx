@@ -17,14 +17,13 @@ import marinaHero from "@/assets/yachts/majesty-88.webp";
 export const Route = createFileRoute("/yacht-rental-dubai")({
   head: () => ({
     meta: [
-      { title: "Yacht Rental Dubai | Fleet & Prices – Toot Fun" },
+      { title: "Private Yacht Rental Dubai | From AED 450" },
       {
         name: "description",
-        content:
-          "We provide yacht rental services in Dubai with private trips, a diverse fleet, and prices starting from AED 450 per hour for every occasion.",
+        content:"We offer yacht rental Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions.",
       },
-      { property: "og:title", content: "Yacht Rental Dubai | Fleet & Prices – Toot Fun" },
-      { property: "og:description", content: "A diverse fleet of luxury yachts for rent in Dubai at competitive prices." },
+      { property: "og:title", content: "Private Yacht Rental Dubai | From AED 450" },
+      { property: "og:description", content: "We offer yacht rental Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions." },
       { property: "og:url", content: "https://tootfunyachts.com/yacht-rental-dubai/" },
     ],
     links: [

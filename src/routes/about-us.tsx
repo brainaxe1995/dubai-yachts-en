@@ -11,14 +11,13 @@ import whatIncludedImg from "@/assets/branding/what-included.webp";
 export const Route = createFileRoute("/about-us")({
   head: () => ({
     meta: [
-      { title: "About Us | Toot Fun Yachts" },
+      { title: "About Us | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content:
-          "Learn who we are at Toot Fun Yachts and our track record in luxury yacht rentals and sea trips in Dubai.",
+        content:"About Us – Discover Toot Fun Yachts, our yacht rental experience, professional team, and luxury private cruise services in Dubai.",
       },
-      { property: "og:title", content: "About Us | Toot Fun Yachts" },
-      { property: "og:description", content: "Our track record in luxury yacht rentals and sea trips in Dubai." },
+      { property: "og:title", content: "About Us | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "About Us – Discover Toot Fun Yachts, our yacht rental experience, professional team, and luxury private cruise services in Dubai." },
       { property: "og:url", content: "https://tootfunyachts.com/about-us/" },
     ],
     links: [

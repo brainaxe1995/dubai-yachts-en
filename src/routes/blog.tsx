@@ -8,14 +8,13 @@ import { posts } from "@/data/blog";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog | Dubai Yacht Rental Tips & Guides | Toot Fun Yachts" },
+      { title: "Blog | Yacht Rental Tips & Guide Dubai | Toot Fun Yachts" },
       {
         name: "description",
-        content:
-          "Explore the blog for the latest tips and insights on yacht rentals, sea cruises, yacht parties, and fishing trips in Dubai.",
+        content:"Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai.",
       },
-      { property: "og:title", content: "Blog | Dubai Yacht Rental Guide" },
-      { property: "og:description", content: "Tips and ideas for sea cruises and yacht parties in Dubai." },
+      { property: "og:title", content: "Blog | Yacht Rental Tips & Guide Dubai | Toot Fun Yachts" },
+      { property: "og:description", content: "Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai." },
       { property: "og:url", content: "https://tootfunyachts.com/blog/" },
     ],
     links: [

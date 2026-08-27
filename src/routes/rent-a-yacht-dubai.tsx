@@ -51,17 +51,16 @@ const rentalRichBlocks = [
 export const Route = createFileRoute("/rent-a-yacht-dubai")({
   head: () => ({
     meta: [
-      { title: "Yacht Hire Dubai | Toot Fun Yachts" },
+      { title: "Rent a Yacht Dubai | Toot Fun Yachts" },
       {
         name: "description",
-        content:
-          "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
+        content:"Rent a Yacht Dubai with Toot Fun Yachts from AED 450 per hour. Choose from luxury yachts, private cruises, professional crew, and flexible options.",
       },
-      { property: "og:title", content: "Yacht Hire Dubai | Toot Fun Yachts" },
+      { property: "og:title", content: "Rent a Yacht Dubai | Toot Fun Yachts" },
       {
         property: "og:description",
         content:
-          "We provide yacht hire services in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and options suited to private trips and events.",
+          "Rent a Yacht Dubai with Toot Fun Yachts from AED 450 per hour. Choose from luxury yachts, private cruises, professional crew, and flexible options.",
       },
       { property: "og:url", content: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
     ],

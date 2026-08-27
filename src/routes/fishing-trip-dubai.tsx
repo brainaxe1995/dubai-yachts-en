@@ -19,14 +19,13 @@ import fishingYachtImg from "@/assets/fishing/private-yacht/private-yacht-1.webp
 export const Route = createFileRoute("/fishing-trip-dubai")({
   head: () => ({
     meta: [
-      { title: "Best Fishing Trips in Dubai | Toot Fun Yachts" },
+      { title: "Best Fishing Trip Dubai | Toot Fun Yachts" },
       {
         name: "description",
-        content:
-          "Book the best fishing trips in Dubai with fully equipped boats, tackle provided, professional crew, and private or shared options at competitive rates.",
+        content:"Book the best fishing trip Dubai with fully equipped boats, fishing gear, a professional crew, and private or shared options at competitive prices.",
       },
-      { property: "og:title", content: "Best Fishing Trips in Dubai | Toot Fun Yachts" },
-      { property: "og:description", content: "Private and shared fishing trips in Dubai — fully equipped." },
+      { property: "og:title", content: "Best Fishing Trip Dubai | Toot Fun Yachts" },
+      { property: "og:description", content: "Book the best fishing trip Dubai with fully equipped boats, fishing gear, a professional crew, and private or shared options at competitive prices." },
       { property: "og:url", content: "https://tootfunyachts.com/fishing-trip-dubai/" },
     ],
     links: [

@@ -6,14 +6,13 @@ import { ContactCta } from "@/components/ContactCta";
 export const Route = createFileRoute("/sitemap")({
   head: () => ({
     meta: [
-      { title: "Sitemap | Toot Fun Yacht Rental Dubai" },
+      { title: "Sitemap | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content:
-          "Browse the Toot Fun Yachts sitemap to easily find pages for yacht rentals, parties, sea cruises, and packages available in Dubai.",
+        content:"Browse the Toot Fun Yachts sitemap to easily access yacht rental, yacht parties, cruises, fishing trips, and yacht packages available in Dubai.",
       },
-      { property: "og:title", content: "Sitemap | Toot Fun Yachts" },
-      { property: "og:description", content: "Links to every page and service on Toot Fun Yachts in Dubai." },
+      { property: "og:title", content: "Sitemap | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "Browse the Toot Fun Yachts sitemap to easily access yacht rental, yacht parties, cruises, fishing trips, and yacht packages available in Dubai." },
       { property: "og:url", content: "https://tootfunyachts.com/sitemap/" },
     ],
     links: [

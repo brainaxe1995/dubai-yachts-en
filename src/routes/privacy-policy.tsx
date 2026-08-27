@@ -26,14 +26,13 @@ import { ContactCta } from "@/components/ContactCta";
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy | Toot Fun Yachts" },
+      { title: "Privacy Policy | Toot Fun Yachts Dubai" },
       {
         name: "description",
-        content:
-          "Our privacy policy explains how we protect your personal information and keep it confidential when you use the Toot Fun Yachts website and services.",
+        content:"Our Privacy Policy outlines our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services.",
       },
-      { property: "og:title", content: "Privacy Policy | Toot Fun Yachts" },
-      { property: "og:description", content: "How we collect, use, and protect your personal information." },
+      { property: "og:title", content: "Privacy Policy | Toot Fun Yachts Dubai" },
+      { property: "og:description", content: "Our Privacy Policy outlines our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services." },
       { property: "og:url", content: "https://tootfunyachts.com/privacy-policy/" },
     ],
     links: [
