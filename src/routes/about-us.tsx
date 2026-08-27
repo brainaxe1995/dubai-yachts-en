@@ -73,8 +73,11 @@ function About() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <h2 className="text-2xl text-foreground md:text-3xl">About Toot Fun Yachts</h2>
+            <h2 className="text-2xl text-foreground md:text-3xl">About Us – Toot Fun Yachts Dubai</h2>
             <p className="mt-4 text-sm leading-loose text-muted-foreground md:text-base">
+              We provide yacht rental and private cruise services in Dubai with a diverse fleet and a professional crew.
+            </p>
+            <p className="mt-3 text-sm leading-loose text-muted-foreground md:text-base">
               <strong>Toot Fun Yachts</strong> is a company specialised in <strong>yacht and boat rentals in Dubai</strong> since
               2018, with a diverse fleet of yachts to suit private cruises, family trips, parties and occasions, and fishing trips.
             </p>
