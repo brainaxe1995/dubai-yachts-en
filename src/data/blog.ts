@@ -38,6 +38,12 @@ export const posts: BlogPost[] = [
       "Choosing the right yacht is the first and most important decision when planning a sea trip in Dubai. The right choice means a fun, safe experience for every guest — the wrong one means overcrowding or unnecessary extra costs. In this guide we cover everything you need to make the best call.",
     sections: [
       {
+        h: "How to choose the right yacht for your trip in Dubai?",
+        p: [
+          "The right choice comes down to three factors: __guest count__, __occasion type__, and __trip duration__. The sections below break each one down with practical examples.",
+        ],
+      },
+      {
         h: "1. Start with your guest count",
         p: [
           "Golden rule: a comfortable yacht uses about 70% of its maximum capacity. A 12-guest yacht is ideal for 8-9 people.",
@@ -95,6 +101,12 @@ export const posts: BlogPost[] = [
     intro:
       "Traditional birthday parties can feel forgettable. But a birthday party on a luxury yacht in Dubai Marina? That's the kind of experience guests talk about for years. Here are 10 standout ideas to make your party the talk of the town.",
     sections: [
+      {
+        h: "Best yacht birthday party ideas in Dubai",
+        p: [
+          "A __birthday party on a yacht in Dubai__ is an experience no venue can match. Here are 10 ideas to make the night unforgettable — from decor to menu to fireworks.",
+        ],
+      },
       {
         h: "1. Commit to a nautical theme",
         p: [
@@ -188,6 +200,12 @@ export const posts: BlogPost[] = [
       "Fishing in Dubai's waters is unbeatable — but timing is the key. Every species has its season, and every season has its playbook. In this guide the Toot Fun team walks you through the best times to fish and which species you can expect in each one.",
     sections: [
       {
+        h: "When does the best fishing season in Dubai start?",
+        p: [
+          "The __best fishing season in Dubai__ runs __November through February__ — mild weather, calm sea, and peak __hammour__ and __sheri__ catches. The full breakdown by season is below.",
+        ],
+      },
+      {
         h: "Winter (November - February) — peak season",
         p: [
           "The best season, hands down. Mild weather (18-25°C), calm water, and abundant fish.",
@@ -246,6 +264,12 @@ export const posts: BlogPost[] = [
     intro:
       "A proposal is a single moment that becomes a lifelong story. Choosing a yacht in Dubai Marina, with sunset as your backdrop, turns that moment into cinema. Here's a full step-by-step guide to planning the perfect proposal.",
     sections: [
+      {
+        h: "Best ideas for a romantic marriage proposal on a yacht in Dubai",
+        p: [
+          "A __marriage proposal on a yacht in Dubai__ combines total privacy, a cinematic sunset backdrop, and a moment neither of you will ever forget. Here's a step-by-step plan.",
+        ],
+      },
       {
         h: "1. Choose the right yacht",
         p: [
@@ -329,6 +353,12 @@ export const posts: BlogPost[] = [
       "Hotel breakfast has become predictable. Breakfast on your own yacht while the sun rises over Dubai Marina? That's a different experience entirely. Here's what makes the yacht breakfast package special, who it suits, and how to book.",
     sections: [
       {
+        h: "Enjoy the best breakfast package on a yacht in Dubai",
+        p: [
+          "A __breakfast package on a yacht in Dubai__ turns a normal morning into an unforgettable one — calm waters, marina views, and a full Arabic breakfast on board.",
+        ],
+      },
+      {
         h: "Why breakfast on a yacht",
         p: [
           "Total calm before the city gets loud.",
@@ -384,6 +414,12 @@ export const posts: BlogPost[] = [
       "'Yacht' is a word that covers a lot of different boats — from small speed boats to 100-foot floating palaces. This guide simplifies the differences so you can pick what fits.",
     sections: [
       {
+        h: "The difference between a sport yacht and a super yacht when renting a yacht in Dubai",
+        p: [
+          "__Sport__, __luxury__, and __super yachts__ each serve a different trip style. Here's a simple side-by-side so you can pick the right one for your Dubai cruise.",
+        ],
+      },
+      {
         h: "1. Sport yacht",
         p: [
           "Size: 30-60ft.",
@@ -438,6 +474,12 @@ export const posts: BlogPost[] = [
     intro:
       "A luxury yacht without add-ons is like a great dish without seasoning. The add-ons are what turn a good trip into a great one. Here's the shortlist of what's worth adding and how to pick.",
     sections: [
+      {
+        h: "Standout add-ons that make a yacht party in Dubai more fun and luxurious",
+        p: [
+          "The right add-ons take a __yacht party in Dubai__ from good to unforgettable. These are the ones we book most often — from __custom cakes__ to __water sports__.",
+        ],
+      },
       {
         h: "Custom cake",
         p: [
@@ -507,6 +549,12 @@ export const posts: BlogPost[] = [
       "Trip prep starts with the paperwork. Avoid marina-day surprises by knowing what you need up front. Here's a quick checklist covering everything you should bring.",
     sections: [
       {
+        h: "Documents and yacht booking requirements in Dubai before you sail",
+        p: [
+          "Before you board a yacht in Dubai, there are a few standard documents to prepare. This quick guide covers everything you need, plus the small extras that make check-in painless.",
+        ],
+      },
+      {
         h: "1. Personal ID",
         p: [
           "Residents: original valid Emirates ID.",
@@ -562,6 +610,12 @@ export const posts: BlogPost[] = [
     intro:
       "One of the most iconic Italian names in marine luxury, the Azimut 80ft packs everything you expect from Italian design — elegance, power, and refinement. Plus one bonus feature: a deck jacuzzi for a unique way to unwind on Dubai's water.",
     sections: [
+      {
+        h: "Book an 80ft Azimut yacht with jacuzzi for rent in Dubai",
+        p: [
+          "The __80ft Azimut with jacuzzi__ is one of the most in-demand yachts in Dubai — full specs, standout features, and the trip types it suits are covered below.",
+        ],
+      },
       {
         h: "Technical specs",
         p: [
@@ -626,6 +680,12 @@ export const posts: BlogPost[] = [
     intro:
       "The week is packed with pressure and commitments. Sometimes all a relationship needs is one different night, out of the routine, away from the city. The romantic dinner package on a yacht in Dubai is built for exactly that moment.",
     sections: [
+      {
+        h: "A private romantic dinner experience aboard a luxury yacht in Dubai",
+        p: [
+          "A __romantic dinner on a yacht in Dubai__ is the ultimate escape from routine — a private cruise, discreet crew, and a 5-course dinner with the Dubai skyline as your backdrop.",
+        ],
+      },
       {
         h: "What makes the package special",
         p: [
