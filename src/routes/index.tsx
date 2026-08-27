@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { ExtrasMarquee } from "@/components/ExtrasMarquee";
 import { ContactCta } from "@/components/ContactCta";
+import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import {
   yachts,
   faqs,
@@ -63,6 +64,7 @@ const services = [
 ] as const;
 
 function Home() {
+  const homeYachts = useOverriddenProducts(yachts.slice(0, 6), "home");
   return (
     <>
       <PageHero
@@ -77,7 +79,7 @@ function Home() {
           subtitle="Choose from a wide selection of the best yachts for rent in Dubai at competitive prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {yachts.slice(0, 6).map((p, i) => (
+          {homeYachts.map((p, i) => (
             <ProductCard key={p.title} product={p} delay={i * 70} />
           ))}
         </div>

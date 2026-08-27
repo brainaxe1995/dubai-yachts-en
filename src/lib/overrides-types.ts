@@ -1,24 +1,24 @@
 // Client-safe: types + pure functions. NO server-only imports (fs/path).
 // This file can be imported from both client bundles and server functions.
 
-export type Category = "yachts" | "parties" | "fishing" | "packages";
+export type Category = "home" | "yachts" | "parties" | "fishing" | "packages";
 
 export type ProductOverrides = {
   hidden: Record<Category, string[]>;
   order: Record<Category, string[]>;
 };
 
-export const CATS: Category[] = ["yachts", "parties", "fishing", "packages"];
+export const CATS: Category[] = ["home", "yachts", "parties", "fishing", "packages"];
 
 export const EMPTY_OVERRIDES: ProductOverrides = {
-  hidden: { yachts: [], parties: [], fishing: [], packages: [] },
-  order: { yachts: [], parties: [], fishing: [], packages: [] },
+  hidden: { home: [], yachts: [], parties: [], fishing: [], packages: [] },
+  order: { home: [], yachts: [], parties: [], fishing: [], packages: [] },
 };
 
 export function normalizeOverrides(input: unknown): ProductOverrides {
   const out: ProductOverrides = {
-    hidden: { yachts: [], parties: [], fishing: [], packages: [] },
-    order: { yachts: [], parties: [], fishing: [], packages: [] },
+    hidden: { home: [], yachts: [], parties: [], fishing: [], packages: [] },
+    order: { home: [], yachts: [], parties: [], fishing: [], packages: [] },
   };
   if (!input || typeof input !== "object") return out;
   const raw = input as Partial<ProductOverrides>;

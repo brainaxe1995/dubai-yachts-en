@@ -26,17 +26,19 @@ type SaveState = { tone: "idle" | "saving" | "ok" | "err"; text: string };
 type SourceItem = { title: string; label: string; page: string; image: string; price?: string };
 
 const SOURCES: Record<Category, SourceItem[]> = {
-  yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/تأجير-يخوت-في-دبي/", image: p.image, price: p.price })),
-  parties: parties.map((p) => ({ title: p.title, label: p.title, page: "/حفلات-اليخوت-في-دبي/", image: p.image, price: p.price })),
-  fishing: fishingTrips.map((p) => ({ title: p.title, label: p.title, page: "/رحلات-صيد-السمك-في-دبي/", image: p.image, price: p.price })),
-  packages: packages.map((p) => ({ title: p.title, label: p.title, page: "/باقات-تأجير-اليخوت-في-دبي/", image: p.image, price: p.price })),
+  home: yachts.slice(0, 6).map((p) => ({ title: p.title, label: p.title, page: "/", image: p.image, price: p.price })),
+  yachts: yachts.map((p) => ({ title: p.title, label: p.title, page: "/yacht-rental-dubai/", image: p.image, price: p.price })),
+  parties: parties.map((p) => ({ title: p.title, label: p.title, page: "/yacht-party-dubai/", image: p.image, price: p.price })),
+  fishing: fishingTrips.map((p) => ({ title: p.title, label: p.title, page: "/fishing-trip-dubai/", image: p.image, price: p.price })),
+  packages: packages.map((p) => ({ title: p.title, label: p.title, page: "/yacht-packages-dubai/", image: p.image, price: p.price })),
 };
 
 const CAT_LABELS: Record<Category, string> = {
-  yachts: "اليخوت",
-  parties: "الحفلات",
-  fishing: "الصيد",
-  packages: "الباقات",
+  home: "Home Page",
+  yachts: "Yacht Rental",
+  parties: "Yacht Party",
+  fishing: "Fishing Trip",
+  packages: "Packages",
 };
 
 type Props = {
