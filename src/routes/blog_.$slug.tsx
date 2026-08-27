@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Calendar, Tag, ArrowRight, Clock, Share2, Quote, ChevronUp } from "lucide-react";
+import { Calendar, Tag, ArrowRight, Clock, Share2, Quote, ChevronUp, Phone } from "lucide-react";
 import { SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { ContactCta } from "@/components/ContactCta";
 import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { findPost, posts } from "@/data/blog";
+import { CONTACT } from "@/data/site";
 
 export const Route = createFileRoute("/blog_/$slug")({
   loader: ({ params }) => {
@@ -168,7 +169,7 @@ function BlogPost() {
         </div>
       </header>
 
-      {/* H2 hero-adjacent — intro heading + short description right after hero */}
+      {/* H2 hero-adjacent + drop-cap intro + CTAs (moved up from below TOC) */}
       {p.sections.length > 0 ? (
         <section className="mx-auto max-w-3xl px-4 pt-12 md:pt-16">
           <Reveal>
@@ -176,11 +177,28 @@ function BlogPost() {
               {p.sections[0].h}
             </h2>
             <span className="mt-3 block h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
-            {p.sections[0].p.map((para, pi) => (
-              <p key={pi} className="mt-4 text-base leading-loose text-muted-foreground md:text-lg">
-                {para}
-              </p>
-            ))}
+            <p className="intro-lead relative mt-6 border-s-4 border-gold/60 bg-muted/40 p-6 text-lg leading-loose text-foreground md:text-xl">
+              {p.intro}
+            </p>
+            {/* Two CTAs — WhatsApp + Call, LTR order (WhatsApp left, Call right) */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={CONTACT.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-md transition-transform hover:scale-105"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+              <a
+                href={`tel:${CONTACT.phone}`}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-primary/20 bg-primary-deep px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition-transform hover:scale-105 hover:border-gold/60"
+              >
+                <Phone className="h-4 w-4" />
+                Call now
+              </a>
+            </div>
           </Reveal>
         </section>
       ) : null}
@@ -216,13 +234,6 @@ function BlogPost() {
             </nav>
           </Reveal>
         ) : null}
-
-        {/* Intro with drop cap */}
-        <Reveal delay={80}>
-          <p className="intro-lead relative border-s-4 border-gold/60 bg-muted/40 p-6 text-lg leading-loose text-foreground md:text-xl">
-            {p.intro}
-          </p>
-        </Reveal>
 
         {/* Sections (starts at index 1 — index 0 rendered hero-adjacent) */}
         <div className="mt-12 space-y-16">
