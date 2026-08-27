@@ -147,6 +147,25 @@ function BlogPost() {
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 md:text-base">
             {p.description}
           </p>
+          {/* Two CTAs — WhatsApp + Call */}
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href={CONTACT.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-md ring-2 ring-white/20 transition-transform hover:scale-105"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              Chat on WhatsApp
+            </a>
+            <a
+              href={`tel:${CONTACT.phone}`}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-gold/60 bg-primary-deep/70 px-5 py-3 text-sm font-bold text-gold backdrop-blur-md transition-transform hover:scale-105 hover:bg-gold hover:text-primary-deep"
+            >
+              <Phone className="h-4 w-4" />
+              Call now
+            </a>
+          </div>
           <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-primary-foreground/75 md:text-sm">
             <span className="inline-flex items-center gap-1.5">
               <Calendar className="h-4 w-4 text-gold" />
@@ -180,25 +199,6 @@ function BlogPost() {
             <p className="intro-lead relative mt-6 border-s-4 border-gold/60 bg-muted/40 p-6 text-lg leading-loose text-foreground md:text-xl">
               {p.intro}
             </p>
-            {/* Two CTAs — WhatsApp + Call, LTR order (WhatsApp left, Call right) */}
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href={CONTACT.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-md transition-transform hover:scale-105"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                Chat on WhatsApp
-              </a>
-              <a
-                href={`tel:${CONTACT.phone}`}
-                className="inline-flex items-center gap-2 rounded-full border-2 border-primary/20 bg-primary-deep px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition-transform hover:scale-105 hover:border-gold/60"
-              >
-                <Phone className="h-4 w-4" />
-                Call now
-              </a>
-            </div>
           </Reveal>
         </section>
       ) : null}
