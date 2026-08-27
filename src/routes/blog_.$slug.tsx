@@ -32,7 +32,7 @@ export const Route = createFileRoute("/blog_/$slug")({
     const url = `https://tootfunyachts.com/blog/${p.slug}`;
     return {
       meta: [
-        { title: `${p.title} | Dubai Yachts` },
+        { title: `${p.title} | Toot Fun` },
         { name: "description", content: p.description },
         { name: "keywords", content: p.keywords },
         { property: "og:title", content: p.title },
