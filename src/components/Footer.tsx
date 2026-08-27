@@ -36,10 +36,10 @@ const quick = [
 ] as const;
 
 const discover = [
-  { to: "/yacht-rental-dubai", label: "Yachts for Rent in Dubai" },
-  { to: "/yacht-party-dubai", label: "Yacht Parties" },
-  { to: "/fishing-trip-dubai", label: "Fishing Trips" },
-  { to: "/yacht-packages-dubai", label: "Packages & Offers" },
+  { to: "/yacht-rental-dubai", label: "Yacht Rental Dubai" },
+  { to: "/yacht-party-dubai", label: "Yacht Party Dubai" },
+  { to: "/fishing-trip-dubai", label: "Fishing Trip Dubai" },
+  { to: "/yacht-packages-dubai", label: "Yacht Packages Dubai" },
   { to: "/blog", label: "Blog" },
   { to: "/sitemap", label: "Sitemap" },
 ] as const;
@@ -132,7 +132,7 @@ export function Footer() {
 
         {/* Quick links */}
         <div>
-          <ColTitle>Quick Links</ColTitle>
+          <ColTitle>Helpful Links</ColTitle>
           <ul className="space-y-2 md:space-y-3">
             {quick.map((l) => (
               <li key={l.label}>
@@ -146,7 +146,7 @@ export function Footer() {
 
         {/* Discover */}
         <div>
-          <ColTitle>Discover</ColTitle>
+          <ColTitle>Our Products</ColTitle>
           <ul className="space-y-2 md:space-y-3">
             {discover.map((l) => (
               <li key={l.label}>

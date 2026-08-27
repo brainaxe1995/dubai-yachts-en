@@ -8,10 +8,10 @@ import { CONTACT } from "@/data/site";
 import { getConfig, DEFAULT_CONFIG } from "@/data/config";
 
 const nav = [
-  { to: "/yacht-rental-dubai", label: "Yachts for Rent" },
-  { to: "/yacht-party-dubai", label: "Yacht Parties" },
-  { to: "/fishing-trip-dubai", label: "Fishing Trips" },
-  { to: "/yacht-packages-dubai", label: "Offers" },
+  { to: "/yacht-rental-dubai", label: "Yacht Rental" },
+  { to: "/yacht-party-dubai", label: "Yacht Party" },
+  { to: "/fishing-trip-dubai", label: "Fishing Trip" },
+  { to: "/yacht-packages-dubai", label: "Packages" },
   { to: "/about-us", label: "About Us" },
   { to: "/blog", label: "Blog" },
   { to: "/contact-us", label: "Contact Us" },
