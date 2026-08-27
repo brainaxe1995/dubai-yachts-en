@@ -389,6 +389,22 @@ function BlogPost() {
             Back to all articles
           </Link>
         </div>
+
+        {/* Author / brand byline (inside article) */}
+        <div className="mt-12 rounded-2xl bg-muted py-8">
+          <div className="flex flex-col items-center gap-4 px-4 text-center md:flex-row md:text-start">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-primary-deep text-2xl font-black text-gold">
+              T
+            </div>
+            <div className="flex-1">
+              <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">Written by</p>
+              <p className="text-lg font-bold text-foreground">The Toot Fun Yachts Team</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Dubai yacht rental and sea cruise experts — sharing our first-hand experience and practical tips.
+              </p>
+            </div>
+          </div>
+        </div>
       </article>
 
       {/* CTA frame — sibling of article, own H2 + brand gold buttons */}
@@ -430,22 +446,6 @@ function BlogPost() {
           </div>
         </section>
       </Reveal>
-
-      {/* Author / brand byline */}
-      <section className="bg-muted py-12">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 text-center md:flex-row md:text-start">
-          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-primary-deep text-2xl font-black text-gold">
-            T
-          </div>
-          <div className="flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">Written by</p>
-            <p className="text-lg font-bold text-foreground">The Toot Fun Yachts Team</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Dubai yacht rental and sea cruise experts — sharing our first-hand experience and practical tips.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Related posts */}
       {related.length > 0 ? (
