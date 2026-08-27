@@ -73,7 +73,7 @@ export type Product = {
 
 export const yachts: Product[] = [
   {
-    title: "55ft Luxury Houseboat Rental in Dubai",
+    title: "Luxury 55 Ft Houseboat",
     desc: "Enjoy the 55ft luxury houseboat rental in Dubai with unique views and premium service.",
     specs: ["Minimum booking: 2 hours", "Fits up to 15 guests", "55 ft", "No bedrooms"],
     price: "AED 600 / hour",
@@ -81,7 +81,7 @@ export const yachts: Product[] = [
     images: imagesFor("houseboat-55", "yachts"),
   },
   {
-    title: "100ft Floating Yacht for Rent in Dubai",
+    title: "Floating 100 Ft Yacht",
     desc: "Book the 100ft floating yacht for rent in Dubai and enjoy a spacious venue ideal for parties and private events on the water.",
     specs: ["Minimum booking: 2 hours", "Fits up to 50 guests", "100 ft", "2 bedrooms"],
     price: "AED 2,000 / hour",
@@ -89,7 +89,7 @@ export const yachts: Product[] = [
     images: imagesFor("floating-100", "yachts"),
   },
   {
-    title: "48ft Majesty Yacht Hire in Dubai",
+    title: "Majesty 48 Ft Yacht",
     desc: "Choose the 48ft Majesty yacht hire in Dubai for a private trip combining comfort and luxury.",
     specs: ["Minimum booking: 2 hours", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
     price: "AED 550 / hour",
@@ -97,7 +97,7 @@ export const yachts: Product[] = [
     images: imagesFor("majesty-48", "yachts"),
   },
   {
-    title: "95ft Italian Yacht Booking for Parties & Events in Dubai",
+    title: "Italian 95 Ft Yacht",
     desc: "Book a 95ft Italian yacht in Dubai — ideal for private parties and events.",
     specs: ["Minimum booking: 2 hours", "Fits up to 45 guests", "95 ft", "2 bedrooms"],
     price: "AED 1,700 / hour",
@@ -105,7 +105,7 @@ export const yachts: Product[] = [
     images: imagesFor("italian-95", "yachts"),
   },
   {
-    title: "78ft Ferretti Super-Yacht Hire in Dubai",
+    title: "Ferretti 78 Ft Super Yacht",
     desc: "The 78ft Ferretti super-yacht hire in Dubai delivers a premium experience with generous space and refined Italian design.",
     specs: ["Minimum booking: 2 hours", "Fits up to 20 guests", "78 ft", "3 bedrooms"],
     price: "AED 5,000 / hour",
@@ -113,7 +113,7 @@ export const yachts: Product[] = [
     images: imagesFor("ferretti-78", "yachts"),
   },
   {
-    title: "40ft Mini Yacht Rental in Dubai",
+    title: "Luxury 40 Ft Mini Yacht",
     desc: "Book the 40ft mini yacht rental in Dubai for a private cruise combining comfort and privacy.",
     specs: ["Minimum booking: 1 hour", "Fits up to 10 guests", "40 ft", "1 bedroom"],
     price: "AED 450 / hour",
@@ -121,7 +121,7 @@ export const yachts: Product[] = [
     images: imagesFor("mini-40", "yachts"),
   },
   {
-    title: "80ft Azimut Yacht Rental in Dubai with Jacuzzi",
+    title: "Azimut 80 Ft Yacht with Jacuzzi",
     desc: "The 80ft Azimut yacht rental in Dubai — a premium experience with a jacuzzi and wide spaces for extended cruises.",
     specs: ["Minimum booking: 2 hours", "Fits up to 35 guests", "80 ft", "3 bedrooms"],
     price: "AED 1,500 / hour",
@@ -129,7 +129,7 @@ export const yachts: Product[] = [
     images: imagesFor("azimut-80", "yachts"),
   },
   {
-    title: "95ft Sunseeker Super-Yacht Hire in Dubai",
+    title: "Sunseeker 95 Ft Super Yacht",
     desc: "Pick the 95ft Sunseeker super-yacht in Dubai for a private cruise combining luxury, comfort, and stunning sea views.",
     specs: ["Minimum booking: 4 hours", "Fits up to 20 guests", "95 ft", "3 bedrooms"],
     price: "AED 4,500 / hour",
@@ -137,7 +137,7 @@ export const yachts: Product[] = [
     images: imagesFor("sunseeker-95", "yachts"),
   },
   {
-    title: "70ft Majesty Yacht Rental in Dubai",
+    title: "Majesty 70 Ft Yacht",
     desc: "The 70ft Majesty yacht rental in Dubai delivers spacious luxury and premium service for private cruises and parties.",
     specs: ["Minimum booking: 2 hours", "Fits up to 28 guests", "70 ft", "3 bedrooms"],
     price: "AED 850 / hour",
@@ -145,7 +145,7 @@ export const yachts: Product[] = [
     images: imagesFor("majesty-70", "yachts"),
   },
   {
-    title: "66ft Majesty Yacht Charter at Dubai Marina",
+    title: "Majesty 66 Ft Yacht",
     desc: "Enjoy a refined cruise on the 66ft Majesty yacht charter at Dubai Marina.",
     specs: ["Minimum booking: 2 hours", "Fits up to 22 guests", "66 ft", "3 bedrooms"],
     price: "AED 800 / hour",
@@ -153,7 +153,7 @@ export const yachts: Product[] = [
     images: imagesFor("majesty-66", "yachts"),
   },
   {
-    title: "55ft Majesty Yacht Cruise in Dubai",
+    title: "Majesty 55 Ft Yacht",
     desc: "Set sail on the 55ft Majesty yacht cruise in Dubai with comfortable spaces.",
     specs: ["Minimum booking: 2 hours", "Fits up to 18 guests", "55 ft", "2 bedrooms"],
     price: "AED 650 / hour",
@@ -161,7 +161,7 @@ export const yachts: Product[] = [
     images: imagesFor("majesty-55", "yachts"),
   },
   {
-    title: "50ft Azimut Yacht Rental in Dubai",
+    title: "Azimut 50 Ft Yacht",
     desc: "The 50ft Azimut yacht rental in Dubai gives you an elegant private cruise with comfortable spaces.",
     specs: ["Minimum booking: 2 hours", "Fits up to 15 guests", "50 ft", "2 bedrooms"],
     price: "AED 650 / hour",
@@ -169,7 +169,7 @@ export const yachts: Product[] = [
     images: imagesFor("azimut-50", "yachts"),
   },
   {
-    title: "88ft Majesty Yacht in Dubai",
+    title: "Majesty 88 Ft Yacht",
     desc: "Book the 88ft luxury Majesty yacht in Dubai.",
     specs: ["Minimum booking: 2 hours", "Fits up to 45 guests", "88 ft", "4 bedrooms"],
     price: "AED 1,800 / hour",
@@ -177,7 +177,7 @@ export const yachts: Product[] = [
     images: imagesFor("majesty-88", "yachts"),
   },
   {
-    title: "105ft Corporate Yacht Rental in Dubai",
+    title: "Corporate 105 Ft Yacht",
     desc: "The 105ft corporate yacht rental in Dubai provides a luxury venue for meetings, events, and hosting VIP guests.",
     specs: ["Minimum booking: 2 hours", "Fits up to 90 guests", "105 ft", "2 bedrooms"],
     price: "AED 3,000 / hour",
@@ -185,7 +185,7 @@ export const yachts: Product[] = [
     images: imagesFor("corporate-105", "yachts"),
   },
   {
-    title: "90ft Gulf Craft Yacht Hire at Dubai Marina",
+    title: "Gulf Craft 90 Ft Yacht",
     desc: "Experience the 90ft Gulf Craft yacht hire at Dubai Marina with premium ambience and space ideal for private cruises.",
     specs: ["Minimum booking: 2 hours", "Fits up to 41 guests", "90 ft", "3 bedrooms"],
     price: "AED 1,300 / hour",
@@ -196,7 +196,7 @@ export const yachts: Product[] = [
 
 export const fishingTrips: Product[] = [
   {
-    title: "Shared Fishing Trip in Dubai",
+    title: "Shared Fishing Trip Dubai",
     desc: "The best shared morning fishing trip in Dubai.",
     specs: ["4-hour trip", "Fits up to 10 guests", "40 ft", "1 bedroom", "Minimum booking: 2 guests", "Shared breakfast", "Boarding: 7:00 AM"],
     price: "AED 350 / person",
@@ -204,7 +204,7 @@ export const fishingTrips: Product[] = [
     images: imagesFor("shared", "fishing"),
   },
   {
-    title: "Private Yacht Fishing Trip in Dubai",
+    title: "Private Yacht Fishing Trip Dubai",
     desc: "Enjoy a private yacht fishing trip in Dubai with full tackle and a professional crew.",
     specs: ["4-hour trip", "Fits up to 10 guests", "48 ft", "2 bedrooms"],
     price: "AED 2,000 / 4 hours",
@@ -212,7 +212,7 @@ export const fishingTrips: Product[] = [
     images: imagesFor("private-yacht", "fishing"),
   },
   {
-    title: "Private Boat Fishing Trip in Dubai",
+    title: "Private Boat Fishing Trip Dubai",
     desc: "Private boat fishing trip in Dubai with full tackle for deep-sea fishing.",
     specs: ["4-hour trip", "Fits up to 10 guests", "40 ft", "1 bedroom"],
     price: "AED 1,200 / 4 hours",
@@ -239,7 +239,7 @@ const partyAddOns = [
 
 export const parties: Product[] = [
   {
-    title: "Marriage Proposal on a Yacht in Dubai",
+    title: "Marriage Proposal Yacht Dubai",
     desc: "Plan a romantic marriage proposal on a yacht in Dubai with a private setting, elegant decor, and unforgettable sea views.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
     price: "AED 2,600 / 2 hours",
@@ -259,7 +259,7 @@ export const parties: Product[] = [
     addOns: partyAddOns,
   },
   {
-    title: "Wedding on a Yacht in Dubai",
+    title: "Yacht Wedding Dubai",
     desc: "Celebrate a luxury wedding on a yacht in Dubai with elegant decor and a romantic ambience.",
     specs: ["Minimum booking: 3 hours", "Fits up to 45 guests", "95 ft", "2 bedrooms"],
     price: "AED 1,500 / hour",
@@ -282,7 +282,7 @@ export const parties: Product[] = [
     ],
   },
   {
-    title: "Anniversary Party on a Yacht in Dubai",
+    title: "Anniversary Yacht Party Dubai",
     desc: "Host an anniversary party on a yacht in Dubai and enjoy a private experience combining luxury and intimacy.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
     price: "AED 2,100 / 2 hours",
@@ -300,7 +300,7 @@ export const parties: Product[] = [
     addOns: partyAddOns,
   },
   {
-    title: "Graduation Party on a Yacht in Dubai",
+    title: "Graduation Yacht Party Dubai",
     desc: "Celebrate your graduation on a yacht in Dubai with friends and enjoy a unique sea experience.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
     price: "AED 1,800 / 2 hours",
@@ -317,7 +317,7 @@ export const parties: Product[] = [
     addOns: partyAddOns,
   },
   {
-    title: "Engagement Party on a Yacht in Dubai",
+    title: "Engagement Yacht Party Dubai",
     desc: "Celebrate your engagement on a yacht in Dubai with family and friends on a special private cruise.",
     specs: ["2-hour cruise", "Fits up to 15 guests", "55 ft", "2 bedrooms"],
     price: "AED 1,900 / 2 hours",
@@ -335,7 +335,7 @@ export const parties: Product[] = [
     addOns: partyAddOns,
   },
   {
-    title: "Birthday Party on a Yacht in Dubai",
+    title: "Yacht Birthday Party Dubai",
     desc: "Gather your guests for a birthday party on a yacht in Dubai with cake, music, and dedicated styling.",
     specs: ["2-hour cruise", "Fits up to 12 guests", "48 ft", "2 bedrooms"],
     price: "AED 1,500 / 2 hours",
@@ -363,7 +363,7 @@ const packageIncludedBase = [
 
 export const packages: Product[] = [
   {
-    title: "Breakfast on a Yacht Package in Dubai",
+    title: "Yacht Breakfast Package Dubai",
     desc: "Start your morning with the breakfast on a yacht package in Dubai — a tasty meal and a calm sea cruise.",
     specs: ["4-hour trip", "Fits up to 12 guests", "48 ft", "2 bedrooms", "Breakfast on board", "1-hour jet ski"],
     price: "AED 3,000 / 4 hours",
@@ -383,7 +383,7 @@ export const packages: Product[] = [
     ],
   },
   {
-    title: "Yacht Rental with Jet Ski Package in Dubai",
+    title: "Yacht Rental with Jet Ski Dubai",
     desc: "Combine a yacht cruise with a jet ski adventure in Dubai in one action-packed sea experience.",
     specs: ["4-hour trip", "Fits up to 12 guests", "48 ft", "2 bedrooms", "1-hour jet ski"],
     price: "AED 2,300 / 4 hours",
@@ -403,7 +403,7 @@ export const packages: Product[] = [
     ],
   },
   {
-    title: "Romantic Dinner on a Yacht Package in Dubai",
+    title: "Romantic Yacht Dinner Package Dubai",
     desc: "Turn your evening into a private date with the romantic dinner on a yacht package in Dubai and enchanting city views.",
     specs: ["2-hour cruise", "Fits up to 2 guests", "48 ft", "2 bedrooms", "Grill meal for 2", "Romantic cake", "Bottle of champagne"],
     price: "AED 1,800 / 2 hours",
