@@ -8,9 +8,20 @@ import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { findPost, posts } from "@/data/blog";
 import { CONTACT } from "@/data/site";
+import { redirect } from "@tanstack/react-router";
+
+// 301 map — old slug -> new slug for blog posts renamed per client doc.
+const SLUG_REDIRECTS: Record<string, string> = {
+  "sport-yacht-vs-super-yacht-dubai": "sport-yacht-vs-superyacht-dubai",
+  "book-azimut-80ft-jacuzzi-yacht-dubai": "book-azimut-80-ft-yacht-with-jacuzzi-dubai",
+};
 
 export const Route = createFileRoute("/blog_/$slug")({
   loader: ({ params }) => {
+    const target = SLUG_REDIRECTS[params.slug];
+    if (target) {
+      throw redirect({ to: "/blog/$slug", params: { slug: target }, statusCode: 301 });
+    }
     const post = findPost(params.slug);
     if (!post) throw notFound();
     return post;
@@ -21,7 +32,7 @@ export const Route = createFileRoute("/blog_/$slug")({
     const url = `https://tootfunyachts.com/blog/${p.slug}`;
     return {
       meta: [
-        { title: `${p.title} | Toot Fun Yachts Blog` },
+        { title: `${p.title} | Dubai Yachts` },
         { name: "description", content: p.description },
         { name: "keywords", content: p.keywords },
         { property: "og:title", content: p.title },

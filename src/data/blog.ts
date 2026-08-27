@@ -27,9 +27,9 @@ export type BlogPost = {
 export const posts: BlogPost[] = [
   {
     slug: "complete-guide-choosing-right-yacht-dubai",
-    title: "Complete Guide to Choosing the Right Yacht in Dubai",
+    title: "Complete Guide Choosing Right Yacht Dubai",
     description:
-      "How to pick the right yacht size and hours based on your guest count and occasion type. A practical, complete guide with expert tips from Dubai yacht rental pros.",
+      "Complete Guide Choosing Right Yacht Dubai helps you compare yacht sizes, guest capacity, prices, facilities, and routes for the perfect private trip.",
     tag: "Guide",
     date: "15 August 2026",
     image: yachtHero,
@@ -38,7 +38,7 @@ export const posts: BlogPost[] = [
       "Choosing the right yacht is the first and most important decision when planning a sea trip in Dubai. The right choice means a fun, safe experience for every guest — the wrong one means overcrowding or unnecessary extra costs. In this guide we cover everything you need to make the best call.",
     sections: [
       {
-        h: "How to choose the right yacht for your trip in Dubai?",
+        h: "How to Choose the Right Yacht Rental in Dubai",
         p: [
           "The right choice comes down to three factors: __guest count__, __occasion type__, and __trip duration__. The sections below break each one down with practical examples.",
         ],
@@ -91,9 +91,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "yacht-birthday-party-ideas-dubai",
-    title: "10 Unique Ideas for an Unforgettable Yacht Birthday Party in Dubai",
+    title: "Best Yacht Birthday Party Ideas Dubai",
     description:
-      "Creative ideas for hosting a luxury birthday party on a yacht in Dubai — decor, cake, music, games, and activities for every age.",
+      "Best Yacht Birthday Party Ideas Dubai for decorations, themes, cakes, catering, entertainment, photography, and unforgettable celebrations on the water.",
     tag: "Parties",
     date: "12 August 2026",
     image: partyBirthday,
@@ -102,7 +102,7 @@ export const posts: BlogPost[] = [
       "Traditional birthday parties can feel forgettable. But a birthday party on a luxury yacht in Dubai Marina? That's the kind of experience guests talk about for years. Here are 10 standout ideas to make your party the talk of the town.",
     sections: [
       {
-        h: "Best yacht birthday party ideas in Dubai",
+        h: "How to Plan an Unforgettable Birthday Celebration on a Yacht in Dubai",
         p: [
           "A __birthday party on a yacht in Dubai__ is an experience no venue can match. Here are 10 ideas to make the night unforgettable — from decor to menu to fireworks.",
         ],
@@ -189,9 +189,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "best-fishing-seasons-dubai",
-    title: "Best Fishing Seasons in Dubai — Types & Times Guide",
+    title: "Best Fishing Seasons Dubai — Types & Times Guide",
     description:
-      "Practical notes on the weather, best fishing seasons in Dubai, fish species, and gear you need before heading out on a fishing trip.",
+      "Best Fishing Seasons Dubai guide covering hammour, sheri, kingfish, tuna and barracuda peak times, ideal trip windows, and top fishing spots.",
     tag: "Fishing",
     date: "8 August 2026",
     image: fishingShared,
@@ -200,7 +200,7 @@ export const posts: BlogPost[] = [
       "Fishing in Dubai's waters is unbeatable — but timing is the key. Every species has its season, and every season has its playbook. In this guide the Toot Fun team walks you through the best times to fish and which species you can expect in each one.",
     sections: [
       {
-        h: "When does the best fishing season in Dubai start?",
+        h: "When Is the Best Time to Go Fishing in Dubai?",
         p: [
           "The __best fishing season in Dubai__ runs __November through February__ — mild weather, calm sea, and peak __hammour__ and __sheri__ catches. The full breakdown by season is below.",
         ],
@@ -254,9 +254,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "romantic-marriage-proposal-yacht-dubai",
-    title: "How to Plan a Romantic Marriage Proposal on a Yacht in Dubai — Step by Step",
+    title: "How to Plan a Romantic Marriage Proposal Yacht Dubai — Step by Step",
     description:
-      "A detailed guide to proposing on a yacht in Dubai: choosing the yacht, decor, ring, and the moment of 'yes'. Expert tips for an unforgettable moment.",
+      "Romantic Marriage Proposal Yacht Dubai ideas featuring elegant decorations, flowers, photography, sunset views, and private yacht experiences.",
     tag: "Occasions",
     date: "3 August 2026",
     image: partyProposal,
@@ -265,7 +265,7 @@ export const posts: BlogPost[] = [
       "A proposal is a single moment that becomes a lifelong story. Choosing a yacht in Dubai Marina, with sunset as your backdrop, turns that moment into cinema. Here's a full step-by-step guide to planning the perfect proposal.",
     sections: [
       {
-        h: "Best ideas for a romantic marriage proposal on a yacht in Dubai",
+        h: "How to Plan the Perfect Yacht Proposal in Dubai",
         p: [
           "A __marriage proposal on a yacht in Dubai__ combines total privacy, a cinematic sunset backdrop, and a moment neither of you will ever forget. Here's a step-by-step plan.",
         ],
@@ -342,9 +342,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "breakfast-on-yacht-dubai",
-    title: "Breakfast on a Yacht in Dubai — How to Build a Perfect Morning",
+    title: "Breakfast on Yacht Dubai — How to Build a Perfect Morning",
     description:
-      "Why the yacht breakfast package beats a standard hotel breakfast, what's included, and who it suits. A luxury breakfast on a yacht in Dubai Marina.",
+      "Breakfast on Yacht Dubai offers a private morning cruise with fresh food, peaceful views, comfortable yachts, and memorable moments on the water.",
     tag: "Packages",
     date: "28 July 2026",
     image: breakfastImg,
@@ -353,7 +353,7 @@ export const posts: BlogPost[] = [
       "Hotel breakfast has become predictable. Breakfast on your own yacht while the sun rises over Dubai Marina? That's a different experience entirely. Here's what makes the yacht breakfast package special, who it suits, and how to book.",
     sections: [
       {
-        h: "Enjoy the best breakfast package on a yacht in Dubai",
+        h: "Breakfast on a Yacht Dubai | Luxury Morning Cruise",
         p: [
           "A __breakfast package on a yacht in Dubai__ turns a normal morning into an unforgettable one — calm waters, marina views, and a full Arabic breakfast on board.",
         ],
@@ -402,10 +402,10 @@ export const posts: BlogPost[] = [
     cta: "Book the yacht breakfast package",
   },
   {
-    slug: "sport-yacht-vs-super-yacht-dubai",
-    title: "Sport Yacht vs Super Yacht in Dubai — A Simple Guide",
+    slug: "sport-yacht-vs-superyacht-dubai",
+    title: "Sport Yacht vs Superyacht Dubai — A Simple Guide",
     description:
-      "A simple breakdown of yacht types in Dubai — size, speed, prices, and use cases. Know the difference before you book.",
+      "Sport Yacht vs Superyacht Dubai comparison covering size, speed, facilities, guest capacity, comfort, charter prices, and the best option for your trip.",
     tag: "Fleet",
     date: "22 July 2026",
     image: fleetImg,
@@ -414,7 +414,7 @@ export const posts: BlogPost[] = [
       "'Yacht' is a word that covers a lot of different boats — from small speed boats to 100-foot floating palaces. This guide simplifies the differences so you can pick what fits.",
     sections: [
       {
-        h: "The difference between a sport yacht and a super yacht when renting a yacht in Dubai",
+        h: "What Is the Difference Between a Sport Yacht and a Superyacht?",
         p: [
           "__Sport__, __luxury__, and __super yachts__ each serve a different trip style. Here's a simple side-by-side so you can pick the right one for your Dubai cruise.",
         ],
@@ -464,9 +464,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "best-yacht-party-add-ons-dubai",
-    title: "Best Add-ons for a Standout Yacht Party in Dubai — Full Guide",
+    title: "Best Yacht Party Add-Ons Dubai — Full Guide",
     description:
-      "From cake and decor to photographer and DJ — the complete guide to add-ons that make the difference at Dubai yacht parties.",
+      "Best Yacht Party Add-Ons Dubai includes catering, decorations, photography, live entertainment, water sports, cakes, flowers, and private transfers.",
     tag: "Add-ons",
     date: "18 July 2026",
     image: cakeImg,
@@ -475,7 +475,7 @@ export const posts: BlogPost[] = [
       "A luxury yacht without add-ons is like a great dish without seasoning. The add-ons are what turn a good trip into a great one. Here's the shortlist of what's worth adding and how to pick.",
     sections: [
       {
-        h: "Standout add-ons that make a yacht party in Dubai more fun and luxurious",
+        h: "Top Extras to Make Your Dubai Yacht Party Unforgettable",
         p: [
           "The right add-ons take a __yacht party in Dubai__ from good to unforgettable. These are the ones we book most often — from __custom cakes__ to __water sports__.",
         ],
@@ -538,9 +538,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "required-documents-yacht-boarding-dubai",
-    title: "What Documents Are Required to Board a Yacht in Dubai? A Quick Guide",
+    title: "Required Documents Yacht Boarding Dubai Guide",
     description:
-      "A quick checklist of IDs, age, and permits you need before your yacht trip in Dubai. Know the rules before you book.",
+      "Required Documents Yacht Boarding Dubai guide covering original Emirates ID, passport requirements, guest identification, and essential boarding instructions.",
     tag: "Guide",
     date: "10 July 2026",
     image: houseboatImg,
@@ -549,7 +549,7 @@ export const posts: BlogPost[] = [
       "Trip prep starts with the paperwork. Avoid marina-day surprises by knowing what you need up front. Here's a quick checklist covering everything you should bring.",
     sections: [
       {
-        h: "Documents and yacht booking requirements in Dubai before you sail",
+        h: "What Identification Do You Need to Board a Yacht in Dubai?",
         p: [
           "Before you board a yacht in Dubai, there are a few standard documents to prepare. This quick guide covers everything you need, plus the small extras that make check-in painless.",
         ],
@@ -599,10 +599,10 @@ export const posts: BlogPost[] = [
     ],
   },
   {
-    slug: "book-azimut-80ft-jacuzzi-yacht-dubai",
-    title: "Booking an 80ft Azimut Yacht with Jacuzzi in Dubai — Beyond Ordinary",
+    slug: "book-azimut-80-ft-yacht-with-jacuzzi-dubai",
+    title: "Book Azimut 80 Ft Yacht with Jacuzzi Dubai — Beyond Ordinary",
     description:
-      "A detailed look at the Azimut 80ft yacht in Dubai — the design, features, jacuzzi, and best uses.",
+      "Book Azimut 80 Ft Yacht with Jacuzzi Dubai for a private luxury cruise featuring spacious decks, premium facilities, professional crew, and skyline views.",
     tag: "Fleet",
     date: "5 July 2026",
     image: azimutImg,
@@ -611,7 +611,7 @@ export const posts: BlogPost[] = [
       "One of the most iconic Italian names in marine luxury, the Azimut 80ft packs everything you expect from Italian design — elegance, power, and refinement. Plus one bonus feature: a deck jacuzzi for a unique way to unwind on Dubai's water.",
     sections: [
       {
-        h: "Book an 80ft Azimut yacht with jacuzzi for rent in Dubai",
+        h: "What to Expect When Renting the Azimut 80 Ft Yacht in Dubai",
         p: [
           "The __80ft Azimut with jacuzzi__ is one of the most in-demand yachts in Dubai — full specs, standout features, and the trip types it suits are covered below.",
         ],
@@ -670,9 +670,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "romantic-dinner-on-yacht-dubai",
-    title: "Romantic Dinner on a Yacht in Dubai — The Perfect Night for Couples",
+    title: "Romantic Dinner on Yacht Dubai — The Perfect Night for Couples",
     description:
-      "A full guide to planning a romantic dinner on a yacht in Dubai — decor, menu, music, and the best yachts for couples.",
+      "Romantic Dinner on Yacht Dubai with private cruising, elegant table decorations, delicious dining, skyline views, and unforgettable moments for two.",
     tag: "Packages",
     date: "1 July 2026",
     image: romanticImg,
@@ -681,7 +681,7 @@ export const posts: BlogPost[] = [
       "The week is packed with pressure and commitments. Sometimes all a relationship needs is one different night, out of the routine, away from the city. The romantic dinner package on a yacht in Dubai is built for exactly that moment.",
     sections: [
       {
-        h: "A private romantic dinner experience aboard a luxury yacht in Dubai",
+        h: "How to Plan a Private Romantic Yacht Dinner in Dubai",
         p: [
           "A __romantic dinner on a yacht in Dubai__ is the ultimate escape from routine — a private cruise, discreet crew, and a 5-course dinner with the Dubai skyline as your backdrop.",
         ],
