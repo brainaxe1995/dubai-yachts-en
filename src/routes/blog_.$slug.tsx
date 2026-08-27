@@ -3,7 +3,6 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Calendar, Tag, ArrowRight, Clock, Share2, Quote, ChevronUp, Phone } from "lucide-react";
 import { SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { ContactCta } from "@/components/ContactCta";
 import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { findPost, posts } from "@/data/blog";
@@ -355,9 +354,9 @@ function BlogPost() {
           })}
         </div>
 
-        {/* CTA banner mid-article — cream/gold split layout, distinct from numbered sections */}
+        {/* CTA frame — own H2, brand gold buttons */}
         <Reveal>
-          <div className="relative mt-20 overflow-hidden rounded-[2rem] border-2 border-gold/40 bg-gradient-to-br from-[#FFF8E7] via-[#FDECC8] to-[#F5D98A] p-8 shadow-luxe md:p-12">
+          <section className="relative mt-20 overflow-hidden rounded-[2rem] border-2 border-gold/40 bg-gradient-to-br from-[#FFF8E7] via-[#FDECC8] to-[#F5D98A] p-8 shadow-luxe md:p-12">
             <WhatsAppIcon
               aria-hidden
               className="pointer-events-none absolute -end-6 -top-6 h-40 w-40 text-primary-deep/[0.06] md:h-56 md:w-56"
@@ -368,24 +367,31 @@ function BlogPost() {
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
                   Available now
                 </span>
-                <h3 className="mt-4 text-2xl font-extrabold leading-tight text-primary-deep md:text-3xl">
-                  {p.cta ?? "Book your yacht today"}
-                </h3>
+                <h2 className="mt-4 text-2xl font-extrabold leading-tight text-primary-deep md:text-3xl">
+                  Book Your Yacht in Dubai
+                </h2>
                 <p className="mt-2 text-sm leading-relaxed text-primary-deep/75 md:text-base">
-                  Message us on WhatsApp for pricing, availability, or booking — quick reply within minutes.
+                  Message us on WhatsApp or call for pricing, availability, or booking — quick reply within minutes.
                 </p>
               </div>
-              <a
-                href={`https://wa.me/971544420441?text=${encodeURIComponent(`Hi, I just read the article: ${p.title} and would like to enquire.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-[#25D366] px-7 py-4 text-base font-bold text-white shadow-lg ring-2 ring-white/40 transition-all hover:scale-105 hover:bg-[#1FBA57] hover:shadow-xl"
-              >
-                <WhatsAppIcon className="h-6 w-6" />
-                Contact us now
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={CONTACT.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-secondary-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-deep"
+                >
+                  <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
+                </a>
+                <a
+                  href={`tel:${CONTACT.phone}`}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary-deep bg-primary-deep px-6 py-3 text-sm font-bold text-gold shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary"
+                >
+                  <Phone className="h-4 w-4" /> Call now
+                </a>
+              </div>
             </div>
-          </div>
+          </section>
         </Reveal>
 
         {/* Keywords + share footer */}
@@ -476,8 +482,6 @@ function BlogPost() {
           </div>
         </section>
       ) : null}
-
-      <ContactCta title={p.cta ?? "Book your Dubai yacht today"} />
 
       {/* Back-to-top FAB */}
       {showTop ? (
