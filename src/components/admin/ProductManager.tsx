@@ -16,8 +16,8 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Eye, EyeOff, GripVertical, Save } from "lucide-react";
-import { useState } from "react";
+import { Eye, EyeOff, GripVertical, Save, Copy, Check } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { yachts, parties, fishingTrips, packages } from "@/data/site";
 import { applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides-types";
 
@@ -65,6 +65,26 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
       const list = prev.hidden[activeCat];
       const nextList = list.includes(title) ? list.filter((t) => t !== title) : [...list, title];
       return { ...prev, hidden: { ...prev.hidden, [activeCat]: nextList } };
+    });
+  }
+
+  // Native category for a product = the category whose SOURCES contains it.
+  function nativeCatOf(title: string): Category | null {
+    for (const c of Object.keys(SOURCES) as Category[]) {
+      if (SOURCES[c].some((p) => p.title === title)) return c;
+    }
+    return null;
+  }
+
+  // Toggle a product's presence in a target category (via overrides.copies).
+  // No-op if target = native category (product lives there anyway).
+  function toggleCopy(title: string, targetCat: Category) {
+    setOverrides((prev) => {
+      const nat = nativeCatOf(title);
+      if (nat === targetCat) return prev;
+      const list = prev.copies?.[targetCat] ?? [];
+      const nextList = list.includes(title) ? list.filter((t) => t !== title) : [...list, title];
+      return { ...prev, copies: { ...prev.copies, [targetCat]: nextList } };
     });
   }
 
@@ -151,6 +171,9 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
             <ul dir="rtl" className="grid grid-cols-2 gap-3 md:grid-cols-3">
               {ordered.map((p) => {
                 const hidden = overrides.hidden[activeCat].includes(p.title);
+                const nativeCat = nativeCatOf(p.title);
+                const copiedTo: Category[] = (Object.keys(overrides.copies ?? {}) as Category[])
+                  .filter((c) => (overrides.copies?.[c] ?? []).includes(p.title));
                 return (
                   <SortableCard
                     key={p.title}
@@ -160,6 +183,9 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
                     price={p.price}
                     hidden={hidden}
                     onToggle={() => toggleHidden(p.title)}
+                    nativeCat={nativeCat}
+                    copiedTo={copiedTo}
+                    onToggleCopy={(cat) => toggleCopy(p.title, cat)}
                   />
                 );
               })}
@@ -178,6 +204,9 @@ function SortableCard({
   price,
   hidden,
   onToggle,
+  nativeCat,
+  copiedTo,
+  onToggleCopy,
 }: {
   id: string;
   label: string;
@@ -185,8 +214,21 @@ function SortableCard({
   price: string | undefined;
   hidden: boolean;
   onToggle: () => void;
+  nativeCat: Category | null;
+  copiedTo: Category[];
+  onToggleCopy: (cat: Category) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+  const [copyOpen, setCopyOpen] = useState(false);
+  const popRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (!copyOpen) return;
+    function onDoc(e: MouseEvent) {
+      if (popRef.current && !popRef.current.contains(e.target as Node)) setCopyOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [copyOpen]);
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -235,19 +277,62 @@ function SortableCard({
             {price}
           </p>
         ) : null}
-        <button
-          type="button"
-          onClick={onToggle}
-          aria-label={hidden ? "Show product" : "Hide product"}
-          className={`mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-bold transition-colors ${
-            hidden
-              ? "bg-red-500/15 text-red-600 hover:bg-red-500/25"
-              : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
-          }`}
-        >
-          {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
-          {hidden ? "Hidden" : "Visible"}
-        </button>
+        <div className="mt-auto flex flex-col gap-1.5">
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-label={hidden ? "Show product" : "Hide product"}
+            className={`inline-flex w-full items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-bold transition-colors ${
+              hidden
+                ? "bg-red-500/15 text-red-600 hover:bg-red-500/25"
+                : "bg-muted text-muted-foreground hover:bg-gold/15 hover:text-gold-deep"
+            }`}
+          >
+            {hidden ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+            {hidden ? "Hidden" : "Visible"}
+          </button>
+          <div ref={popRef} className="relative">
+            <button
+              type="button"
+              onClick={() => setCopyOpen((v) => !v)}
+              className={`inline-flex w-full items-center justify-center gap-1.5 rounded-md border px-2.5 py-1.5 text-[11px] font-bold transition-colors ${
+                copiedTo.length > 0
+                  ? "border-gold/60 bg-gold/15 text-gold-deep"
+                  : "border-border bg-background text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              <Copy className="h-3.5 w-3.5" />
+              Copy to
+              {copiedTo.length > 0 ? <span className="ml-1 rounded-full bg-gold px-1.5 text-[10px] text-primary-deep">{copiedTo.length}</span> : null}
+            </button>
+            {copyOpen ? (
+              <div className="absolute end-0 top-full z-30 mt-1 w-44 rounded-lg border border-border bg-popover p-1.5 text-xs shadow-lg">
+                {(Object.keys(CAT_LABELS) as Category[]).map((c) => {
+                  const isNative = c === nativeCat;
+                  const isCopied = copiedTo.includes(c);
+                  return (
+                    <button
+                      key={c}
+                      type="button"
+                      disabled={isNative}
+                      onClick={() => onToggleCopy(c)}
+                      className={`flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-start font-semibold transition-colors ${
+                        isNative
+                          ? "cursor-not-allowed bg-muted/50 text-muted-foreground/60"
+                          : isCopied
+                            ? "bg-gold/20 text-gold-deep hover:bg-gold/30"
+                            : "text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <span>{CAT_LABELS[c]}</span>
+                      {isNative ? <span className="text-[9px] font-bold uppercase">native</span> : isCopied ? <Check className="h-3.5 w-3.5" /> : null}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
     </li>
   );

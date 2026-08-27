@@ -1,6 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 import { getProductOverrides } from "@/lib/overrides";
-import { applyOverrides, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
+import { applyOverridesFull, EMPTY_OVERRIDES, type ProductOverrides, type Category } from "@/lib/overrides-types";
+import { yachts, parties, fishingTrips, packages } from "@/data/site";
+
+// Global product source map so copies can be resolved across categories.
+// yachts.slice(0, 6) mirrors the home-page product slice — Category "home"
+// only has visibility over that slice by default, but copies can pull yachts
+// from the full list too via native yachts entry.
+type SourceProduct = { slug?: string; title: string; [k: string]: unknown };
+const GLOBAL_SOURCES: Record<Category, SourceProduct[]> = {
+  home: yachts.slice(0, 6),
+  yachts,
+  parties,
+  fishing: fishingTrips,
+  packages,
+};
 
 const EMPTY = EMPTY_OVERRIDES;
 
@@ -46,7 +60,7 @@ export function useOverriddenProducts<T extends { title: string }>(
 
   return useMemo(() => {
     if (!overrides) return products;
-    return applyOverrides(products, overrides, cat);
+    return applyOverridesFull(products, GLOBAL_SOURCES as Record<Category, T[]>, overrides, cat);
   }, [products, overrides, cat]);
 }
 
