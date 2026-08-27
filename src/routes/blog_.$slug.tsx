@@ -247,39 +247,50 @@ function BlogPost() {
         ) : null}
 
         {/* Sections (starts at index 1 — index 0 rendered hero-adjacent) */}
-        <div className="mt-12 space-y-16">
+        <div className="mt-16 space-y-20 md:space-y-24">
           {p.sections.slice(1).map((s, idx) => {
             const i = idx + 1;
             const isCallout = idx % 3 === 2 && s.p.length > 0;
+            const isLast = idx === p.sections.length - 2;
             return (
               <Reveal key={s.h} delay={i * 40}>
                 <section id={`section-${i}`} className="scroll-mt-24">
-                  {/* Big decorative number + heading */}
-                  <div className="relative mb-6 flex items-start gap-4">
-                    <span
-                      aria-hidden
-                      className="select-none text-[64px] font-black leading-none text-transparent bg-gradient-to-b from-gold to-gold-deep bg-clip-text md:text-[80px]"
-                    >
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex-1 pt-3 md:pt-6">
-                      <h2 className="text-xl font-extrabold leading-snug text-primary md:text-2xl">{s.h}</h2>
-                      <div className="mt-2 h-px w-16 bg-gradient-to-l from-transparent via-gold to-transparent" />
+                  {/* Editorial kicker + heading */}
+                  <div className="mb-8">
+                    <div className="flex items-baseline gap-4">
+                      <span
+                        aria-hidden
+                        className="select-none font-display text-[72px] font-black leading-[0.85] text-transparent bg-gradient-to-b from-gold via-gold to-gold-deep bg-clip-text md:text-[96px]"
+                      >
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                      <span className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.25em] text-gold-deep">
+                        <span className="h-px w-8 bg-gold" />
+                        Chapter {String(idx + 1).padStart(2, "0")}
+                      </span>
                     </div>
+                    <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
+                      {s.h}
+                    </h2>
+                    <span className="mt-4 block h-[3px] w-14 bg-gradient-to-r from-gold to-gold-deep" />
                   </div>
 
                   {/* Content */}
                   {isCallout ? (
-                    <div className="relative rounded-2xl border border-gold/40 bg-gradient-to-br from-primary-deep to-primary p-8 shadow-luxe">
+                    <div className="relative overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-br from-primary-deep to-primary p-8 shadow-luxe md:p-10">
                       <Quote
                         aria-hidden
-                        className="absolute end-6 top-6 h-8 w-8 rotate-180 text-gold/40"
+                        className="absolute end-6 top-6 h-10 w-10 rotate-180 text-gold/40"
                       />
-                      <div className="space-y-4">
+                      <div className="space-y-5">
                         {s.p.map((par, pi) => (
                           <p
                             key={pi}
-                            className="text-base leading-loose text-primary-foreground/90 md:text-lg"
+                            className={
+                              pi === 0
+                                ? "font-display text-lg italic leading-relaxed text-primary-foreground md:text-2xl"
+                                : "text-base leading-loose text-primary-foreground/85 md:text-lg"
+                            }
                           >
                             {par}
                           </p>
@@ -287,18 +298,29 @@ function BlogPost() {
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {s.p.map((par, pi) => {
                         const isBulletish = /^-\s|^•\s|^\d+\.\s/.test(par);
                         if (isBulletish) {
                           return (
                             <div
                               key={pi}
-                              className="flex items-start gap-3 rounded-lg border border-border bg-card px-4 py-3 text-base leading-relaxed text-muted-foreground"
+                              className="flex items-start gap-3 rounded-lg border border-gold/20 bg-muted/50 px-4 py-3 text-base leading-relaxed text-foreground md:text-[17px]"
                             >
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                               <span>{par.replace(/^-\s|^•\s|^\d+\.\s/, "")}</span>
                             </div>
+                          );
+                        }
+                        // First paragraph of each section = lead style (larger, tighter to heading)
+                        if (pi === 0) {
+                          return (
+                            <p
+                              key={pi}
+                              className="text-lg leading-loose text-foreground first-letter:font-display first-letter:text-2xl first-letter:font-bold first-letter:text-gold-deep md:text-xl"
+                            >
+                              {par}
+                            </p>
                           );
                         }
                         return (
@@ -314,12 +336,16 @@ function BlogPost() {
                   )}
                 </section>
 
-                {/* Divider between sections */}
-                {idx < p.sections.length - 2 ? (
-                  <div className="mt-16 flex items-center justify-center gap-3">
-                    <span className="h-px w-16 bg-gold/30" />
-                    <span className="h-2 w-2 rotate-45 bg-gold/60" />
-                    <span className="h-px w-16 bg-gold/30" />
+                {/* Editorial divider — 3-dot with hairlines */}
+                {!isLast ? (
+                  <div className="mt-20 flex items-center justify-center gap-4">
+                    <span className="h-px w-16 bg-gradient-to-l from-gold/60 to-transparent" />
+                    <span className="flex gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold/70" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold/70" />
+                    </span>
+                    <span className="h-px w-16 bg-gradient-to-r from-gold/60 to-transparent" />
                   </div>
                 ) : null}
               </Reveal>
