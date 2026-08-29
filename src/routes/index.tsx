@@ -38,12 +38,12 @@ export const Route = createFileRoute("/")({
         content:
           "Enjoy yacht rental Dubai with luxury yachts, competitive prices, private cruises, and a professional crew for every occasion. Book your yacht today.",
       },
-      { property: "og:url", content: "https://tootfunyachts.com/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/" },
     ],
   }),
   component: Home,

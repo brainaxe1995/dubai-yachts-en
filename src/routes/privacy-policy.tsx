@@ -33,12 +33,12 @@ export const Route = createFileRoute("/privacy-policy")({
       },
       { property: "og:title", content: "Privacy Policy | Toot Fun Yachts Dubai" },
       { property: "og:description", content: "Our Privacy Policy outlines our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services." },
-      { property: "og:url", content: "https://tootfunyachts.com/privacy-policy/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/privacy-policy/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/privacy-policy/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/privacy-policy/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/privacy-policy/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/privacy-policy/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/privacy-policy/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/privacy-policy/" },
     ],
   }),
   component: Page,
@@ -197,7 +197,7 @@ const blocks: LegalBlock[] = [
     p: [
       "If you have any questions about the privacy policy or how your personal information is used, you can contact us:",
       "- __Toot Fun Yachts LLC__ — Dubai, United Arab Emirates",
-      "- Email: __info@tootfunyachts.com__",
+      "- Email: __info@dubai-yachts.ae__",
     ],
   },
 ];

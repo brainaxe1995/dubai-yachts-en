@@ -62,12 +62,12 @@ export const Route = createFileRoute("/rent-a-yacht-dubai")({
         content:
           "Rent a Yacht Dubai with Toot Fun Yachts from AED 450 per hour. Choose from luxury yachts, private cruises, professional crew, and flexible options.",
       },
-      { property: "og:url", content: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/rent-a-yacht-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/rent-a-yacht-dubai/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/rent-a-yacht-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/rent-a-yacht-dubai/" },
     ],
   }),
   component: RentYacht,

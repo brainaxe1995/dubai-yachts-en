@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-27T06:55:55.803Z",
-  "baseUrl": "https://tootfunyachts.com",
+  "baseUrl": "https://dubai-yachts.ae",
   "sitemapPaths": [
     "/",
     "/yacht-rental-dubai",
@@ -18,7 +18,7 @@
     "/terms-and-conditions",
     "/privacy-policy"
   ],
-  "robotsSitemap": "https://tootfunyachts.com/sitemap.xml",
+  "robotsSitemap": "https://dubai-yachts.ae/sitemap.xml",
   "routes": [
     {
       "file": "index.tsx",
@@ -27,17 +27,17 @@
       "description": "Enjoy yacht rental Dubai with luxury yachts, competitive prices, private cruises, and a professional crew for every occasion. Book your yacht today.",
       "ogTitle": "Luxury Yacht Rental Dubai | Best Prices - Toot Fun Yachts",
       "ogDescription": "Enjoy yacht rental Dubai with luxury yachts, competitive prices, private cruises, and a professional crew for every occasion. Book your yacht today.",
-      "ogUrl": "https://tootfunyachts.com/",
+      "ogUrl": "https://dubai-yachts.ae/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/",
+      "canonical": "https://dubai-yachts.ae/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/"
+          "href": "https://dubai-yachts.ae/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/"
+          "href": "https://dubai-yachts.ae/"
         }
       ],
       "robots": null,
@@ -54,17 +54,17 @@
       "description": "About Us – Discover Toot Fun Yachts, our yacht rental experience, professional team, and luxury private cruise services in Dubai.",
       "ogTitle": "About Us | Toot Fun Yachts Dubai",
       "ogDescription": "About Us – Discover Toot Fun Yachts, our yacht rental experience, professional team, and luxury private cruise services in Dubai.",
-      "ogUrl": "https://tootfunyachts.com/about-us/",
+      "ogUrl": "https://dubai-yachts.ae/about-us/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/about-us/",
+      "canonical": "https://dubai-yachts.ae/about-us/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/about-us/"
+          "href": "https://dubai-yachts.ae/about-us/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/about-us/"
+          "href": "https://dubai-yachts.ae/about-us/"
         }
       ],
       "robots": null,
@@ -99,17 +99,17 @@
       "description": "Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai.",
       "ogTitle": "Blog | Yacht Rental Tips & Guide Dubai | Toot Fun Yachts",
       "ogDescription": "Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai.",
-      "ogUrl": "https://tootfunyachts.com/blog/",
+      "ogUrl": "https://dubai-yachts.ae/blog/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/blog/",
+      "canonical": "https://dubai-yachts.ae/blog/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/blog/"
+          "href": "https://dubai-yachts.ae/blog/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/blog/"
+          "href": "https://dubai-yachts.ae/blog/"
         }
       ],
       "robots": null,
@@ -144,17 +144,17 @@
       "description": "Learn about Toot Fun Yachts’ Cancellation Policy, including cancellation terms, rescheduling, refunds, and no-show conditions.",
       "ogTitle": "Easy Cancellation Policy | Toot Fun Yachts Dubai",
       "ogDescription": "Learn about Toot Fun Yachts’ Cancellation Policy, including cancellation terms, rescheduling, refunds, and no-show conditions.",
-      "ogUrl": "https://tootfunyachts.com/cancellation-policy/",
+      "ogUrl": "https://dubai-yachts.ae/cancellation-policy/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/cancellation-policy/",
+      "canonical": "https://dubai-yachts.ae/cancellation-policy/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/cancellation-policy/"
+          "href": "https://dubai-yachts.ae/cancellation-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/cancellation-policy/"
+          "href": "https://dubai-yachts.ae/cancellation-policy/"
         }
       ],
       "robots": null,
@@ -171,17 +171,17 @@
       "description": "Contact us to book your yacht, check prices and packages, and choose the right trip with Toot Fun Yachts.",
       "ogTitle": "Contact Us | Toot Fun Yachts Dubai",
       "ogDescription": "Contact us to book your yacht, check prices and packages, and choose the right trip with Toot Fun Yachts.",
-      "ogUrl": "https://tootfunyachts.com/contact-us/",
+      "ogUrl": "https://dubai-yachts.ae/contact-us/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/contact-us/",
+      "canonical": "https://dubai-yachts.ae/contact-us/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/contact-us/"
+          "href": "https://dubai-yachts.ae/contact-us/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/contact-us/"
+          "href": "https://dubai-yachts.ae/contact-us/"
         }
       ],
       "robots": null,
@@ -206,17 +206,17 @@
       "description": "Book the best fishing trip Dubai with fully equipped boats, fishing gear, a professional crew, and private or shared options at competitive prices.",
       "ogTitle": "Best Fishing Trip Dubai | Toot Fun Yachts",
       "ogDescription": "Book the best fishing trip Dubai with fully equipped boats, fishing gear, a professional crew, and private or shared options at competitive prices.",
-      "ogUrl": "https://tootfunyachts.com/fishing-trip-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/fishing-trip-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/fishing-trip-dubai/",
+      "canonical": "https://dubai-yachts.ae/fishing-trip-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/fishing-trip-dubai/"
+          "href": "https://dubai-yachts.ae/fishing-trip-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/fishing-trip-dubai/"
+          "href": "https://dubai-yachts.ae/fishing-trip-dubai/"
         }
       ],
       "robots": null,
@@ -233,17 +233,17 @@
       "description": "Our Privacy Policy outlines our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services.",
       "ogTitle": "Privacy Policy | Toot Fun Yachts Dubai",
       "ogDescription": "Our Privacy Policy outlines our commitment to protecting your personal information and maintaining its confidentiality when using the Toot Fun Yachts website and services.",
-      "ogUrl": "https://tootfunyachts.com/privacy-policy/",
+      "ogUrl": "https://dubai-yachts.ae/privacy-policy/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/privacy-policy/",
+      "canonical": "https://dubai-yachts.ae/privacy-policy/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/privacy-policy/"
+          "href": "https://dubai-yachts.ae/privacy-policy/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/privacy-policy/"
+          "href": "https://dubai-yachts.ae/privacy-policy/"
         }
       ],
       "robots": null,
@@ -266,17 +266,17 @@
       "description": "Rent a Yacht Dubai with Toot Fun Yachts from AED 450 per hour. Choose from luxury yachts, private cruises, professional crew, and flexible options.",
       "ogTitle": "Rent a Yacht Dubai | Toot Fun Yachts",
       "ogDescription": "Rent a Yacht Dubai with Toot Fun Yachts from AED 450 per hour. Choose from luxury yachts, private cruises, professional crew, and flexible options.",
-      "ogUrl": "https://tootfunyachts.com/rent-a-yacht-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/rent-a-yacht-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/rent-a-yacht-dubai/",
+      "canonical": "https://dubai-yachts.ae/rent-a-yacht-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/rent-a-yacht-dubai/"
+          "href": "https://dubai-yachts.ae/rent-a-yacht-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/rent-a-yacht-dubai/"
+          "href": "https://dubai-yachts.ae/rent-a-yacht-dubai/"
         }
       ],
       "robots": null,
@@ -311,17 +311,17 @@
       "description": "Browse the Toot Fun Yachts sitemap to easily access yacht rental, yacht parties, cruises, fishing trips, and yacht packages available in Dubai.",
       "ogTitle": "Sitemap | Toot Fun Yachts Dubai",
       "ogDescription": "Browse the Toot Fun Yachts sitemap to easily access yacht rental, yacht parties, cruises, fishing trips, and yacht packages available in Dubai.",
-      "ogUrl": "https://tootfunyachts.com/sitemap/",
+      "ogUrl": "https://dubai-yachts.ae/sitemap/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/sitemap/",
+      "canonical": "https://dubai-yachts.ae/sitemap/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/sitemap/"
+          "href": "https://dubai-yachts.ae/sitemap/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/sitemap/"
+          "href": "https://dubai-yachts.ae/sitemap/"
         }
       ],
       "robots": null,
@@ -338,17 +338,17 @@
       "description": "Learn about Toot Fun Yachts’ terms and conditions, including booking, payment, cancellation, customer responsibilities, and the use of yacht rental services in Dubai.",
       "ogTitle": "Terms and Conditions | Toot Fun Yachts Dubai",
       "ogDescription": "Learn about Toot Fun Yachts’ terms and conditions, including booking, payment, cancellation, customer responsibilities, and the use of yacht rental services in Dubai.",
-      "ogUrl": "https://tootfunyachts.com/terms-and-conditions/",
+      "ogUrl": "https://dubai-yachts.ae/terms-and-conditions/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/terms-and-conditions/",
+      "canonical": "https://dubai-yachts.ae/terms-and-conditions/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/terms-and-conditions/"
+          "href": "https://dubai-yachts.ae/terms-and-conditions/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/terms-and-conditions/"
+          "href": "https://dubai-yachts.ae/terms-and-conditions/"
         }
       ],
       "robots": null,
@@ -371,17 +371,17 @@
       "description": "Discover the best yacht booking options in Dubai, with prices starting from AED 450 per hour, luxury yachts, and private cruises for all occasions.",
       "ogTitle": "Luxury Yacht Booking Dubai | Toot Fun Yachts",
       "ogDescription": "Discover the best yacht booking options in Dubai, with prices starting from AED 450 per hour, luxury yachts, and private cruises for all occasions.",
-      "ogUrl": "https://tootfunyachts.com/yacht-booking-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/yacht-booking-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/yacht-booking-dubai/",
+      "canonical": "https://dubai-yachts.ae/yacht-booking-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/yacht-booking-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-booking-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/yacht-booking-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-booking-dubai/"
         }
       ],
       "robots": null,
@@ -398,17 +398,17 @@
       "description": "Book a Private Yacht Charter Dubai with Toot Fun Yachts. Choose luxury yachts, private cruises, professional crew, and prices from AED 450 per hour.",
       "ogTitle": "Private Yacht Charter Dubai | From AED 450",
       "ogDescription": "Book a Private Yacht Charter Dubai with Toot Fun Yachts. Choose luxury yachts, private cruises, professional crew, and prices from AED 450 per hour.",
-      "ogUrl": "https://tootfunyachts.com/yacht-charter-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/yacht-charter-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/yacht-charter-dubai/",
+      "canonical": "https://dubai-yachts.ae/yacht-charter-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/yacht-charter-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-charter-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/yacht-charter-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-charter-dubai/"
         }
       ],
       "robots": null,
@@ -425,17 +425,17 @@
       "description": "Discover yacht packages Dubai for private trips, birthdays, parties and special occasions, with flexible options and competitive prices.",
       "ogTitle": "Yacht Packages Dubai | Private Yacht Deals & Offers",
       "ogDescription": "Discover yacht packages Dubai for private trips, birthdays, parties and special occasions, with flexible options and competitive prices.",
-      "ogUrl": "https://tootfunyachts.com/yacht-packages-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/yacht-packages-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/yacht-packages-dubai/",
+      "canonical": "https://dubai-yachts.ae/yacht-packages-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/yacht-packages-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-packages-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/yacht-packages-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-packages-dubai/"
         }
       ],
       "robots": null,
@@ -452,17 +452,17 @@
       "description": "Book a Yacht Party Dubai experience for birthdays and special occasions with luxury yachts, stylish decorations, professional crew, and competitive packages.",
       "ogTitle": "Private Yacht Party Dubai | Toot Fun Yachts",
       "ogDescription": "Book a Yacht Party Dubai experience for birthdays and special occasions with luxury yachts, stylish decorations, professional crew, and competitive packages.",
-      "ogUrl": "https://tootfunyachts.com/yacht-party-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/yacht-party-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/yacht-party-dubai/",
+      "canonical": "https://dubai-yachts.ae/yacht-party-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/yacht-party-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-party-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/yacht-party-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-party-dubai/"
         }
       ],
       "robots": null,
@@ -479,17 +479,17 @@
       "description": "We offer yacht rental Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions.",
       "ogTitle": "Private Yacht Rental Dubai | From AED 450",
       "ogDescription": "We offer yacht rental Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions.",
-      "ogUrl": "https://tootfunyachts.com/yacht-rental-dubai/",
+      "ogUrl": "https://dubai-yachts.ae/yacht-rental-dubai/",
       "ogImage": null,
-      "canonical": "https://tootfunyachts.com/yacht-rental-dubai/",
+      "canonical": "https://dubai-yachts.ae/yacht-rental-dubai/",
       "alternates": [
         {
           "hreflang": "en",
-          "href": "https://tootfunyachts.com/yacht-rental-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-rental-dubai/"
         },
         {
           "hreflang": "x-default",
-          "href": "https://tootfunyachts.com/yacht-rental-dubai/"
+          "href": "https://dubai-yachts.ae/yacht-rental-dubai/"
         }
       ],
       "robots": null,

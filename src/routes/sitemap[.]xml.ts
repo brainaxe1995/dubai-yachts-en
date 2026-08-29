@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { posts } from "@/data/blog";
 
 // Fallback used only when the incoming request has no Host header (dev CLI, curl -H trickery).
-const FALLBACK_BASE_URL = "https://tootfunyachts.com";
+const FALLBACK_BASE_URL = "https://dubai-yachts.ae";
 
 function resolveBaseUrl(req: Request): string {
   try {

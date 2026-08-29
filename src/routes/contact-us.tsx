@@ -20,12 +20,12 @@ export const Route = createFileRoute("/contact-us")({
       },
       { property: "og:title", content: "Contact Us | Toot Fun Yachts Dubai" },
       { property: "og:description", content: "Contact us to book your yacht, check prices and packages, and choose the right trip with Toot Fun Yachts." },
-      { property: "og:url", content: "https://tootfunyachts.com/contact-us/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/contact-us/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/contact-us/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/contact-us/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/contact-us/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/contact-us/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/contact-us/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/contact-us/" },
     ],
     scripts: [
       {
@@ -35,8 +35,8 @@ export const Route = createFileRoute("/contact-us")({
           "@type": "LocalBusiness",
           name: "Toot Fun Yachts",
           alternateName: "Toot Fun Yacht Rental",
-          url: "https://tootfunyachts.com/contact-us/",
-          image: "https://tootfunyachts.com/favicon.png",
+          url: "https://dubai-yachts.ae/contact-us/",
+          image: "https://dubai-yachts.ae/favicon.png",
           telephone: CONTACT.phone,
           email: CONTACT.email,
           priceRange: "AED 450+",

@@ -28,7 +28,7 @@ export const Route = createFileRoute("/blog_/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData;
     if (!p) return {};
-    const url = `https://tootfunyachts.com/blog/${p.slug}`;
+    const url = `https://dubai-yachts.ae/blog/${p.slug}`;
     return {
       meta: [
         { title: `${p.title} | Toot Fun` },
@@ -60,15 +60,15 @@ export const Route = createFileRoute("/blog_/$slug")({
             publisher: {
               "@type": "Organization",
               name: "Toot Fun Yachts",
-              logo: { "@type": "ImageObject", url: "https://tootfunyachts.com/favicon.png" },
+              logo: { "@type": "ImageObject", url: "https://dubai-yachts.ae/favicon.png" },
             },
             mainEntityOfPage: url,
             keywords: p.keywords,
           }),
         },
         breadcrumbSchema([
-          { name: "Home", url: "https://tootfunyachts.com/" },
-          { name: "Blog", url: "https://tootfunyachts.com/blog/" },
+          { name: "Home", url: "https://dubai-yachts.ae/" },
+          { name: "Blog", url: "https://dubai-yachts.ae/blog/" },
           { name: p.title, url },
         ]),
       ],
@@ -106,7 +106,7 @@ function BlogPost() {
   const related = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
   const readMin = estimateReadMinutes(p);
   const progress = useReadingProgress();
-  const shareUrl = `https://tootfunyachts.com/blog/${p.slug}`;
+  const shareUrl = `https://dubai-yachts.ae/blog/${p.slug}`;
   const shareMsg = `${p.title}\n${shareUrl}`;
   const [showTop, setShowTop] = useState(false);
 

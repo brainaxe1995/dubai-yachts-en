@@ -70,12 +70,12 @@ export const Route = createFileRoute("/yacht-booking-dubai")({
         content:
           "Discover the best yacht booking options in Dubai, with prices starting from AED 450 per hour, luxury yachts, and private cruises for all occasions.",
       },
-      { property: "og:url", content: "https://tootfunyachts.com/yacht-booking-dubai/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/yacht-booking-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-booking-dubai/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/yacht-booking-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/yacht-booking-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/yacht-booking-dubai/" },
     ],
   }),
   component: YachtBooking,

@@ -24,12 +24,12 @@ export const Route = createFileRoute("/yacht-rental-dubai")({
       },
       { property: "og:title", content: "Private Yacht Rental Dubai | From AED 450" },
       { property: "og:description", content: "We offer yacht rental Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions." },
-      { property: "og:url", content: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { property: "og:url", content: "https://dubai-yachts.ae/yacht-rental-dubai/" },
     ],
     links: [
-      { rel: "canonical", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "en", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://tootfunyachts.com/yacht-rental-dubai/" },
+      { rel: "canonical", href: "https://dubai-yachts.ae/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "en", href: "https://dubai-yachts.ae/yacht-rental-dubai/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://dubai-yachts.ae/yacht-rental-dubai/" },
     ],
     scripts: [
       {
