@@ -106,10 +106,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      // TEMP DEPLOY: noindex + nofollow so hostingersite.com preview doesn't
-      // get indexed by Google. Remove this line once the real production
-      // domain is purchased and DNS points here.
-      { name: "robots", content: "noindex, nofollow" },
       { title: "Toot Fun Yachts | Luxury Yacht Rental & Charter in Dubai" },
       {
         name: "description",
