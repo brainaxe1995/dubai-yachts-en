@@ -233,7 +233,7 @@ function Packages() {
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading
-          title="Frequently Asked Questions About Yacht Rental in Dubai"
+          title="Frequently Asked Questions About Yacht Packages in Dubai"
           subtitle="Answers to the most common questions on yacht rental in Dubai — pricing, booking, duration, what's included, and everything to know before you sail."
         />
         <Accordion items={pkgFaqs} />

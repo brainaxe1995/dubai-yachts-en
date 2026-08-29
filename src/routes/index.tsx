@@ -27,12 +27,12 @@ import whatIncludedImg from "@/assets/branding/what-included.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Luxury Yacht Rental Dubai | Best Prices - Toot Fun Yachts" },
+      { title: "Luxury Yacht Rental Dubai From AED 450 | Toot Fun Yachts" },
       {
         name: "description",
         content:"Enjoy yacht rental Dubai with luxury yachts, competitive prices, private cruises, and a professional crew for every occasion. Book your yacht today.",
       },
-      { property: "og:title", content: "Luxury Yacht Rental Dubai | Best Prices - Toot Fun Yachts" },
+      { property: "og:title", content: "Luxury Yacht Rental Dubai From AED 450 | Toot Fun Yachts" },
       {
         property: "og:description",
         content:

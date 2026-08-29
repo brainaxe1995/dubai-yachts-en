@@ -12,6 +12,7 @@ import {
   Shirt,
   Sparkles,
   Camera,
+  IdCard,
   ArrowLeft,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
@@ -40,6 +41,7 @@ const bring: Item[] = [
   { icon: Shirt, t: "Comfortable clothing", d: "Light fabric during the day, and a light jacket for evenings on deck." },
   { icon: Sparkles, t: "Your favorite food", d: "Bringing your own food and drinks is welcome at no extra charge." },
   { icon: Camera, t: "Camera or phone", d: "Sunset moments over the Dubai skyline are worth capturing." },
+  { icon: IdCard, t: "Original passport or Emirates ID required", d: "Bring your original passport or Emirates ID — needed at the marina check-in for every guest before boarding." },
 ];
 
 type Destination = { img: string; t: string; d: string; en: string };
@@ -104,7 +106,7 @@ function BringSteps({ items }: { items: Item[] }) {
         aria-hidden
         className="absolute inset-x-8 top-8 hidden h-px bg-gradient-to-l from-gold/0 via-gold/50 to-gold/0 md:block"
       />
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-5 lg:gap-6">
         {items.map((it, i) => (
           <Reveal key={it.t} delay={i * 80}>
             <div className="group flex h-full flex-col items-center rounded-2xl border border-border bg-card p-5 text-center shadow-luxe transition-all duration-500 hover:-translate-y-1 hover:border-gold/50">
@@ -208,7 +210,7 @@ export function CharterEssentials({ showDestinations = true }: { showDestination
             <PanelHeading
               eyebrow="Your smart pack"
               title="What to bring with you"
-              subtitle="Four simple steps to prepare you for the complete on-board yacht experience."
+              subtitle="Five simple steps to prepare you for the complete on-board yacht experience."
             />
             <BringSteps items={bring} />
           </div>

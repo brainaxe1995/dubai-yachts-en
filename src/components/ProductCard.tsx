@@ -371,8 +371,10 @@ function Lightbox({
 
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
   const { guests, bedrooms, length, duration, meta } = parseSpecs(product.specs);
-  const priceNumber = product.price.match(/[\d,]+/)?.[0] ?? product.price;
-  const priceUnit = product.price.replace(priceNumber, "").trim();
+  const priceParts = product.price.match(/^(.*?)(\d[\d,]*)(.*)$/);
+  const priceCurrency = priceParts?.[1]?.trim() ?? "";
+  const priceNumber = priceParts?.[2] ?? product.price;
+  const priceSuffix = priceParts?.[3]?.trim() ?? "";
   const waLink = buildWhatsAppLink(product.title, product.price);
   const [modalOpen, setModalOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -411,8 +413,13 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
 
             <div className="flex items-baseline gap-2 border-y border-gold/20 py-2.5">
               <span className="text-xs font-medium text-muted-foreground">from</span>
+              {priceCurrency ? (
+                <span className="text-xs font-bold text-gold-deep">{priceCurrency}</span>
+              ) : null}
               <span className="text-2xl font-extrabold text-gold-deep">{priceNumber}</span>
-              <span className="text-xs font-bold text-muted-foreground">{priceUnit}</span>
+              {priceSuffix ? (
+                <span className="text-xs font-bold text-muted-foreground">{priceSuffix}</span>
+              ) : null}
             </div>
 
             <div className="mt-1 grid grid-cols-3 gap-2 rounded-xl border border-border bg-muted/60 p-3 text-center text-xs">
@@ -500,8 +507,9 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
           onClose={() => setModalOpen(false)}
           product={product}
           waLink={waLink}
+          priceCurrency={priceCurrency}
           priceNumber={priceNumber}
-          priceUnit={priceUnit}
+          priceSuffix={priceSuffix}
         />
       ) : null}
 
@@ -523,15 +531,17 @@ function IncludedModal({
   onClose,
   product,
   waLink,
+  priceCurrency,
   priceNumber,
-  priceUnit,
+  priceSuffix,
 }: {
   open: boolean;
   onClose: () => void;
   product: Product;
   waLink: string;
+  priceCurrency: string;
   priceNumber: string;
-  priceUnit: string;
+  priceSuffix: string;
 }) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -596,8 +606,9 @@ function IncludedModal({
             </h3>
             <div className="mt-1 flex items-baseline gap-2 text-primary-foreground/90">
               <span className="text-xs">Starting from</span>
+              {priceCurrency ? <span className="text-xs font-bold text-gold">{priceCurrency}</span> : null}
               <span className="text-lg font-extrabold text-gold">{priceNumber}</span>
-              <span className="text-xs">{priceUnit}</span>
+              {priceSuffix ? <span className="text-xs">{priceSuffix}</span> : null}
             </div>
           </div>
         </div>

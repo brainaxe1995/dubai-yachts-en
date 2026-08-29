@@ -15,7 +15,7 @@ import sunseekerImg from "@/assets/yachts/sunseeker-95.webp";
 
 const rentFaqs = [
   {
-    q: "How much does yacht rental in Dubai cost?",
+    q: "How much does rent yacht in Dubai cost?",
     a: "__Yacht rental prices in Dubai__ vary based on the yacht size, guest count, trip duration, and selected services. Prices start from __AED 450__ per hour and increase depending on the yacht type and additional services.",
   },
   {
@@ -114,7 +114,7 @@ function RentYacht() {
       <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
-            title="Yacht Hire Dubai Guide"
+            title="Yacht Rent Dubai Guide"
             subtitle="Everything you need to know before hiring a yacht in Dubai — from the fleet to the groups our trips suit best."
           />
           <FeatureBlocks blocks={rentalRichBlocks} />
@@ -167,7 +167,7 @@ function RentYacht() {
 
       <section className="mx-auto max-w-4xl px-4 pb-16 md:pb-24">
         <SectionHeading
-          title="Frequently Asked Questions About Yacht Hire in Dubai"
+          title="Frequently Asked Questions About Rent a Yacht Dubai"
           subtitle="Learn the top FAQs about __yacht hire in Dubai__ covering prices, booking, services, and what you need to know before your trip."
         />
         <Accordion items={rentFaqs} />

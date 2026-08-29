@@ -48,7 +48,7 @@ export type SiteConfig = {
 
 export const PAGE_META_DEFAULTS: Record<string, { title: string; description: string }> = {
   "/": {
-    title: "Yacht Rental in Dubai | Best Prices - Toot Fun Yachts",
+    title: "Luxury Yacht Rental Dubai From AED 450 | Toot Fun Yachts",
     description:
       "Luxury yacht rental in Dubai with competitive rates, private cruises, and a professional crew for every occasion. Book your yacht today.",
   },

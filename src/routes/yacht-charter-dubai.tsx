@@ -40,7 +40,7 @@ const rentalIncludedFeatures = [
 
 const yachtFaqs = [
   {
-    q: "How much does it cost to rent a yacht in Dubai?",
+    q: "How much does a yacht charter in Dubai cost?",
     a: "__Yacht rental costs in Dubai__ vary based on yacht size, guest count, trip duration, and selected services. Prices start from __AED 450 per hour__ and increase depending on the yacht type and additional services.",
   },
   { q: "What is the cheapest yacht for rent in Dubai?", a: "The 40-ft mini yacht starts from AED 450 per hour and accommodates 10 guests with one bedroom." },
@@ -198,7 +198,7 @@ function YachtsForRent() {
       <section className="bg-gradient-to-b from-background via-muted to-background py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
           <SectionHeading
-            title="Everything You Need to Know About Yacht Rental in Dubai"
+            title="Everything You Need to Know About Yacht Charter in Dubai"
             subtitle="From included add-ons to the groups our trips suit best — a complete guide before booking."
           />
           <FeatureBlocks blocks={rentalIncludedFeatures} />
@@ -209,7 +209,7 @@ function YachtsForRent() {
 
       <section className="mx-auto max-w-4xl px-4 py-16 md:py-24">
         <SectionHeading
-          title="Frequently Asked Questions About Yachts for Rent in Dubai"
+          title="Frequently Asked Questions About Yachts for Charter in Dubai"
           subtitle="Top questions about __yachts for rent in Dubai__ covering prices, how to book, and the services available before your trip."
         />
         <Accordion items={yachtFaqs} />
