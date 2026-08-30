@@ -4,6 +4,7 @@ import { Calendar, Tag } from "lucide-react";
 import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { posts } from "@/data/blog";
+import pageHero from "@/assets/heroes/blog.webp";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -35,6 +36,7 @@ function Blog() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="Blog"
         title="Blog"
         subtitle="Discover our blog and explore the latest tips and ideas on yacht rental, private cruises, yacht parties, and fishing trips in Dubai."

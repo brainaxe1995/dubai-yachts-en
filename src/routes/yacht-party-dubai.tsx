@@ -12,7 +12,7 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import partyImg from "@/assets/parties/wedding.webp";
+import partyImg from "@/assets/heroes/yacht-party-dubai.webp";
 import partyWeddingImg from "@/assets/parties/wedding/wedding-1.webp";
 import partyBirthdayImg from "@/assets/parties/birthday/birthday-1.webp";
 import partyProposalImg from "@/assets/parties/proposal/proposal-1.webp";

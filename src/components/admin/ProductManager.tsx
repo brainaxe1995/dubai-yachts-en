@@ -19,7 +19,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Eye, EyeOff, GripVertical, Save, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { yachts, parties, fishingTrips, packages } from "@/data/site";
-import { applyOverrides, type ProductOverrides, type Category } from "@/lib/overrides-types";
+import { applyOverridesFull, type ProductOverrides, type Category } from "@/lib/overrides-types";
 
 type SaveState = { tone: "idle" | "saving" | "ok" | "err"; text: string };
 
@@ -56,8 +56,15 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
     // Show every source item in admin regardless of hidden state — the eye toggle
     // reflects hidden state, but the row must remain visible so the admin can
     // unhide it. We strip the hidden filter for display, then apply order only.
+    // Use applyOverridesFull so products copied into this tab from other categories
+    // also appear here and become drag-reorderable alongside native products.
     const source = SOURCES[activeCat];
-    return applyOverrides(source, { ...overrides, hidden: { ...overrides.hidden, [activeCat]: [] } }, activeCat);
+    return applyOverridesFull(
+      source,
+      SOURCES,
+      { ...overrides, hidden: { ...overrides.hidden, [activeCat]: [] } },
+      activeCat,
+    );
   }, [overrides, activeCat]);
 
   function toggleHidden(title: string) {
@@ -141,8 +148,8 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
         </div>
       </div>
 
-      {/* Category tabs — RTL so the category order matches the frontend nav. */}
-      <div dir="rtl" className="mb-4 flex flex-wrap gap-2">
+      {/* Category tabs — LTR to match the English frontend reading direction. */}
+      <div className="mb-4 flex flex-wrap gap-2">
         {(Object.keys(CAT_LABELS) as Category[]).map((c) => {
           const active = c === activeCat;
           return (
@@ -167,8 +174,8 @@ export function ProductManager({ overrides, setOverrides, loading, onSave, saveS
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={ordered.map((p) => p.title)} strategy={rectSortingStrategy}>
-            {/* RTL mirrors the frontend so position 1 lands on the right in both places. */}
-            <ul dir="rtl" className="grid grid-cols-2 gap-3 md:grid-cols-3">
+            {/* LTR grid — position 1 lands on the LEFT, matches the English frontend layout. */}
+            <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
               {ordered.map((p) => {
                 const hidden = overrides.hidden[activeCat].includes(p.title);
                 const nativeCat = nativeCatOf(p.title);

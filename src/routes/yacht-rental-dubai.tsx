@@ -13,6 +13,7 @@ import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import gulfcraftImg from "@/assets/yachts/gulfcraft-90.webp";
 import azimutImg from "@/assets/yachts/azimut-80.webp";
 import marinaHero from "@/assets/yachts/majesty-88.webp";
+import pageHero from "@/assets/heroes/yacht-rental-dubai.webp";
 
 export const Route = createFileRoute("/yacht-rental-dubai")({
   head: () => ({
@@ -111,6 +112,7 @@ function YachtRental() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="Yacht Rental"
         title="Yacht Rental Dubai"
         subtitle="We offer yacht rental in Dubai with private cruises, a wide selection of yachts, and prices starting from AED 450 per hour for all occasions."

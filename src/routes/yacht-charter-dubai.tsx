@@ -14,6 +14,7 @@ import { yachts, stepsYacht, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import italianImg from "@/assets/yachts/italian-95.webp";
 import corpImg from "@/assets/yachts/corporate-105.webp";
+import pageHero from "@/assets/heroes/yacht-charter-dubai.webp";
 
 const rentalIncludedFeatures = [
   {
@@ -93,6 +94,7 @@ function YachtsForRent() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="The Fleet"
         title="Yacht Charter Dubai"
         subtitle="Explore the best Yacht Charter in Dubai options, with a wide range of yachts and prices starting from AED 450 per hour."

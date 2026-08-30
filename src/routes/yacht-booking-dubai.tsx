@@ -12,6 +12,7 @@ import { yachts, stepsYacht, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import yachtBookImg from "@/assets/yachts/majesty-66.webp";
 import marinaBookImg from "@/assets/yachts/sunseeker-95.webp";
+import pageHero from "@/assets/heroes/yacht-booking-dubai.webp";
 
 const bookingFaqs = [
   {
@@ -87,6 +88,7 @@ function YachtBooking() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="Yacht Booking"
         title="Yacht Booking Dubai"
         subtitle="Book your yacht in Dubai easily, with prices starting from AED 450 per hour."

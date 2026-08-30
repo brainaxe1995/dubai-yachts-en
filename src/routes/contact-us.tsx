@@ -7,6 +7,7 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { SmartContactForm } from "@/components/SmartContactForm";
 import { faqSchema } from "@/components/SeoJsonLd";
 import { CONTACT, faqs, keywordCloudFlat } from "@/data/site";
+import pageHero from "@/assets/heroes/contact-us.webp";
 
 const contactFaqs = faqs.slice(0, 5);
 
@@ -78,6 +79,7 @@ function Contact() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="Contact Us"
         title="Contact Us"
         subtitle="Contact the Toot Fun Yachts team for bookings, inquiries, and help choose the right yacht for your trip in Dubai."

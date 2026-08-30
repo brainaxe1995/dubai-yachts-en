@@ -26,7 +26,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   void compact;
-  const shape = "aspect-[16/9] min-h-[440px] md:aspect-auto md:h-[500px] lg:h-[560px]";
+  const shape = "aspect-[4/5] w-full md:aspect-auto md:h-[500px] 2xl:h-[677px]";
   return (
     <section className={`relative isolate flex w-full overflow-hidden surface-navy ${shape}`}>
       <img

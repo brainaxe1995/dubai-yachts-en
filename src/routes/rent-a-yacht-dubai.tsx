@@ -12,6 +12,7 @@ import { yachts, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import azimutImg from "@/assets/yachts/azimut-80.webp";
 import sunseekerImg from "@/assets/yachts/sunseeker-95.webp";
+import pageHero from "@/assets/heroes/rent-a-yacht-dubai.webp";
 
 const rentFaqs = [
   {
@@ -92,6 +93,7 @@ function RentYacht() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="Rent a Yacht"
         title="Rent a Yacht Dubai"
         subtitle="Rent a yacht in Dubai at competitive prices starting from AED 450 per hour, with a diverse fleet and flexible options for private trips and special occasions."

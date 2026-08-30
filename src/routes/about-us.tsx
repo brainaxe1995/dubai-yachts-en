@@ -7,6 +7,7 @@ import { occasions, inclusions } from "@/data/site";
 import fleetImg from "@/assets/yachts/majesty-88.webp";
 import marinaImg from "@/assets/yachts/gulfcraft-90.webp";
 import whatIncludedImg from "@/assets/branding/what-included.webp";
+import pageHero from "@/assets/heroes/about-us.webp";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
@@ -50,6 +51,7 @@ function About() {
     <>
       <PageHero
         compact
+        image={pageHero}
         eyebrow="About the Company"
         title="About Us"
         subtitle="Learn more about Toot Fun Yachts, our experience, and our expertise in providing luxury yacht rental and private cruise services in Dubai."
