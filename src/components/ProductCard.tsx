@@ -62,7 +62,7 @@ function parseSpecs(specs: string[]) {
       guests = s;
       consumed.add(s);
     } else if (!bedrooms && (/bedroom|bedrooms|cabin|cabins/i.test(s) || /no bedrooms/i.test(s))) {
-      bedrooms = /no bedrooms/i.test(s) ? "No bedrooms" : s;
+      bedrooms = /no bedrooms/i.test(s) ? "No Bedrooms" : s;
       consumed.add(s);
     } else if (!length && /ft|feet/i.test(s)) {
       length = s;
