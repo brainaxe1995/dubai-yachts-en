@@ -209,8 +209,7 @@ export function Header() {
             {open ? <X className="h-5 w-5" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Desktop expanded: phone + divider + langswitcher wrapped as ONE
-              collapsing unit so gap-4 between them doesn't leak margin when shrunk. */}
+          {/* Desktop expanded: phone only (collapses when shrunk). */}
           <div
             style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
             className={`hidden items-center gap-4 overflow-hidden md:flex ${
@@ -223,10 +222,23 @@ export function Header() {
               </span>
               <span className="text-base font-bold text-primary-foreground">+971 544 420 441</span>
             </a>
-            <span className="hidden h-7 w-px bg-primary-foreground/25 lg:block" />
-            <div className="hidden lg:block">
-              <LangSwitcher />
-            </div>
+          </div>
+
+          {/* Divider + LangSwitcher in their OWN wrapper so the dropdown isn't
+              clipped by the phone wrapper's overflow-hidden. Mirrors Arabic layout. */}
+          <span
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden h-7 w-px overflow-hidden bg-primary-foreground/25 lg:block ${
+              shrunk ? "pointer-events-none max-w-0 opacity-0" : "max-w-[2px] opacity-100"
+            }`}
+          />
+          <div
+            style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}` }}
+            className={`hidden lg:block ${
+              shrunk ? "pointer-events-none max-w-0 overflow-hidden opacity-0" : "max-w-[120px] opacity-100"
+            }`}
+          >
+            <LangSwitcher />
           </div>
 
           {/* Desktop shrunk: physical-LEFT cluster shows items 1-4 (LTR reader
