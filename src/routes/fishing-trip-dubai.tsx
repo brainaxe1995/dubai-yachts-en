@@ -12,10 +12,9 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { fishingTrips, stepsFishing, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import fishingImg from "@/assets/heroes/fishing-trip-dubai.webp";
-import fishingSharedImg from "@/assets/fishing/shared/shared-1.webp";
-import fishingBoatImg from "@/assets/fishing/private-boat/private-boat-1.webp";
-import fishingYachtImg from "@/assets/fishing/private-yacht/private-yacht-1.webp";
-
+import whyChooseImg from "@/assets/page-sections/fishing-trip-dubai/fishing-trip-dubai-why-choose.webp";
+import chooseBoatImg from "@/assets/page-sections/fishing-trip-dubai/fishing-trip-dubai-choose-boat.webp";
+import tipsImg from "@/assets/page-sections/fishing-trip-dubai/fishing-trip-dubai-tips.webp";
 export const Route = createFileRoute("/fishing-trip-dubai")({
   head: () => ({
     meta: [
@@ -41,7 +40,7 @@ const fishingFeatures = [
   {
     h: "Why fishing in Dubai is a one-of-a-kind experience",
     icon: Compass,
-    image: fishingSharedImg,
+    image: whyChooseImg,
     imageAlt: "Fishing trip in Dubai",
     p: [
       "__Fishing trips in Dubai__ are among the most sought-after marine experiences in the Gulf. Dubai's waters are rich in prized species like __hammour, sheri, and kingfish__, with weather ideal for fishing almost year-round.",
@@ -51,7 +50,7 @@ const fishingFeatures = [
   {
     h: "How to pick the right fishing boat",
     icon: Award,
-    image: fishingYachtImg,
+    image: chooseBoatImg,
     imageAlt: "Private fishing boats in Dubai",
     p: [
       "We offer three trip types: __private yacht fishing__ (full luxury and total privacy), __private boat fishing__ (economical and fast), and __shared trips__ (ideal for solo anglers who want a great-value fishing experience).",
@@ -61,7 +60,7 @@ const fishingFeatures = [
   {
     h: "Tips for a successful fishing trip",
     icon: LifeBuoy,
-    image: fishingBoatImg,
+    image: tipsImg,
     imageAlt: "Fishing tips in Dubai",
     p: [
       "Start the trip early — __early morning__ or __before sunset__ are peak feeding windows for fish. Skip the midday heat for a comfortable trip and better bites.",

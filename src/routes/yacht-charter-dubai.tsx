@@ -12,15 +12,15 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { yachts, stepsYacht, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import italianImg from "@/assets/yachts/italian-95.webp";
-import corpImg from "@/assets/yachts/corporate-105.webp";
 import pageHero from "@/assets/heroes/yacht-charter-dubai.webp";
+import inclusionsImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-inclusions.webp";
+import guestExpImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-guest-experience.webp";
 
 const rentalIncludedFeatures = [
   {
     h: "What Does Yacht Hire Include?",
     icon: Package,
-    image: italianImg,
+    image: inclusionsImg,
     imageAlt: "What yacht hire in Dubai includes",
     p: [
       "Every one of our yacht trips includes a __professional captain and crew__, __fuel__, __comprehensive insurance__, safety equipment, mineral water and soft drinks, tableware, and a professional sound system.",
@@ -30,7 +30,7 @@ const rentalIncludedFeatures = [
   {
     h: "Who Is Yacht Rental in Dubai For?",
     icon: Users,
-    image: corpImg,
+    image: guestExpImg,
     imageAlt: "Who yacht rental suits",
     p: [
       "Our fleet suits __families__ and small groups (10–20 people), major __corporate events__ (up to 90 guests), luxury __wedding and engagement parties__, romantic __marriage proposals__, and __university__ graduation trips.",

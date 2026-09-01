@@ -34,18 +34,18 @@ import pkgJetski from "@/assets/packages/jetski.webp";
 import pkgRomantic from "@/assets/packages/romantic-dinner.webp";
 
 // Extras
-import exCake from "@/assets/extras/cake.webp";
-import exFlowers from "@/assets/extras/flowers.webp";
-import exFruit from "@/assets/extras/fruit-platter.webp";
-import exSweets from "@/assets/extras/arabic-sweets.webp";
-import exDecorations from "@/assets/extras/decorations.webp";
-import exPhotographer from "@/assets/extras/photographer.webp";
-import exLuxuryTransfer from "@/assets/extras/luxury-transfer.webp";
-import exJetSki from "@/assets/extras/jet-ski.webp";
-import exBanana from "@/assets/extras/banana-boat.webp";
-import exDonut from "@/assets/extras/donut.webp";
-import exFoodBuffet from "@/assets/extras/food-buffet.webp";
-import exMixedGrill from "@/assets/extras/mixed-grill.webp";
+import exCake from "@/assets/page-sections/home/extra-services/extra-service-celebration-cake.webp";
+import exFlowers from "@/assets/page-sections/home/extra-services/extra-service-flower-bouquet.webp";
+import exFruit from "@/assets/page-sections/home/extra-services/extra-service-fruit-platter.webp";
+import exSweets from "@/assets/page-sections/home/extra-services/extra-service-arabic-sweets.webp";
+import exDecorations from "@/assets/page-sections/home/extra-services/extra-service-balloon-decoration.webp";
+import exPhotographer from "@/assets/page-sections/home/extra-services/extra-service-photographer.webp";
+import exLuxuryTransfer from "@/assets/page-sections/home/extra-services/extra-service-chauffeur-mercedes.webp";
+import exJetSki from "@/assets/page-sections/home/extra-services/extra-service-jetski.webp";
+import exBanana from "@/assets/page-sections/home/extra-services/extra-service-banana-boat.webp";
+import exDonut from "@/assets/extras/donut.webp"; // TODO: new gen pending
+import exFoodBuffet from "@/assets/page-sections/home/extra-services/extra-service-live-buffet.webp";
+import exMixedGrill from "@/assets/page-sections/home/extra-services/extra-service-mixed-grill.webp";
 
 import { DEFAULT_CONFIG } from "./config";
 import { imagesFor } from "./product-images";

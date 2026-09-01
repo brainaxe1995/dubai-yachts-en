@@ -10,9 +10,9 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, stepsYacht, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import yachtBookImg from "@/assets/yachts/majesty-66.webp";
-import marinaBookImg from "@/assets/yachts/sunseeker-95.webp";
 import pageHero from "@/assets/heroes/yacht-booking-dubai.webp";
+import bookingFlowImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-online-flow.webp";
+import supportImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-24-7-support.webp";
 
 const bookingFaqs = [
   {
@@ -38,7 +38,7 @@ const bookingFeatures = [
   {
     h: "Book Your Yacht in Minutes",
     icon: Zap,
-    image: yachtBookImg,
+    image: bookingFlowImg,
     imageAlt: "Yacht booking in Dubai",
     p: [
       "Browse our __luxury fleet__, pick the right yacht, and set the date and time. Confirm the booking with a __deposit__ via a secure payment link or WhatsApp.",
@@ -48,7 +48,7 @@ const bookingFeatures = [
   {
     h: "24/7 WhatsApp Support",
     icon: MessageSquare,
-    image: marinaBookImg,
+    image: supportImg,
     imageAlt: "24/7 WhatsApp customer service",
     p: [
       "Our team is available __24/7__ on WhatsApp to answer your questions, recommend the best yacht for your occasion, and customize your package with __breakfast__, a __romantic dinner__, or __jet ski__.",

@@ -13,15 +13,14 @@ import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import packagesImg from "@/assets/heroes/yacht-packages-dubai.webp";
-import pkgBreakfastImg from "@/assets/packages/breakfast/breakfast-1.webp";
-import pkgRomanticImg from "@/assets/packages/romantic-dinner/romantic-dinner-1.webp";
-import pkgJetskiImg from "@/assets/packages/jetski/jetski-1.webp";
-
+import breakfastImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-breakfast.webp";
+import romanticDinnerImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-romantic-dinner.webp";
+import jetskiImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-jetski.webp";
 const pkgFeatures = [
   {
     h: "Breakfast Package — A Calm Morning at Sea",
     icon: Sunrise,
-    image: pkgBreakfastImg,
+    image: breakfastImg,
     imageAlt: "Breakfast package on a yacht in Dubai",
     p: [
       "Start your morning on board a yacht in __Dubai Marina__ with a full Arabic breakfast — foul, hummus, cheese, eggs, labneh, honey, dates, Arabic coffee, and fresh juices. A quiet 4-hour cruise before the day gets busy.",
@@ -31,7 +30,7 @@ const pkgFeatures = [
   {
     h: "Romantic Dinner Package — A Moment You'll Never Forget",
     icon: Wine,
-    image: pkgRomanticImg,
+    image: romanticDinnerImg,
     imageAlt: "Romantic dinner package on a yacht",
     p: [
       "A private evening for two on a 48 ft yacht with a __premium grill meal__, __romantic cake__, and __bottle of Champagne__. Romantic decor, candlelight, and soft music.",
@@ -41,7 +40,7 @@ const pkgFeatures = [
   {
     h: "Yacht + Jet Ski Package — For the Adventurous",
     icon: Waves,
-    image: pkgJetskiImg,
+    image: jetskiImg,
     imageAlt: "Jet ski package on a yacht",
     p: [
       "Combine the calm of __sailing on a yacht__ with the thrill of __professional jet skiing__ for a full hour. A certified instructor rides with you, with life jackets for all passengers. A 4-hour trip packed with adrenaline.",

@@ -10,9 +10,9 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import azimutImg from "@/assets/yachts/azimut-80.webp";
-import sunseekerImg from "@/assets/yachts/sunseeker-95.webp";
 import pageHero from "@/assets/heroes/rent-a-yacht-dubai.webp";
+import fleetImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-fleet-showcase.webp";
+import guestGroupsImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-guest-groups.webp";
 
 const rentFaqs = [
   {
@@ -30,7 +30,7 @@ const rentalRichBlocks = [
   {
     h: "Why Hire a Private Yacht in Dubai with Toot Fun?",
     icon: Ship,
-    image: azimutImg,
+    image: fleetImg,
     imageAlt: "Private yacht hire in Dubai",
     p: [
       "We own one of the largest __yacht hire fleets in Dubai__ — 15 luxury yachts from __Majesty__, __Azimut__, __Sunseeker__, __Ferretti__, and __Gulf Craft__.",
@@ -40,7 +40,7 @@ const rentalRichBlocks = [
   {
     h: "Who Are Yacht Hire Trips For?",
     icon: Users,
-    image: sunseekerImg,
+    image: guestGroupsImg,
     imageAlt: "Who yacht hire in Dubai suits",
     p: [
       "Our services are designed for __families__, __friends__, __corporate events__, __birthday and wedding parties__, __romantic marriage proposals__, and __tourists__ seeking an authentic sea experience in Dubai.",

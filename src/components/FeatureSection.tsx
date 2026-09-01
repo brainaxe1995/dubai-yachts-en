@@ -27,14 +27,12 @@ function VariantSplit({ b, i }: { b: FeatureBlock; i: number }) {
     <div className="grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-12">
       {b.image ? (
         <div className="md:order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+          <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
             <img
               src={b.image}
               alt={b.imageAlt ?? b.h}
               loading="lazy"
-              width={1200}
-              height={900}
-              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              className="block h-auto w-full transition-transform duration-700 hover:scale-105"
             />
             {Icon ? (
               <span className="absolute end-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-gold text-primary-deep shadow-md">
@@ -63,16 +61,14 @@ function VariantSplit({ b, i }: { b: FeatureBlock; i: number }) {
 function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-primary-deep shadow-luxe ring-1 ring-gold/20 md:min-h-[420px]">
+    <div className="relative overflow-hidden rounded-3xl bg-primary-deep shadow-luxe ring-1 ring-gold/20">
       {b.image ? (
-        <div className="relative md:absolute md:inset-0">
+        <div className="relative">
           <img
             src={b.image}
             alt={b.imageAlt ?? b.h}
             loading="lazy"
-            width={1600}
-            height={900}
-            className="aspect-[16/10] w-full object-cover md:aspect-auto md:h-full"
+            className="block h-auto w-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/70 to-primary-deep/20 md:bg-gradient-to-r md:from-transparent md:via-primary-deep/60 md:to-primary-deep/95" />
         </div>
@@ -104,24 +100,22 @@ function VariantOverlay({ b, i }: { b: FeatureBlock; i: number }) {
 
 function VariantCardStack({ b, i }: { b: FeatureBlock; i: number }) {
   const Icon = b.icon;
-  // Text on right, image on left — matches VariantSplit/Overlay right-align convention.
+  // Opposite of VariantSplit: image on RIGHT so the 3-block rhythm alternates.
   return (
     <div className="grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-12">
       {b.image ? (
-        <div className="md:order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+        <div className="md:order-2">
+          <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
             <img
               src={b.image}
               alt={b.imageAlt ?? b.h}
               loading="lazy"
-              width={1200}
-              height={900}
-              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              className="block h-auto w-full transition-transform duration-700 hover:scale-105"
             />
           </div>
         </div>
       ) : null}
-      <div className="md:order-2">
+      <div className="md:order-1">
         <BlockChapter i={i} />
         <div className="mt-3 flex items-center gap-3">
           {Icon ? (

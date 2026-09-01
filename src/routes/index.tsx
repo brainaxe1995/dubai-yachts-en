@@ -6,8 +6,8 @@ import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
 import { Testimonials } from "@/components/Testimonials";
 import { KeywordCloud } from "@/components/KeywordCloud";
-import { ExtrasMarquee } from "@/components/ExtrasMarquee";
 import { ContactCta } from "@/components/ContactCta";
+import { ExtrasMarquee } from "@/components/ExtrasMarquee";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import {
   yachts,
@@ -19,10 +19,10 @@ import {
   testimonials,
   keywordCloudFlat,
 } from "@/data/site";
-import partyImg from "@/assets/parties/wedding.webp";
-import fishingImg from "@/assets/fishing/shared.webp";
-import packagesImg from "@/assets/packages/romantic-dinner.webp";
-import whatIncludedImg from "@/assets/branding/what-included.webp";
+import partyImg from "@/assets/page-sections/home/yacht-party-dubai-marina-luxury-deck.webp";
+import fishingImg from "@/assets/page-sections/home/luxury-fishing-trip-dubai-marina.webp";
+import packagesImg from "@/assets/page-sections/home/romantic-yacht-dinner-package-dubai-marina.webp";
+import whatIncludedImg from "@/assets/page-sections/home/home-yacht-trip-includes-captain-helm.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -128,14 +128,12 @@ function Home() {
                 to={s.to}
                 className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-luxe"
               >
-                <div className="aspect-[3/2] overflow-hidden">
+                <div className="w-full overflow-hidden bg-muted">
                   <img
                     src={s.img}
                     alt={s.t}
                     loading="lazy"
-                    width={1200}
-                    height={800}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="block h-auto w-full transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5">
@@ -210,14 +208,12 @@ function Home() {
           </Reveal>
           <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
             <Reveal>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+              <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
                 <img
                   src={whatIncludedImg}
                   alt="What the yacht trip includes — captain, crew, fuel, insurance, drinks, and hospitality"
                   loading="lazy"
-                  width={1200}
-                  height={900}
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  className="block h-auto w-full transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </Reveal>

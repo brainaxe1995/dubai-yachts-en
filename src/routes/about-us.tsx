@@ -4,9 +4,9 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { CallButton, BookButton } from "@/components/CtaButtons";
 import { occasions, inclusions } from "@/data/site";
-import fleetImg from "@/assets/yachts/majesty-88.webp";
-import marinaImg from "@/assets/yachts/gulfcraft-90.webp";
-import whatIncludedImg from "@/assets/branding/what-included.webp";
+import fleetImg from "@/assets/page-sections/about-us/about-us-fleet-marina-showcase.webp";
+import marinaImg from "@/assets/page-sections/about-us/about-us-dubai-marina-location.webp";
+import whatIncludedImg from "@/assets/page-sections/about-us/about-us-whats-included-hospitality.webp";
 import pageHero from "@/assets/heroes/about-us.webp";
 
 export const Route = createFileRoute("/about-us")({
@@ -62,14 +62,12 @@ function About() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
         <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
           <Reveal>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+            <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={fleetImg}
                 alt="Toot Fun Yachts fleet in Dubai"
                 loading="lazy"
-                width={1200}
-                height={900}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="block h-auto w-full transition-transform duration-700 hover:scale-105"
               />
             </div>
           </Reveal>
@@ -160,14 +158,12 @@ function About() {
             </ul>
           </Reveal>
           <Reveal>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+            <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={whatIncludedImg}
                 alt="What's included in your yacht trip"
                 loading="lazy"
-                width={1200}
-                height={900}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="block h-auto w-full transition-transform duration-700 hover:scale-105"
               />
             </div>
           </Reveal>
@@ -177,14 +173,12 @@ function About() {
       <section className="surface-navy py-16">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-[1fr_1fr]">
           <Reveal>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20">
+            <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={marinaImg}
                 alt="Yachts at Dubai Marina"
                 loading="lazy"
-                width={1200}
-                height={900}
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="block h-auto w-full transition-transform duration-700 hover:scale-105"
               />
             </div>
           </Reveal>

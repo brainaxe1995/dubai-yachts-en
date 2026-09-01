@@ -10,9 +10,9 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import gulfcraftImg from "@/assets/yachts/gulfcraft-90.webp";
-import azimutImg from "@/assets/yachts/azimut-80.webp";
-import marinaHero from "@/assets/yachts/majesty-88.webp";
+import howToImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-how-to-book.webp";
+import includesImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-whats-included.webp";
+import landmarksImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-dubai-landmarks.webp";
 import pageHero from "@/assets/heroes/yacht-rental-dubai.webp";
 
 export const Route = createFileRoute("/yacht-rental-dubai")({
@@ -80,7 +80,7 @@ const rentalFeatures = [
   {
     h: "How to Rent a Yacht in Dubai?",
     icon: Compass,
-    image: azimutImg,
+    image: howToImg,
     imageAlt: "How to rent a yacht in Dubai",
     p: [
       "You can __rent a yacht in Dubai__ easily by choosing the right yacht, selecting the date, time, and trip duration, then confirming the booking with a deposit. Afterwards, you'll receive the boarding location and trip details.",
@@ -89,7 +89,7 @@ const rentalFeatures = [
   {
     h: "What Does Yacht Rental in Dubai Include?",
     icon: Package,
-    image: gulfcraftImg,
+    image: includesImg,
     imageAlt: "What yacht rental in Dubai includes",
     p: [
       "__Yacht rental in Dubai__ typically includes a professional captain and crew, fuel, safety equipment, water and refreshing drinks, with the option to add food, decorations, and marine activities depending on the chosen package.",
@@ -98,7 +98,7 @@ const rentalFeatures = [
   {
     h: "What Are the Top Landmarks You Can Reach on a Yacht Rental in Dubai?",
     icon: MapPin,
-    image: marinaHero,
+    image: landmarksImg,
     imageAlt: "Dubai marine landmarks",
     p: [
       "Enjoy a __yacht trip in Dubai__ passing the most famous marine landmarks such as Dubai Marina, Jumeirah Beach, Bluewaters, Palm Jumeirah, and Burj Al Arab, with a chance to enjoy the views and capture great photos.",

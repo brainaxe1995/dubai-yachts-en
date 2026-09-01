@@ -16,12 +16,12 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
-import marinaImg from "@/assets/yachts/majesty-88.webp";
-import palmImg from "@/assets/yachts/floating-100.webp";
-import burjImg from "@/assets/yachts/gulfcraft-90.webp";
-import atlantisImg from "@/assets/yachts/azimut-80.webp";
-import ainImg from "@/assets/yachts/ferretti-78.webp";
-import jbrImg from "@/assets/yachts/houseboat-55.webp";
+import marinaImg from "@/assets/page-sections/shared-destinations/dubai-marina-yacht-cruise-destination.webp";
+import palmImg from "@/assets/page-sections/shared-destinations/palm-jumeirah-yacht-cruise-destination.webp";
+import burjImg from "@/assets/page-sections/shared-destinations/burj-al-arab-yacht-cruise-destination.webp";
+import atlantisImg from "@/assets/page-sections/shared-destinations/atlantis-the-palm-yacht-cruise-destination.webp";
+import ainImg from "@/assets/page-sections/shared-destinations/ain-dubai-yacht-cruise-destination.webp";
+import jbrImg from "@/assets/page-sections/shared-destinations/jbr-beach-yacht-cruise-destination.webp";
 
 type Item = { icon: LucideIcon; t: string; d: string };
 
@@ -135,15 +135,13 @@ function DestinationsMasonry({ items }: { items: Destination[] }) {
         <Reveal key={d.en} delay={i * 60}>
           <a
             href="#book"
-            className="group relative block h-full min-h-[240px] overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20"
+            className="group relative block w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-primary-deep"
           >
             <img
               src={d.img}
               alt={d.t}
               loading="lazy"
-              width={800}
-              height={600}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
+              className="block h-auto w-full transition-transform duration-[900ms] group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-4 text-primary-foreground sm:p-5">

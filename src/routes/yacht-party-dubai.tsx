@@ -13,10 +13,9 @@ import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import partyImg from "@/assets/heroes/yacht-party-dubai.webp";
-import partyWeddingImg from "@/assets/parties/wedding/wedding-1.webp";
-import partyBirthdayImg from "@/assets/parties/birthday/birthday-1.webp";
-import partyProposalImg from "@/assets/parties/proposal/proposal-1.webp";
-
+import vsRestaurantImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-vs-restaurant.webp";
+import decorImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-decor-styling.webp";
+import planningImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-planning.webp";
 const partyFaqs = [
   {
     q: "How much does a yacht party in Dubai cost?",
@@ -40,7 +39,7 @@ const partyFeatures = [
   {
     h: "Why a yacht party beats every other venue",
     icon: Wand2,
-    image: partyWeddingImg,
+    image: vsRestaurantImg,
     imageAlt: "Luxury yacht party in Dubai",
     p: [
       "Nothing compares to a __yacht party in Dubai__ — total privacy, a cinematic view of the city skyline, and an atmosphere no hotel or hall can replicate. The yacht is your space and your guests' alone.",
@@ -50,7 +49,7 @@ const partyFeatures = [
   {
     h: "Fresh ideas for an unforgettable party",
     icon: Palette,
-    image: partyBirthdayImg,
+    image: decorImg,
     imageAlt: "Yacht party decor ideas",
     p: [
       "We design each party to your brief: __premium decor__, __custom cake__, __professional DJ__, __photo and video crew__, balloons, light columns, and a rose-petal walkway for a signature arrival.",
@@ -60,7 +59,7 @@ const partyFeatures = [
   {
     h: "How we help you plan the party",
     icon: PartyPopper,
-    image: partyProposalImg,
+    image: planningImg,
     imageAlt: "Yacht party planning in Dubai",
     p: [
       "Full planning service from the __Toot Fun__ team: we take your brief, recommend the right yacht for your headcount, then handle decor, catering, and vendor coordination — all you do is show up and enjoy.",

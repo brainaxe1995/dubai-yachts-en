@@ -11,7 +11,7 @@ export function ExtrasMarquee({ items }: { items: readonly Extra[] }) {
         <Reveal key={e.label} delay={(i % 6) * 40} className="h-full">
           <article className="group relative h-full overflow-hidden rounded-2xl bg-primary-deep shadow-luxe ring-1 ring-gold/20 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-gold hover:ring-gold/60">
             {/* Image */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <div className="relative aspect-square w-full overflow-hidden">
               <img
                 src={e.image}
                 alt={e.label}
