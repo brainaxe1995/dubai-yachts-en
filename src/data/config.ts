@@ -146,7 +146,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
   phone: "+971544420441",
   phoneDisplay: "+971 54 442 0441",
   whatsapp: "https://wa.me/971544420441",
-  email: "info@dubai-yachts.ae",
+  email: "Info@tootfunyachts.com",
   address: "Dubai Marina, United Arab Emirates",
   siteUrl: "https://dubai-yachts.ae",
   arabicSiteUrl: "https://dubai-yacht.ae",
