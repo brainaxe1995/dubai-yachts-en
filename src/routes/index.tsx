@@ -78,9 +78,12 @@ function Home() {
           subtitle="Choose from a wide selection of the best yachts for rent in Dubai at competitive prices starting from AED 450 per hour."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {homeYachts.map((p, i) => (
-            <ProductCard key={p.title} product={p} delay={i * 70} />
-          ))}
+          {homeYachts.map((p, i) => {
+            const variants = ["black", "gold", "gradient", "outline", "glass", "gold"] as const;
+            return (
+              <ProductCard key={p.title} product={p} delay={i * 70} pillVariant={variants[i] ?? "gold"} />
+            );
+          })}
         </div>
         <Reveal className="mt-10 text-center">
           <Link

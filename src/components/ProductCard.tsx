@@ -157,22 +157,6 @@ function ImageSlider({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
 
-      {/* Info pills — length + guests only (meta pills moved to card body per client request) */}
-      <div className="pointer-events-none absolute inset-x-4 bottom-10 flex flex-wrap items-center gap-2">
-        {length ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
-            <Ruler className="h-3 w-3 text-gold" />
-            {length}
-          </span>
-        ) : null}
-        {guests ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-md ring-1 ring-white/15">
-            <Users className="h-3 w-3 text-gold" />
-            {guests}
-          </span>
-        ) : null}
-      </div>
-
       {/* Share badge — top-end corner (right on LTR) */}
       <button
         type="button"
@@ -203,7 +187,7 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i - 1 + count) % count);
             }}
-            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -214,7 +198,7 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i + 1) % count);
             }}
-            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -369,7 +353,33 @@ function Lightbox({
 
 // -------- ProductCard --------
 
-export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
+export type PillVariant = "gold" | "black" | "outline" | "glass" | "gradient";
+
+const PILL_STYLES: Record<PillVariant, { pill: string; icon: string }> = {
+  gold: {
+    pill: "bg-gold text-primary-deep ring-1 ring-primary-deep/15",
+    icon: "text-primary-deep",
+  },
+  black: {
+    pill: "bg-primary-deep text-primary-foreground ring-1 ring-gold/40",
+    icon: "text-gold",
+  },
+  outline: {
+    pill: "bg-transparent text-primary-deep ring-1.5 ring-gold border border-gold",
+    icon: "text-gold-deep",
+  },
+  glass: {
+    pill: "bg-white/40 text-primary-deep backdrop-blur-md ring-1 ring-gold/50",
+    icon: "text-gold-deep",
+  },
+  gradient: {
+    pill: "bg-gradient-to-r from-gold via-gold-soft to-gold-deep text-primary-deep ring-1 ring-primary-deep/10",
+    icon: "text-primary-deep",
+  },
+};
+
+export function ProductCard({ product, delay = 0, pillVariant = "gold" }: { product: Product; delay?: number; pillVariant?: PillVariant }) {
+  const _pill = PILL_STYLES[pillVariant] ?? PILL_STYLES.gold;
   const { guests, bedrooms, length, duration, meta } = parseSpecs(product.specs);
   const priceParts = product.price.match(/^(.*?)(\d[\d,]*)(.*)$/);
   const priceCurrency = priceParts?.[1]?.trim() ?? "";
@@ -403,6 +413,22 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
           />
 
           <div className="flex flex-1 flex-col gap-3 p-5">
+            {(length || guests) ? (
+              <div className="flex flex-wrap items-center gap-2">
+                {length ? (
+                  <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold ${_pill.pill}`}>
+                    <Ruler className={`h-3 w-3 ${_pill.icon}`} />
+                    {length}
+                  </span>
+                ) : null}
+                {guests ? (
+                  <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold ${_pill.pill}`}>
+                    <Users className={`h-3 w-3 ${_pill.icon}`} />
+                    {guests}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
             <h3 className="relative inline-block text-[19px] font-extrabold leading-snug text-primary md:text-xl">
               <span className="bg-gradient-to-l from-gold to-gold-deep bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
                 {product.title}
