@@ -608,7 +608,7 @@ function IncludedModal({
           visible ? "translate-y-0 scale-100 opacity-100" : "translate-y-10 scale-95 opacity-0"
         }`}
       >
-        <div className="relative aspect-[16/10] max-h-[32vh] shrink-0 overflow-hidden bg-primary-deep sm:max-h-[38vh]">
+        <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-primary-deep">
           <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
           <button
