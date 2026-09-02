@@ -378,7 +378,7 @@ const PILL_STYLES: Record<PillVariant, { pill: string; icon: string }> = {
   },
 };
 
-export function ProductCard({ product, delay = 0, pillVariant = "gold" }: { product: Product; delay?: number; pillVariant?: PillVariant }) {
+export function ProductCard({ product, delay = 0, pillVariant = "gradient" }: { product: Product; delay?: number; pillVariant?: PillVariant }) {
   const _pill = PILL_STYLES[pillVariant] ?? PILL_STYLES.gold;
   const { guests, bedrooms, length, duration, meta } = parseSpecs(product.specs);
   const priceParts = product.price.match(/^(.*?)(\d[\d,]*)(.*)$/);
