@@ -31,6 +31,6 @@ export function imagesFor(slug: string, cat: Category): string[] {
   const globMap = catMap[cat];
   return Object.entries(globMap)
     .filter(([k]) => k.includes(`/${cat}/${slug}/`))
-    .sort(([a], [b]) => a.localeCompare(b))
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
     .map(([, v]) => v);
 }
