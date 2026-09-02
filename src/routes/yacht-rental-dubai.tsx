@@ -10,8 +10,8 @@ import { FeatureBlocks } from "@/components/FeatureSection";
 import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, occasions, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
-import howToImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-how-to-book.webp";
-import includesImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-whats-included.webp";
+import howToImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-dubai-how-to-book.webp";
+import includesImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-dubai-whats-included.webp";
 import landmarksImg from "@/assets/page-sections/yacht-rental-dubai/yacht-rental-dubai-landmarks.webp";
 import pageHero from "@/assets/heroes/yacht-rental-dubai.webp";
 

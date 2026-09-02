@@ -22,7 +22,7 @@ import {
 import partyImg from "@/assets/page-sections/home/yacht-party-dubai-marina-luxury-deck.webp";
 import fishingImg from "@/assets/page-sections/home/luxury-fishing-trip-dubai-marina.webp";
 import packagesImg from "@/assets/page-sections/home/romantic-yacht-dinner-package-dubai-marina.webp";
-import whatIncludedImg from "@/assets/page-sections/home/home-yacht-trip-includes-captain-helm.webp";
+import whatIncludedImg from "@/assets/page-sections/home/home-yacht-trip-includes-dubai.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({

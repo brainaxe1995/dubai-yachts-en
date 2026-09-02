@@ -1,14 +1,14 @@
-import yachtHero from "@/assets/yachts/majesty-88.webp";
-import fleetImg from "@/assets/yachts/sunseeker-95.webp";
-import houseboatImg from "@/assets/yachts/houseboat-55.webp";
-import azimutImg from "@/assets/yachts/azimut-80.webp";
-import partyBirthday from "@/assets/parties/birthday.webp";
-import partyWedding from "@/assets/parties/wedding.webp";
-import partyProposal from "@/assets/parties/proposal.webp";
-import fishingShared from "@/assets/fishing/shared.webp";
-import fishingPrivate from "@/assets/fishing/private-yacht.webp";
-import breakfastImg from "@/assets/packages/breakfast.webp";
-import romanticImg from "@/assets/packages/romantic-dinner.webp";
+import yachtHero from "@/assets/yachts/majesty-88-ft-yacht-rental-dubai.webp";
+import fleetImg from "@/assets/yachts/sunseeker-95-ft-super-yacht-rental-dubai.webp";
+import houseboatImg from "@/assets/yachts/luxury-55-ft-houseboat-rental-dubai.webp";
+import azimutImg from "@/assets/yachts/azimut-80-ft-yacht-with-jacuzzi-rental-dubai.webp";
+import partyBirthday from "@/assets/parties/yacht-birthday-party-dubai.webp";
+import partyWedding from "@/assets/parties/yacht-wedding-dubai.webp";
+import partyProposal from "@/assets/parties/marriage-proposal-yacht-dubai.webp";
+import fishingShared from "@/assets/fishing/shared-fishing-trip-dubai.webp";
+import fishingPrivate from "@/assets/fishing/private-yacht-fishing-trip-dubai.webp";
+import breakfastImg from "@/assets/packages/yacht-breakfast-package-dubai.webp";
+import romanticImg from "@/assets/packages/romantic-yacht-dinner-package-dubai.webp";
 import cakeImg from "@/assets/extras/cake.webp";
 
 export type BlogPost = {

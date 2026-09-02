@@ -65,5 +65,21 @@ export default defineConfig({
   } as never,
   vite: {
     plugins: [seoValidationPlugin()],
+    build: {
+      rollupOptions: {
+        output: {
+          // Keep image filenames CLEAN on the live site — no Vite content-hash
+          // suffix (e.g. `-BIIarLYU`). JS/CSS chunks keep their hash for
+          // cache-busting; only image assets get their original name.
+          assetFileNames: (assetInfo: { name?: string }) => {
+            const name = assetInfo.name || "";
+            if (/\.(png|jpe?g|webp|svg|gif|avif|ico)$/i.test(name)) {
+              return "assets/[name][extname]";
+            }
+            return "assets/[name]-[hash][extname]";
+          },
+        },
+      },
+    },
   },
 });

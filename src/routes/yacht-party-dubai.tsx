@@ -13,9 +13,9 @@ import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { parties, stepsParty, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import partyImg from "@/assets/heroes/yacht-party-dubai.webp";
-import vsRestaurantImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-vs-restaurant.webp";
-import decorImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-decor-styling.webp";
-import planningImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-planning.webp";
+import vsRestaurantImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-dubai-vs-restaurant.webp";
+import decorImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-dubai-decor-styling.webp";
+import planningImg from "@/assets/page-sections/yacht-party-dubai/yacht-party-dubai-planning.webp";
 const partyFaqs = [
   {
     q: "How much does a yacht party in Dubai cost?",

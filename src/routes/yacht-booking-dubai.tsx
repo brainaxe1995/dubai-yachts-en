@@ -11,8 +11,8 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, stepsYacht, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import pageHero from "@/assets/heroes/yacht-booking-dubai.webp";
-import bookingFlowImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-online-flow.webp";
-import supportImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-24-7-support.webp";
+import bookingFlowImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-dubai-online-flow.webp";
+import supportImg from "@/assets/page-sections/yacht-booking-dubai/yacht-booking-dubai-24-7-support.webp";
 
 const bookingFaqs = [
   {

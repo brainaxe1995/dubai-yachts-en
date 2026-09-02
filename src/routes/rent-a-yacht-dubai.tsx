@@ -11,8 +11,8 @@ import { KeywordCloud } from "@/components/KeywordCloud";
 import { yachts, faqs, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import pageHero from "@/assets/heroes/rent-a-yacht-dubai.webp";
-import fleetImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-fleet-showcase.webp";
-import guestGroupsImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-guest-groups.webp";
+import fleetImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-dubai-fleet-showcase.webp";
+import guestGroupsImg from "@/assets/page-sections/rent-a-yacht-dubai/rent-a-yacht-dubai-guest-groups.webp";
 
 const rentFaqs = [
   {

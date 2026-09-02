@@ -13,9 +13,9 @@ import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { packages, extras, stepsPackage, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import packagesImg from "@/assets/heroes/yacht-packages-dubai.webp";
-import breakfastImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-breakfast.webp";
-import romanticDinnerImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-romantic-dinner.webp";
-import jetskiImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-jetski.webp";
+import breakfastImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-breakfast-dubai.webp";
+import romanticDinnerImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-romantic-dinner-dubai.webp";
+import jetskiImg from "@/assets/page-sections/yacht-packages-dubai/yacht-package-jetski-dubai.webp";
 const pkgFeatures = [
   {
     h: "Breakfast Package — A Calm Morning at Sea",

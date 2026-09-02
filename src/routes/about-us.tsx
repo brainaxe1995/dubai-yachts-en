@@ -4,7 +4,7 @@ import { PageHero, SectionHeading } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { CallButton, BookButton } from "@/components/CtaButtons";
 import { occasions, inclusions } from "@/data/site";
-import fleetImg from "@/assets/page-sections/about-us/about-us-fleet-marina-showcase.webp";
+import fleetImg from "@/assets/page-sections/about-us/about-us-toot-fun-yachts-fleet-dubai-marina.webp";
 import marinaImg from "@/assets/page-sections/about-us/about-us-dubai-marina-location.webp";
 import whatIncludedImg from "@/assets/page-sections/about-us/about-us-whats-included-hospitality.webp";
 import pageHero from "@/assets/heroes/about-us.webp";

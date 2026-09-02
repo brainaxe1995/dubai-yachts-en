@@ -1,51 +1,51 @@
 // Yacht images
-import houseboat55 from "@/assets/yachts/houseboat-55.webp";
-import floating100 from "@/assets/yachts/floating-100.webp";
-import majesty48 from "@/assets/yachts/majesty-48.webp";
-import italian95 from "@/assets/yachts/italian-95.webp";
-import ferretti78 from "@/assets/yachts/ferretti-78.webp";
-import mini40 from "@/assets/yachts/mini-40.webp";
-import azimut80 from "@/assets/yachts/azimut-80.webp";
-import sunseeker95 from "@/assets/yachts/sunseeker-95.webp";
-import majesty70 from "@/assets/yachts/majesty-70.webp";
-import majesty66 from "@/assets/yachts/majesty-66.webp";
-import majesty55 from "@/assets/yachts/majesty-55.webp";
-import azimut50 from "@/assets/yachts/azimut-50.webp";
-import majesty88 from "@/assets/yachts/majesty-88.webp";
-import corporate105 from "@/assets/yachts/corporate-105.webp";
-import gulfcraft90 from "@/assets/yachts/gulfcraft-90.webp";
+import houseboat55 from "@/assets/yachts/luxury-55-ft-houseboat-rental-dubai.webp";
+import floating100 from "@/assets/yachts/floating-100-ft-yacht-rental-dubai.webp";
+import majesty48 from "@/assets/yachts/majesty-48-ft-yacht-rental-dubai.webp";
+import italian95 from "@/assets/yachts/italian-95-ft-yacht-rental-dubai.webp";
+import ferretti78 from "@/assets/yachts/ferretti-78-ft-super-yacht-rental-dubai.webp";
+import mini40 from "@/assets/yachts/luxury-40-ft-mini-yacht-rental-dubai.webp";
+import azimut80 from "@/assets/yachts/azimut-80-ft-yacht-with-jacuzzi-rental-dubai.webp";
+import sunseeker95 from "@/assets/yachts/sunseeker-95-ft-super-yacht-rental-dubai.webp";
+import majesty70 from "@/assets/yachts/majesty-70-ft-yacht-rental-dubai.webp";
+import majesty66 from "@/assets/yachts/majesty-66-ft-yacht-rental-dubai.webp";
+import majesty55 from "@/assets/yachts/majesty-55-ft-yacht-rental-dubai.webp";
+import azimut50 from "@/assets/yachts/azimut-50-ft-yacht-rental-dubai.webp";
+import majesty88 from "@/assets/yachts/majesty-88-ft-yacht-rental-dubai.webp";
+import corporate105 from "@/assets/yachts/corporate-105-ft-yacht-rental-dubai.webp";
+import gulfcraft90 from "@/assets/yachts/gulf-craft-90-ft-yacht-rental-dubai.webp";
 
 // Fishing
-import fishingShared from "@/assets/fishing/shared.webp";
-import fishingPrivateYacht from "@/assets/fishing/private-yacht.webp";
-import fishingPrivateBoat from "@/assets/fishing/private-boat.webp";
+import fishingShared from "@/assets/fishing/shared-fishing-trip-dubai.webp";
+import fishingPrivateYacht from "@/assets/fishing/private-yacht-fishing-trip-dubai.webp";
+import fishingPrivateBoat from "@/assets/fishing/private-boat-fishing-trip-dubai.webp";
 
 // Parties
-import partyProposal from "@/assets/parties/proposal.webp";
-import partyWedding from "@/assets/parties/wedding.webp";
-import partyAnniversary from "@/assets/parties/anniversary.webp";
-import partyGraduation from "@/assets/parties/graduation.webp";
-import partyEngagement from "@/assets/parties/engagement.webp";
-import partyBirthday from "@/assets/parties/birthday.webp";
+import partyProposal from "@/assets/parties/marriage-proposal-yacht-dubai.webp";
+import partyWedding from "@/assets/parties/yacht-wedding-dubai.webp";
+import partyAnniversary from "@/assets/parties/anniversary-yacht-party-dubai.webp";
+import partyGraduation from "@/assets/parties/graduation-yacht-party-dubai.webp";
+import partyEngagement from "@/assets/parties/engagement-yacht-party-dubai.webp";
+import partyBirthday from "@/assets/parties/yacht-birthday-party-dubai.webp";
 
 // Packages
-import pkgBreakfast from "@/assets/packages/breakfast.webp";
-import pkgJetski from "@/assets/packages/jetski.webp";
-import pkgRomantic from "@/assets/packages/romantic-dinner.webp";
+import pkgBreakfast from "@/assets/packages/yacht-breakfast-package-dubai.webp";
+import pkgJetski from "@/assets/packages/yacht-rental-with-jet-ski-package-dubai.webp";
+import pkgRomantic from "@/assets/packages/romantic-yacht-dinner-package-dubai.webp";
 
 // Extras
-import exCake from "@/assets/page-sections/home/extra-services/extra-service-celebration-cake.webp";
-import exFlowers from "@/assets/page-sections/home/extra-services/extra-service-flower-bouquet.webp";
-import exFruit from "@/assets/page-sections/home/extra-services/extra-service-fruit-platter.webp";
-import exSweets from "@/assets/page-sections/home/extra-services/extra-service-arabic-sweets.webp";
-import exDecorations from "@/assets/page-sections/home/extra-services/extra-service-balloon-decoration.webp";
-import exPhotographer from "@/assets/page-sections/home/extra-services/extra-service-photographer.webp";
-import exLuxuryTransfer from "@/assets/page-sections/home/extra-services/extra-service-chauffeur-mercedes.webp";
-import exJetSki from "@/assets/page-sections/home/extra-services/extra-service-jetski.webp";
-import exBanana from "@/assets/page-sections/home/extra-services/extra-service-banana-boat.webp";
+import exCake from "@/assets/page-sections/home/extra-services/extra-service-celebration-cake-yacht-dubai.webp";
+import exFlowers from "@/assets/page-sections/home/extra-services/extra-service-flower-bouquet-yacht-dubai.webp";
+import exFruit from "@/assets/page-sections/home/extra-services/extra-service-fruit-platter-yacht-dubai.webp";
+import exSweets from "@/assets/page-sections/home/extra-services/extra-service-arabic-sweets-yacht-dubai.webp";
+import exDecorations from "@/assets/page-sections/home/extra-services/extra-service-balloon-decoration-yacht-dubai.webp";
+import exPhotographer from "@/assets/page-sections/home/extra-services/extra-service-photographer-yacht-dubai.webp";
+import exLuxuryTransfer from "@/assets/page-sections/home/extra-services/extra-service-chauffeur-mercedes-yacht-dubai.webp";
+import exJetSki from "@/assets/page-sections/home/extra-services/extra-service-jetski-yacht-dubai.webp";
+import exBanana from "@/assets/page-sections/home/extra-services/extra-service-banana-boat-yacht-dubai.webp";
 import exDonut from "@/assets/extras/donut.webp"; // TODO: new gen pending
-import exFoodBuffet from "@/assets/page-sections/home/extra-services/extra-service-live-buffet.webp";
-import exMixedGrill from "@/assets/page-sections/home/extra-services/extra-service-mixed-grill.webp";
+import exFoodBuffet from "@/assets/page-sections/home/extra-services/extra-service-live-buffet-yacht-dubai.webp";
+import exMixedGrill from "@/assets/page-sections/home/extra-services/extra-service-mixed-grill-yacht-dubai.webp";
 
 import { DEFAULT_CONFIG } from "./config";
 import { imagesFor } from "./product-images";
@@ -78,7 +78,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 15 guests", "55 Ft", "No Bedrooms"],
     price: "AED 600 / Hour",
     image: houseboat55,
-    images: imagesFor("houseboat-55", "yachts"),
+    images: imagesFor("luxury-55-ft-houseboat-rental-dubai", "yachts"),
   },
   {
     title: "Floating 100 Ft Yacht",
@@ -86,7 +86,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 50 guests", "100 Ft", "2 Bedrooms"],
     price: "AED 2,000 / Hour",
     image: floating100,
-    images: imagesFor("floating-100", "yachts"),
+    images: imagesFor("floating-100-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Majesty 48 Ft Yacht",
@@ -94,7 +94,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 12 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 550 / Hour",
     image: majesty48,
-    images: imagesFor("majesty-48", "yachts"),
+    images: imagesFor("majesty-48-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Italian 95 Ft Yacht",
@@ -102,7 +102,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 45 guests", "95 Ft", "2 Bedrooms"],
     price: "AED 1,700 / Hour",
     image: italian95,
-    images: imagesFor("italian-95", "yachts"),
+    images: imagesFor("italian-95-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Ferretti 78 Ft Super Yacht",
@@ -110,7 +110,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 20 guests", "78 Ft", "3 Bedrooms"],
     price: "AED 5,000 / Hour",
     image: ferretti78,
-    images: imagesFor("ferretti-78", "yachts"),
+    images: imagesFor("ferretti-78-ft-super-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Luxury 40 Ft Mini Yacht",
@@ -118,7 +118,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 1 Hour", "Up to 10 guests", "40 Ft", "1 Bedroom"],
     price: "AED 450 / Hour",
     image: mini40,
-    images: imagesFor("mini-40", "yachts"),
+    images: imagesFor("luxury-40-ft-mini-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Azimut 80 Ft Yacht with Jacuzzi",
@@ -126,7 +126,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 35 guests", "80 Ft", "3 Bedrooms"],
     price: "AED 1,500 / Hour",
     image: azimut80,
-    images: imagesFor("azimut-80", "yachts"),
+    images: imagesFor("azimut-80-ft-yacht-with-jacuzzi-rental-dubai", "yachts"),
   },
   {
     title: "Sunseeker 95 Ft Super Yacht",
@@ -134,7 +134,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 4 Hours", "Up to 20 guests", "95 Ft", "3 Bedrooms"],
     price: "AED 4,500 / Hour",
     image: sunseeker95,
-    images: imagesFor("sunseeker-95", "yachts"),
+    images: imagesFor("sunseeker-95-ft-super-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Majesty 70 Ft Yacht",
@@ -142,7 +142,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 28 guests", "70 Ft", "3 Bedrooms"],
     price: "AED 850 / Hour",
     image: majesty70,
-    images: imagesFor("majesty-70", "yachts"),
+    images: imagesFor("majesty-70-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Majesty 66 Ft Yacht",
@@ -150,7 +150,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 22 guests", "66 Ft", "3 Bedrooms"],
     price: "AED 800 / Hour",
     image: majesty66,
-    images: imagesFor("majesty-66", "yachts"),
+    images: imagesFor("majesty-66-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Majesty 55 Ft Yacht",
@@ -158,7 +158,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 18 guests", "55 Ft", "2 Bedrooms"],
     price: "AED 650 / Hour",
     image: majesty55,
-    images: imagesFor("majesty-55", "yachts"),
+    images: imagesFor("majesty-55-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Azimut 50 Ft Yacht",
@@ -166,7 +166,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 15 guests", "50 Ft", "2 Bedrooms"],
     price: "AED 650 / Hour",
     image: azimut50,
-    images: imagesFor("azimut-50", "yachts"),
+    images: imagesFor("azimut-50-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Majesty 88 Ft Yacht",
@@ -174,7 +174,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 45 guests", "88 Ft", "4 Bedrooms"],
     price: "AED 1,800 / Hour",
     image: majesty88,
-    images: imagesFor("majesty-88", "yachts"),
+    images: imagesFor("majesty-88-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Corporate 105 Ft Yacht",
@@ -182,7 +182,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 90 guests", "105 Ft", "2 Bedrooms"],
     price: "AED 3,000 / Hour",
     image: corporate105,
-    images: imagesFor("corporate-105", "yachts"),
+    images: imagesFor("corporate-105-ft-yacht-rental-dubai", "yachts"),
   },
   {
     title: "Gulf Craft 90 Ft Yacht",
@@ -190,7 +190,7 @@ export const yachts: Product[] = [
     specs: ["Minimum booking: 2 Hours", "Up to 41 guests", "90 Ft", "3 Bedrooms"],
     price: "AED 1,300 / Hour",
     image: gulfcraft90,
-    images: imagesFor("gulfcraft-90", "yachts"),
+    images: imagesFor("gulf-craft-90-ft-yacht-rental-dubai", "yachts"),
   },
 ];
 
@@ -201,7 +201,7 @@ export const fishingTrips: Product[] = [
     specs: ["4-Hour Trip", "Up to 10 guests", "40 Ft", "1 Bedroom", "Minimum booking: 2 guests", "Shared breakfast", "Boarding: 7:00 AM"],
     price: "AED 350 / Person",
     image: fishingShared,
-    images: imagesFor("shared", "fishing"),
+    images: imagesFor("shared-fishing-trip-dubai", "fishing"),
   },
   {
     title: "Private Yacht Fishing Trip Dubai",
@@ -209,7 +209,7 @@ export const fishingTrips: Product[] = [
     specs: ["4-Hour Trip", "Up to 10 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 2,000 / 4 Hours",
     image: fishingPrivateYacht,
-    images: imagesFor("private-yacht", "fishing"),
+    images: imagesFor("private-yacht-fishing-trip-dubai", "fishing"),
   },
   {
     title: "Private Boat Fishing Trip Dubai",
@@ -217,7 +217,7 @@ export const fishingTrips: Product[] = [
     specs: ["4-Hour Trip", "Up to 10 guests", "40 Ft", "1 Bedroom"],
     price: "AED 1,200 / 4 Hours",
     image: fishingPrivateBoat,
-    images: imagesFor("private-boat", "fishing"),
+    images: imagesFor("private-boat-fishing-trip-dubai", "fishing"),
   },
 ];
 
@@ -244,7 +244,7 @@ export const parties: Product[] = [
     specs: ["2-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 2,600 / 2 Hours",
     image: partyProposal,
-    images: imagesFor("proposal", "parties"),
+    images: imagesFor("marriage-proposal-yacht-dubai", "parties"),
     included: [
       "Private 2-hour yacht cruise",
       "Custom proposal cake",
@@ -264,7 +264,7 @@ export const parties: Product[] = [
     specs: ["Minimum booking: 3 Hours", "Up to 45 guests", "95 Ft", "2 Bedrooms"],
     price: "AED 1,500 / Hour",
     image: partyWedding,
-    images: imagesFor("wedding", "parties"),
+    images: imagesFor("yacht-wedding-dubai", "parties"),
     included: [
       "Private 95ft yacht (up to 45 guests)",
       "Full wedding decor",
@@ -287,7 +287,7 @@ export const parties: Product[] = [
     specs: ["2-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 2,100 / 2 Hours",
     image: partyAnniversary,
-    images: imagesFor("anniversary", "parties"),
+    images: imagesFor("anniversary-yacht-party-dubai", "parties"),
     included: [
       "Private 48ft yacht cruise for 2 hours",
       "Custom anniversary cake",
@@ -305,7 +305,7 @@ export const parties: Product[] = [
     specs: ["2-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 1,800 / 2 Hours",
     image: partyGraduation,
-    images: imagesFor("graduation", "parties"),
+    images: imagesFor("graduation-yacht-party-dubai", "parties"),
     included: [
       "Private 48ft yacht cruise for 2 hours",
       "Custom graduation cake",
@@ -322,7 +322,7 @@ export const parties: Product[] = [
     specs: ["2-Hour Trip", "Up to 15 guests", "55 Ft", "2 Bedrooms"],
     price: "AED 1,900 / 2 Hours",
     image: partyEngagement,
-    images: imagesFor("engagement", "parties"),
+    images: imagesFor("engagement-yacht-party-dubai", "parties"),
     included: [
       "Private 55ft yacht for 2 hours",
       "Custom engagement cake",
@@ -340,7 +340,7 @@ export const parties: Product[] = [
     specs: ["2-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms"],
     price: "AED 1,500 / 2 Hours",
     image: partyBirthday,
-    images: imagesFor("birthday", "parties"),
+    images: imagesFor("yacht-birthday-party-dubai", "parties"),
     included: [
       "Private 48ft yacht cruise for 2 hours",
       "Birthday cake and candles",
@@ -368,7 +368,7 @@ export const packages: Product[] = [
     specs: ["4-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms", "Breakfast on board", "1-hour jet ski"],
     price: "AED 3,000 / 4 Hours",
     image: pkgBreakfast,
-    images: imagesFor("breakfast", "packages"),
+    images: imagesFor("yacht-breakfast-package-dubai", "packages"),
     included: [
       "Private 48ft yacht cruise for 4 hours",
       "Premium Arabic breakfast on board",
@@ -388,7 +388,7 @@ export const packages: Product[] = [
     specs: ["4-Hour Trip", "Up to 12 guests", "48 Ft", "2 Bedrooms", "1-hour jet ski"],
     price: "AED 2,300 / 4 Hours",
     image: pkgJetski,
-    images: imagesFor("jetski", "packages"),
+    images: imagesFor("yacht-rental-with-jet-ski-package-dubai", "packages"),
     included: [
       "Private 48ft yacht cruise for 4 hours",
       "1-hour pro jet ski ride",
@@ -408,7 +408,7 @@ export const packages: Product[] = [
     specs: ["2-Hour Trip", "Up to 2 guests", "48 Ft", "2 Bedrooms", "Grill meal for 2", "Romantic cake", "Bottle of champagne"],
     price: "AED 1,800 / 2 Hours",
     image: pkgRomantic,
-    images: imagesFor("romantic-dinner", "packages"),
+    images: imagesFor("romantic-yacht-dinner-package-dubai", "packages"),
     included: [
       "Private 48ft yacht cruise for two",
       "Grill meal for two",

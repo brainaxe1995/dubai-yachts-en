@@ -13,8 +13,8 @@ import { faqSchema, breadcrumbSchema } from "@/components/SeoJsonLd";
 import { yachts, stepsYacht, keywordCloud } from "@/data/site";
 import { useOverriddenProducts } from "@/hooks/useProductOverrides";
 import pageHero from "@/assets/heroes/yacht-charter-dubai.webp";
-import inclusionsImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-inclusions.webp";
-import guestExpImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-guest-experience.webp";
+import inclusionsImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-dubai-inclusions.webp";
+import guestExpImg from "@/assets/page-sections/yacht-charter-dubai/yacht-charter-dubai-guest-experience.webp";
 
 const rentalIncludedFeatures = [
   {
