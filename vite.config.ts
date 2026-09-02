@@ -52,7 +52,7 @@ export default defineConfig({
       // navigation without waiting for the browser heuristic cache to expire.
       // More-specific rules below override this for static + API responses.
       "/**": { headers: { "cache-control": "no-cache, must-revalidate" } },
-      "/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
+      "/assets/**": { headers: { "cache-control": "public, max-age=3600, must-revalidate" } },
       "/favicon.png": { headers: { "cache-control": "public, max-age=604800" } },
       "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
       "/sitemap.xml": { headers: { "cache-control": "public, max-age=3600" } },
