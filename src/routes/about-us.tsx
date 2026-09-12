@@ -8,6 +8,7 @@ import fleetImg from "@/assets/page-sections/about-us/about-us-toot-fun-yachts-f
 import marinaImg from "@/assets/page-sections/about-us/about-us-dubai-marina-location.webp";
 import whatIncludedImg from "@/assets/page-sections/about-us/about-us-whats-included-hospitality.webp";
 import pageHero from "@/assets/heroes/about-us.webp";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
@@ -65,6 +66,8 @@ function About() {
             <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={fleetImg}
+              srcSet={imgSrcSet(fleetImg, 960)}
+              sizes={SIZES.half}
                 alt="Toot Fun Yachts fleet in Dubai"
                 loading="lazy"
                 className="block h-auto w-full transition-transform duration-700 hover:scale-105"
@@ -161,6 +164,8 @@ function About() {
             <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={whatIncludedImg}
+              srcSet={imgSrcSet(whatIncludedImg, 960)}
+              sizes={SIZES.half}
                 alt="What's included in your yacht trip"
                 loading="lazy"
                 className="block h-auto w-full transition-transform duration-700 hover:scale-105"
@@ -176,6 +181,8 @@ function About() {
             <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
               <img
                 src={marinaImg}
+              srcSet={imgSrcSet(marinaImg, 960)}
+              sizes={SIZES.half}
                 alt="Yachts at Dubai Marina"
                 loading="lazy"
                 className="block h-auto w-full transition-transform duration-700 hover:scale-105"

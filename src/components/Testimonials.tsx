@@ -120,10 +120,16 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
               type="button"
               aria-label={`Review ${i + 1}`}
               onClick={() => goToIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === activeIdx ? "w-8 bg-gold" : "w-1.5 bg-border"
-              }`}
-            />
+              // The button is a 24px target; the dot is the span inside it, so
+              // the design is unchanged but the tap area meets the minimum.
+              className="grid h-6 place-items-center"
+            >
+              <span
+                className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  i === activeIdx ? "w-8 bg-gold" : "w-1.5 bg-border"
+                }`}
+              />
+            </button>
           ))}
         </div>
         <button

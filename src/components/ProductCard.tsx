@@ -36,9 +36,11 @@ function iconForMeta(s: string): LucideIcon {
 }
 import type { Product } from "@/data/site";
 import { CONTACT } from "@/data/site";
+import { waYacht } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Reveal } from "./Reveal";
 import { renderInline } from "@/lib/rich-text";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 function parseSpecs(specs: string[]) {
   let guests = "";
@@ -79,8 +81,7 @@ function parseSpecs(specs: string[]) {
 }
 
 function buildWhatsAppLink(title: string, price: string) {
-  const msg = `Hi Toot Fun,\nI'd like to enquire about booking:\n${title}\nPrice: ${price}\nPlease share availability and details. Thank you.`;
-  return `${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
+  return waYacht(title, price);
 }
 
 // -------- ImageSlider (auto-advance slow, hover pause, click opens lightbox) --------
@@ -111,11 +112,23 @@ function ImageSlider({
   // Prefetch neighbors when active slide changes → next click is instant, no black flash.
   useEffect(() => {
     if (typeof window === "undefined" || count <= 1) return;
+    // Nothing to warm while the slider is untouched. Slide 1 is already in the
+    // DOM as a real <img>, and the wrap-around to the last slide was costing a
+    // full-size download per card on first paint.
+    if (idx === 0) return;
     const preload = (i: number) => {
       const src = images[i];
       if (!src) return;
       const img = new Image();
       img.decoding = "async";
+      // srcset and sizes must be set before src, or the browser resolves the
+      // src alone and fetches the full-size original that the rendered <img>
+      // never asks for.
+      const set = imgSrcSet(src, 960);
+      if (set) {
+        img.sizes = SIZES.card;
+        img.srcset = set;
+      }
       img.onload = () => setLoaded((prev) => (prev.has(i) ? prev : new Set([...prev, i])));
       img.src = src;
     };
@@ -130,7 +143,14 @@ function ImageSlider({
         className="absolute inset-0 flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{ transform: `translate3d(${-idx * 100}%, 0, 0)` }}
       >
-        {images.map((src, i) => (
+        {images.map((src, i) => {
+          // Only the current slide and its immediate neighbours carry an <img>.
+          // Every slide of every card used to be in the DOM from the first
+          // paint, and lazy loading did not hold them back because they sit
+          // inside the viewport box. The placeholder keeps the track geometry
+          // identical.
+          const near = Math.abs(i - idx) <= 1;
+          return (
           <button
             key={i}
             type="button"
@@ -138,10 +158,17 @@ function ImageSlider({
             className="relative h-full w-full shrink-0 bg-muted"
             onClick={() => onOpenLightbox?.(idx)}
           >
+            {near ? (
             <img
               src={src}
+              srcSet={imgSrcSet(src, 960)}
+              sizes={SIZES.card}
               alt={i === 0 ? alt : `${alt} — ${i + 1}`}
-              loading={i === 0 ? "eager" : "lazy"}
+              // React turns an eager <img> into a <link rel=preload>, and one
+              // per card raced the hero for bandwidth on a slow connection for
+              // images that sit below the fold. A card genuinely in view still
+              // loads immediately.
+              loading="lazy"
               decoding="async"
               width={1600}
               height={1000}
@@ -151,8 +178,10 @@ function ImageSlider({
               }`}
               draggable={false}
             />
+            ) : null}
           </button>
-        ))}
+          );
+        })}
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-primary-deep/25" />
@@ -214,10 +243,14 @@ function ImageSlider({
                   e.stopPropagation();
                   setIdx(i);
                 }}
-                className={`pointer-events-auto h-1.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/70"
-                }`}
-              />
+                className="pointer-events-auto grid h-6 place-items-center"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/70"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </>
@@ -397,7 +430,7 @@ export function ProductCard({ product, delay = 0, pillVariant = "gradient" }: { 
   return (
     <>
       <Reveal as="article" delay={delay} className="h-full">
-        <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-luxe ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2">
+        <div className="dy-card-defer group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card shadow-luxe ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2">
           <ImageSlider
             images={images}
             alt={product.title}
@@ -609,7 +642,15 @@ function IncludedModal({
         }`}
       >
         <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-primary-deep">
-          <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
+          <img
+            src={product.image}
+            srcSet={imgSrcSet(product.image, 960)}
+            sizes={SIZES.half}
+            alt={product.title}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
           <button
             type="button"

@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { renderInline } from "@/lib/rich-text";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 export type FeatureBlock = {
   h: string;
@@ -30,6 +31,8 @@ function VariantSplit({ b, i }: { b: FeatureBlock; i: number }) {
           <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
             <img
               src={b.image}
+              srcSet={imgSrcSet(b.image, 960)}
+              sizes={SIZES.half}
               alt={b.imageAlt ?? b.h}
               loading="lazy"
               className="block h-auto w-full transition-transform duration-700 hover:scale-105"
@@ -108,6 +111,8 @@ function VariantCardStack({ b, i }: { b: FeatureBlock; i: number }) {
           <div className="relative w-full overflow-hidden rounded-3xl shadow-luxe ring-1 ring-gold/20 bg-muted">
             <img
               src={b.image}
+              srcSet={imgSrcSet(b.image, 960)}
+              sizes={SIZES.half}
               alt={b.imageAlt ?? b.h}
               loading="lazy"
               className="block h-auto w-full transition-transform duration-700 hover:scale-105"

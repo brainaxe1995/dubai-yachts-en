@@ -1,0 +1,26 @@
+{
+  "overrides": {
+    "hidden": {
+      "home": [],
+      "yachts": [],
+      "parties": [],
+      "fishing": [],
+      "packages": []
+    },
+    "order": {
+      "home": [],
+      "yachts": [],
+      "parties": [],
+      "fishing": [],
+      "packages": []
+    },
+    "copies": {
+      "home": [],
+      "yachts": [],
+      "parties": [],
+      "fishing": [],
+      "packages": []
+    }
+  },
+  "updatedAt": "2026-08-30T07:05:04.044Z"
+}

@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, CheckCircle2, ChevronLeftIcon, ChevronRightIcon, XCircle, ChevronDown } from "lucide-react";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import { format } from "date-fns";
-import { enUS } from "date-fns/locale";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CONTACT } from "@/data/site";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
+
+type Fields = typeof import("./contact-fields");
+
+const INPUT_CLASS =
+  "rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold";
+const LABEL_CLASS = "text-xs font-bold text-muted-foreground";
 
 function startOfToday(): Date {
   const d = new Date();
@@ -14,85 +14,146 @@ function startOfToday(): Date {
   return d;
 }
 
+/** yyyy-MM-dd without pulling in date-fns, which lives in the lazy chunk. */
+function isoDate(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+/**
+ * The enquiry form.
+ *
+ * The phone and date controls are the two heavy ones — libphonenumber's
+ * metadata and react-day-picker/date-fns — and they were sitting in the initial
+ * bundle even though the form is below the fold. They now arrive from
+ * `contact-fields.tsx` via a dynamic import, kicked off when the form comes
+ * within 600px of the viewport or anyone touches it, whichever is first.
+ *
+ * Until then the same two slots hold native `<input type="tel">` and
+ * `<input type="date">`: server-rendered, working without JavaScript, posting
+ * the identical field names, so the form is never in a broken state. The first
+ * client render deliberately matches the server's, so there is no hydration
+ * mismatch; the swap happens in an effect afterwards.
+ */
 export function SmartContactForm() {
   const [phone, setPhone] = useState<string | undefined>(undefined);
   const [date, setDate] = useState<Date | undefined>(undefined);
+  // resolved after mount so server and client markup agree
   const [today, setToday] = useState<Date | undefined>(undefined);
-  const [open, setOpen] = useState(false);
+  const [fields, setFields] = useState<Fields | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     setToday(startOfToday());
   }, []);
 
-  const valid = useMemo(() => (phone ? isValidPhoneNumber(phone) : false), [phone]);
-  const showStatus = Boolean(phone && phone.length > 3);
-  const dateValue = date ? format(date, "yyyy-MM-dd") : "";
-  const dateLabel = date ? format(date, "EEEE, d MMMM yyyy", { locale: enUS }) : "Pick a date";
+  useEffect(() => {
+    if (fields) return;
+    const el = formRef.current;
+    if (!el) return;
+    let done = false;
+    const load = () => {
+      if (done) return;
+      done = true;
+      void import("./contact-fields").then(setFields);
+    };
+
+    // Whichever comes first: the form nears the viewport, or someone reaches
+    // for it. The pointer/focus path matters for anyone who lands mid-page.
+    el.addEventListener("pointerdown", load, { once: true });
+    el.addEventListener("focusin", load, { once: true });
+
+    let io: IntersectionObserver | undefined;
+    if (typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) load();
+        },
+        { rootMargin: "600px" },
+      );
+      io.observe(el);
+    } else {
+      load();
+    }
+    return () => {
+      io?.disconnect();
+      el.removeEventListener("pointerdown", load);
+      el.removeEventListener("focusin", load);
+    };
+  }, [fields]);
+
+  const dateValue = date ? isoDate(date) : "";
+  // Only the enhanced field can tell a complete number from an incomplete one,
+  // so before it loads the submit button is never blocked.
+  const blocked = Boolean(fields && phone && phone.length > 3 && !fields.isPhoneValid(phone));
 
   return (
     <form
+      ref={formRef}
       className="grid gap-4"
-      action={CONTACT.whatsapp}
-      method="get"
-      target="_blank"
-      rel="noopener noreferrer"
+      onSubmit={(e) => {
+        // The old method="get" submitted straight to wa.me, which reads only the
+        // `text` parameter — so the free-text box arrived and name, phone, email,
+        // service and date were dropped. Fold them all into one message instead.
+        e.preventDefault();
+        const path = typeof window === "undefined" ? undefined : window.location.pathname;
+        window.location.href = buildWhatsAppUrl(e.currentTarget, path);
+      }}
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">Full Name</span>
+          <span className={LABEL_CLASS}>Full Name</span>
           <input
             type="text"
             name="name"
             required
             placeholder="e.g. John Smith"
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+            className={INPUT_CLASS}
           />
         </label>
 
-        <div className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">Phone Number</span>
-          <div
-            className={`smart-phone flex items-center gap-2 overflow-hidden rounded-xl border bg-background px-3 transition-colors ${
-              showStatus ? (valid ? "border-emerald-500/60" : "border-red-500/60") : "border-border focus-within:border-gold"
-            }`}
-          >
-            <PhoneInput
-              international
-              defaultCountry="AE"
-              value={phone}
-              onChange={setPhone}
-              name="phone"
-              placeholder="Enter phone number"
-              className="flex-1"
+        {fields ? (
+          <fields.PhoneField
+            value={phone}
+            onChange={setPhone}
+            label="Phone Number"
+            placeholder="Enter phone number"
+            invalidText="Invalid phone number — check the digit count"
+          />
+        ) : (
+          <label className="grid gap-1.5">
+            <span className={LABEL_CLASS}>Phone Number</span>
+            <input
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              placeholder="+971 50 123 4567"
+              value={phone ?? ""}
+              onChange={(e) => setPhone(e.target.value)}
+              className={INPUT_CLASS}
             />
-            {showStatus ? (
-              valid ? (
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" />
-              ) : (
-                <XCircle className="h-5 w-5 shrink-0 text-red-500" />
-              )
-            ) : null}
-          </div>
-          {showStatus && !valid ? (
-            <span className="text-xs text-red-500">Invalid phone number — check the digit count</span>
-          ) : null}
-        </div>
+          </label>
+        )}
+        {/* The visible control is unnamed in both states; this carries the value.
+            The phone input's own field holds national digits only, so naming it
+            directly submitted a number with no country code. */}
+        <input type="hidden" name="phone" value={phone ?? ""} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">Email (optional)</span>
+          <span className={LABEL_CLASS}>Email (optional)</span>
           <input
             type="email"
             name="email"
             placeholder="you@example.com"
             dir="ltr"
-            className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+            className={INPUT_CLASS}
           />
         </label>
 
         <label className="grid gap-1.5">
-          <span className="text-xs font-bold text-muted-foreground">Service Type</span>
+          <span className={LABEL_CLASS}>Service Type</span>
           <div className="relative">
             <select
               name="service"
@@ -111,74 +172,45 @@ export function SmartContactForm() {
       </div>
 
       <div className="grid gap-1.5 sm:max-w-[calc(50%-0.5rem)]">
-        <span className="text-xs font-bold text-muted-foreground">Preferred Date</span>
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <button
-              type="button"
-              className={`group flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-4 py-3 text-start text-sm outline-none transition-all hover:border-gold/60 focus:border-gold focus:ring-2 focus:ring-gold/20 ${
-                date ? "text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              <span className="truncate">{dateLabel}</span>
-              <CalendarDays className="h-4 w-4 shrink-0 text-gold transition-transform group-hover:scale-110" />
-            </button>
-          </PopoverTrigger>
-          <PopoverContent
-            align="start"
-            className="w-auto overflow-hidden rounded-2xl border-gold/30 bg-background p-0 shadow-gold"
-          >
-            <div className="border-b border-gold/20 bg-gradient-to-l from-primary-deep via-primary to-primary-deep px-4 py-3 text-primary-foreground">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-gold-soft">
-                <CalendarDays className="h-4 w-4" />
-                <span>Pick your booking date</span>
-              </div>
-              <div className="mt-1 text-sm font-medium text-primary-foreground/90">{dateLabel}</div>
-            </div>
-            <div dir="ltr" style={{ direction: "ltr" }}>
-              <Calendar
-                mode="single"
-                locale={enUS}
-                dir="ltr"
-                weekStartsOn={0}
-                selected={date}
-                onSelect={(d) => {
-                  setDate(d);
-                  if (d) setOpen(false);
-                }}
-                disabled={today ? { before: today } : undefined}
-                startMonth={today}
-                defaultMonth={date ?? today}
-                className="p-3 [--cell-size:2.25rem]"
-                components={{
-                  Chevron: ({ orientation, className, ...p }) => {
-                    const cls = `size-4 ${className ?? ""}`;
-                    const style = { transform: "rotate(0deg)" };
-                    if (orientation === "left") return <ChevronLeftIcon className={cls} style={style} {...p} />;
-                    if (orientation === "right") return <ChevronRightIcon className={cls} style={style} {...p} />;
-                    return <ChevronDown className={cls} style={style} {...p} />;
-                  },
-                }}
-              />
-            </div>
-          </PopoverContent>
-        </Popover>
+        {fields ? (
+          <fields.DateField
+            value={date}
+            onChange={setDate}
+            today={today}
+            label="Preferred Date"
+            emptyLabel="Pick a date"
+            pickerTitle="Pick your booking date"
+          />
+        ) : (
+          <>
+            <span className={LABEL_CLASS}>Preferred Date</span>
+            <input
+              type="date"
+              value={dateValue}
+              min={today ? isoDate(today) : undefined}
+              onChange={(e) =>
+                setDate(e.target.value ? new Date(`${e.target.value}T00:00:00`) : undefined)
+              }
+              className={INPUT_CLASS}
+            />
+          </>
+        )}
         <input type="hidden" name="date" value={dateValue} />
       </div>
 
       <label className="grid gap-1.5">
-        <span className="text-xs font-bold text-muted-foreground">Booking Details or Enquiry</span>
+        <span className={LABEL_CLASS}>Booking Details or Enquiry</span>
         <textarea
           name="text"
           rows={5}
           placeholder="Tell us the guest count, occasion, and preferred time..."
-          className="rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-gold"
+          className={INPUT_CLASS}
         />
       </label>
 
       <button
         type="submit"
-        disabled={showStatus && !valid}
+        disabled={blocked}
         className="mt-2 rounded-xl bg-primary-deep px-6 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
       >
         Send Enquiry via WhatsApp

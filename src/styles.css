@@ -78,7 +78,7 @@
   --secondary-foreground: oklch(0.17 0.036 258);
   --gold: oklch(0.76 0.128 85.5);
   --gold-soft: oklch(0.87 0.086 88);
-  --gold-deep: oklch(0.68 0.115 82);
+  --gold-deep: oklch(0.555 0.115 82);
   --muted: oklch(0.955 0.006 250);
   --muted-foreground: oklch(0.52 0.024 258);
   --accent: oklch(0.95 0.03 88);
@@ -333,4 +333,16 @@ button:disabled {
 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: auto 800px;
+}
+
+/* Below-the-fold product cards are skipped by style, layout and paint until
+   they are near the viewport. Each card carries a slider track, dot controls,
+   a spec list and a dozen inline icons, and recalculating all of them on load
+   was a large block of main-thread work on a mid-range phone. `auto` for the
+   intrinsic size means the browser remembers each card's real height after it
+   has rendered once, so scrolling past does not shift anything. A card that is
+   on screen is unaffected. */
+.dy-card-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }

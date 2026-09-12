@@ -23,6 +23,7 @@ import partyImg from "@/assets/page-sections/home/yacht-party-dubai-marina-luxur
 import fishingImg from "@/assets/page-sections/home/luxury-fishing-trip-dubai-marina.webp";
 import packagesImg from "@/assets/page-sections/home/romantic-yacht-dinner-package-dubai-marina.webp";
 import whatIncludedImg from "@/assets/page-sections/home/home-yacht-trip-includes-dubai.webp";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -131,6 +132,8 @@ function Home() {
                 <div className="w-full overflow-hidden bg-muted">
                   <img
                     src={s.img}
+              srcSet={imgSrcSet(s.img, 960)}
+              sizes={SIZES.tile}
                     alt={s.t}
                     loading="lazy"
                     className="block h-auto w-full transition-transform duration-700 group-hover:scale-105"

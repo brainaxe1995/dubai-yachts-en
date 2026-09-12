@@ -1,10 +1,24 @@
 import { CONTACT } from "@/data/site";
+import { waAbout, waBooking } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
-export function BookButton({ className, label = "Book Now" }: { className?: string; label?: string }) {
+/**
+ * `topic` names what the visitor was reading, so the WhatsApp chat opens with
+ * an opening line about it. Without one the button falls back to the generic
+ * booking enquiry.
+ */
+export function BookButton({
+  className,
+  label = "Book Now",
+  topic,
+}: {
+  className?: string;
+  label?: string;
+  topic?: string;
+}) {
   return (
     <a
-      href={CONTACT.whatsapp}
+      href={topic ? waAbout(topic) : waBooking()}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

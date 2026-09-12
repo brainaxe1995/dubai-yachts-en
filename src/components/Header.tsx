@@ -5,6 +5,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/toot-fun-yachts-dubai-logo.webp";
 import { CONTACT } from "@/data/site";
+import { waBooking } from "@/lib/whatsapp";
 import { getConfig, DEFAULT_CONFIG } from "@/data/config";
 
 const nav = [
@@ -300,7 +301,7 @@ export function Header() {
           {/* Desktop expanded: Book Now CTA — collapses to zero when shrunk
               so there's no gap-4 leak between navRight and the shrunk lang switcher. */}
           <a
-            href={CONTACT.whatsapp}
+            href={waBooking()}
             target="_blank"
             rel="noopener noreferrer"
             style={{ transition: `opacity 400ms ${EASE}, max-width 500ms ${EASE}, margin 400ms ${EASE}, padding 400ms ${EASE}` }}
@@ -364,7 +365,14 @@ export function Header() {
 // can't obscure/hide the drawer (mobile Safari bug). z-index competes at root, not
 // inside header.
 function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
-  if (typeof document === "undefined") return null;
+  // The drawer is portalled into document.body, so it cannot exist during SSR.
+  // Branching on `typeof document` meant the server rendered nothing while the
+  // client's very first render produced the whole panel — React reported that
+  // as a hydration mismatch (minified error #418) and threw the tree away,
+  // re-rendering it on the client. Waiting for an effect makes the first client
+  // render match the server's, and the drawer mounts a tick later.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const drawer = (
     <>
@@ -376,7 +384,11 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
         }`}
       />
       <aside
-        aria-hidden={!open}
+        // `inert` rather than aria-hidden: aria-hidden took the closed drawer
+        // out of the accessibility tree but left its links in the tab order, so
+        // keyboard focus walked into an off-screen panel. That is the single
+        // failure behind Lighthouse's agent-accessibility-tree audit as well.
+        inert={!open}
         className={`fixed inset-y-0 right-0 z-[110] flex w-[82%] max-w-xs flex-col border-e border-gold/40 bg-primary-deep shadow-luxe transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
           open ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
@@ -429,7 +441,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
             <LangSwitcher />
           </div>
           <a
-            href={CONTACT.whatsapp}
+            href={waBooking()}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-secondary-foreground"
@@ -441,5 +453,6 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
     </>
   );
 
+  if (!mounted) return null;
   return createPortal(drawer, document.body);
 }

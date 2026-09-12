@@ -25,6 +25,7 @@ const paymentMethods = [
   { src: payGoogle, alt: "Google Pay" },
 ];
 import { CONTACT } from "@/data/site";
+import { waBooking } from "@/lib/whatsapp";
 import { DEFAULT_CONFIG, getConfig } from "@/data/config";
 
 const quick = [
@@ -55,10 +56,10 @@ const socialDefs = [
 
 function ColTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="relative mb-4 pb-2 text-sm font-bold text-gold md:mb-6 md:pb-3 md:text-base">
+    <h3 className="relative mb-4 pb-2 text-sm font-bold text-gold md:mb-6 md:pb-3 md:text-base">
       {children}
       <span className="absolute bottom-0 start-0 h-px w-10 bg-gold/70 md:w-12" />
-    </h4>
+    </h3>
   );
 }
 
@@ -189,7 +190,7 @@ export function Footer() {
           </ul>
 
           <a
-            href={CONTACT.whatsapp}
+            href={waBooking()}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 mb-16 inline-flex items-center gap-3 rounded-full border border-gold bg-primary-deep/60 px-6 py-3 text-sm font-bold text-gold shadow-lg transition-colors hover:bg-gold hover:text-primary-deep sm:mb-0"

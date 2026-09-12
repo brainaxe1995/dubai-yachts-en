@@ -22,6 +22,7 @@ import burjImg from "@/assets/page-sections/shared-destinations/burj-al-arab-yac
 import atlantisImg from "@/assets/page-sections/shared-destinations/atlantis-the-palm-yacht-cruise-destination.webp";
 import ainImg from "@/assets/page-sections/shared-destinations/ain-dubai-yacht-cruise-destination.webp";
 import jbrImg from "@/assets/page-sections/shared-destinations/jbr-beach-yacht-cruise-destination.webp";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 type Item = { icon: LucideIcon; t: string; d: string };
 
@@ -139,6 +140,8 @@ function DestinationsMasonry({ items }: { items: Destination[] }) {
           >
             <img
               src={d.img}
+              srcSet={imgSrcSet(d.img, 960)}
+              sizes={SIZES.tile}
               alt={d.t}
               loading="lazy"
               className="block h-auto w-full transition-transform duration-[900ms] group-hover:scale-110"

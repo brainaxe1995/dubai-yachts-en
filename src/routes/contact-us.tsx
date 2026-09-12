@@ -8,6 +8,7 @@ import { SmartContactForm } from "@/components/SmartContactForm";
 import { faqSchema } from "@/components/SeoJsonLd";
 import { CONTACT, faqs, keywordCloudFlat } from "@/data/site";
 import pageHero from "@/assets/heroes/contact-us.webp";
+import { waBooking } from "@/lib/whatsapp";
 
 const contactFaqs = faqs.slice(0, 5);
 
@@ -69,7 +70,7 @@ export const Route = createFileRoute("/contact-us")({
 function Contact() {
   const items = [
     { icon: Phone, t: "Phone", v: CONTACT.phoneDisplay, href: `tel:${CONTACT.phone}` },
-    { icon: MessageCircle, t: "WhatsApp", v: "Instant booking chat", href: CONTACT.whatsapp },
+    { icon: MessageCircle, t: "WhatsApp", v: "Instant booking chat", href: waBooking() },
     { icon: Mail, t: "Email", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
     { icon: MapPin, t: "Location", v: "Dubai Marina, United Arab Emirates", href: undefined },
     { icon: Clock, t: "Working Hours", v: "24 hours daily", href: undefined },

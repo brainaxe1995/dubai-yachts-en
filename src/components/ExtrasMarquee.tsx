@@ -1,6 +1,7 @@
 import type { Extra } from "@/data/site";
 import { Sparkles, Plus } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 // Premium editorial-style extras grid — tall image cards with dark gradient overlay,
 // gold badge, floating "+" affordance revealed on hover.
@@ -14,6 +15,8 @@ export function ExtrasMarquee({ items }: { items: readonly Extra[] }) {
             <div className="relative aspect-square w-full overflow-hidden">
               <img
                 src={e.image}
+                srcSet={imgSrcSet(e.image, 480)}
+                sizes="200px"
                 alt={e.label}
                 loading="lazy"
                 width={400}

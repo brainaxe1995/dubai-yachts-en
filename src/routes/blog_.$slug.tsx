@@ -7,7 +7,9 @@ import { breadcrumbSchema } from "@/components/SeoJsonLd";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { findPost, posts } from "@/data/blog";
 import { CONTACT } from "@/data/site";
+import { waAbout } from "@/lib/whatsapp";
 import { redirect } from "@tanstack/react-router";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 // 301 map — old slug -> new slug for blog posts renamed per client doc.
 const SLUG_REDIRECTS: Record<string, string> = {
@@ -129,6 +131,8 @@ function BlogPost() {
       <header className="relative min-h-[70vh] overflow-hidden bg-primary-deep">
         <img
           src={p.image}
+          srcSet={imgSrcSet(p.image)}
+          sizes={SIZES.hero}
           alt={p.title}
           fetchPriority="high"
           decoding="async"
@@ -160,7 +164,7 @@ function BlogPost() {
           {/* Two CTAs — WhatsApp + Call (home-page brand style) */}
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <a
-              href={CONTACT.whatsapp}
+              href={waAbout(p.title)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-secondary-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-deep"
@@ -429,7 +433,7 @@ function BlogPost() {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href={CONTACT.whatsapp}
+                href={waAbout(p.title)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-bold text-secondary-foreground shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-deep"
@@ -463,6 +467,8 @@ function BlogPost() {
                     <div className="aspect-[3/2] overflow-hidden">
                       <img
                         src={r.image}
+              srcSet={imgSrcSet(r.image, 960)}
+              sizes={SIZES.tile}
                         alt={r.title}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

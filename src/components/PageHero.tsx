@@ -6,6 +6,7 @@ import heroImg1280 from "@/assets/hero-yacht-1280.webp";
 import { BookButton, CallButton } from "./CtaButtons";
 import { Reveal } from "./Reveal";
 import { renderInline } from "@/lib/rich-text";
+import { imgSrcSet, SIZES } from "@/lib/img";
 
 const DEFAULT_HERO_SRCSET = `${heroImg640} 640w, ${heroImg960} 960w, ${heroImg1280} 1280w, ${heroImg} 1600w`;
 const DEFAULT_HERO_SIZES = "(max-width: 768px) 100vw, 100vw";
@@ -31,8 +32,11 @@ export function PageHero({
     <section className={`relative isolate flex w-full overflow-hidden surface-navy ${shape}`}>
       <img
         src={image}
-        srcSet={image === heroImg ? DEFAULT_HERO_SRCSET : undefined}
-        sizes={image === heroImg ? DEFAULT_HERO_SIZES : undefined}
+        // The default hero ships hand-made 640/960/1280 variants; every other
+        // page passes its own image, and those had no srcset at all — a phone
+        // was pulling the full 1600px file for a 412px screen.
+        srcSet={image === heroImg ? DEFAULT_HERO_SRCSET : imgSrcSet(image)}
+        sizes={image === heroImg ? DEFAULT_HERO_SIZES : SIZES.hero}
         alt={title}
         width={1600}
         height={907}
@@ -73,7 +77,7 @@ export function PageHero({
         <Reveal delay={220} className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {children ?? (
             <>
-              <BookButton />
+              <BookButton topic={title} />
               <CallButton />
             </>
           )}

@@ -53,6 +53,10 @@ export default defineConfig({
       // More-specific rules below override this for static + API responses.
       "/**": { headers: { "cache-control": "no-cache, must-revalidate" } },
       "/assets/**": { headers: { "cache-control": "public, max-age=3600, must-revalidate" } },
+      // Responsive down-scales written by tools/gen-responsive.py. Their names
+      // encode the width, so a changed image means a changed URL — safe to
+      // cache for a day rather than revalidating every hour.
+      "/rs/**": { headers: { "cache-control": "public, max-age=86400" } },
       "/favicon.png": { headers: { "cache-control": "public, max-age=604800" } },
       "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
       "/sitemap.xml": { headers: { "cache-control": "public, max-age=3600" } },

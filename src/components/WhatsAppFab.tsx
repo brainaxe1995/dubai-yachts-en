@@ -1,10 +1,10 @@
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { CONTACT } from "@/data/site";
+import { waBooking } from "@/lib/whatsapp";
 
 export function WhatsAppFab() {
   return (
     <a
-      href={CONTACT.whatsapp}
+      href={waBooking()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact us on WhatsApp"

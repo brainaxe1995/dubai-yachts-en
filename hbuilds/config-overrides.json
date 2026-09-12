@@ -1,0 +1,46 @@
+{
+  "config": {
+    "brand": "Toot Fun Yachts",
+    "phone": "+971544420441",
+    "phoneDisplay": "+971 54 442 0441",
+    "whatsapp": "https://wa.me/971544420441",
+    "email": "info@dubai-yachts.ae",
+    "address": "Dubai Marina, United Arab Emirates",
+    "siteUrl": "https://dubai-yachts.ae",
+    "arabicSiteUrl": "https://dubai-yacht.ae",
+    "social": {
+      "instagram": "https://www.instagram.com/tootfun.yachts/",
+      "tiktok": "https://www.tiktok.com/@tootfunyachts",
+      "snapchat": "",
+      "facebook": "https://www.facebook.com/tootyachts",
+      "youtube": "https://www.youtube.com/@tootfunyachts",
+      "x": "",
+      "linkedin": "https://www.linkedin.com/in/toot-fun-yachts-169a77271/"
+    },
+    "tracking": {
+      "ga4Id": "",
+      "gtmId": "",
+      "googleAdsId": "",
+      "googleAdsConversionLabel": "",
+      "metaPixelId": "",
+      "tiktokPixelId": "",
+      "snapchatPixelId": "",
+      "googleSiteVerification": "",
+      "bingSiteVerification": ""
+    },
+    "seo": {
+      "defaultTitle": "Yacht Rental in Dubai | Best Prices - Toot Fun Yachts",
+      "defaultDescription": "Luxury yacht rental in Dubai with competitive rates, private cruises, and a professional crew for every occasion. Book your yacht today.",
+      "ogImage": "https://dubai-yachts.ae/og-cover.jpg",
+      "priceStartAed": 450
+    },
+    "adminEmail": {
+      "recipient": "info@dubai-yachts.ae",
+      "emailjsServiceId": "service_31orv7d",
+      "emailjsTemplateId": "template_sb7ah6o",
+      "emailjsPublicKey": ""
+    },
+    "pageMeta": {}
+  },
+  "updatedAt": "2026-08-30T07:05:04.041Z"
+}
