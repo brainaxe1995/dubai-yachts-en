@@ -232,28 +232,42 @@ function ImageSlider({
             <ChevronRight className="h-4 w-4" />
           </button>
 
-          {/* Progress dots — bottom center, below pills */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center gap-1.5">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Image ${i + 1}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIdx(i);
-                }}
-                // min-w-6 as well as h-6: height alone left a 6px-wide target.
-                className="pointer-events-auto grid h-6 min-w-6 place-items-center"
-              >
-                <span
-                  className={`block h-1.5 rounded-full transition-all duration-300 ${
-                    i === idx ? "w-8 bg-gold" : "w-1.5 bg-white/70"
-                  }`}
-                />
-              </button>
-            ))}
-          </div>
+          {/* Position indicator. Up to six images it stays as dots, each inside a
+              24px button so it meets the minimum tap target. Beyond that the
+              dots become a counter: ten 24px targets span nearly the whole card
+              on a phone, which is why the row looked stretched, and at 6px they
+              were never hittable. */}
+          {count <= 6 ? (
+            <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center gap-1.5">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Image ${i + 1}`}
+                  aria-current={i === idx ? "true" : undefined}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIdx(i);
+                  }}
+                  className="pointer-events-auto grid h-6 w-6 place-items-center"
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                      i === idx ? "w-5 bg-gold" : "w-1.5 bg-white/70"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div
+              aria-hidden
+              dir="ltr"
+              className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-bold text-white"
+            >
+              {idx + 1} / {count}
+            </div>
+          )}
         </>
       ) : null}
     </div>
