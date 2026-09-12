@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   Users,
@@ -109,6 +109,72 @@ function ImageSlider({
   const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]));
   const count = images.length;
 
+  // Touch dragging, matching the birthday sites. `dx` is how far the finger has
+  // moved from where it went down, so the strip follows it in real time instead
+  // of jumping on release. `touching` drives the arrows: on a phone they stayed
+  // hidden entirely, because they only ever appeared on hover. `movedRef` tells
+  // a real swipe from a tap, so a swipe does not also open the lightbox.
+  const [dx, setDx] = useState(0);
+  const [touching, setTouching] = useState(false);
+  const dragRef = useRef({ x0: 0, y0: 0, active: false, w: 1 });
+  const movedRef = useRef(false);
+  const hideTimer = useRef<number | undefined>(undefined);
+
+  const armHide = () => {
+    if (typeof window === "undefined") return;
+    window.clearTimeout(hideTimer.current);
+    hideTimer.current = window.setTimeout(() => setTouching(false), 1400);
+  };
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (count <= 1 || e.pointerType === "mouse") return;
+    dragRef.current = {
+      x0: e.clientX,
+      y0: e.clientY,
+      active: true,
+      w: e.currentTarget.clientWidth || 1,
+    };
+    movedRef.current = false;
+    if (typeof window !== "undefined") window.clearTimeout(hideTimer.current);
+    setTouching(true);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = dragRef.current;
+    if (!d.active) return;
+    const mx = e.clientX - d.x0;
+    // Let a clearly vertical gesture go: that is the page being scrolled.
+    if (!movedRef.current && Math.abs(e.clientY - d.y0) > Math.abs(mx)) {
+      d.active = false;
+      setDx(0);
+      armHide();
+      return;
+    }
+    if (Math.abs(mx) > 6) movedRef.current = true;
+    // Resist at the ends so the strip cannot be pulled into empty space.
+    const atStart = idx === 0 && mx > 0;
+    const atEnd = idx === count - 1 && mx < 0;
+    setDx(atStart || atEnd ? mx * 0.25 : mx);
+  };
+
+  const endDrag = () => {
+    const d = dragRef.current;
+    if (!d.active) return;
+    d.active = false;
+    const threshold = Math.min(60, d.w * 0.15);
+    setIdx((i) => {
+      if (dx <= -threshold) return Math.min(i + 1, count - 1);
+      if (dx >= threshold) return Math.max(i - 1, 0);
+      return i;
+    });
+    setDx(0);
+    armHide();
+  };
+
+  useEffect(() => () => {
+    if (typeof window !== "undefined") window.clearTimeout(hideTimer.current);
+  }, []);
+
   // Prefetch neighbors when active slide changes → next click is instant, no black flash.
   useEffect(() => {
     if (typeof window === "undefined" || count <= 1) return;
@@ -137,11 +203,25 @@ function ImageSlider({
   }, [idx, count, images]);
 
   return (
-    <div className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-muted">
+    <div
+      className="group/slider relative aspect-[16/10] cursor-zoom-in overflow-hidden bg-muted"
+      // pan-y keeps vertical page scrolling with the browser while horizontal
+      // movement comes to us.
+      style={{ touchAction: "pan-y" }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onPointerLeave={endDrag}
+    >
       <div
         dir="ltr"
-        className="absolute inset-0 flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-        style={{ transform: `translate3d(${-idx * 100}%, 0, 0)` }}
+        className={`absolute inset-0 flex ${
+          dragRef.current.active
+            ? ""
+            : "transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        }`}
+        style={{ transform: `translate3d(calc(${-idx * 100}% + ${dx}px), 0, 0)` }}
       >
         {images.map((src, i) => {
           // Only the current slide and its immediate neighbours carry an <img>.
@@ -156,7 +236,10 @@ function ImageSlider({
             type="button"
             aria-label={`View image ${i + 1}`}
             className="relative h-full w-full shrink-0 bg-muted"
-            onClick={() => onOpenLightbox?.(idx)}
+            onClick={() => {
+              if (movedRef.current) return;
+              onOpenLightbox?.(idx);
+            }}
           >
             {near ? (
             <img
@@ -216,7 +299,7 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i - 1 + count) % count);
             }}
-            className="absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className={`absolute start-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white backdrop-blur-md ring-1 ring-white/20 transition-opacity duration-300 hover:bg-gold hover:text-primary-deep md:opacity-0 md:group-hover/slider:opacity-100 md:group-hover:opacity-100 ${touching ? "opacity-90" : "opacity-0"}`}
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -227,7 +310,7 @@ function ImageSlider({
               e.stopPropagation();
               setIdx((i) => (i + 1) % count);
             }}
-            className="absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 hover:bg-gold hover:text-primary-deep group-hover/slider:opacity-100 group-hover:opacity-100"
+            className={`absolute end-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-black/60 text-white backdrop-blur-md ring-1 ring-white/20 transition-opacity duration-300 hover:bg-gold hover:text-primary-deep md:opacity-0 md:group-hover/slider:opacity-100 md:group-hover:opacity-100 ${touching ? "opacity-90" : "opacity-0"}`}
           >
             <ChevronRight className="h-4 w-4" />
           </button>
