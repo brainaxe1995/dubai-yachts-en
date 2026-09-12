@@ -243,7 +243,8 @@ function ImageSlider({
                   e.stopPropagation();
                   setIdx(i);
                 }}
-                className="pointer-events-auto grid h-6 place-items-center"
+                // min-w-6 as well as h-6: height alone left a 6px-wide target.
+                className="pointer-events-auto grid h-6 min-w-6 place-items-center"
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${

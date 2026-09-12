@@ -122,7 +122,10 @@ export function Testimonials({ items }: { items: readonly Testimonial[] }) {
               onClick={() => goToIndex(i)}
               // The button is a 24px target; the dot is the span inside it, so
               // the design is unchanged but the tap area meets the minimum.
-              className="grid h-6 place-items-center"
+              // min-w-6 as well as h-6: height alone left a 6px-wide target, because the
+              // dot inside is only 6px and the button had no width of its own. The
+              // active dot is wider (w-8), so this is a minimum rather than a fixed size.
+              className="grid h-6 min-w-6 place-items-center"
             >
               <span
                 className={`block h-1.5 rounded-full transition-all duration-300 ${
