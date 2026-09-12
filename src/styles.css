@@ -332,7 +332,9 @@ button:disabled {
    placeholder height so scroll position/scrollbar don't jump. */
 .cv-auto {
   content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
+  /* Block axis only — a single-value contain-intrinsic-size applies to BOTH
+     axes, so this was also declaring an 800px inline size on every section. */
+  contain-intrinsic-block-size: auto 800px;
 }
 
 /* Below-the-fold product cards are skipped by style, layout and paint until
@@ -344,5 +346,12 @@ button:disabled {
    on screen is unaffected. */
 .dy-card-defer {
   content-visibility: auto;
-  contain-intrinsic-size: auto 720px;
+  /* Block axis only. `contain-intrinsic-size: auto <length>` with a single
+     value applies that length to BOTH axes, and content-visibility brings
+     size containment with it — so on a phone, where the product grid has
+     no column count and falls back to one auto-sized column, the column
+     took its width from this value and every card rendered 720px wide
+     inside a 390px viewport. Constraining only the block axis leaves the
+     inline size to come from the grid, which is what it should do. */
+  contain-intrinsic-block-size: auto 720px;
 }
