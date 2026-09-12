@@ -43,6 +43,17 @@ const staticEntries: SitemapEntry[] = [
   { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
 ];
 
+/**
+ * Every route on this site canonicalises to a trailing slash, and the canonical
+ * tags say so — but the paths below were written without one, so each sitemap
+ * URL answered 307 and redirected. Search Console reports that as "Page with
+ * redirect" and declines to index it, which was every URL in the sitemap bar
+ * the home page. Emit the form the page actually serves.
+ */
+function withSlash(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 // Blog entries appended lazily inside the handler to avoid module-init circular imports.
 function getEntries(): SitemapEntry[] {
   return [
@@ -63,7 +74,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = getEntries().map((e) =>
           [
             `  <url>`,
-            `    <loc>${baseUrl}${encodeURI(e.path)}</loc>`,
+            `    <loc>${baseUrl}${encodeURI(withSlash(e.path))}</loc>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
