@@ -7,7 +7,17 @@ async function resolveStorePath(): Promise<string> {
   const envPath = process.env["CONFIG_OVERRIDE_PATH"];
   if (envPath && envPath.length > 0) return envPath;
   const path = await import("node:path");
-  return path.resolve(process.cwd(), "../../config-overrides.json");
+  // Same walk as admin-store: two fixed levels from cwd landed in
+  // `hbuilds/versions/`, which the deploy pipeline prunes, because `current/`
+  // is a symlink and cwd resolves through it. Find `hbuilds` itself.
+  let dir = process.cwd();
+  for (let i = 0; i < 6; i++) {
+    if (path.basename(dir) === "hbuilds") return path.join(dir, "config-overrides.json");
+    const parent = path.dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+  return path.resolve(process.cwd(), ".admin-data", "config-overrides.json");
 }
 
 export async function readStoredConfig(): Promise<Partial<SiteConfig> | null> {

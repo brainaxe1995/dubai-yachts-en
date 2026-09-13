@@ -24,7 +24,14 @@ export type SiteConfig = {
     ga4Id: string;
     gtmId: string;
     googleAdsId: string;
+    /** Fallback label, used for any conversion without its own below. */
     googleAdsConversionLabel: string;
+    /** Google Ads counts WhatsApp and Call as separate conversion actions, so
+     *  each carries its own label. Just the label — the AW- id is prepended.
+     *  Left blank on purpose: fill both in from the admin's Tracking tab when
+     *  the campaign is live. No tag loads and no conversion fires until then. */
+    googleAdsWhatsappLabel: string;
+    googleAdsCallLabel: string;
     metaPixelId: string;
     tiktokPixelId: string;
     snapchatPixelId: string;
@@ -164,6 +171,8 @@ export const DEFAULT_CONFIG: SiteConfig = {
     gtmId: "",
     googleAdsId: "",
     googleAdsConversionLabel: "",
+    googleAdsWhatsappLabel: "",
+    googleAdsCallLabel: "",
     metaPixelId: "",
     tiktokPixelId: "",
     snapchatPixelId: "",

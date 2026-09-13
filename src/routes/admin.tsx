@@ -675,9 +675,19 @@ function TrackingTab({ cfg, update }: { cfg: SiteConfig; update: (p: string, v: 
           onChange={(v) => update("tracking.googleAdsId", v)}
         />
         <Field
-          label="Google Ads Conversion Label"
+          label="Google Ads Conversion Label (fallback)"
           v={cfg.tracking.googleAdsConversionLabel}
           onChange={(v) => update("tracking.googleAdsConversionLabel", v)}
+        />
+        <Field
+          label="Google Ads — WhatsApp click label"
+          v={cfg.tracking.googleAdsWhatsappLabel}
+          onChange={(v) => update("tracking.googleAdsWhatsappLabel", v)}
+        />
+        <Field
+          label="Google Ads — Call click label"
+          v={cfg.tracking.googleAdsCallLabel}
+          onChange={(v) => update("tracking.googleAdsCallLabel", v)}
         />
         <Field
           label="Meta (Facebook) Pixel ID"

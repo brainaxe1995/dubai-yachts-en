@@ -12,6 +12,22 @@ export function TrackingScripts() {
     if (t.metaPixelId) injectMetaPixel(t.metaPixelId);
     if (t.tiktokPixelId) injectTikTokPixel(t.tiktokPixelId);
     if (t.snapchatPixelId) injectSnapchatPixel(t.snapchatPixelId);
+
+    // One delegated listener rather than a handler on each button. There are
+    // about ten WhatsApp and call CTAs across the header, footer, hero, floating
+    // button and every product card — wiring them individually means missing one
+    // now or forgetting the next one added. This catches any anchor that dials
+    // or opens WhatsApp, wherever it appears.
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!a) return;
+      const href = a.getAttribute("href") ?? "";
+      if (href.startsWith("tel:")) trackConversion("call_click", { link_url: href });
+      else if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com/i.test(href))
+        trackConversion("whatsapp_click", { link_url: href });
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
   }, []);
 
   return null;
@@ -85,7 +101,17 @@ function injectSnapchatPixel(id: string) {
   );
 }
 
-// Public helper — call this to fire conversion (WhatsApp click, form submit)
+/**
+ * Fire a conversion.
+ *
+ * Google's own instructions say to paste the event snippet into <head>, which
+ * fires it on page LOAD — that would count a conversion for every visitor who
+ * merely opened the page, not the ones who actually made contact. These are
+ * click conversions, so they fire from the button handlers instead.
+ *
+ * WhatsApp and Call are separate conversion actions in Google Ads with their
+ * own labels; anything else falls back to the generic label.
+ */
 export function trackConversion(
   event: "book_click" | "call_click" | "whatsapp_click" | "contact_submit",
   data: Record<string, unknown> = {}
@@ -96,9 +122,20 @@ export function trackConversion(
   w.dataLayer?.push({ event, ...data });
   w.fbq?.("track", "Lead", data);
   w.snaptr?.("track", "SIGN_UP", data);
-  if (cfg.tracking.googleAdsId && cfg.tracking.googleAdsConversionLabel && w.gtag) {
+
+  const t = cfg.tracking;
+  const label =
+    event === "call_click"
+      ? t.googleAdsCallLabel || t.googleAdsConversionLabel
+      : event === "whatsapp_click" || event === "book_click"
+        ? t.googleAdsWhatsappLabel || t.googleAdsConversionLabel
+        : t.googleAdsConversionLabel;
+
+  if (t.googleAdsId && label && w.gtag) {
     w.gtag("event", "conversion", {
-      send_to: `${cfg.tracking.googleAdsId}/${cfg.tracking.googleAdsConversionLabel}`,
+      send_to: `${t.googleAdsId}/${label}`,
+      value: 0.0,
+      currency: "AED",
       ...data,
     });
   }

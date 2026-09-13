@@ -6,10 +6,35 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-function resolveDataPath(fileName: string): string {
+/**
+ * Where admin data lives.
+ *
+ * This used to climb two fixed levels from cwd. `current/` is a symlink and
+ * Node resolves cwd through it, so the real cwd is
+ * `hbuilds/versions/<uuid>/nodejs` and two levels up is **`hbuilds/versions/`**
+ * — the directory the deploy pipeline prunes. Every admin setting on this site
+ * was sitting one bad deploy away from being wiped.
+ *
+ * Climb until the directory actually named `hbuilds` is found instead, so the
+ * depth of the build path stops mattering. Falling back to a project-local
+ * `.admin-data` keeps dev off a sibling site's store — decided by finding
+ * `hbuilds`, never by NODE_ENV, because the Node app here does not set it.
+ */
+function resolveDataDir(): string {
   const envDir = process.env["ADMIN_DATA_DIR"];
-  if (envDir && envDir.length > 0) return path.join(envDir, fileName);
-  return path.resolve(process.cwd(), "..", "..", fileName);
+  if (envDir && envDir.length > 0) return envDir;
+  let dir = process.cwd();
+  for (let i = 0; i < 6; i++) {
+    if (path.basename(dir) === "hbuilds") return dir;
+    const parent = path.dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+  return path.resolve(process.cwd(), ".admin-data");
+}
+
+function resolveDataPath(fileName: string): string {
+  return path.join(resolveDataDir(), fileName);
 }
 
 export async function readJsonStore<T>(fileName: string): Promise<T | null> {
@@ -23,7 +48,13 @@ export async function readJsonStore<T>(fileName: string): Promise<T | null> {
 
 export async function writeJsonStore(fileName: string, data: unknown): Promise<void> {
   const payload = JSON.stringify(data, null, 2);
-  await fs.writeFile(resolveDataPath(fileName), payload, "utf-8");
+  const target = resolveDataPath(fileName);
+  // The dev fallback directory does not exist until something writes to it.
+  await fs.mkdir(path.dirname(target), { recursive: true });
+  // Temp file + rename so a crash mid-write cannot leave truncated JSON behind.
+  const tmp = `${target}.${process.pid}.tmp`;
+  await fs.writeFile(tmp, payload, "utf-8");
+  await fs.rename(tmp, target);
 }
 
 const DEFAULT_ADMIN_PASSWORD = "Tootfun321+";
