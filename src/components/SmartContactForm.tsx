@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { trackThenGo } from "@/components/TrackingScripts";
 
 type Fields = typeof import("./contact-fields");
 
@@ -97,7 +98,8 @@ export function SmartContactForm() {
         // service and date were dropped. Fold them all into one message instead.
         e.preventDefault();
         const path = typeof window === "undefined" ? undefined : window.location.pathname;
-        window.location.href = buildWhatsAppUrl(e.currentTarget, path);
+        // "Dubai Yacht - Leads" conversion + Meta Lead (Tag Manager), sent before WhatsApp opens.
+        trackThenGo("enquiry_form_submit", buildWhatsAppUrl(e.currentTarget, path));
       }}
     >
       <div className="grid gap-4 sm:grid-cols-2">

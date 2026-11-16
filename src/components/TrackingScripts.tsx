@@ -120,7 +120,6 @@ export function trackConversion(
   const cfg = getConfig();
 
   w.dataLayer?.push({ event, ...data });
-  w.fbq?.("track", "Lead", data);
   w.snaptr?.("track", "SIGN_UP", data);
 
   const t = cfg.tracking;
@@ -139,6 +138,30 @@ export function trackConversion(
       ...data,
     });
   }
+}
+
+/**
+ * Push a dataLayer event, then leave for `url` once Tag Manager has sent its tags
+ * (eventCallback), with a timeout so the visitor is never stuck if a tag is blocked.
+ * Used by the enquiry form, which opens WhatsApp right after submit: without the wait
+ * the page unloads before the "Dubai Yacht - Leads" conversion and the Meta Lead go out.
+ */
+export function trackThenGo(event: string, url: string): void {
+  const w = window as unknown as { dataLayer?: unknown[]; google_tag_manager?: unknown };
+  let left = false;
+  const go = () => {
+    if (left) return;
+    left = true;
+    window.location.href = url;
+  };
+  w.dataLayer = w.dataLayer || [];
+  if (!w.google_tag_manager) {
+    w.dataLayer.push({ event });
+    go();
+    return;
+  }
+  w.dataLayer.push({ event, eventCallback: go, eventTimeout: 1200 });
+  window.setTimeout(go, 1500);
 }
 
 export { getConfig };
